@@ -220,7 +220,7 @@
 											"top": 721,
 											"width": 84.92529296875,
 											"height": 13,
-											"text": "+status_delete",
+											"text": "+status_data",
 											"horizontalAlignment": 0
 										}
 									],
@@ -534,7 +534,7 @@
 											"top": 303,
 											"width": 84.92529296875,
 											"height": 13,
-											"text": "+status_delete",
+											"text": "+status_data",
 											"horizontalAlignment": 0
 										}
 									],
@@ -797,7 +797,7 @@
 											"top": 298,
 											"width": 101.55615234375,
 											"height": 13,
-											"text": "+status_delete",
+											"text": "+status_data",
 											"horizontalAlignment": 0
 										}
 									],
@@ -1094,7 +1094,7 @@
 											"top": 328,
 											"width": 100.07080078125,
 											"height": 13,
-											"text": "+status_delete",
+											"text": "+status_data",
 											"horizontalAlignment": 0
 										}
 									],
@@ -1578,7 +1578,7 @@
 											"top": 533,
 											"width": 112.37255859375,
 											"height": 13,
-											"text": "+status_delete",
+											"text": "+status_data",
 											"horizontalAlignment": 0
 										}
 									],
@@ -1807,7 +1807,7 @@
 											"top": 76,
 											"width": 114.55615234375,
 											"height": 13,
-											"text": "+status_delete",
+											"text": "+status_data",
 											"horizontalAlignment": 0
 										}
 									],
@@ -2172,7 +2172,7 @@
 											"top": 188,
 											"width": 122.52880859375,
 											"height": 13,
-											"text": "+status_delete",
+											"text": "+status_data",
 											"horizontalAlignment": 0
 										}
 									],
@@ -2956,7 +2956,7 @@
 											"top": 83,
 											"width": 147.4052734375,
 											"height": 13,
-											"text": "+status_delete",
+											"text": "+status_data",
 											"horizontalAlignment": 0
 										}
 									],
@@ -5104,7 +5104,7 @@
 											"top": 512,
 											"width": 123.22705078125,
 											"height": 13,
-											"text": "+status_delete",
+											"text": "+status_data",
 											"horizontalAlignment": 0
 										}
 									],
@@ -5939,7 +5939,7 @@
 											"top": 800,
 											"width": 101.54345703125,
 											"height": 13,
-											"text": "+status_delete",
+											"text": "+status_data",
 											"horizontalAlignment": 0
 										}
 									],
@@ -9096,7 +9096,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFtzoodRuRgK2I="
 							},
-							"name": "status_delete"
+							"name": "status_data"
 						}
 					]
 				},
@@ -9260,7 +9260,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFtzor6ceSK4Xk="
 							},
-							"name": "status_delete"
+							"name": "status_data"
 						}
 					]
 				},
@@ -9370,7 +9370,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFtzotv+eS3/Xc="
 							},
-							"name": "status_delete"
+							"name": "status_data"
 						}
 					]
 				},
@@ -9471,7 +9471,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFtzouBeeThY2U="
 							},
-							"name": "status_delete"
+							"name": "status_data"
 						}
 					]
 				},
@@ -9671,7 +9671,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFtzpR5+OhiFaM="
 							},
-							"name": "status_delete"
+							"name": "status_data"
 						}
 					]
 				},
@@ -9736,7 +9736,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFtzpXzgerxu4I="
 							},
-							"name": "status_delete"
+							"name": "status_data"
 						}
 					]
 				},
@@ -9900,7 +9900,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFtzqQaQAxe3gQ="
 							},
-							"name": "status_delete"
+							"name": "status_data"
 						}
 					]
 				},
@@ -9945,7 +9945,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFtzrLA2BZMRxk="
 							},
-							"name": "status_delete"
+							"name": "status_data"
 						}
 					]
 				},
@@ -10139,7 +10139,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFtzsxcMkCgRvI="
 							},
-							"name": "status_delete"
+							"name": "status_data"
 						}
 					]
 				},
@@ -10240,7 +10240,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFtztrR6W5d1Wg="
 							},
-							"name": "status_delete"
+							"name": "status_data"
 						}
 					]
 				},

@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">Big Stars</string>
+
+    <!--  start home drawer  -->
     <string name="Open">open</string>
     <string name="Close">close</string>
+    <!--  end home drawer  -->
 </resources>
