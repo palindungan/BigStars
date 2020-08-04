@@ -8,4 +8,5 @@
     <string name="wali_murid">Wali Murid</string>
     <string name="pengajar">Pengajar</string>
     <string name="admin">Admin</string>
+    <string name="login">Login</string>
 </resources>

@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.its.bigstarsapp.Activities._Login.LoginActivity;
 import com.its.bigstarsapp.R;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -41,9 +42,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
 
         if (!hak_akses.equals("")) {
-//            intent = new Intent(getApplicationContext(), LoginActivity.class);
-//            intent.putExtra(LoginActivity.EXTRA_HAK_AKSES, hak_akses);
-//            startActivity(intent);
+            intent = new Intent(getApplicationContext(), LoginActivity.class);
+            intent.putExtra(LoginActivity.EXTRA_HAK_AKSES, hak_akses);
+            startActivity(intent);
         }
     }
 }
