@@ -1,115 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background_main_1"
+    android:orientation="vertical"
     tools:context=".Activities._Main.MainActivity">
 
-    <View
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/background_main_1"
-        android:visibility="visible" />
-
-    <ImageView
-        android:layout_width="250sp"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="50dp"
-        android:contentDescription="@string/todo"
-        android:src="@drawable/img_logo_1" />
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/bigstars"
+            android:textColor="@color/white"
+            android:textSize="30sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/sistem_absensi_dan_monitoring"
+            android:textColor="@color/white"
+            android:textSize="19sp" />
+
+        <ImageView
+            android:layout_width="250sp"
+            android:layout_height="400sp"
+            android:contentDescription="@string/todo"
+            android:src="@drawable/img_logo_1" />
 
         <LinearLayout
+            android:layout_marginTop="60sp"
+            android:id="@+id/layout_btn"
+            android:padding="10sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text="@string/bigstars"
-                android:textColor="@color/white"
-                android:textSize="30sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/sistem_absensi_dan_monitoring"
-                android:textColor="@color/white"
-                android:textSize="19sp" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:gravity="center_horizontal"
-            android:orientation="vertical">
-
-            <LinearLayout
-                android:id="@+id/layout_btn"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:orientation="horizontal"
-                android:weightSum="2">
-
-                <Button
-                    android:id="@+id/btn_login_wali_murid"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="5dp"
-                    android:layout_marginRight="5dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/button_white"
-                    android:text="@string/wali_murid"
-                    android:textAllCaps="false"
-                    android:textSize="15sp"
-                    tools:ignore="ButtonStyle" />
-
-                <Button
-                    android:id="@+id/btn_login_pengajar"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="5dp"
-                    android:layout_marginLeft="5dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/button_white"
-                    android:text="@string/pengajar"
-                    android:textAllCaps="false"
-                    android:textSize="15sp"
-                    tools:ignore="ButtonStyle" />
-
-            </LinearLayout>
+            android:orientation="horizontal"
+            android:weightSum="2">
 
             <Button
-                android:id="@+id/btn_login_admin"
+                android:id="@+id/btn_login_wali_murid"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:background="@drawable/button_transparent"
-                android:text="@string/admin"
+                android:layout_marginEnd="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/button_white"
+                android:text="@string/wali_murid"
                 android:textAllCaps="false"
-                android:textColor="@color/white"
-                android:textSize="15sp" />
+                android:textSize="15sp"
+                tools:ignore="ButtonStyle" />
 
-            <ImageView
-                android:layout_width="300dp"
+            <Button
+                android:id="@+id/btn_login_pengajar"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:contentDescription="@string/todo"
-                android:src="@drawable/img_info_bawah" />
+                android:layout_marginStart="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/button_white"
+                android:text="@string/pengajar"
+                android:textAllCaps="false"
+                android:textSize="15sp"
+                tools:ignore="ButtonStyle" />
 
         </LinearLayout>
 
-    </RelativeLayout>
+        <Button
+            android:id="@+id/btn_login_admin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/button_transparent"
+            android:text="@string/admin"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="15sp" />
 
-</RelativeLayout>
+        <ImageView
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/todo"
+            android:src="@drawable/img_info_bawah" />
+
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>
