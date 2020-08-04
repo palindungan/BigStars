@@ -1,4 +1,4 @@
-package com.its.bigstars;
+package com.its.bigstarsapp;
 
 import org.junit.Test;
 

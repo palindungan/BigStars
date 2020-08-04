@@ -1,10 +1,8 @@
-package com.its.bigstars.Activities._Main;
+package com.its.bigstarsapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-
-import com.its.bigstars.R;
 
 public class MainActivity extends AppCompatActivity {
 
