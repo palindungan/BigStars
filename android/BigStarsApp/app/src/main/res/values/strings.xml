@@ -2,4 +2,10 @@
     <string name="app_name">Big Stars</string>
     <string name="Open">open</string>
     <string name="Close">close</string>
+    <string name="todo">TODO</string>
+    <string name="bigstars">Bigstars</string>
+    <string name="sistem_absensi_dan_monitoring">Sistem Absensi dan Monitoring</string>
+    <string name="wali_murid">Wali Murid</string>
+    <string name="pengajar">Pengajar</string>
+    <string name="admin">Admin</string>
 </resources>
