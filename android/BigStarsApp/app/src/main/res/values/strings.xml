@@ -22,4 +22,5 @@
     <string name="password">Password</string>
     <string name="konfirmasi_password">Konfirmasi Password</string>
     <string name="update">Update</string>
+    <string name="tambah_data">Tambah Data</string>
 </resources>

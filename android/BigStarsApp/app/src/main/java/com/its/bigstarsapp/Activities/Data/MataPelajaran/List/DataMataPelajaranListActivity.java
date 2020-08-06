@@ -18,6 +18,6 @@ public class DataMataPelajaranListActivity extends AppCompatActivity implements 
 
     @Override
     public void onClick(View view) {
-        
+
     }
 }
