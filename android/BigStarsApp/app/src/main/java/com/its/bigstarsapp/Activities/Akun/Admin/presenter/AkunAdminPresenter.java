@@ -89,6 +89,40 @@ public class AkunAdminPresenter implements IAkunAdminPresenter {
 
     @Override
     public void onUpdate(String id_admin, String nama, String username, String password, String foto) {
+        String base_url = globalVariable.getUrlData();
+        String URL_DATA = base_url + "akun/admin/update_data"; // url http request
 
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_DATA, response -> {
+            try {
+                JSONObject jsonObject = new JSONObject(response);
+                String success = jsonObject.getString("success");
+                String message = jsonObject.getString("message");
+
+                if (success.equals("1")) {
+                    globalProcess.onSuccessMessage(message);
+                    akunAdminView.backPressed();
+                } else {
+                    globalProcess.onErrorMessage(message);
+                }
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+                globalProcess.onErrorMessage(globalMessage.getMessageResponseError() + e.toString());
+            }
+        }, error -> globalProcess.onErrorMessage(globalMessage.getMessageConnectionError())) {
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<>();
+                params.put("id_admin", id_admin);
+                params.put("nama", nama);
+                params.put("username", username);
+                params.put("password", password);
+                params.put("foto", foto);
+                return params;
+            }
+        };
+
+        RequestQueue requestQueue = Volley.newRequestQueue(context);
+        requestQueue.add(stringRequest);
     }
 }
