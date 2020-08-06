@@ -13,6 +13,7 @@ import android.view.View;
 
 import com.google.android.material.navigation.NavigationView;
 import com.its.bigstarsapp.Activities.Akun.Admin.AkunAdminActivity;
+import com.its.bigstarsapp.Activities.Data.MataPelajaran.List.DataMataPelajaranListActivity;
 import com.its.bigstarsapp.Controllers.GlobalProcess;
 import com.its.bigstarsapp.Controllers.SessionManager;
 import com.its.bigstarsapp.R;
@@ -105,9 +106,9 @@ public class HomeAdminActivity extends AppCompatActivity implements View.OnClick
 //            intent = new Intent(getApplicationContext(), DataWaliMuridListActivity.class);
 //            startActivity(intent);
         } else if (view.getId() == R.id.link_admin_mata_pelajaran) {
-//            sessionManager.setStatusActivity("home->view->editMataPelajaran");
-//            intent = new Intent(getApplicationContext(), DataMataPelajaranListActivity.class);
-//            startActivity(intent);
+            sessionManager.setStatusActivity("home->view->editMataPelajaran");
+            intent = new Intent(getApplicationContext(), DataMataPelajaranListActivity.class);
+            startActivity(intent);
         } else if (view.getId() == R.id.link_admin_kelas) {
 //            globalProcess.onSuccessMessage("Pilih Pengajar");
 //            sessionManager.setStatusActivity("home->view->listKelasPertemuan");
