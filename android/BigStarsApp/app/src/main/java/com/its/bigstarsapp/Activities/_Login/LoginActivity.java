@@ -13,6 +13,7 @@ import android.widget.EditText;
 import com.its.bigstarsapp.Activities._Login.presenter.ILoginPresenter;
 import com.its.bigstarsapp.Activities._Login.presenter.LoginPresenter;
 import com.its.bigstarsapp.Activities._Login.view.ILoginView;
+import com.its.bigstarsapp.Controllers.GlobalMessage;
 import com.its.bigstarsapp.Controllers.GlobalProcess;
 import com.its.bigstarsapp.R;
 
@@ -23,6 +24,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     ILoginPresenter loginPresenter;
     GlobalProcess globalProcess;
+    GlobalMessage globalMessage;
 
     EditText edtUsername, edtPassword;
     Button btnLogin;
@@ -35,6 +37,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         loginPresenter = new LoginPresenter(this, this);
         globalProcess = new GlobalProcess(this);
+        globalMessage = new GlobalMessage();
 
         toolbar = findViewById(R.id.toolbar);
         edtUsername = findViewById(R.id.edt_username);
@@ -59,10 +62,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
             if (TextUtils.isEmpty(inputUsername)) {
                 isEmpty = true;
-                edtUsername.setError("Isi Username Dengan Lengkap");
+                edtUsername.setError(globalMessage.getValidasiUsernameKosong());
             } else if (TextUtils.isEmpty(inputPassword)) {
                 isEmpty = true;
-                edtPassword.setError("Isi Password Dengan Lengkap");
+                edtPassword.setError(globalMessage.getValidasiPasswordKosong());
             }
 
             if (!isEmpty) {
@@ -71,7 +74,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                             "" + inputUsername,
                             "" + inputPassword,
                             "" + hak_akses);
-//                    globalProcess.onSuccessMessage(inputUsername + inputPassword + hak_akses);
                 } else {
                     globalProcess.onErrorMessage("Fitur Wali Murid Masih Belum Tersedia");
                 }

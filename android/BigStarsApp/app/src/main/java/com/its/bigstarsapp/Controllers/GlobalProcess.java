@@ -6,6 +6,7 @@ import android.util.Base64;
 import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
@@ -17,8 +18,12 @@ public class GlobalProcess {
 
     Context context;
 
+    SessionManager sessionManager;
+
     public GlobalProcess(Context context) {
         this.context = context;
+
+        sessionManager = new SessionManager(context);
     }
 
     public void onSuccessMessage(String message) {
@@ -45,5 +50,26 @@ public class GlobalProcess {
         if (ab != null) {
             ab.setDisplayHomeAsUpEnabled(true);
         }
+    }
+
+    public void dialogLogout(Context context) {
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+                context);
+        alertDialogBuilder.setTitle("Ingin Logout ?");
+        alertDialogBuilder
+                .setMessage("Klik Ya untuk Keluar Aplikasi !")
+                .setPositiveButton("Ya", (dialog, id) -> {
+
+                    try {
+                        sessionManager.logout();
+                    } catch (Exception e) {
+                        onErrorMessage("Terjadi Kesalahan " + e.toString());
+                    }
+
+                })
+                .setNegativeButton("Tidak", (dialog, id) -> dialog.cancel());
+
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
     }
 }
