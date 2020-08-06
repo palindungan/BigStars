@@ -62,7 +62,7 @@ public class LoginPresenter implements ILoginPresenter {
 
                                 String id_user = object.getString("id_user").trim();
                                 String nama = object.getString("nama").trim();
-                                String username1 = object.getString("username").trim();
+                                String username_response = object.getString("username").trim();
 
                                 Intent intent = new Intent();
 
@@ -83,7 +83,7 @@ public class LoginPresenter implements ILoginPresenter {
                                 sessionManager.setDataUser(
                                         "" + id_user,
                                         "" + nama,
-                                        "" + username1,
+                                        "" + username_response,
                                         "" + hak_akses
                                 );
 
