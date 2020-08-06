@@ -1,5 +1,6 @@
 package com.its.bigstarsapp.Controllers;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -19,14 +20,15 @@ public class SessionManager {
     int PRIVATE_MODE = 0;
     private static final String PREF_NAME = "LOGIN";
 
-    public static final String STATUS_LOGIN = "STATUS_LOGIN";
-    public static final String ID_USER = "ID_USER";
-    public static final String NAMA = "NAMA";
-    public static final String USERNAME = "USERNAME";
-    public static final String HAK_AKSES = "HAK_AKSES";
+    public final String STATUS_LOGIN = "STATUS_LOGIN";
+    public final String ID_USER = "ID_USER";
+    public final String NAMA = "NAMA";
+    public final String USERNAME = "USERNAME";
+    public final String HAK_AKSES = "HAK_AKSES";
 
-    public static final String STATUS_ACTIVITY = "STATUS_ACTIVITY";
+    public final String STATUS_ACTIVITY = "STATUS_ACTIVITY";
 
+    @SuppressLint("CommitPrefEdits")
     public SessionManager(Context context) {
         this.context = context;
 

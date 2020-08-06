@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.google.android.material.navigation.NavigationView;
+import com.its.bigstarsapp.Activities.Akun.Admin.AkunAdminActivity;
 import com.its.bigstarsapp.Controllers.GlobalProcess;
 import com.its.bigstarsapp.Controllers.SessionManager;
 import com.its.bigstarsapp.R;
@@ -143,8 +144,8 @@ public class HomeAdminActivity extends AppCompatActivity implements View.OnClick
 //            startActivity(intent);
             return true;
         } else if (id == R.id.menu_akun_saya) {
-//            intent = new Intent(getApplicationContext(), AkunAdminActivity.class);
-//            startActivity(intent);
+            intent = new Intent(getApplicationContext(), AkunAdminActivity.class);
+            startActivity(intent);
             return true;
         } else if (id == R.id.menu_keluar) {
             globalProcess.dialogLogout(this);
