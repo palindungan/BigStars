@@ -17,4 +17,9 @@
     <string name="data_mata_pelajaran">Data Mata Pelajaran</string>
     <string name="data_kelas_pertemuan">Data Kelas Pertemuan</string>
     <string name="lihat_pertemuan_aktif">Lihat Pertemuan Aktif</string>
+    <string name="nama">Nama</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="konfirmasi_password">Konfirmasi Password</string>
+    <string name="update">Update</string>
 </resources>

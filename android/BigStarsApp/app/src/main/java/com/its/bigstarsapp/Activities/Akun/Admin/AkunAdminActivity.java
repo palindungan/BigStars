@@ -20,4 +20,14 @@ public class AkunAdminActivity extends AppCompatActivity implements View.OnClick
     public void onClick(View view) {
 
     }
+
+    @Override
+    public void setNilaiDefault(String nama, String username, String foto) {
+
+    }
+
+    @Override
+    public void backPressed() {
+
+    }
 }
