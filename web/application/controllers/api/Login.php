@@ -27,7 +27,8 @@ class Login extends REST_Controller
 
         // data array untuk where db
         $where = array(
-            'username' => $username
+            'username' => $username,
+            'status_data' => 'active'
         );
 
         // mengambil data

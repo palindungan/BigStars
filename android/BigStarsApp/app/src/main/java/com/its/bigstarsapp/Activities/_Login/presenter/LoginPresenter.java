@@ -3,13 +3,12 @@ package com.its.bigstarsapp.Activities._Login.presenter;
 import android.content.Context;
 import android.content.Intent;
 
-import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.its.bigstarsapp.Activities.Home.Admin.HomeAdminActivity;
+import com.its.bigstarsapp.Activities.Home.Pengajar.HomePengajarActivity;
 import com.its.bigstarsapp.Activities._Login.view.ILoginView;
 import com.its.bigstarsapp.Controllers.GlobalMessage;
 import com.its.bigstarsapp.Controllers.GlobalProcess;
@@ -49,63 +48,59 @@ public class LoginPresenter implements ILoginPresenter {
         String URL_DATA = base_url + "login/masuk"; // url http request
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_DATA,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        try {
-                            JSONObject jsonObject = new JSONObject(response);
-                            String success = jsonObject.getString("success");
-                            String message = jsonObject.getString("message");
+                response -> {
+                    try {
+                        JSONObject jsonObject = new JSONObject(response);
+                        String success = jsonObject.getString("success");
+                        String message = jsonObject.getString("message");
 
-                            JSONArray jsonArray = jsonObject.getJSONArray("data_result");
+                        JSONArray jsonArray = jsonObject.getJSONArray("data_result");
 
-                            if (success.equals("1")) {
-                                for (int i = 0; i < jsonArray.length(); i++) {
-                                    JSONObject object = jsonArray.getJSONObject(i);
+                        if (success.equals("1")) {
+                            for (int i = 0; i < jsonArray.length(); i++) {
+                                JSONObject object = jsonArray.getJSONObject(i);
 
-                                    String id_user = object.getString("id_user").trim();
-                                    String nama = object.getString("nama").trim();
-                                    String username = object.getString("username").trim();
+                                String id_user = object.getString("id_user").trim();
+                                String nama = object.getString("nama").trim();
+                                String username1 = object.getString("username").trim();
 
-                                    Intent intent = new Intent();
+                                Intent intent = new Intent();
 
-                                    if (hak_akses.equals("admin")) {
-//                                        intent = new Intent(context, HomeAdminActivity.class);
-                                    } else if (hak_akses.equals("pengajar")) {
-//                                        intent = new Intent(context, HomePengajarActivity.class);
-                                    } else if (hak_akses.equals("wali_murid")) {
-
-                                    } else {
+                                switch (hak_akses) {
+                                    case "admin":
+                                        intent = new Intent(context, HomeAdminActivity.class);
+                                        break;
+                                    case "pengajar":
+                                        intent = new Intent(context, HomePengajarActivity.class);
+                                        break;
+                                    case "wali_murid":
+                                        break;
+                                    default:
                                         sessionManager.logout();
-                                    }
-
-                                    sessionManager.setDataUser(
-                                            "" + id_user,
-                                            "" + nama,
-                                            "" + username,
-                                            "" + hak_akses
-                                    );
-
-                                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                                    context.startActivity(intent);
+                                        break;
                                 }
-                            } else {
-                                globalProcess.onErrorMessage(message);
+
+                                sessionManager.setDataUser(
+                                        "" + id_user,
+                                        "" + nama,
+                                        "" + username1,
+                                        "" + hak_akses
+                                );
+
+                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                context.startActivity(intent);
                             }
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                            globalProcess.onErrorMessage(globalMessage.getMessageResponseError() + e.toString());
+                        } else {
+                            globalProcess.onErrorMessage(message);
                         }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                        globalProcess.onErrorMessage(globalMessage.getMessageResponseError() + e.toString());
                     }
                 },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        globalProcess.onErrorMessage(globalMessage.getMessageConnectionError());
-                    }
-                }) {
+                error -> globalProcess.onErrorMessage(globalMessage.getMessageConnectionError())) {
             @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
+            protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<>();
                 params.put("username", username);
                 params.put("password", password);
