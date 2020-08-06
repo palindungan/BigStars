@@ -6,7 +6,7 @@
         android:checkableBehavior="single">
         <item
             android:id="@+id/gaji_pengajar"
-            android:icon="@drawable/ic_attach_money_black_24dp"
+            android:icon="@drawable/ic_attach_money_black"
             android:title="Pembayaran FEE" />
     </group>
 
@@ -15,7 +15,7 @@
         android:checkableBehavior="single">
         <item
             android:id="@+id/riwayat_penggajian"
-            android:icon="@drawable/ic_event_note_black_24dp"
+            android:icon="@drawable/ic_event_note_black"
             android:title="Riwayat FEE" />
     </group>
 
@@ -24,7 +24,7 @@
         android:checkableBehavior="single">
         <item
             android:id="@+id/bayar_spp"
-            android:icon="@drawable/ic_monetization_on_black_24dp"
+            android:icon="@drawable/ic_monetization_on_black"
             android:title="Pembayaran SPP" />
     </group>
 
@@ -33,7 +33,7 @@
         android:checkableBehavior="single">
         <item
             android:id="@+id/riwayat_bayar_spp"
-            android:icon="@drawable/ic_library_books_black_24dp"
+            android:icon="@drawable/ic_library_books_black"
             android:title="Riwayat SPP" />
     </group>
 
@@ -42,7 +42,7 @@
         android:checkableBehavior="single">
         <item
             android:id="@+id/monitoring"
-            android:icon="@drawable/ic_remove_red_eye_black_24dp"
+            android:icon="@drawable/ic_remove_red_eye_black"
             android:title="Monitoring Pertemuan" />
     </group>
 

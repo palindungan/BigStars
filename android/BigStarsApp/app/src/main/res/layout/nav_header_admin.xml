@@ -13,7 +13,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/background_menu_1"
+            android:background="@drawable/background_main_1"
             android:visibility="visible" />
 
         <ImageView
@@ -21,7 +21,7 @@
             android:layout_height="match_parent"
             android:alpha="0.5"
             android:scaleType="centerCrop"
-            android:src="@drawable/bg_menu_7" />
+            android:src="@drawable/img_7" />
 
         <TextView
             android:id="@+id/caption2"
