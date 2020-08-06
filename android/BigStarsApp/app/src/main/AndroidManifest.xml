@@ -24,6 +24,7 @@
         android:usesCleartextTraffic="true"
         tools:ignore="AllowBackup"
         tools:targetApi="m">
+        <activity android:name=".Activities.Akun.Admin.AkunAdminActivity"></activity>
         <activity
             android:name=".Activities.Home.Pengajar.HomePengajarActivity"
             android:theme="@style/AppThemeHome" />
