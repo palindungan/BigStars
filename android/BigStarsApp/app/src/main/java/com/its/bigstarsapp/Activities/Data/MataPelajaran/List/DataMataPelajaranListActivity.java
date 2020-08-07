@@ -1,11 +1,14 @@
 package com.its.bigstarsapp.Activities.Data.MataPelajaran.List;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.MenuItem;
@@ -33,8 +36,6 @@ public class DataMataPelajaranListActivity extends AppCompatActivity implements 
     GlobalProcess globalProcess;
     GlobalVariable globalVariable;
     SessionManager sessionManager;
-
-    private AdapterDataMataPelajaranList adapterDataMataPelajaranList;
 
     Toolbar toolbar;
     FloatingActionButton fab;
@@ -94,7 +95,38 @@ public class DataMataPelajaranListActivity extends AppCompatActivity implements 
 
     @Override
     public void onSetupListView(ArrayList<MataPelajaran> dataModelArrayList) {
+        AdapterDataMataPelajaranList adapterDataMataPelajaranList = new AdapterDataMataPelajaranList(this, dataModelArrayList);
+        GridLayoutManager layoutManager = new GridLayoutManager(this, 1, GridLayoutManager.VERTICAL, false);
+        recyclerView.setAdapter(adapterDataMataPelajaranList);
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setNestedScrollingEnabled(true);
+        adapterDataMataPelajaranList.notifyDataSetChanged();
 
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                if (dy > 0 && fab.getVisibility() == View.VISIBLE) {
+                    fab.hide();
+                } else if (dy < 0 && fab.getVisibility() != View.VISIBLE) {
+                    if (statusActivity.equals("home->view->editMataPelajaran")) {
+                        fab.show();
+                    }
+                }
+            }
+        });
+
+        adapterDataMataPelajaranList.setOnItemClickListener((view, position) -> {
+            Intent intent;
+            if (statusActivity.equals("home->view->editMataPelajaran")) {
+//                    intent = new Intent(getApplicationContext(), DataMataPelajaranEditActivity.class);
+//                    intent.putExtra(DataMataPelajaranEditActivity.EXTRA_ID_MATA_PELAJARAN, dataModelArrayList.get(position).getId_mata_pelajaran());
+//                    intent.putExtra(DataMataPelajaranEditActivity.EXTRA_NAMA, dataModelArrayList.get(position).getNama());
+//                    startActivity(intent);
+            } else if (statusActivity.equals("xx->view->yy")) {
+
+            }
+        });
     }
 
     @Override
