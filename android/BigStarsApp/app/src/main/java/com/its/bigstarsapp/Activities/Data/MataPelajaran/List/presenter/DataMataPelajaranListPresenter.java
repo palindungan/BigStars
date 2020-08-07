@@ -93,7 +93,7 @@ public class DataMataPelajaranListPresenter implements IDataMataPelajaranListPre
     @Override
     public void onDelete(String id_mata_pelajaran) {
         String base_url = globalVariable.getUrlData();
-        String URL_DATA = base_url + "data/mata_pelajaran/delete_data"; // url http request
+        String URL_DATA = base_url + "data/mata_pelajaran/inactive_data"; // url http request
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_DATA,
                 response -> {
