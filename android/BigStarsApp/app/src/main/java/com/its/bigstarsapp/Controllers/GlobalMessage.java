@@ -45,7 +45,7 @@ public class GlobalMessage {
 
         errorHapusData = "Terjadi Kesalahan Hapus : ";
         errorUpdateData = "Terjadi Kesalahan Update : ";
-        errorLoadingGambar = "Terjadi Kesalahan, pilih gambar lainnya !";
+        errorLoadingGambar = "Error, pilih gambar lainnya !";
     }
 
     public String getMessageConnectionError() {
