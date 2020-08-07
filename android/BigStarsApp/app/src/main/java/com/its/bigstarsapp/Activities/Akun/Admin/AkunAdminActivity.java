@@ -90,7 +90,7 @@ public class AkunAdminActivity extends AppCompatActivity implements View.OnClick
         alertDialogBuilder.setTitle(globalMessage.getValidasiUpdateDataAdmin());
         alertDialogBuilder
                 .setMessage(globalMessage.getPilihYaUpdateData())
-                .setPositiveButton("Ya", (dialog, id) -> {
+                .setPositiveButton(globalMessage.getYa(), (dialog, id) -> {
 
                     String inputNama = edtNama.getText().toString().trim();
                     String inputUsername = edtUsername.getText().toString().trim();
@@ -126,10 +126,10 @@ public class AkunAdminActivity extends AppCompatActivity implements View.OnClick
                         }
 
                     } catch (Exception e) {
-                        globalProcess.onErrorMessage("Terjadi Kesalahan Submit " + e.toString());
+                        globalProcess.onErrorMessage(globalMessage.getErrorUpdateData() + e.toString());
                     }
                 })
-                .setNegativeButton("Tidak", (dialog, id) -> dialog.cancel());
+                .setNegativeButton(globalMessage.getTidak(), (dialog, id) -> dialog.cancel());
 
         AlertDialog alertDialog = alertDialogBuilder.create();
         alertDialog.show();
@@ -174,7 +174,7 @@ public class AkunAdminActivity extends AppCompatActivity implements View.OnClick
 
             } catch (IOException e) {
                 e.printStackTrace();
-                globalProcess.onErrorMessage("Gambar Error " + e.toString());
+                globalProcess.onErrorMessage(globalMessage.getErrorLoadingGambar() + e.toString());
             }
 
             data_photo = globalProcess.getStringImage(bitmap);

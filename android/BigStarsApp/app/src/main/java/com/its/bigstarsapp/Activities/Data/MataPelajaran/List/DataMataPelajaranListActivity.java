@@ -133,19 +133,19 @@ public class DataMataPelajaranListActivity extends AppCompatActivity implements 
     public void showDialogDelete(String kode, String nama) {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
                 this);
-        alertDialogBuilder.setTitle("Yakin Ingin Menghapus Data " + nama + " ?");
+        alertDialogBuilder.setTitle(globalMessage.getValidasiHapusDataMataPelajaran() + nama + " ?");
         alertDialogBuilder
-                .setMessage("Klik Ya untuk Menghapus !")
-                .setPositiveButton("Ya", (dialog, id) -> {
+                .setMessage(globalMessage.getPilihYaHapusDataMataPelajaran())
+                .setPositiveButton(globalMessage.getYa(), (dialog, id) -> {
 
                     try {
                         dataMataPelajaranListPresenter.onDelete(kode);
                     } catch (Exception e) {
-                        globalProcess.onErrorMessage("Terjadi Kesalahan Hapus " + e.toString());
+                        globalProcess.onErrorMessage(globalMessage.getErrorHapusData() + e.toString());
                     }
 
                 })
-                .setNegativeButton("Tidak", (dialog, id) -> dialog.cancel());
+                .setNegativeButton(globalMessage.getTidak(), (dialog, id) -> dialog.cancel());
 
         AlertDialog alertDialog = alertDialogBuilder.create();
         alertDialog.show();
