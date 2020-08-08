@@ -24,7 +24,8 @@
         android:usesCleartextTraffic="true"
         tools:ignore="AllowBackup"
         tools:targetApi="m">
-        <activity android:name=".Activities.Data.MataPelajaran.Add.DataMataPelajaranAddActivity"></activity>
+        <activity android:name=".Activities.Data.MataPelajaran.Edit.DataMataPelajaranEditActivity"></activity>
+        <activity android:name=".Activities.Data.MataPelajaran.Add.DataMataPelajaranAddActivity" />
         <activity android:name=".Activities.Data.MataPelajaran.List.DataMataPelajaranListActivity" />
         <activity android:name=".Activities.Akun.Admin.AkunAdminActivity" />
         <activity
