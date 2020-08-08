@@ -15,6 +15,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.its.bigstarsapp.Activities.Data.MataPelajaran.Add.DataMataPelajaranAddActivity;
 import com.its.bigstarsapp.Activities.Data.MataPelajaran.List.presenter.DataMataPelajaranListPresenter;
 import com.its.bigstarsapp.Activities.Data.MataPelajaran.List.presenter.IDataMataPelajaranListPresenter;
 import com.its.bigstarsapp.Activities.Data.MataPelajaran.List.view.IDataMataPelajaranListView;
@@ -89,7 +90,7 @@ public class DataMataPelajaranListActivity extends AppCompatActivity implements 
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.fab) {
-//            startActivity(new Intent(getApplicationContext(), DataMataPelajaranAddActivity.class));
+            startActivity(new Intent(getApplicationContext(), DataMataPelajaranAddActivity.class));
         }
     }
 
@@ -123,8 +124,6 @@ public class DataMataPelajaranListActivity extends AppCompatActivity implements 
 //                    intent.putExtra(DataMataPelajaranEditActivity.EXTRA_ID_MATA_PELAJARAN, dataModelArrayList.get(position).getId_mata_pelajaran());
 //                    intent.putExtra(DataMataPelajaranEditActivity.EXTRA_NAMA, dataModelArrayList.get(position).getNama());
 //                    startActivity(intent);
-            } else if (statusActivity.equals("xx->view->yy")) {
-
             }
         });
     }
