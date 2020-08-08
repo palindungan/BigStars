@@ -18,6 +18,11 @@ public class DataMataPelajaranEditActivity extends AppCompatActivity implements 
 
     @Override
     public void onClick(View view) {
+
+    }
+
+    @Override
+    public void backPressed() {
         
     }
 }
