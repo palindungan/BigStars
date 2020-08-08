@@ -57,9 +57,9 @@ public class DataMataPelajaranAddActivity extends AppCompatActivity implements V
     private void showDialog() {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
                 this);
-        alertDialogBuilder.setTitle(globalMessage.getValidasiAddDataMataPelajaran());
+        alertDialogBuilder.setTitle(globalMessage.getValidasiAddData());
         alertDialogBuilder
-                .setMessage(globalMessage.getPilihYaAddDataMataPelajaran())
+                .setMessage(globalMessage.getPilihYaAddData())
                 .setPositiveButton(globalMessage.getYa(), (dialog, id) -> {
                     String inputNama = edtNama.getText().toString().trim();
                     boolean isEmpty = false;

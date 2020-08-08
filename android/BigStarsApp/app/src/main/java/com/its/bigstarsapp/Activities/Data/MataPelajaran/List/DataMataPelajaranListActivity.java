@@ -16,6 +16,7 @@ import android.view.View;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.its.bigstarsapp.Activities.Data.MataPelajaran.Add.DataMataPelajaranAddActivity;
+import com.its.bigstarsapp.Activities.Data.MataPelajaran.Edit.DataMataPelajaranEditActivity;
 import com.its.bigstarsapp.Activities.Data.MataPelajaran.List.presenter.DataMataPelajaranListPresenter;
 import com.its.bigstarsapp.Activities.Data.MataPelajaran.List.presenter.IDataMataPelajaranListPresenter;
 import com.its.bigstarsapp.Activities.Data.MataPelajaran.List.view.IDataMataPelajaranListView;
@@ -120,10 +121,10 @@ public class DataMataPelajaranListActivity extends AppCompatActivity implements 
         adapterDataMataPelajaranList.setOnItemClickListener((view, position) -> {
             Intent intent;
             if (statusActivity.equals("home->view->editMataPelajaran")) {
-//                    intent = new Intent(getApplicationContext(), DataMataPelajaranEditActivity.class);
-//                    intent.putExtra(DataMataPelajaranEditActivity.EXTRA_ID_MATA_PELAJARAN, dataModelArrayList.get(position).getId_mata_pelajaran());
-//                    intent.putExtra(DataMataPelajaranEditActivity.EXTRA_NAMA, dataModelArrayList.get(position).getNama());
-//                    startActivity(intent);
+                intent = new Intent(getApplicationContext(), DataMataPelajaranEditActivity.class);
+                intent.putExtra(DataMataPelajaranEditActivity.EXTRA_ID_MATA_PELAJARAN, dataModelArrayList.get(position).getId_mata_pelajaran());
+                intent.putExtra(DataMataPelajaranEditActivity.EXTRA_NAMA, dataModelArrayList.get(position).getNama());
+                startActivity(intent);
             }
         });
     }
@@ -132,9 +133,9 @@ public class DataMataPelajaranListActivity extends AppCompatActivity implements 
     public void showDialogDelete(String kode, String nama) {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
                 this);
-        alertDialogBuilder.setTitle(globalMessage.getValidasiHapusDataMataPelajaran() + nama + " ?");
+        alertDialogBuilder.setTitle(globalMessage.getValidasiHapusData() + nama + " ?");
         alertDialogBuilder
-                .setMessage(globalMessage.getPilihYaHapusDataMataPelajaran())
+                .setMessage(globalMessage.getPilihYaHapusData())
                 .setPositiveButton(globalMessage.getYa(), (dialog, id) -> {
 
                     try {

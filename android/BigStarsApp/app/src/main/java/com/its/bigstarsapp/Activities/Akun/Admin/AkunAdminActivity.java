@@ -87,7 +87,7 @@ public class AkunAdminActivity extends AppCompatActivity implements View.OnClick
     private void showDialogUpdate() {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
                 this);
-        alertDialogBuilder.setTitle(globalMessage.getValidasiUpdateDataAdmin());
+        alertDialogBuilder.setTitle(globalMessage.getValidasiUpdateData());
         alertDialogBuilder
                 .setMessage(globalMessage.getPilihYaUpdateData())
                 .setPositiveButton(globalMessage.getYa(), (dialog, id) -> {

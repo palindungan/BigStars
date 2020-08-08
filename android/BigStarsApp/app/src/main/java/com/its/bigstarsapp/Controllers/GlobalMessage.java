@@ -14,14 +14,13 @@ public class GlobalMessage {
     String ya;
     String tidak;
 
-    String validasiUpdateDataAdmin;
+    String validasiUpdateData;
+    String validasiHapusData;
+    String validasiAddData;
+
     String pilihYaUpdateData;
-
-    String validasiHapusDataMataPelajaran;
-    String pilihYaHapusDataMataPelajaran;
-
-    String validasiAddDataMataPelajaran;
-    String pilihYaAddDataMataPelajaran;
+    String pilihYaHapusData;
+    String pilihYaAddData;
 
     String errorUpdateData;
     String errorHapusData;
@@ -41,14 +40,13 @@ public class GlobalMessage {
         ya = "Ya";
         tidak = "Tidak";
 
-        validasiUpdateDataAdmin = "Ingin Mengupdate Data Admin ?";
+        validasiUpdateData = "Ingin Mengupdate Data ?";
+        validasiHapusData = "Ingin Menghapus Data ";
+        validasiAddData = "Ingin Menambah Data ?";
+
         pilihYaUpdateData = "Klik Ya untuk melakukan update !";
-
-        validasiHapusDataMataPelajaran = "Ingin Menghapus Data Mata Pelajaran ";
-        pilihYaHapusDataMataPelajaran = "Klik Ya untuk melakukan hapus !";
-
-        validasiAddDataMataPelajaran = "Ingin Menambah Data Mata Pelajaran ?";
-        pilihYaAddDataMataPelajaran = "Klik Ya untuk menambah data !";
+        pilihYaHapusData = "Klik Ya untuk melakukan hapus !";
+        pilihYaAddData = "Klik Ya untuk menambah data !";
 
         errorUpdateData = "Terjadi Kesalahan Update : ";
         errorHapusData = "Terjadi Kesalahan Hapus : ";
@@ -88,28 +86,28 @@ public class GlobalMessage {
         return tidak;
     }
 
-    public String getValidasiUpdateDataAdmin() {
-        return validasiUpdateDataAdmin;
+    public String getValidasiUpdateData() {
+        return validasiUpdateData;
+    }
+
+    public String getValidasiHapusData() {
+        return validasiHapusData;
+    }
+
+    public String getValidasiAddData() {
+        return validasiAddData;
     }
 
     public String getPilihYaUpdateData() {
         return pilihYaUpdateData;
     }
 
-    public String getValidasiHapusDataMataPelajaran() {
-        return validasiHapusDataMataPelajaran;
+    public String getPilihYaHapusData() {
+        return pilihYaHapusData;
     }
 
-    public String getPilihYaHapusDataMataPelajaran() {
-        return pilihYaHapusDataMataPelajaran;
-    }
-
-    public String getValidasiAddDataMataPelajaran() {
-        return validasiAddDataMataPelajaran;
-    }
-
-    public String getPilihYaAddDataMataPelajaran() {
-        return pilihYaAddDataMataPelajaran;
+    public String getPilihYaAddData() {
+        return pilihYaAddData;
     }
 
     public String getErrorUpdateData() {
