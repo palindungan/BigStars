@@ -56,7 +56,6 @@ public class DataMataPelajaranEditPresenter implements IDataMataPelajaranEditPre
                         } else {
                             globalProcess.onErrorMessage(message);
                         }
-
                     } catch (JSONException e) {
                         e.printStackTrace();
                         globalProcess.onErrorMessage(globalMessage.getMessageResponseError() + e.toString());
