@@ -84,4 +84,29 @@ class Mata_pelajaran extends REST_Controller
             $this->response($result, 200);
         }
     }
+
+    function add_data_post()
+    {
+        // ambil data
+        $nama = $this->post('nama');
+
+        $data = array(
+            'nama'  => $nama
+        );
+
+        $insert =  $this->M_universal->input_data('mata_pelajaran', $data);
+        if ($insert) {
+
+            // membuat array untuk di transfer ke API
+            $result["success"] = "1";
+            $result["message"] = "Berhasil Menambah Data";
+            $this->response($result, 200);
+        } else {
+
+            // membuat array untuk di transfer ke API
+            $result["success"] = "0";
+            $result["message"] = "Gagal Menambah Data";
+            $this->response($result, 200);
+        }
+    }
 }
