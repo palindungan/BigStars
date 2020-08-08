@@ -20,8 +20,12 @@ public class GlobalMessage {
     String validasiHapusDataMataPelajaran;
     String pilihYaHapusDataMataPelajaran;
 
-    String errorHapusData;
+    String validasiAddDataMataPelajaran;
+    String pilihYaAddDataMataPelajaran;
+
     String errorUpdateData;
+    String errorHapusData;
+    String errorAddData;
     String errorLoadingGambar;
 
     public GlobalMessage() {
@@ -43,8 +47,12 @@ public class GlobalMessage {
         validasiHapusDataMataPelajaran = "Ingin Menghapus Data Mata Pelajaran ";
         pilihYaHapusDataMataPelajaran = "Klik Ya untuk melakukan hapus !";
 
-        errorHapusData = "Terjadi Kesalahan Hapus : ";
+        validasiAddDataMataPelajaran = "Ingin Menambah Data Mata Pelajaran ?";
+        pilihYaAddDataMataPelajaran = "Klik Ya untuk menambah data !";
+
         errorUpdateData = "Terjadi Kesalahan Update : ";
+        errorHapusData = "Terjadi Kesalahan Hapus : ";
+        errorAddData = "Terjadi Kesalahan Menambah Data : ";
         errorLoadingGambar = "Error, pilih gambar lainnya !";
     }
 
@@ -96,12 +104,24 @@ public class GlobalMessage {
         return pilihYaHapusDataMataPelajaran;
     }
 
-    public String getErrorHapusData() {
-        return errorHapusData;
+    public String getValidasiAddDataMataPelajaran() {
+        return validasiAddDataMataPelajaran;
+    }
+
+    public String getPilihYaAddDataMataPelajaran() {
+        return pilihYaAddDataMataPelajaran;
     }
 
     public String getErrorUpdateData() {
         return errorUpdateData;
+    }
+
+    public String getErrorHapusData() {
+        return errorHapusData;
+    }
+
+    public String getErrorAddData() {
+        return errorAddData;
     }
 
     public String getErrorLoadingGambar() {
