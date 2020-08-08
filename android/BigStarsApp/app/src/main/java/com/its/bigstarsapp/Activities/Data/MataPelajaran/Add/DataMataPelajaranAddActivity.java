@@ -74,7 +74,7 @@ public class DataMataPelajaranAddActivity extends AppCompatActivity implements V
                             );
                         }
                     } catch (Exception e) {
-                        globalProcess.onErrorMessage(globalMessage.getErrorHapusData() + e.toString());
+                        globalProcess.onErrorMessage(globalMessage.getErrorAddData() + e.toString());
                     }
                 })
                 .setNegativeButton(globalMessage.getTidak(), (dialog, id) -> dialog.cancel());
