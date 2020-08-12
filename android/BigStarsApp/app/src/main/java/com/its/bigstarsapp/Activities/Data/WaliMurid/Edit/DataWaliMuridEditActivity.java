@@ -24,6 +24,11 @@ public class DataWaliMuridEditActivity extends AppCompatActivity implements View
 
     @Override
     public void onClick(View view) {
-        
+
+    }
+
+    @Override
+    public void backPressed() {
+
     }
 }
