@@ -6,7 +6,10 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.its.bigstarsapp.Activities.Data.WaliMurid.List.view.IDataWaliMuridListView;
+import com.its.bigstarsapp.Models.WaliMurid;
 import com.its.bigstarsapp.R;
+
+import java.util.ArrayList;
 
 public class DataWaliMuridListActivity extends AppCompatActivity implements View.OnClickListener, IDataWaliMuridListView {
 
@@ -18,6 +21,16 @@ public class DataWaliMuridListActivity extends AppCompatActivity implements View
 
     @Override
     public void onClick(View view) {
+
+    }
+
+    @Override
+    public void onSetupListView(ArrayList<WaliMurid> dataModelArrayList) {
+
+    }
+
+    @Override
+    public void showDialogDelete(String kode, String nama) {
 
     }
 }
