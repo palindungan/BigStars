@@ -1,8 +1,10 @@
 package com.its.bigstarsapp.Activities.Data.WaliMurid.List;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
@@ -14,6 +16,7 @@ import android.view.View;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.its.bigstarsapp.Activities.Data.WaliMurid.Add.DataWaliMuridAddActivity;
+import com.its.bigstarsapp.Activities.Data.WaliMurid.Edit.DataWaliMuridEditActivity;
 import com.its.bigstarsapp.Activities.Data.WaliMurid.List.presenter.DataWaliMuridListPresenter;
 import com.its.bigstarsapp.Activities.Data.WaliMurid.List.presenter.IDataWaliMuridListPresenter;
 import com.its.bigstarsapp.Activities.Data.WaliMurid.List.view.IDataWaliMuridListView;
@@ -35,8 +38,6 @@ public class DataWaliMuridListActivity extends AppCompatActivity implements View
     GlobalProcess globalProcess;
     GlobalVariable globalVariable;
     SessionManager sessionManager;
-
-    private AdapterDataWaliMuridList adapterDataWaliMuridList;
 
     Toolbar toolbar;
     FloatingActionButton fab;
@@ -95,7 +96,39 @@ public class DataWaliMuridListActivity extends AppCompatActivity implements View
 
     @Override
     public void onSetupListView(ArrayList<WaliMurid> dataModelArrayList) {
+        AdapterDataWaliMuridList adapterDataWaliMuridList = new AdapterDataWaliMuridList(this, dataModelArrayList);
+        GridLayoutManager layoutManager = new GridLayoutManager(this, 1, GridLayoutManager.VERTICAL, false);
+        recyclerView.setAdapter(adapterDataWaliMuridList);
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setNestedScrollingEnabled(true);
+        adapterDataWaliMuridList.notifyDataSetChanged();
 
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                if (dy > 0 && fab.getVisibility() == View.VISIBLE) {
+                    fab.hide();
+                } else if (dy < 0 && fab.getVisibility() != View.VISIBLE) {
+                    if (statusActivity.equals("home->view->editWaliMurid")) {
+                        fab.show();
+                    }
+                }
+            }
+        });
+
+        adapterDataWaliMuridList.setOnItemClickListener((view, position) -> {
+            Intent intent;
+            if (statusActivity.equals("home->view->editWaliMurid")) {
+                intent = new Intent(getApplicationContext(), DataWaliMuridEditActivity.class);
+                intent.putExtra(DataWaliMuridEditActivity.EXTRA_ID_WALI_MURID, dataModelArrayList.get(position).getId_wali_murid());
+                intent.putExtra(DataWaliMuridEditActivity.EXTRA_NAMA, dataModelArrayList.get(position).getNama());
+                intent.putExtra(DataWaliMuridEditActivity.EXTRA_USERNAME, dataModelArrayList.get(position).getUsername());
+                intent.putExtra(DataWaliMuridEditActivity.EXTRA_ALAMAT, dataModelArrayList.get(position).getAlamat());
+                intent.putExtra(DataWaliMuridEditActivity.EXTRA_NO_HP, dataModelArrayList.get(position).getNo_hp());
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
