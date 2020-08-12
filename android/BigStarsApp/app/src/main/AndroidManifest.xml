@@ -24,7 +24,10 @@
         android:usesCleartextTraffic="true"
         tools:ignore="AllowBackup"
         tools:targetApi="m">
-        <activity android:name=".Activities.Data.WaliMurid.Edit.DataWaliMuridEditActivity"></activity>
+        <activity android:name=".Activities.Data.Murid.Add.DataMuridAddActivity"></activity>
+        <activity android:name=".Activities.Data.Murid.Edit.DataMuridEditActivity" />
+        <activity android:name=".Activities.Data.Murid.List.DataMuridListActivity" />
+        <activity android:name=".Activities.Data.WaliMurid.Edit.DataWaliMuridEditActivity" />
         <activity android:name=".Activities.Data.WaliMurid.Add.DataWaliMuridAddActivity" />
         <activity android:name=".Activities.Data.WaliMurid.List.DataWaliMuridListActivity" />
         <activity android:name=".Activities.Data.MataPelajaran.Edit.DataMataPelajaranEditActivity" />
