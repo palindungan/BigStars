@@ -54,7 +54,7 @@
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/txt_nama_wali_murid"
+                        android:id="@+id/tv_nama_wali_murid"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Nama Wali Murid"
@@ -62,7 +62,7 @@
                         android:textSize="16dp" />
 
                     <TextView
-                        android:id="@+id/txt_alamat"
+                        android:id="@+id/tv_alamat"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Alamat"
