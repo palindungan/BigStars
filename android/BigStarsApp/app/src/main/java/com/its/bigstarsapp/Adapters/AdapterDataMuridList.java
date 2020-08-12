@@ -75,11 +75,11 @@ public class AdapterDataMuridList extends RecyclerView.Adapter<AdapterDataMuridL
 
         String setNama = "Nama : " + nama;
         String setNamaWaliMurid = "Wali Murid : " + dataModelArrayList.get(position).getNama_wali_murid();
-        String alamat = "Alamat : " + dataModelArrayList.get(position).getAlamat();
+        String setAlamat = "Alamat : " + dataModelArrayList.get(position).getAlamat();
 
         holder.txtNama.setText(setNama);
         holder.txtNamaWaliMurid.setText(setNamaWaliMurid);
-        holder.txtAlamat.setText(alamat);
+        holder.txtAlamat.setText(setAlamat);
         holder.ivDelete.setOnClickListener(v -> {
             if (statusActivity.equals("home->view->editMurid")) {
                 IDataMuridListView dataMuridListView = (DataMuridListActivity) context;
