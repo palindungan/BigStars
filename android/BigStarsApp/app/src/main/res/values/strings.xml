@@ -25,4 +25,6 @@
     <string name="tambah_data">Tambah Data</string>
     <string name="nama_mata_pelajaran">Nama Mata Pelajaran</string>
     <string name="submit">Submit</string>
+    <string name="nama_wali_murid">Nama Wali Murid</string>
+    <string name="no_hp">No HP</string>
 </resources>
