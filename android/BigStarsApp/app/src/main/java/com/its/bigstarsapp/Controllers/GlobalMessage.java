@@ -8,6 +8,8 @@ public class GlobalMessage {
     String validasiNamaKosong;
     String validasiUsernameKosong;
     String validasiPasswordKosong;
+    String validasiAlamatKosong;
+    String validasiNoHpKosong;
 
     String validasiKonfirmasiPasswordSalah;
 
@@ -34,6 +36,8 @@ public class GlobalMessage {
         validasiNamaKosong = "Isi Nama Dengan Lengkap";
         validasiUsernameKosong = "Isi Username Dengan Lengkap";
         validasiPasswordKosong = "Isi Password Dengan Lengkap";
+        validasiAlamatKosong = "Isi Alamat Dengan Lengkap";
+        validasiNoHpKosong = "Isi No Hp Dengan Lengkap";
 
         validasiKonfirmasiPasswordSalah = "Konfirmasi Password Salah !";
 
@@ -72,6 +76,14 @@ public class GlobalMessage {
 
     public String getValidasiPasswordKosong() {
         return validasiPasswordKosong;
+    }
+
+    public String getValidasiAlamatKosong() {
+        return validasiAlamatKosong;
+    }
+
+    public String getValidasiNoHpKosong() {
+        return validasiNoHpKosong;
     }
 
     public String getValidasiKonfirmasiPasswordSalah() {
