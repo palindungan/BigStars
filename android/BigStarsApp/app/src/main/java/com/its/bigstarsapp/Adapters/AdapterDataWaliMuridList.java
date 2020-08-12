@@ -10,22 +10,22 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.its.bigstarsapp.Activities.Data.MataPelajaran.List.DataMataPelajaranListActivity;
-import com.its.bigstarsapp.Activities.Data.MataPelajaran.List.view.IDataMataPelajaranListView;
+import com.its.bigstarsapp.Activities.Data.WaliMurid.List.DataWaliMuridListActivity;
+import com.its.bigstarsapp.Activities.Data.WaliMurid.List.view.IDataWaliMuridListView;
 import com.its.bigstarsapp.Controllers.GlobalMessage;
 import com.its.bigstarsapp.Controllers.GlobalProcess;
 import com.its.bigstarsapp.Controllers.GlobalVariable;
 import com.its.bigstarsapp.Controllers.SessionManager;
-import com.its.bigstarsapp.Models.MataPelajaran;
+import com.its.bigstarsapp.Models.WaliMurid;
 import com.its.bigstarsapp.R;
 
 import java.util.ArrayList;
 
 import butterknife.ButterKnife;
 
-public class AdapterDataMataPelajaranList extends RecyclerView.Adapter<AdapterDataMataPelajaranList.DataMataPelajaranListViewHolder> {
+public class AdapterDataWaliMuridList extends RecyclerView.Adapter<AdapterDataWaliMuridList.DataWaliMuridListViewHolder> {
     Context context;
-    ArrayList<MataPelajaran> dataModelArrayList;
+    ArrayList<WaliMurid> dataModelArrayList;
 
     private static ClickListener clickListener;
 
@@ -36,7 +36,7 @@ public class AdapterDataMataPelajaranList extends RecyclerView.Adapter<AdapterDa
 
     String statusActivity;
 
-    public AdapterDataMataPelajaranList(Context context, ArrayList<MataPelajaran> dataModelArrayList) {
+    public AdapterDataWaliMuridList(Context context, ArrayList<WaliMurid> dataModelArrayList) {
         this.context = context;
         this.dataModelArrayList = dataModelArrayList;
 
@@ -50,25 +50,30 @@ public class AdapterDataMataPelajaranList extends RecyclerView.Adapter<AdapterDa
 
     @NonNull
     @Override
-    public AdapterDataMataPelajaranList.DataMataPelajaranListViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(context).inflate(R.layout.item_adapter_data_mata_pelajaran_list, parent, false);
-        return new DataMataPelajaranListViewHolder(itemView);
+    public AdapterDataWaliMuridList.DataWaliMuridListViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View itemView = LayoutInflater.from(context).inflate(R.layout.item_adapter_data_wali_murid_list, parent, false);
+        return new DataWaliMuridListViewHolder(itemView);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull AdapterDataMataPelajaranList.DataMataPelajaranListViewHolder holder, int position) {
-        String kode = dataModelArrayList.get(position).getId_mata_pelajaran();
+    public void onBindViewHolder(@NonNull AdapterDataWaliMuridList.DataWaliMuridListViewHolder holder, int position) {
+        String kode = dataModelArrayList.get(position).getId_wali_murid();
         String nama = dataModelArrayList.get(position).getNama();
 
-        holder.tvNama.setText(nama);
-
-        if (statusActivity.equals("home->view->editMataPelajaran")) {
+        if (statusActivity.equals("home->view->editWaliMurid")) {
             holder.ivDelete.setVisibility(View.VISIBLE);
         }
 
+        String setNama = "Nama : " + dataModelArrayList.get(position).getNama();
+        String setUsername = "Username : " + dataModelArrayList.get(position).getUsername();
+        String setNoHp = "No. Hp : " + dataModelArrayList.get(position).getNo_hp();
+
+        holder.tvNama.setText(setNama);
+        holder.tvUsername.setText(setUsername);
+        holder.tvNoHp.setText(setNoHp);
         holder.ivDelete.setOnClickListener(v -> {
-            IDataMataPelajaranListView dataMataPelajaranListView = (DataMataPelajaranListActivity) context;
-            dataMataPelajaranListView.showDialogDelete(
+            IDataWaliMuridListView dataWaliMuridListView = (DataWaliMuridListActivity) context;
+            dataWaliMuridListView.showDialogDelete(
                     "" + kode,
                     "" + nama);
         });
@@ -79,15 +84,17 @@ public class AdapterDataMataPelajaranList extends RecyclerView.Adapter<AdapterDa
         return dataModelArrayList.size();
     }
 
-    public static class DataMataPelajaranListViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public static class DataWaliMuridListViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        protected TextView tvNama;
+        protected TextView tvNama, tvUsername, tvNoHp;
         protected ImageView ivDelete;
 
-        public DataMataPelajaranListViewHolder(@NonNull View itemView) {
+        public DataWaliMuridListViewHolder(@NonNull View itemView) {
             super(itemView);
 
             tvNama = itemView.findViewById(R.id.tv_nama);
+            tvUsername = itemView.findViewById(R.id.tv_username);
+            tvNoHp = itemView.findViewById(R.id.tv_no_hp);
             ivDelete = itemView.findViewById(R.id.iv_delete);
 
             ButterKnife.bind(this, itemView);
@@ -105,6 +112,6 @@ public class AdapterDataMataPelajaranList extends RecyclerView.Adapter<AdapterDa
     }
 
     public void setOnItemClickListener(ClickListener clickListener) {
-        AdapterDataMataPelajaranList.clickListener = clickListener;
+        AdapterDataWaliMuridList.clickListener = clickListener;
     }
 }
