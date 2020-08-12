@@ -63,9 +63,7 @@ public class AdapterDataMuridList extends RecyclerView.Adapter<AdapterDataMuridL
 
         if (statusActivity.equals("home->view->editMurid")) {
             holder.ivDelete.setVisibility(View.VISIBLE);
-        }
-
-        if (statusActivity.equals("listPengajar->view->editKelasPertemuan")) {
+        } else if (statusActivity.equals("listPengajar->view->editKelasPertemuan")) {
             String id_detail_kelas_p = dataModelArrayList.get(position).getId_detail_kelas_p();
             if (!id_detail_kelas_p.equals("kosong")) {
                 holder.ivDelete.setVisibility(View.VISIBLE);
