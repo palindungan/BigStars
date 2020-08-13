@@ -138,9 +138,12 @@ class Pengajar extends REST_Controller
 
     function update_data_post()
     {
-        $id_pengajar       = $this->post('id_pengajar');
-        $id_wali_pengajar  = $this->post('id_wali_pengajar');
+        $id_pengajar    = $this->post('id_pengajar');
         $nama           = $this->post('nama');
+        $username       = $this->post('username');
+        $password       = $this->post('password');
+        $alamat         = $this->post('alamat');
+        $no_hp          = $this->post('no_hp');
         $foto           = $this->post('foto');
 
         $nama_foto      = $id_pengajar;
@@ -176,12 +179,26 @@ class Pengajar extends REST_Controller
 
         $data = array();
 
-        $data = array(
-            'id_pengajar'      => $id_pengajar,
-            'id_wali_pengajar' => $id_wali_pengajar,
-            'nama'          => $nama,
-            'foto'          => $nama_foto
-        );
+        if (empty($password)) {
+            $data = array(
+                'id_pengajar'   => $id_pengajar,
+                'nama'          => $nama,
+                'username'      => $username,
+                'alamat'        => $alamat,
+                'no_hp'         => $no_hp,
+                'foto'          => $nama_foto
+            );
+        } else {
+            $data = array(
+                'id_pengajar'   => $id_pengajar,
+                'nama'          => $nama,
+                'username'      => $username,
+                'password'      => password_hash($password, PASSWORD_DEFAULT),
+                'alamat'        => $alamat,
+                'no_hp'         => $no_hp,
+                'foto'          => $nama_foto
+            );
+        }
 
         $update =  $this->M_universal->update_data($where, 'pengajar', $data);
         if ($update) {
