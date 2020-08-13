@@ -6,7 +6,10 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.its.bigstarsapp.Activities.Data.Murid.Edit.view.IDataMuridEditView;
+import com.its.bigstarsapp.Models.WaliMurid;
 import com.its.bigstarsapp.R;
+
+import java.util.ArrayList;
 
 public class DataMuridEditActivity extends AppCompatActivity implements View.OnClickListener, IDataMuridEditView {
 
@@ -25,6 +28,16 @@ public class DataMuridEditActivity extends AppCompatActivity implements View.OnC
 
     @Override
     public void onClick(View view) {
-        
+
+    }
+
+    @Override
+    public void onSetupListView(ArrayList<WaliMurid> dataModelArrayList) {
+
+    }
+
+    @Override
+    public void backPressed() {
+
     }
 }
