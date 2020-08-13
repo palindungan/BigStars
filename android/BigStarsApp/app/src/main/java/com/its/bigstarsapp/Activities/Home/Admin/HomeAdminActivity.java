@@ -15,6 +15,7 @@ import com.google.android.material.navigation.NavigationView;
 import com.its.bigstarsapp.Activities.Akun.Admin.AkunAdminActivity;
 import com.its.bigstarsapp.Activities.Data.MataPelajaran.List.DataMataPelajaranListActivity;
 import com.its.bigstarsapp.Activities.Data.Murid.List.DataMuridListActivity;
+import com.its.bigstarsapp.Activities.Data.Pengajar.List.DataPengajarListActivity;
 import com.its.bigstarsapp.Activities.Data.WaliMurid.List.DataWaliMuridListActivity;
 import com.its.bigstarsapp.Controllers.GlobalProcess;
 import com.its.bigstarsapp.Controllers.SessionManager;
@@ -96,9 +97,9 @@ public class HomeAdminActivity extends AppCompatActivity implements View.OnClick
     public void onClick(View view) {
         Intent intent;
         if (view.getId() == R.id.link_admin_pengajar) {
-//            sessionManager.setStatusActivity("home->view->editPengajar");
-//            intent = new Intent(getApplicationContext(), DataPengajarListActivity.class);
-//            startActivity(intent);
+            sessionManager.setStatusActivity("home->view->editPengajar");
+            intent = new Intent(getApplicationContext(), DataPengajarListActivity.class);
+            startActivity(intent);
         } else if (view.getId() == R.id.link_admin_murid) {
             sessionManager.setStatusActivity("home->view->editMurid");
             intent = new Intent(getApplicationContext(), DataMuridListActivity.class);
