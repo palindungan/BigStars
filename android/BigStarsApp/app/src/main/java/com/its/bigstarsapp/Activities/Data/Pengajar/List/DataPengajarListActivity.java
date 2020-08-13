@@ -1,21 +1,26 @@
 package com.its.bigstarsapp.Activities.Data.Pengajar.List;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.its.bigstarsapp.Activities.Data.Murid.List.presenter.DataMuridListPresenter;
 import com.its.bigstarsapp.Activities.Data.Pengajar.Add.DataPengajarAddActivity;
+import com.its.bigstarsapp.Activities.Data.Pengajar.Edit.DataPengajarEditActivity;
 import com.its.bigstarsapp.Activities.Data.Pengajar.List.presenter.DataPengajarListPresenter;
 import com.its.bigstarsapp.Activities.Data.Pengajar.List.presenter.IDataPengajarListPresenter;
 import com.its.bigstarsapp.Activities.Data.Pengajar.List.view.IDataPengajarListView;
+import com.its.bigstarsapp.Adapters.AdapterDataPengajarList;
 import com.its.bigstarsapp.Controllers.GlobalMessage;
 import com.its.bigstarsapp.Controllers.GlobalProcess;
 import com.its.bigstarsapp.Controllers.GlobalVariable;
@@ -91,11 +96,80 @@ public class DataPengajarListActivity extends AppCompatActivity implements View.
 
     @Override
     public void onSetupListView(ArrayList<Pengajar> dataModelArrayList) {
+        AdapterDataPengajarList adapterDataPengajarList = new AdapterDataPengajarList(this, dataModelArrayList);
+        GridLayoutManager layoutManager = new GridLayoutManager(this, 1, GridLayoutManager.VERTICAL, false);
+        recyclerView.setAdapter(adapterDataPengajarList);
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setNestedScrollingEnabled(true);
+        adapterDataPengajarList.notifyDataSetChanged();
 
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                if (dy > 0 && fab.getVisibility() == View.VISIBLE) {
+                    fab.hide();
+                } else if (dy < 0 && fab.getVisibility() != View.VISIBLE) {
+                    if (statusActivity.equals("home->view->editPengajar")) {
+                        fab.show();
+                    }
+                }
+            }
+        });
+
+        adapterDataPengajarList.setOnItemClickListener((view, position) -> {
+            Intent intent;
+            if (statusActivity.equals("home->view->editPengajar")) {
+                intent = new Intent(getApplicationContext(), DataPengajarEditActivity.class);
+                intent.putExtra(DataPengajarEditActivity.EXTRA_ID_PENGAJAR, dataModelArrayList.get(position).getId_pengajar());
+                intent.putExtra(DataPengajarEditActivity.EXTRA_NAMA, dataModelArrayList.get(position).getNama());
+                intent.putExtra(DataPengajarEditActivity.EXTRA_USERNAME, dataModelArrayList.get(position).getUsername());
+                intent.putExtra(DataPengajarEditActivity.EXTRA_ALAMAT, dataModelArrayList.get(position).getAlamat());
+                intent.putExtra(DataPengajarEditActivity.EXTRA_NO_HP, dataModelArrayList.get(position).getNo_hp());
+                intent.putExtra(DataPengajarEditActivity.EXTRA_FOTO, dataModelArrayList.get(position).getFoto());
+                startActivity(intent);
+            } else if (statusActivity.equals("home->view->listKelasPertemuan")) {
+                sessionManager.setStatusActivity("listPengajar->view->editKelasPertemuan");
+//                    intent = new Intent(getApplicationContext(), DataKelasListActivity.class);
+//                    intent.putExtra(DataKelasListActivity.EXTRA_ID_PENGAJAR, dataModelArrayList.get(position).getId_pengajar());
+//                    startActivity(intent);
+            }
+        });
     }
 
     @Override
     public void showDialogDelete(String kode, String nama) {
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+                this);
+        alertDialogBuilder.setTitle(globalMessage.getValidasiHapusData() + nama + " ?");
+        alertDialogBuilder
+                .setMessage(globalMessage.getPilihYaHapusData())
+                .setPositiveButton(globalMessage.getYa(), (dialog, id) -> {
 
+                    try {
+                        dataPengajarListPresenter.onDelete(kode);
+                    } catch (Exception e) {
+                        globalProcess.onErrorMessage(globalMessage.getErrorHapusData() + e.toString());
+                    }
+
+                })
+                .setNegativeButton(globalMessage.getTidak(), (dialog, id) -> dialog.cancel());
+
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
+        }
+        return true;
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        dataPengajarListPresenter.onLoadDataList();
     }
 }
