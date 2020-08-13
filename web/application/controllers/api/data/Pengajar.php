@@ -92,10 +92,13 @@ class Pengajar extends REST_Controller
     function add_data_post()
     {
         // ambil data
-        $id_pengajar = $this->M_kode->id_pengajar();
-        $id_wali_pengajar = $this->post('id_wali_pengajar');
-        $nama = $this->post('nama');
-        $foto = $this->post('foto');
+        $id_pengajar    = $this->M_kode->id_pengajar();
+        $nama           = $this->post('nama');
+        $username       = $this->post('username');
+        $password       = $this->post('password');
+        $alamat         = $this->post('alamat');
+        $no_hp          = $this->post('no_hp');
+        $foto           = $this->post('foto');
 
         $nama_foto = "NONE";
 
@@ -104,9 +107,12 @@ class Pengajar extends REST_Controller
         }
 
         $data = array(
-            'id_pengajar'      => $id_pengajar,
-            'id_wali_pengajar' => $id_wali_pengajar,
+            'id_pengajar'   => $id_pengajar,
             'nama'          => $nama,
+            'username'      => $username,
+            'password'      => password_hash($password, PASSWORD_DEFAULT),
+            'alamat'        => $alamat,
+            'no_hp'         => $no_hp,
             'foto'          => $nama_foto
         );
 
