@@ -115,12 +115,12 @@ public class DataMuridEditActivity extends AppCompatActivity implements View.OnC
         Picasso.get().load(alamatFoto).resize(300, 600).centerInside().placeholder(R.drawable.ic_default_account_circle).memoryPolicy(MemoryPolicy.NO_CACHE, MemoryPolicy.NO_STORE).networkPolicy(NetworkPolicy.NO_CACHE, NetworkPolicy.NO_STORE).into(ivFoto);
     }
 
-    private void showDialog() {
+    private void showDialogUpdate() {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
                 this);
-        alertDialogBuilder.setTitle(globalMessage.getValidasiAddData());
+        alertDialogBuilder.setTitle(globalMessage.getValidasiUpdateData());
         alertDialogBuilder
-                .setMessage(globalMessage.getPilihYaAddData())
+                .setMessage(globalMessage.getPilihYaUpdateData())
                 .setPositiveButton(globalMessage.getYa(), (dialog, id) -> {
 
                     String inputNama = edtNama.getText().toString().trim();
@@ -151,7 +151,7 @@ public class DataMuridEditActivity extends AppCompatActivity implements View.OnC
                                     "" + inputFoto);
                         }
                     } catch (Exception e) {
-                        globalProcess.onErrorMessage(globalMessage.getErrorAddData() + e.toString());
+                        globalProcess.onErrorMessage(globalMessage.getErrorUpdateData() + e.toString());
                     }
                 })
                 .setNegativeButton(globalMessage.getTidak(), (dialog, id) -> dialog.cancel());
@@ -181,7 +181,7 @@ public class DataMuridEditActivity extends AppCompatActivity implements View.OnC
         } else if (view.getId() == R.id.btn_pilih) {
             showDialogPilih();
         } else if (view.getId() == R.id.btn_update) {
-            showDialog();
+            showDialogUpdate();
         }
     }
 
