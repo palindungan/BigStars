@@ -5,7 +5,7 @@ import com.its.bigstarsapp.Models.WaliMurid;
 import java.util.ArrayList;
 
 public interface IDataMuridAddView {
-    void backPressed();
-
     void onSetupListView(ArrayList<WaliMurid> dataModelArrayList);
+
+    void backPressed();
 }

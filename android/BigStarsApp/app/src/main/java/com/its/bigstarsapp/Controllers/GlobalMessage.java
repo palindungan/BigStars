@@ -13,6 +13,9 @@ public class GlobalMessage {
 
     String validasiKonfirmasiPasswordSalah;
 
+    String validasiPilihSalahSatuData;
+    String validasiPilihDataWaliMurid;
+
     String ya;
     String tidak;
 
@@ -40,6 +43,9 @@ public class GlobalMessage {
         validasiNoHpKosong = "Isi No Hp Dengan Lengkap";
 
         validasiKonfirmasiPasswordSalah = "Konfirmasi Password Salah !";
+
+        validasiPilihSalahSatuData = "Pilih Salah Satu Data !";
+        validasiPilihDataWaliMurid = "Pilih Data Wali Murid !";
 
         ya = "Ya";
         tidak = "Tidak";
@@ -88,6 +94,14 @@ public class GlobalMessage {
 
     public String getValidasiKonfirmasiPasswordSalah() {
         return validasiKonfirmasiPasswordSalah;
+    }
+
+    public String getValidasiPilihSalahSatuData() {
+        return validasiPilihSalahSatuData;
+    }
+
+    public String getValidasiPilihDataWaliMurid() {
+        return validasiPilihDataWaliMurid;
     }
 
     public String getYa() {
