@@ -52,7 +52,8 @@ public class DataMuridAddActivity extends AppCompatActivity implements View.OnCl
     ImageView ivFoto;
 
     private Bitmap bitmap;
-    String data_photo, id_wali_murid, nama_wali_murid, alamat;
+    String id_wali_murid, nama_wali_murid, alamat;
+    String data_photo = "";
 
     public static Dialog dialog;
 
