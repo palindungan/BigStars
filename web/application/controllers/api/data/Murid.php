@@ -134,11 +134,12 @@ class Murid extends REST_Controller
 
     function update_data_post()
     {
-        $id_murid   = $this->post('id_murid');
-        $id_wali_murid       = $this->post('id_wali_murid');
-        $nama   = $this->post('nama');
-        $foto       = $this->post('foto');
-        $nama_foto  = $id_murid;
+        $id_murid       = $this->post('id_murid');
+        $id_wali_murid  = $this->post('id_wali_murid');
+        $nama           = $this->post('nama');
+        $foto           = $this->post('foto');
+
+        $nama_foto      = $id_murid;
 
         $where = array(
             'id_murid' => $id_murid
@@ -146,7 +147,7 @@ class Murid extends REST_Controller
 
         $cek_foto = "";
         // mengambil data dari database
-        $query = $this->M_universal->get_data('admin', $where);
+        $query = $this->M_universal->get_data('murid', $where);
         foreach ($query->result_array() as $row) {
             $cek_foto = $row["foto"];
         }
@@ -155,12 +156,12 @@ class Murid extends REST_Controller
 
             if ($cek_foto != "NONE") {
                 // lokasi gambar berada
-                $path = './upload/image/admin/';
+                $path = './upload/image/murid/';
                 $format = '.jpg';
                 unlink($path . $nama_foto . $format); // hapus data di folder dimana data tersimpan
             }
 
-            $path2 = "./upload/image/admin/$nama_foto.jpg";
+            $path2 = "./upload/image/murid/$nama_foto.jpg";
             file_put_contents($path2, base64_decode($foto));
         } else {
 
