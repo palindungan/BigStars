@@ -97,11 +97,11 @@ class Murid extends REST_Controller
         $id_murid = $this->M_kode->id_murid();
         $id_wali_murid = $this->post('id_wali_murid');
         $nama = $this->post('nama');
-        $file_foto = $this->post('foto');
+        $foto = $this->post('foto');
 
-        $nama_foto  = "NONE";
+        $nama_foto = "NONE";
 
-        if (!empty($file_foto)) {
+        if (!empty($foto)) {
             $nama_foto = $id_murid;
         }
 
@@ -115,9 +115,9 @@ class Murid extends REST_Controller
         $insert =  $this->M_universal->input_data('murid', $data);
         if ($insert) {
 
-            if (!empty($file_foto)) {
+            if (!empty($foto)) {
                 $path = "./upload/image/murid/$nama_foto.jpg";
-                file_put_contents($path, base64_decode($file_foto));
+                file_put_contents($path, base64_decode($foto));
             }
 
             // membuat array untuk di transfer ke API
