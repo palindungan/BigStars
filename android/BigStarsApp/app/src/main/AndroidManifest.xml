@@ -24,7 +24,8 @@
         android:usesCleartextTraffic="true"
         tools:ignore="AllowBackup"
         tools:targetApi="m">
-        <activity android:name=".Activities.Data.Pengajar.Add.DataPengajarAddActivity"></activity>
+        <activity android:name=".Activities.Data.Pengajar.Edit.DataPengajarEditActivity"></activity>
+        <activity android:name=".Activities.Data.Pengajar.Add.DataPengajarAddActivity" />
         <activity android:name=".Activities.Data.Pengajar.List.DataPengajarListActivity" />
         <activity android:name=".Activities.Data.Murid.Add.DataMuridAddActivity" />
         <activity android:name=".Activities.Data.Murid.Edit.DataMuridEditActivity" />
