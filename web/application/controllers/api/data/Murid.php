@@ -63,7 +63,7 @@ class Murid extends REST_Controller
 
     function inactive_data_post()
     {
-        $id_wali_murid = $this->post('id_wali_murid');
+        $id_murid = $this->post('id_murid');
 
         $data = array();
 
@@ -72,10 +72,10 @@ class Murid extends REST_Controller
         );
 
         $where = array(
-            'id_wali_murid' => $id_wali_murid
+            'id_murid' => $id_murid
         );
 
-        $update =  $this->M_universal->update_data($where, 'wali_murid', $data);
+        $update =  $this->M_universal->update_data($where, 'murid', $data);
         if ($update) {
 
             // membuat array untuk di transfer ke API
@@ -94,29 +94,37 @@ class Murid extends REST_Controller
     function add_data_post()
     {
         // ambil data
+        $id_murid = $this->M_kode->id_murid();
+        $id_wali_murid = $this->post('id_wali_murid');
         $nama = $this->post('nama');
-        $username = $this->post('username');
-        $password = $this->post('password');
-        $alamat = $this->post('alamat');
-        $no_hp = $this->post('no_hp');
+        $file_foto = $this->post('foto');
+
+        $nama_foto  = "NONE";
+
+        if (!empty($file_foto)) {
+            $nama_foto = $id_murid;
+        }
 
         $data = array(
+            'id_murid'      => $id_murid,
+            'id_wali_murid' => $id_wali_murid,
             'nama'          => $nama,
-            'username'      => $username,
-            'password'      => password_hash($password, PASSWORD_DEFAULT),
-            'alamat'        => $alamat,
-            'no_hp'         => $no_hp
+            'foto'          => $nama_foto
         );
 
-        $insert =  $this->M_universal->input_data('wali_murid', $data);
+        $insert =  $this->M_universal->input_data('murid', $data);
         if ($insert) {
+
+            if (!empty($file_foto)) {
+                $path = "./upload/image/murid/$nama_foto.jpg";
+                file_put_contents($path, base64_decode($file_foto));
+            }
 
             // membuat array untuk di transfer ke API
             $result["success"] = "1";
             $result["message"] = "Berhasil Menambah Data";
             $this->response($result, 200);
         } else {
-
             // membuat array untuk di transfer ke API
             $result["success"] = "0";
             $result["message"] = "Gagal Menambah Data";
