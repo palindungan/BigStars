@@ -27,7 +27,7 @@ class Pengajar extends REST_Controller
         );
 
         // mengambil data
-        $query = $this->M_universal->get_data('view_pengajar', $where);
+        $query = $this->M_universal->get_data('pengajar', $where);
 
         if ($query->num_rows() > 0) {
 
@@ -38,12 +38,10 @@ class Pengajar extends REST_Controller
                 $data = array(
                     'id_pengajar' => $row["id_pengajar"],
                     'nama' => $row["nama"],
-                    'foto' => $row["foto"],
-                    'id_wali_pengajar' => $row["id_wali_pengajar"],
-                    'nama_wali_pengajar' => $row["nama_wali_pengajar"],
                     'username' => $row["username"],
                     'alamat' => $row["alamat"],
-                    'no_hp' => $row["no_hp"]
+                    'no_hp' => $row["no_hp"],
+                    'foto' => $row["foto"]
                 );
 
                 array_push($result['data_result'], $data);
