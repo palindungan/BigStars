@@ -141,7 +141,7 @@ public class AkunAdminActivity extends AppCompatActivity implements View.OnClick
             Intent intent = new Intent();
             intent.setType("image/*");
             intent.setAction(Intent.ACTION_GET_CONTENT);
-            startActivityForResult(Intent.createChooser(intent, "Pilih Gambar"), 1);
+            startActivityForResult(Intent.createChooser(intent, globalMessage.getPilihGambar()), 1);
         } else if (view.getId() == R.id.btn_update) {
             showDialogUpdate();
         }

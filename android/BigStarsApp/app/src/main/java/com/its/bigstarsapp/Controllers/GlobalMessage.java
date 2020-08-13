@@ -27,6 +27,8 @@ public class GlobalMessage {
     String pilihYaHapusData;
     String pilihYaAddData;
 
+    String pilihGambar;
+
     String errorUpdateData;
     String errorHapusData;
     String errorAddData;
@@ -57,6 +59,8 @@ public class GlobalMessage {
         pilihYaUpdateData = "Klik Ya untuk melakukan update !";
         pilihYaHapusData = "Klik Ya untuk melakukan hapus !";
         pilihYaAddData = "Klik Ya untuk menambah data !";
+
+        pilihGambar = "Pilih Gambar";
 
         errorUpdateData = "Terjadi Kesalahan Update : ";
         errorHapusData = "Terjadi Kesalahan Hapus : ";
@@ -134,6 +138,10 @@ public class GlobalMessage {
 
     public String getPilihYaAddData() {
         return pilihYaAddData;
+    }
+
+    public String getPilihGambar() {
+        return pilihGambar;
     }
 
     public String getErrorUpdateData() {
