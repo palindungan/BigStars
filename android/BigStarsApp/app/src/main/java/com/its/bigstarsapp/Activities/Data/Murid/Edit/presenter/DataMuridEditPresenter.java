@@ -18,6 +18,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class DataMuridEditPresenter implements IDataMuridEditPresenter {
 
@@ -43,7 +45,41 @@ public class DataMuridEditPresenter implements IDataMuridEditPresenter {
 
     @Override
     public void onUpdate(String id_murid, String id_wali_murid, String nama, String foto) {
+        String base_url = globalVariable.getUrlData();
+        String URL_DATA = base_url + "data/murid/update_data"; // url http request
 
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_DATA,
+                response -> {
+                    try {
+                        JSONObject jsonObject = new JSONObject(response);
+                        String success = jsonObject.getString("success");
+                        String message = jsonObject.getString("message");
+
+                        if (success.equals("1")) {
+                            globalProcess.onSuccessMessage(message);
+                            dataMuridEditView.backPressed();
+                        } else {
+                            globalProcess.onErrorMessage(message);
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                        globalProcess.onErrorMessage(globalMessage.getMessageResponseError() + e.toString());
+                    }
+                },
+                error -> globalProcess.onErrorMessage(globalMessage.getMessageConnectionError())) {
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<>();
+                params.put("id_murid", id_murid);
+                params.put("id_wali_murid", id_wali_murid);
+                params.put("nama", nama);
+                params.put("foto", foto);
+                return params;
+            }
+        };
+
+        RequestQueue requestQueue = Volley.newRequestQueue(context);
+        requestQueue.add(stringRequest);
     }
 
     @Override
