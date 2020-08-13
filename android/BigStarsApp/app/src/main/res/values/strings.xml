@@ -28,4 +28,6 @@
     <string name="nama_wali_murid">Nama Wali Murid</string>
     <string name="no_hp">No HP</string>
     <string name="alamat">Alamat</string>
+    <string name="cancel">Cancel</string>
+    <string name="nama_murid">Nama Murid</string>
 </resources>
