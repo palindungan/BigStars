@@ -14,49 +14,47 @@
         android:focusable="true"
         android:foreground="?attr/selectableItemBackground"
         app:cardBackgroundColor="@color/colorPrimary2"
-        app:cardCornerRadius="10dp"
-        app:cardElevation="5dp">
+        app:cardCornerRadius="10sp"
+        app:cardElevation="5sp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_margin="8dp"
+            android:layout_margin="8sp"
             android:orientation="horizontal">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
+                android:layout_marginLeft="8sp"
                 android:layout_weight="1"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:layout_marginStart="8sp">
 
                 <TextView
                     android:id="@+id/tv_nama_pelajaran"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Nama Pelajaran"
+                    android:text="@string/nama_pelajaran"
                     android:textColor="@color/white"
-                    android:textSize="16dp" />
+                    android:textSize="16sp" />
 
                 <TextView
                     android:id="@+id/tv_hari"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Hari"
+                    android:text="@string/hari"
                     android:textColor="@color/white"
-                    android:textSize="16dp" />
+                    android:textSize="16sp" />
 
                 <TextView
                     android:id="@+id/tv_jam"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Jam"
+                    android:text="@string/jam"
                     android:textColor="@color/white"
-                    android:textSize="16dp" />
+                    android:textSize="16sp" />
 
             </LinearLayout>
 
@@ -67,7 +65,8 @@
                 android:layout_gravity="center_vertical"
                 android:layout_weight="7"
                 android:src="@drawable/ic_delete_forever"
-                android:visibility="gone" />
+                android:visibility="gone"
+                android:contentDescription="@string/todo" />
 
         </LinearLayout>
 
