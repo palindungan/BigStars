@@ -64,10 +64,10 @@ public class AdapterDataKelasPertemuanList extends RecyclerView.Adapter<AdapterD
         }
 
         String kode = dataModelArrayList.get(position).getId_kelas_pertemuan();
-        String nama = dataModelArrayList.get(position).getNama_pelajaran();
+        String nama = dataModelArrayList.get(position).getNama_mata_pelajaran();
         String jumlah_murid = dataModelArrayList.get(position).getJumlah_murid();
 
-        String setNamaPelajaran = dataModelArrayList.get(position).getNama_pelajaran() + " (" + jumlah_murid + " Murid)";
+        String setNamaPelajaran = dataModelArrayList.get(position).getNama_mata_pelajaran() + " (" + jumlah_murid + " Murid)";
         String setHari = "Hari : " + dataModelArrayList.get(position).getHari();
         String setJam = "Jam : " + dataModelArrayList.get(position).getJam_mulai() + " - " + dataModelArrayList.get(position).getJam_berakhir();
 

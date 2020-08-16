@@ -64,17 +64,19 @@ public class DataKelasPertemuanListPresenter implements IDataKelasPertemuanListP
                                 KelasPertemuan playerModel = new KelasPertemuan();
                                 JSONObject dataobj = dataArray.getJSONObject(i);
 
-                                String id_kelas_pertemuan = dataobj.getString("id_kelas_p");
+                                String id_kelas_pertemuan = dataobj.getString("id_kelas_pertemuan");
                                 String hari = dataobj.getString("hari");
                                 String jam_mulai = dataobj.getString("jam_mulai");
                                 String jam_berakhir = dataobj.getString("jam_berakhir");
                                 String harga_fee = dataobj.getString("harga_fee");
                                 String harga_spp = dataobj.getString("harga_spp");
-                                String nama_pelajaran = dataobj.getString("nama_pelajaran");
+                                String id_sharing = dataobj.getString("id_sharing");
                                 String nama_sharing = dataobj.getString("nama_sharing");
+                                String status_data = dataobj.getString("status_data");
 
                                 String id_mata_pelajaran = dataobj.getString("id_mata_pelajaran");
-                                String id_sharing = dataobj.getString("id_sharing");
+                                String nama_mata_pelajaran = dataobj.getString("nama_mata_pelajaran");
+
                                 String nama_pengajar = dataobj.getString("nama_pengajar");
 
                                 String jumlah_murid = dataobj.getString("jumlah_murid");
@@ -85,12 +87,14 @@ public class DataKelasPertemuanListPresenter implements IDataKelasPertemuanListP
                                 playerModel.setJam_berakhir(jam_berakhir);
                                 playerModel.setHarga_fee(harga_fee);
                                 playerModel.setHarga_spp(harga_spp);
-                                playerModel.setNama_pelajaran(nama_pelajaran);
+                                playerModel.setId_sharing(id_sharing);
                                 playerModel.setNama_sharing(nama_sharing);
+                                playerModel.setStatus_data(status_data);
 
                                 playerModel.setId_mata_pelajaran(id_mata_pelajaran);
+                                playerModel.setNama_mata_pelajaran(nama_mata_pelajaran);
+
                                 playerModel.setId_pengajar(id_pengajar);
-                                playerModel.setId_sharing(id_sharing);
                                 playerModel.setNama_pengajar(nama_pengajar);
 
                                 playerModel.setJumlah_murid(jumlah_murid);

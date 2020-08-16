@@ -40,18 +40,19 @@ class Kelas_pertemuan extends REST_Controller
 
                 // ambil detail data db
                 $data = array(
-                    'id_Kelas_pertemuan' => $row["id_Kelas_pertemuan"],
+                    'id_kelas_pertemuan' => $row["id_kelas_pertemuan"],
                     'hari' => $row["hari"],
                     'jam_mulai' => $row["jam_mulai"],
                     'jam_berakhir' => $row["jam_berakhir"],
                     'harga_fee' => $row["harga_fee"],
                     'harga_spp' => $row["harga_spp"],
-                    'id_mata_pelajaran' => $row["id_mata_pelajaran"],
-                    'nama_pelajaran' => $row["nama_pelajaran"],
-                    'id_pengajar' => $row["id_pengajar"],
-                    'nama_pengajar' => $row["nama_pengajar"],
                     'id_sharing' => $row["id_sharing"],
                     'nama_sharing' => $row["nama_sharing"],
+                    'status_data' => $row["status_data"],
+                    'id_mata_pelajaran' => $row["id_mata_pelajaran"],
+                    'nama_mata_pelajaran' => $row["nama_mata_pelajaran"],
+                    'id_pengajar' => $row["id_pengajar"],
+                    'nama_pengajar' => $row["nama_pengajar"],
                     'jumlah_murid' => $count
                 );
 

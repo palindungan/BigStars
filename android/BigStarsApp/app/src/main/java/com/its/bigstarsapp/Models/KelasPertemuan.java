@@ -1,9 +1,11 @@
 package com.its.bigstarsapp.Models;
 
 public class KelasPertemuan {
-    String id_kelas_pertemuan, hari, jam_mulai, jam_berakhir, harga_fee, harga_spp, nama_pelajaran, nama_sharing;
 
-    String id_mata_pelajaran, id_pengajar, nama_pengajar, id_sharing, jumlah_murid;
+    String id_kelas_pertemuan, hari, jam_mulai, jam_berakhir, harga_fee, harga_spp, id_sharing, nama_sharing, status_data;
+    String id_mata_pelajaran, nama_mata_pelajaran;
+    String id_pengajar, nama_pengajar;
+    String jumlah_murid;
 
     public String getId_kelas_pertemuan() {
         return id_kelas_pertemuan;
@@ -53,12 +55,12 @@ public class KelasPertemuan {
         this.harga_spp = harga_spp;
     }
 
-    public String getNama_pelajaran() {
-        return nama_pelajaran;
+    public String getId_sharing() {
+        return id_sharing;
     }
 
-    public void setNama_pelajaran(String nama_pelajaran) {
-        this.nama_pelajaran = nama_pelajaran;
+    public void setId_sharing(String id_sharing) {
+        this.id_sharing = id_sharing;
     }
 
     public String getNama_sharing() {
@@ -69,12 +71,28 @@ public class KelasPertemuan {
         this.nama_sharing = nama_sharing;
     }
 
+    public String getStatus_data() {
+        return status_data;
+    }
+
+    public void setStatus_data(String status_data) {
+        this.status_data = status_data;
+    }
+
     public String getId_mata_pelajaran() {
         return id_mata_pelajaran;
     }
 
     public void setId_mata_pelajaran(String id_mata_pelajaran) {
         this.id_mata_pelajaran = id_mata_pelajaran;
+    }
+
+    public String getNama_mata_pelajaran() {
+        return nama_mata_pelajaran;
+    }
+
+    public void setNama_mata_pelajaran(String nama_mata_pelajaran) {
+        this.nama_mata_pelajaran = nama_mata_pelajaran;
     }
 
     public String getId_pengajar() {
@@ -91,14 +109,6 @@ public class KelasPertemuan {
 
     public void setNama_pengajar(String nama_pengajar) {
         this.nama_pengajar = nama_pengajar;
-    }
-
-    public String getId_sharing() {
-        return id_sharing;
-    }
-
-    public void setId_sharing(String id_sharing) {
-        this.id_sharing = id_sharing;
     }
 
     public String getJumlah_murid() {
