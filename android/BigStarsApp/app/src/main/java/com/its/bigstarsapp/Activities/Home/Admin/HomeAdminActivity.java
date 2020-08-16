@@ -30,7 +30,7 @@ public class HomeAdminActivity extends AppCompatActivity implements View.OnClick
 
     private ActionBarDrawerToggle actionBarDrawerToggle;
 
-    CardView linkAdminPengajar, linkAdminMurid, linkAdminWaliMurid, linkAdminMataPelajaran, linkAdminKelas, linkAdminKelasAktif;
+    CardView linkAdminPengajar, linkAdminMurid, linkAdminWaliMurid, linkAdminMataPelajaran, linkAdminKelasPertemuan, linkAdminKelasAktif;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,14 +82,14 @@ public class HomeAdminActivity extends AppCompatActivity implements View.OnClick
         linkAdminMurid = findViewById(R.id.link_admin_murid);
         linkAdminWaliMurid = findViewById(R.id.link_admin_wali_murid);
         linkAdminMataPelajaran = findViewById(R.id.link_admin_mata_pelajaran);
-        linkAdminKelas = findViewById(R.id.link_admin_kelas);
+        linkAdminKelasPertemuan = findViewById(R.id.link_admin_kelas_pertemuan);
         linkAdminKelasAktif = findViewById(R.id.link_admin_kelas_aktif);
 
         linkAdminPengajar.setOnClickListener(this);
         linkAdminMurid.setOnClickListener(this);
         linkAdminWaliMurid.setOnClickListener(this);
         linkAdminMataPelajaran.setOnClickListener(this);
-        linkAdminKelas.setOnClickListener(this);
+        linkAdminKelasPertemuan.setOnClickListener(this);
         linkAdminKelasAktif.setOnClickListener(this);
     }
 
@@ -112,11 +112,10 @@ public class HomeAdminActivity extends AppCompatActivity implements View.OnClick
             sessionManager.setStatusActivity("home->view->editMataPelajaran");
             intent = new Intent(getApplicationContext(), DataMataPelajaranListActivity.class);
             startActivity(intent);
-        } else if (view.getId() == R.id.link_admin_kelas) {
-//            globalProcess.onSuccessMessage("Pilih Pengajar");
-//            sessionManager.setStatusActivity("home->view->listKelasPertemuan");
-//            intent = new Intent(getApplicationContext(), DataPengajarListActivity.class);
-//            startActivity(intent);
+        } else if (view.getId() == R.id.link_admin_kelas_pertemuan) {
+            sessionManager.setStatusActivity("home->view->listKelasPertemuan");
+            intent = new Intent(getApplicationContext(), DataPengajarListActivity.class);
+            startActivity(intent);
         } else if (view.getId() == R.id.link_admin_kelas_aktif) {
 //            Intent intent = new Intent(getApplicationContext(), PengajarKelasTampilAktifActivity.class);
 //            String id_pengajar = "Semua";

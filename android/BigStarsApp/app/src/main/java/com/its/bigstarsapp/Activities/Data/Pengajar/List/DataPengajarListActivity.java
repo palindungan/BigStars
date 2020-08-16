@@ -15,6 +15,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.its.bigstarsapp.Activities.Data.KelasPertemuan.List.DataKelasPertemuanListActivity;
 import com.its.bigstarsapp.Activities.Data.Pengajar.Add.DataPengajarAddActivity;
 import com.its.bigstarsapp.Activities.Data.Pengajar.Edit.DataPengajarEditActivity;
 import com.its.bigstarsapp.Activities.Data.Pengajar.List.presenter.DataPengajarListPresenter;
@@ -130,9 +131,9 @@ public class DataPengajarListActivity extends AppCompatActivity implements View.
                 startActivity(intent);
             } else if (statusActivity.equals("home->view->listKelasPertemuan")) {
                 sessionManager.setStatusActivity("listPengajar->view->editKelasPertemuan");
-//                    intent = new Intent(getApplicationContext(), DataKelasListActivity.class);
-//                    intent.putExtra(DataKelasListActivity.EXTRA_ID_PENGAJAR, dataModelArrayList.get(position).getId_pengajar());
-//                    startActivity(intent);
+                    intent = new Intent(getApplicationContext(), DataKelasPertemuanListActivity.class);
+                    intent.putExtra(DataKelasPertemuanListActivity.EXTRA_ID_PENGAJAR, dataModelArrayList.get(position).getId_pengajar());
+                    startActivity(intent);
             }
         });
     }
