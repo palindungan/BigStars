@@ -15,7 +15,7 @@ class Kelas_pertemuan extends REST_Controller
         $this->load->model("api/M_kode");
     }
 
-    function list_data_get()
+    function list_data_post()
     {
         $id_pengajar = $this->post('id_pengajar');
 

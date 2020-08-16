@@ -42,6 +42,27 @@ class M_kode extends CI_Model
         return $kd;
     }
 
+
+    function id_kelas_pertemuan()
+    {
+        $field = "id_kelas_pertemuan";
+        $tabel = "kelas_pertemuan";
+        $digit = "5";
+        $kode = "KL";
+
+        $q = $this->db->query("SELECT MAX(RIGHT($field,$digit)) AS kd_max FROM $tabel");
+        $kd = "";
+        if ($q->num_rows() > 0) {
+            foreach ($q->result() as $k) {
+                $tmp = ((int) $k->kd_max) + 1;
+                $kd = $kode . sprintf('%0' . $digit . 's',  $tmp);
+            }
+        } else {
+            $kd = "KL00001";
+        }
+        return $kd;
+    }
+
     // function get_id_wali_murid()
     // {
     //     $field = "id_wali_murid";
@@ -78,26 +99,6 @@ class M_kode extends CI_Model
     //         }
     //     } else {
     //         $kd = "MP01";
-    //     }
-    //     return $kd;
-    // }
-
-    // function get_id_kelas_p()
-    // {
-    //     $field = "id_kelas_p";
-    //     $tabel = "kelas_pertemuan";
-    //     $digit = "3";
-    //     $kode = "KL";
-
-    //     $q = $this->db->query("SELECT MAX(RIGHT($field,$digit)) AS kd_max FROM $tabel");
-    //     $kd = "";
-    //     if ($q->num_rows() > 0) {
-    //         foreach ($q->result() as $k) {
-    //             $tmp = ((int) $k->kd_max) + 1;
-    //             $kd = $kode . sprintf('%0' . $digit . 's',  $tmp);
-    //         }
-    //     } else {
-    //         $kd = "KL001";
     //     }
     //     return $kd;
     // }
