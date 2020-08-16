@@ -75,8 +75,8 @@ public class AdapterDataKelasPertemuanList extends RecyclerView.Adapter<AdapterD
         holder.tvHari.setText(setHari);
         holder.tvJam.setText(setJam);
         holder.ivDelete.setOnClickListener(v -> {
-            IDataKelasPertemuanListView dataKelasListView = (DataKelasPertemuanListActivity) context;
-            dataKelasListView.showDialogDelete(
+            IDataKelasPertemuanListView dataKelasPertemuanListView = (DataKelasPertemuanListActivity) context;
+            dataKelasPertemuanListView.showDialogDelete(
                     "" + kode,
                     "" + nama);
         });

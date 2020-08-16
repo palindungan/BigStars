@@ -31,8 +31,10 @@ class Kelas_pertemuan extends REST_Controller
             // mengeluarkan data dari database
             foreach ($query->result_array() as $row) {
 
+                $id_Kelas_pertemuan = $row["id_kelas_pertemuan"];
+
                 $data_id = array(
-                    'id_Kelas_pertemuan' => $row["id_Kelas_pertemuan"],
+                    'id_Kelas_pertemuan' =>  $id_Kelas_pertemuan,
                     'status_data' => 'active'
                 );
 
@@ -40,7 +42,7 @@ class Kelas_pertemuan extends REST_Controller
 
                 // ambil detail data db
                 $data = array(
-                    'id_kelas_pertemuan' => $row["id_kelas_pertemuan"],
+                    'id_kelas_pertemuan' =>  $id_Kelas_pertemuan,
                     'hari' => $row["hari"],
                     'jam_mulai' => $row["jam_mulai"],
                     'jam_berakhir' => $row["jam_berakhir"],
@@ -90,7 +92,7 @@ class Kelas_pertemuan extends REST_Controller
 
             // membuat array untuk di transfer ke API
             $result["success"] = "1";
-            $result["message"] = "Berhasil Menghapus Data ";
+            $result["message"] = "Berhasil Menghapus Data " .   $id_Kelas_pertemuan;
             $this->response($result, 200);
         } else {
 
