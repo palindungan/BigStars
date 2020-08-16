@@ -1,6 +1,6 @@
 package com.its.bigstarsapp.Models;
 
-public class Kelas {
+public class KelasPertemuan {
     String id_kelas_p, hari, jam_mulai, jam_berakhir, harga_fee, harga_spp, nama_pelajaran, nama_sharing;
 
     String id_mata_pelajaran, id_pengajar, nama_pengajar, id_sharing, jumlah_murid;

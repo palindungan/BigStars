@@ -13,4 +13,14 @@ public class DataKelasPertemuanListPresenter implements IDataKelasPertemuanListP
         this.context = context;
         this.dataKelasPertemuanListView = dataKelasPertemuanListView;
     }
+
+    @Override
+    public void onLoadDataList(String id_pengajar) {
+
+    }
+
+    @Override
+    public void onDelete(String id_kelas_pertemuan) {
+
+    }
 }

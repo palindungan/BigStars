@@ -5,18 +5,24 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.its.bigstarsapp.Activities.Data.KelasPertemuan.Add.DataKelasPertemuanAddActivity;
+import com.its.bigstarsapp.Activities.Data.KelasPertemuan.List.presenter.DataKelasPertemuanListPresenter;
 import com.its.bigstarsapp.Activities.Data.KelasPertemuan.List.presenter.IDataKelasPertemuanListPresenter;
 import com.its.bigstarsapp.Activities.Data.KelasPertemuan.List.view.IDataKelasPertemuanListView;
-import com.its.bigstarsapp.Activities.Data.Pengajar.List.presenter.IDataPengajarListPresenter;
 import com.its.bigstarsapp.Controllers.GlobalMessage;
 import com.its.bigstarsapp.Controllers.GlobalProcess;
 import com.its.bigstarsapp.Controllers.GlobalVariable;
 import com.its.bigstarsapp.Controllers.SessionManager;
+import com.its.bigstarsapp.Models.KelasPertemuan;
 import com.its.bigstarsapp.R;
+
+import java.util.ArrayList;
 
 public class DataKelasPertemuanListActivity extends AppCompatActivity implements View.OnClickListener, IDataKelasPertemuanListView {
 
@@ -41,10 +47,62 @@ public class DataKelasPertemuanListActivity extends AppCompatActivity implements
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_data_kelas_pertemuan_list);
+
+        dataKelasPertemuanListPresenter = new DataKelasPertemuanListPresenter(this, this);
+
+        globalMessage = new GlobalMessage();
+        globalProcess = new GlobalProcess(this);
+        globalVariable = new GlobalVariable();
+        sessionManager = new SessionManager(this);
+
+        toolbar = findViewById(R.id.toolbar);
+        fab = findViewById(R.id.fab);
+        recyclerView = findViewById(R.id.recycle_view);
+        swipeRefreshLayout = findViewById(R.id.swipe_refresh_layout);
+
+        id_pengajar = getIntent().getStringExtra(EXTRA_ID_PENGAJAR);
+
+        globalProcess.initActionBar(toolbar);
+
+        dataKelasPertemuanListPresenter.onLoadDataList(id_pengajar);
+        swipeRefreshLayout.setOnRefreshListener(() -> {
+            // Your code to make your refresh action
+            dataKelasPertemuanListPresenter.onLoadDataList(id_pengajar);
+
+            // CallYourRefreshingMethod();
+            final Handler handler = new Handler();
+            handler.postDelayed(() -> {
+                if (swipeRefreshLayout.isRefreshing()) {
+                    swipeRefreshLayout.setRefreshing(false);
+                }
+            }, 1000);
+        });
+
+        statusActivity = sessionManager.getStatusActivity();
+        if (statusActivity.equals("listPengajar->view->editKelasPertemuan")) {
+            fab.show();
+        }
+
+        fab.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
+        Intent intent;
+        if (view.getId() == R.id.fab) {
+            intent = new Intent(getApplicationContext(), DataKelasPertemuanAddActivity.class);
+            intent.putExtra(DataKelasPertemuanAddActivity.EXTRA_ID_PENGAJAR, id_pengajar);
+            startActivity(intent);
+        }
+    }
+
+    @Override
+    public void onSetupListView(ArrayList<KelasPertemuan> dataModelArrayList) {
+
+    }
+
+    @Override
+    public void showDialogDelete(String kode, String nama) {
 
     }
 }
