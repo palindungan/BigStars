@@ -10,6 +10,12 @@ public class GlobalMessage {
     String validasiPasswordKosong;
     String validasiAlamatKosong;
     String validasiNoHpKosong;
+    String validasiNamaMataPelajaranKosong;
+    String validasiHariKosong;
+    String validasiJamMulaiKosong;
+    String validasiJamBerakhirKosong;
+    String validasiHargaFeeKosong;
+    String validasiHargaSppKosong;
 
     String validasiKonfirmasiPasswordSalah;
 
@@ -43,6 +49,12 @@ public class GlobalMessage {
         validasiPasswordKosong = "Isi Password Dengan Lengkap";
         validasiAlamatKosong = "Isi Alamat Dengan Lengkap";
         validasiNoHpKosong = "Isi No Hp Dengan Lengkap";
+        validasiNamaMataPelajaranKosong = "Pilih Salah Satu Mata Pelajaran";
+        validasiHariKosong = "Isi Hari Dengan Lengkap";
+        validasiJamMulaiKosong = "Isi Jam Mulai Dengan Lengkap";
+        validasiJamBerakhirKosong = "Isi Jam Berakhir Dengan Lengkap";
+        validasiHargaFeeKosong = "Isi Harga Fee Dengan Lengkap";
+        validasiHargaSppKosong = "Isi Harga Spp Dengan Lengkap";
 
         validasiKonfirmasiPasswordSalah = "Konfirmasi Password Salah !";
 
@@ -94,6 +106,30 @@ public class GlobalMessage {
 
     public String getValidasiNoHpKosong() {
         return validasiNoHpKosong;
+    }
+
+    public String getValidasiNamaMataPelajaranKosong() {
+        return validasiNamaMataPelajaranKosong;
+    }
+
+    public String getValidasiHariKosong() {
+        return validasiHariKosong;
+    }
+
+    public String getValidasiJamMulaiKosong() {
+        return validasiJamMulaiKosong;
+    }
+
+    public String getValidasiJamBerakhirKosong() {
+        return validasiJamBerakhirKosong;
+    }
+
+    public String getValidasiHargaFeeKosong() {
+        return validasiHargaFeeKosong;
+    }
+
+    public String getValidasiHargaSppKosong() {
+        return validasiHargaSppKosong;
     }
 
     public String getValidasiKonfirmasiPasswordSalah() {

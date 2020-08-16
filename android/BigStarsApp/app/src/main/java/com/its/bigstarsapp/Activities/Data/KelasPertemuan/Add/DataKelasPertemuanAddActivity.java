@@ -105,25 +105,25 @@ public class DataKelasPertemuanAddActivity extends AppCompatActivity implements 
 
                     if (TextUtils.isEmpty(inputNamaPelajaran)) {
                         isEmpty = true;
-                        edtNamaPelajaran.setError("Isi Data Dengan Lengkap");
-                        globalProcess.onErrorMessage("Pilih Mata Pelajaran");
+                        edtNamaPelajaran.setError(globalMessage.getValidasiNamaMataPelajaranKosong());
+                        globalProcess.onErrorMessage(globalMessage.getValidasiNamaMataPelajaranKosong());
                     } else if (TextUtils.isEmpty(inputHari)) {
                         isEmpty = true;
-                        edtHari.setError("Isi Data Dengan Lengkap");
+                        edtHari.setError(globalMessage.getValidasiHariKosong());
                     } else if (inputJamMulai.equals("kosong")) {
                         isEmpty = true;
-                        btnJamMulai.setError("Isi Data Dengan Lengkap");
-                        globalProcess.onErrorMessage("Isi Jam Mulai Kelas");
+                        btnJamMulai.setError(globalMessage.getValidasiJamMulaiKosong());
+                        globalProcess.onErrorMessage(globalMessage.getValidasiJamMulaiKosong());
                     } else if (inputJamBerakhir.equals("kosong")) {
                         isEmpty = true;
-                        btnJamBerakhir.setError("Isi Data Dengan Lengkap");
-                        globalProcess.onErrorMessage("Isi Jam Berakhir Kelas");
+                        btnJamBerakhir.setError(globalMessage.getValidasiJamBerakhirKosong());
+                        globalProcess.onErrorMessage(globalMessage.getValidasiJamBerakhirKosong());
                     } else if (TextUtils.isEmpty(inputHargaFee)) {
                         isEmpty = true;
-                        edtHargaFee.setError("Isi Data Dengan Lengkap");
+                        edtHargaFee.setError(globalMessage.getValidasiHargaFeeKosong());
                     } else if (TextUtils.isEmpty(inputHargaSpp)) {
                         isEmpty = true;
-                        edtHargaSpp.setError("Isi Data Dengan Lengkap");
+                        edtHargaSpp.setError(globalMessage.getValidasiHargaSppKosong());
                     }
 
                     try {
