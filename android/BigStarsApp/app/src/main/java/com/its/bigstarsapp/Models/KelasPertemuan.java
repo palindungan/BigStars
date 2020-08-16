@@ -1,16 +1,16 @@
 package com.its.bigstarsapp.Models;
 
 public class KelasPertemuan {
-    String id_kelas_p, hari, jam_mulai, jam_berakhir, harga_fee, harga_spp, nama_pelajaran, nama_sharing;
+    String id_kelas_pertemuan, hari, jam_mulai, jam_berakhir, harga_fee, harga_spp, nama_pelajaran, nama_sharing;
 
     String id_mata_pelajaran, id_pengajar, nama_pengajar, id_sharing, jumlah_murid;
 
-    public String getId_kelas_p() {
-        return id_kelas_p;
+    public String getId_kelas_pertemuan() {
+        return id_kelas_pertemuan;
     }
 
-    public void setId_kelas_p(String id_kelas_p) {
-        this.id_kelas_p = id_kelas_p;
+    public void setId_kelas_pertemuan(String id_kelas_pertemuan) {
+        this.id_kelas_pertemuan = id_kelas_pertemuan;
     }
 
     public String getHari() {

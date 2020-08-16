@@ -129,17 +129,17 @@ public class DataKelasPertemuanListActivity extends AppCompatActivity implements
             Intent intent;
             if (statusActivity.equals("listPengajar->view->editKelasPertemuan")) {
                 intent = new Intent(getApplicationContext(), DataKelasPertemuanEditActivity.class);
-//                intent.putExtra(DataKelasPertemuanEditActivity.EXTRA_ID_KELAS_P, dataModelArrayList.get(position).getId_kelas_p());
-//                intent.putExtra(DataKelasPertemuanEditActivity.EXTRA_ID_PENGAJAR, dataModelArrayList.get(position).getId_pengajar());
-//                intent.putExtra(DataKelasPertemuanEditActivity.EXTRA_ID_MATA_PELAJARAN, dataModelArrayList.get(position).getId_mata_pelajaran());
-//                intent.putExtra(DataKelasPertemuanEditActivity.EXTRA_NAMA_PELAJARAN, dataModelArrayList.get(position).getNama_pelajaran());
-//                intent.putExtra(DataKelasPertemuanEditActivity.EXTRA_HARI, dataModelArrayList.get(position).getHari());
-//                intent.putExtra(DataKelasPertemuanEditActivity.EXTRA_JAM_MULAI, dataModelArrayList.get(position).getJam_mulai());
-//                intent.putExtra(DataKelasPertemuanEditActivity.EXTRA_JAM_BERAKHIR, dataModelArrayList.get(position).getJam_berakhir());
-//                intent.putExtra(DataKelasPertemuanEditActivity.EXTRA_HARGA_FEE, dataModelArrayList.get(position).getHarga_fee());
-//                intent.putExtra(DataKelasPertemuanEditActivity.EXTRA_HARGA_SPP, dataModelArrayList.get(position).getHarga_spp());
-//                intent.putExtra(DataKelasPertemuanEditActivity.EXTRA_ID_SHARING, dataModelArrayList.get(position).getId_sharing());
-//                intent.putExtra(DataKelasPertemuanEditActivity.EXTRA_NAMA_SHARING, dataModelArrayList.get(position).getNama_sharing());
+                intent.putExtra(DataKelasPertemuanEditActivity.EXTRA_ID_KELAS_PERTEMUAN, dataModelArrayList.get(position).getId_kelas_pertemuan());
+                intent.putExtra(DataKelasPertemuanEditActivity.EXTRA_ID_PENGAJAR, dataModelArrayList.get(position).getId_pengajar());
+                intent.putExtra(DataKelasPertemuanEditActivity.EXTRA_ID_MATA_PELAJARAN, dataModelArrayList.get(position).getId_mata_pelajaran());
+                intent.putExtra(DataKelasPertemuanEditActivity.EXTRA_NAMA_PELAJARAN, dataModelArrayList.get(position).getNama_pelajaran());
+                intent.putExtra(DataKelasPertemuanEditActivity.EXTRA_HARI, dataModelArrayList.get(position).getHari());
+                intent.putExtra(DataKelasPertemuanEditActivity.EXTRA_JAM_MULAI, dataModelArrayList.get(position).getJam_mulai());
+                intent.putExtra(DataKelasPertemuanEditActivity.EXTRA_JAM_BERAKHIR, dataModelArrayList.get(position).getJam_berakhir());
+                intent.putExtra(DataKelasPertemuanEditActivity.EXTRA_HARGA_FEE, dataModelArrayList.get(position).getHarga_fee());
+                intent.putExtra(DataKelasPertemuanEditActivity.EXTRA_HARGA_SPP, dataModelArrayList.get(position).getHarga_spp());
+                intent.putExtra(DataKelasPertemuanEditActivity.EXTRA_ID_SHARING, dataModelArrayList.get(position).getId_sharing());
+                intent.putExtra(DataKelasPertemuanEditActivity.EXTRA_NAMA_SHARING, dataModelArrayList.get(position).getNama_sharing());
                 startActivity(intent);
             }
         });

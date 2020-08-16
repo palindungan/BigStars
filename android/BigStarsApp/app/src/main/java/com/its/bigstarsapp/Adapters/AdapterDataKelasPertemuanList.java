@@ -63,7 +63,7 @@ public class AdapterDataKelasPertemuanList extends RecyclerView.Adapter<AdapterD
             holder.ivDelete.setVisibility(View.VISIBLE);
         }
 
-        String kode = dataModelArrayList.get(position).getId_kelas_p();
+        String kode = dataModelArrayList.get(position).getId_kelas_pertemuan();
         String nama = dataModelArrayList.get(position).getNama_pelajaran();
         String jumlah_murid = dataModelArrayList.get(position).getJumlah_murid();
 

@@ -64,7 +64,7 @@ public class DataKelasPertemuanListPresenter implements IDataKelasPertemuanListP
                                 KelasPertemuan playerModel = new KelasPertemuan();
                                 JSONObject dataobj = dataArray.getJSONObject(i);
 
-                                String id_kelas_p = dataobj.getString("id_kelas_p");
+                                String id_kelas_pertemuan = dataobj.getString("id_kelas_p");
                                 String hari = dataobj.getString("hari");
                                 String jam_mulai = dataobj.getString("jam_mulai");
                                 String jam_berakhir = dataobj.getString("jam_berakhir");
@@ -79,7 +79,7 @@ public class DataKelasPertemuanListPresenter implements IDataKelasPertemuanListP
 
                                 String jumlah_murid = dataobj.getString("jumlah_murid");
 
-                                playerModel.setId_kelas_p(id_kelas_p);
+                                playerModel.setId_kelas_pertemuan(id_kelas_pertemuan);
                                 playerModel.setHari(hari);
                                 playerModel.setJam_mulai(jam_mulai);
                                 playerModel.setJam_berakhir(jam_berakhir);
