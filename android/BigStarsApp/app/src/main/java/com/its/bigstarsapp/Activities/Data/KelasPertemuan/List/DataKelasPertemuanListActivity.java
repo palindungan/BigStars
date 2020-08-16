@@ -1,5 +1,6 @@
 package com.its.bigstarsapp.Activities.Data.KelasPertemuan.List;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.RecyclerView;
@@ -8,6 +9,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -103,6 +105,42 @@ public class DataKelasPertemuanListActivity extends AppCompatActivity implements
 
     @Override
     public void showDialogDelete(String kode, String nama) {
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+                this);
+        alertDialogBuilder.setTitle(globalMessage.getValidasiHapusData() + nama + " ?");
+        alertDialogBuilder
+                .setMessage(globalMessage.getPilihYaHapusData())
+                .setPositiveButton(globalMessage.getYa(), (dialog, id) -> {
 
+                    try {
+                        dataKelasPertemuanListPresenter.onDelete(kode);
+                    } catch (Exception e) {
+                        globalProcess.onErrorMessage(globalMessage.getErrorHapusData() + e.toString());
+                    }
+
+                })
+                .setNegativeButton(globalMessage.getTidak(), (dialog, id) -> dialog.cancel());
+
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
+    }
+
+    @Override
+    public void onRefreshDataList() {
+        dataKelasPertemuanListPresenter.onLoadDataList(id_pengajar);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
+        }
+        return true;
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        dataKelasPertemuanListPresenter.onLoadDataList(id_pengajar);
     }
 }

@@ -8,4 +8,6 @@ public interface IDataKelasPertemuanListView {
     void onSetupListView(ArrayList<KelasPertemuan> dataModelArrayList);
 
     void showDialogDelete(String kode, String nama);
+
+    void onRefreshDataList();
 }
