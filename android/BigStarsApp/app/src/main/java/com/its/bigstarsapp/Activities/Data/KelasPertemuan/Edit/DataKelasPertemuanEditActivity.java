@@ -3,10 +3,12 @@ package com.its.bigstarsapp.Activities.Data.KelasPertemuan.Edit;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 
+import com.its.bigstarsapp.Activities.Data.KelasPertemuan.Edit.view.IDataKelasPertemuanEditView;
 import com.its.bigstarsapp.R;
 
-public class DataKelasPertemuanEditActivity extends AppCompatActivity {
+public class DataKelasPertemuanEditActivity extends AppCompatActivity implements View.OnClickListener, IDataKelasPertemuanEditView {
 
     public static final String EXTRA_ID_KELAS_PERTEMUAN = "EXTRA_ID_KELAS_PERTEMUAN";
     public static final String EXTRA_ID_PENGAJAR = "EXTRA_ID_PENGAJAR";
@@ -24,5 +26,10 @@ public class DataKelasPertemuanEditActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_data_kelas_pertemuan_edit);
+    }
+
+    @Override
+    public void onClick(View view) {
+
     }
 }
