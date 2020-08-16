@@ -1,11 +1,16 @@
 package com.its.bigstarsapp.Activities.Data.KelasPertemuan.Add;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Dialog;
+import android.app.TimePickerDialog;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -18,7 +23,11 @@ import com.its.bigstarsapp.Controllers.GlobalMessage;
 import com.its.bigstarsapp.Controllers.GlobalProcess;
 import com.its.bigstarsapp.Controllers.GlobalVariable;
 import com.its.bigstarsapp.Controllers.SessionManager;
+import com.its.bigstarsapp.Models.MataPelajaran;
 import com.its.bigstarsapp.R;
+
+import java.util.ArrayList;
+import java.util.Calendar;
 
 public class DataKelasPertemuanAddActivity extends AppCompatActivity implements View.OnClickListener, IDataKelasPertemuanAddView {
 
@@ -77,8 +86,146 @@ public class DataKelasPertemuanAddActivity extends AppCompatActivity implements 
         btnSubmit.setOnClickListener(this);
     }
 
+    private void showDialog() {
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+                this);
+        alertDialogBuilder.setTitle(globalMessage.getValidasiAddData());
+        alertDialogBuilder
+                .setMessage(globalMessage.getPilihYaAddData())
+                .setPositiveButton(globalMessage.getYa(), (dialog, id) -> {
+
+                    String inputNamaPelajaran = edtNamaPelajaran.getText().toString().trim();
+                    String inputHari = edtHari.getText().toString().trim();
+                    String inputJamMulai = jam_mulai;
+                    String inputJamBerakhir = jam_berakhir;
+                    String inputHargaFee = edtHargaFee.getText().toString().trim();
+                    String inputHargaSpp = edtHargaSpp.getText().toString().trim();
+
+                    boolean isEmpty = false;
+
+                    if (TextUtils.isEmpty(inputNamaPelajaran)) {
+                        isEmpty = true;
+                        edtNamaPelajaran.setError("Isi Data Dengan Lengkap");
+                        globalProcess.onErrorMessage("Pilih Mata Pelajaran");
+                    } else if (TextUtils.isEmpty(inputHari)) {
+                        isEmpty = true;
+                        edtHari.setError("Isi Data Dengan Lengkap");
+                    } else if (inputJamMulai.equals("kosong")) {
+                        isEmpty = true;
+                        btnJamMulai.setError("Isi Data Dengan Lengkap");
+                        globalProcess.onErrorMessage("Isi Jam Mulai Kelas");
+                    } else if (inputJamBerakhir.equals("kosong")) {
+                        isEmpty = true;
+                        btnJamBerakhir.setError("Isi Data Dengan Lengkap");
+                        globalProcess.onErrorMessage("Isi Jam Berakhir Kelas");
+                    } else if (TextUtils.isEmpty(inputHargaFee)) {
+                        isEmpty = true;
+                        edtHargaFee.setError("Isi Data Dengan Lengkap");
+                    } else if (TextUtils.isEmpty(inputHargaSpp)) {
+                        isEmpty = true;
+                        edtHargaSpp.setError("Isi Data Dengan Lengkap");
+                    }
+
+                    try {
+
+                        if (!isEmpty) {
+                            dataKelasPertemuanAddPresenter.onSubmit(
+                                    "" + id_pengajar,
+                                    "" + id_mata_pelajaran,
+                                    "" + inputHari,
+                                    "" + inputJamMulai,
+                                    "" + inputJamBerakhir,
+                                    "" + inputHargaFee,
+                                    "" + inputHargaSpp);
+                        }
+
+                    } catch (Exception e) {
+                        globalProcess.onErrorMessage(globalMessage.getErrorAddData() + e.toString());
+                    }
+                })
+                .setNegativeButton(globalMessage.getTidak(), (dialog, id) -> dialog.cancel());
+
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
+    }
+
+    private void showDialogPilih() {
+        dialog = new Dialog(this);
+        // dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setCancelable(false);
+        dialog.setContentView(R.layout.dialog_list);
+
+        Button btnCancel = dialog.findViewById(R.id.btn_cancel);
+        btnCancel.setOnClickListener(v -> dialog.dismiss());
+        dataKelasPertemuanAddPresenter.onLoadDataListMataPelajaran();
+    }
+
+    private void showDialogTimePicker(Button btn, String kode) {
+        final Calendar c = Calendar.getInstance();
+        int hour = c.get(Calendar.HOUR_OF_DAY);
+        int minute = c.get(Calendar.MINUTE);
+
+        TimePickerDialog timePickerDialog = new TimePickerDialog(this,
+                (view, hourOfDay, minute1) -> {
+
+                    String result = hourOfDay + ":" + minute1;
+
+                    btn.setText(result);
+
+                    if (kode.equals("jam_mulai")) {
+                        jam_mulai = result;
+                    } else if (kode.equals("jam_berakhir")) {
+                        jam_berakhir = result;
+                    }
+
+                }, hour, minute, true);
+        timePickerDialog.show();
+    }
+
     @Override
     public void onClick(View view) {
+        if (view.getId() == R.id.btn_pilih) {
+            showDialogPilih();
+        } else if (view.getId() == R.id.btn_jam_mulai) {
+            showDialogTimePicker(btnJamMulai, "jam_mulai");
+        } else if (view.getId() == R.id.btn_jam_berakhir) {
+            showDialogTimePicker(btnJamBerakhir, "jam_berakhir");
+        } else if (view.getId() == R.id.btn_submit) {
+            showDialog();
+        }
+    }
 
+    @Override
+    public void onSetupListView(ArrayList<MataPelajaran> dataModelArrayList) {
+        recyclerView = dialog.findViewById(R.id.recycler);
+        adapterDataMataPelajaranList = new AdapterDataMataPelajaranList(this, dataModelArrayList);
+        GridLayoutManager layoutManager = new GridLayoutManager(this, 1, GridLayoutManager.VERTICAL, false);
+
+        recyclerView.setAdapter(adapterDataMataPelajaranList);
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setNestedScrollingEnabled(true);
+
+        adapterDataMataPelajaranList.setOnItemClickListener((view, position) -> {
+            id_mata_pelajaran = dataModelArrayList.get(position).getId_mata_pelajaran();
+            nama_mata_pelajaran = dataModelArrayList.get(position).getNama();
+
+            edtNamaPelajaran.setText(nama_mata_pelajaran);
+            dialog.dismiss();
+        });
+
+        dialog.show();
+    }
+
+    @Override
+    public void backPressed() {
+        onBackPressed();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
+        }
+        return true;
     }
 }
