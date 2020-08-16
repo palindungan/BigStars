@@ -75,7 +75,7 @@ class Kelas_pertemuan extends REST_Controller
 
     function inactive_data_post()
     {
-        $id_Kelas_pertemuan = $this->post('id_Kelas_pertemuan');
+        $id_kelas_pertemuan = $this->post('id_kelas_pertemuan');
 
         $data = array();
 
@@ -84,7 +84,7 @@ class Kelas_pertemuan extends REST_Controller
         );
 
         $where = array(
-            'id_Kelas_pertemuan' => $id_Kelas_pertemuan
+            'id_kelas_pertemuan' => $id_kelas_pertemuan
         );
 
         $update =  $this->M_universal->update_data($where, 'Kelas_pertemuan', $data);
@@ -92,7 +92,7 @@ class Kelas_pertemuan extends REST_Controller
 
             // membuat array untuk di transfer ke API
             $result["success"] = "1";
-            $result["message"] = "Berhasil Menghapus Data " .   $id_Kelas_pertemuan;
+            $result["message"] = "Berhasil Menghapus Data ";
             $this->response($result, 200);
         } else {
 
