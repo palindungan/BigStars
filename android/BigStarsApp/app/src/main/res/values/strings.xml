@@ -35,4 +35,11 @@
     <string name="nama_pelajaran">Nama Pelajaran</string>
     <string name="hari">Hari</string>
     <string name="jam">Jam</string>
+    <string name="mata_pelajaran">Mata Pelajaran</string>
+    <string name="jadwal_hari">Jadwal Hari</string>
+    <string name="jam_mulai">Jam Mulai</string>
+    <string name="to">-</string>
+    <string name="jam_berakhir">Jam Berakhir</string>
+    <string name="harga_fee">Harga Fee</string>
+    <string name="harga_spp">Harga SPP</string>
 </resources>
