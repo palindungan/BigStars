@@ -1,8 +1,10 @@
 package com.its.bigstarsapp.Activities.Data.KelasPertemuan.List;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
@@ -14,9 +16,11 @@ import android.view.View;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.its.bigstarsapp.Activities.Data.KelasPertemuan.Add.DataKelasPertemuanAddActivity;
+import com.its.bigstarsapp.Activities.Data.KelasPertemuan.Edit.DataKelasPertemuanEditActivity;
 import com.its.bigstarsapp.Activities.Data.KelasPertemuan.List.presenter.DataKelasPertemuanListPresenter;
 import com.its.bigstarsapp.Activities.Data.KelasPertemuan.List.presenter.IDataKelasPertemuanListPresenter;
 import com.its.bigstarsapp.Activities.Data.KelasPertemuan.List.view.IDataKelasPertemuanListView;
+import com.its.bigstarsapp.Adapters.AdapterDataKelasPertemuanList;
 import com.its.bigstarsapp.Controllers.GlobalMessage;
 import com.its.bigstarsapp.Controllers.GlobalProcess;
 import com.its.bigstarsapp.Controllers.GlobalVariable;
@@ -100,7 +104,45 @@ public class DataKelasPertemuanListActivity extends AppCompatActivity implements
 
     @Override
     public void onSetupListView(ArrayList<KelasPertemuan> dataModelArrayList) {
+        AdapterDataKelasPertemuanList adapterDataKelasPertemuanList = new AdapterDataKelasPertemuanList(this, dataModelArrayList);
+        GridLayoutManager layoutManager = new GridLayoutManager(this, 1, GridLayoutManager.VERTICAL, false);
+        recyclerView.setAdapter(adapterDataKelasPertemuanList);
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setNestedScrollingEnabled(true);
+        adapterDataKelasPertemuanList.notifyDataSetChanged();
 
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                if (dy > 0 && fab.getVisibility() == View.VISIBLE) {
+                    fab.hide();
+                } else if (dy < 0 && fab.getVisibility() != View.VISIBLE) {
+                    if (statusActivity.equals("listPengajar->view->editKelasPertemuan")) {
+                        fab.show();
+                    }
+                }
+            }
+        });
+
+        adapterDataKelasPertemuanList.setOnItemClickListener((view, position) -> {
+            Intent intent;
+            if (statusActivity.equals("listPengajar->view->editKelasPertemuan")) {
+                intent = new Intent(getApplicationContext(), DataKelasPertemuanEditActivity.class);
+//                intent.putExtra(DataKelasPertemuanEditActivity.EXTRA_ID_KELAS_P, dataModelArrayList.get(position).getId_kelas_p());
+//                intent.putExtra(DataKelasPertemuanEditActivity.EXTRA_ID_PENGAJAR, dataModelArrayList.get(position).getId_pengajar());
+//                intent.putExtra(DataKelasPertemuanEditActivity.EXTRA_ID_MATA_PELAJARAN, dataModelArrayList.get(position).getId_mata_pelajaran());
+//                intent.putExtra(DataKelasPertemuanEditActivity.EXTRA_NAMA_PELAJARAN, dataModelArrayList.get(position).getNama_pelajaran());
+//                intent.putExtra(DataKelasPertemuanEditActivity.EXTRA_HARI, dataModelArrayList.get(position).getHari());
+//                intent.putExtra(DataKelasPertemuanEditActivity.EXTRA_JAM_MULAI, dataModelArrayList.get(position).getJam_mulai());
+//                intent.putExtra(DataKelasPertemuanEditActivity.EXTRA_JAM_BERAKHIR, dataModelArrayList.get(position).getJam_berakhir());
+//                intent.putExtra(DataKelasPertemuanEditActivity.EXTRA_HARGA_FEE, dataModelArrayList.get(position).getHarga_fee());
+//                intent.putExtra(DataKelasPertemuanEditActivity.EXTRA_HARGA_SPP, dataModelArrayList.get(position).getHarga_spp());
+//                intent.putExtra(DataKelasPertemuanEditActivity.EXTRA_ID_SHARING, dataModelArrayList.get(position).getId_sharing());
+//                intent.putExtra(DataKelasPertemuanEditActivity.EXTRA_NAMA_SHARING, dataModelArrayList.get(position).getNama_sharing());
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
