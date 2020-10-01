@@ -166,7 +166,7 @@ class Kelas_pertemuan extends REST_Controller
 
             // membuat array untuk di transfer ke API
             $result["success"] = "1";
-            $result["message"] = "Berhasil Sharing Data Kelas";
+            $result["message"] = "Berhasil Dibagikan Kepada " . $nama_sharing;
             $this->response($result, 200);
         } else {
 

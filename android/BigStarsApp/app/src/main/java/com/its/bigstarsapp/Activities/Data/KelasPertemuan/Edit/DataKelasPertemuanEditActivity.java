@@ -136,7 +136,7 @@ public class DataKelasPertemuanEditActivity extends AppCompatActivity implements
             tvStatusSharing.setText(txtStatusSharing);
         } else {
             ibDeleteSharing.setVisibility(View.VISIBLE);
-            String txtStatusSharing = "Status : Dibagikan Kepada " + nama_sharing;
+            String txtStatusSharing = "Dibagikan Kepada " + nama_sharing;
             tvStatusSharing.setText(txtStatusSharing);
         }
     }
