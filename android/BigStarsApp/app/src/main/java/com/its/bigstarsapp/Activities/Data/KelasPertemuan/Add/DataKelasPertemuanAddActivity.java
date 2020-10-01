@@ -67,7 +67,7 @@ public class DataKelasPertemuanAddActivity extends AppCompatActivity implements 
         sessionManager = new SessionManager(this);
 
         toolbar = findViewById(R.id.toolbar);
-        edtNamaPelajaran = findViewById(R.id.edt_nama_pelajaran);
+        edtNamaPelajaran = findViewById(R.id.edt_nama_mata_pelajaran);
         edtHari = findViewById(R.id.edt_hari);
         edtHargaFee = findViewById(R.id.edt_harga_fee);
         edtHargaSpp = findViewById(R.id.edt_harga_spp);

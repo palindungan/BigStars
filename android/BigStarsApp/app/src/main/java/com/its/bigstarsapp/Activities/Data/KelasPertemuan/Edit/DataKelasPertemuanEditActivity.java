@@ -58,7 +58,7 @@ public class DataKelasPertemuanEditActivity extends AppCompatActivity implements
 
     Toolbar toolbar;
     RecyclerView recyclerView;
-    EditText edtNamaPelajaran, edtHari, edtHargaFee, edtHargaSpp;
+    EditText edtNamaMataPelajaran, edtHari, edtHargaFee, edtHargaSpp;
     Button btnPilih, btnJamMulai, btnJamBerakhir, btnUpdate;
 
     public static Dialog dialog;
@@ -68,7 +68,7 @@ public class DataKelasPertemuanEditActivity extends AppCompatActivity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_data_kelas_pertemuan_edit);
 
-        dataKelasPertemuanEditPresenter = new DataKelasPertemuanEditPresenter(this,this);
+        dataKelasPertemuanEditPresenter = new DataKelasPertemuanEditPresenter(this, this);
 
         globalMessage = new GlobalMessage();
         globalProcess = new GlobalProcess(this);
@@ -76,7 +76,7 @@ public class DataKelasPertemuanEditActivity extends AppCompatActivity implements
         sessionManager = new SessionManager(this);
 
         toolbar = findViewById(R.id.toolbar);
-        edtNamaPelajaran = findViewById(R.id.edt_nama_pelajaran);
+        edtNamaMataPelajaran = findViewById(R.id.edt_nama_mata_pelajaran);
         edtHari = findViewById(R.id.edt_hari);
         edtHargaFee = findViewById(R.id.edt_harga_fee);
         edtHargaSpp = findViewById(R.id.edt_harga_spp);
@@ -99,10 +99,27 @@ public class DataKelasPertemuanEditActivity extends AppCompatActivity implements
 
         globalProcess.initActionBar(toolbar);
 
+        inisiasiAwal(
+                "" + nama_mata_pelajaran,
+                "" + hari,
+                "" + jam_mulai,
+                "" + jam_berakhir,
+                "" + harga_fee,
+                "" + harga_spp);
+
         btnPilih.setOnClickListener(this);
         btnJamMulai.setOnClickListener(this);
         btnJamBerakhir.setOnClickListener(this);
         btnUpdate.setOnClickListener(this);
+    }
+
+    private void inisiasiAwal(String nama_mata_pelajaran, String hari, String jam_mulai, String jam_berakhir, String harga_fee, String harga_spp) {
+        edtNamaMataPelajaran.setText(nama_mata_pelajaran);
+        edtHari.setText(hari);
+        btnJamMulai.setText(jam_mulai);
+        btnJamBerakhir.setText(jam_berakhir);
+        edtHargaFee.setText(harga_fee);
+        edtHargaSpp.setText(harga_spp);
     }
 
     private void showDialog() {
@@ -113,7 +130,7 @@ public class DataKelasPertemuanEditActivity extends AppCompatActivity implements
                 .setMessage(globalMessage.getPilihYaAddData())
                 .setPositiveButton(globalMessage.getYa(), (dialog, id) -> {
 
-                    String inputNamaPelajaran = edtNamaPelajaran.getText().toString().trim();
+                    String inputNamaPelajaran = edtNamaMataPelajaran.getText().toString().trim();
                     String inputHari = edtHari.getText().toString().trim();
                     String inputJamMulai = jam_mulai;
                     String inputJamBerakhir = jam_berakhir;
@@ -124,7 +141,7 @@ public class DataKelasPertemuanEditActivity extends AppCompatActivity implements
 
                     if (TextUtils.isEmpty(inputNamaPelajaran)) {
                         isEmpty = true;
-                        edtNamaPelajaran.setError(globalMessage.getValidasiNamaMataPelajaranKosong());
+                        edtNamaMataPelajaran.setError(globalMessage.getValidasiNamaMataPelajaranKosong());
                         globalProcess.onErrorMessage(globalMessage.getValidasiNamaMataPelajaranKosong());
                     } else if (TextUtils.isEmpty(inputHari)) {
                         isEmpty = true;
@@ -229,7 +246,7 @@ public class DataKelasPertemuanEditActivity extends AppCompatActivity implements
             id_mata_pelajaran = dataModelArrayList.get(position).getId_mata_pelajaran();
             nama_mata_pelajaran = dataModelArrayList.get(position).getNama();
 
-            edtNamaPelajaran.setText(nama_mata_pelajaran);
+            edtNamaMataPelajaran.setText(nama_mata_pelajaran);
             dialog.dismiss();
         });
 
