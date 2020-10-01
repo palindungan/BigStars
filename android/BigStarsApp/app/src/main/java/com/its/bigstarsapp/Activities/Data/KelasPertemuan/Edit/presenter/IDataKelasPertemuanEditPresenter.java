@@ -10,6 +10,10 @@ public interface IDataKelasPertemuanEditPresenter {
                   String harga_fee,
                   String harga_spp);
 
+    void onSharingKelasPertemuan(String id_kelas_pertemuan,
+                                 String id_sharing,
+                                 String nama_sharing);
+
     void onLoadDataListMataPelajaran();
 
     void onLoadDataListPengajar();

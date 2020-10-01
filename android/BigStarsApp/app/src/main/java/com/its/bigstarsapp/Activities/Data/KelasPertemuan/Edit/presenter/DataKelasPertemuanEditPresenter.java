@@ -44,7 +44,6 @@ public class DataKelasPertemuanEditPresenter implements IDataKelasPertemuanEditP
         sessionManager = new SessionManager(context);
     }
 
-
     @Override
     public void onUpdate(String id_kelas_pertemuan, String id_pengajar, String id_mata_pelajaran, String hari, String jam_mulai, String jam_berakhir, String harga_fee, String harga_spp) {
         String base_url = globalVariable.getUrlData();
@@ -81,6 +80,45 @@ public class DataKelasPertemuanEditPresenter implements IDataKelasPertemuanEditP
                 params.put("jam_berakhir", jam_berakhir);
                 params.put("harga_fee", harga_fee);
                 params.put("harga_spp", harga_spp);
+                return params;
+            }
+        };
+
+        RequestQueue requestQueue = Volley.newRequestQueue(context);
+        requestQueue.add(stringRequest);
+    }
+
+    @Override
+    public void onSharingKelasPertemuan(String id_kelas_pertemuan, String id_sharing, String nama_sharing) {
+        String base_url = globalVariable.getUrlData();
+        String URL_DATA = base_url + "data/kelas_pertemuan/sharing_data"; // url http request
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_DATA,
+                response -> {
+                    try {
+                        JSONObject jsonObject = new JSONObject(response);
+                        String success = jsonObject.getString("success");
+                        String message = jsonObject.getString("message");
+
+                        if (success.equals("1")) {
+                            globalProcess.onSuccessMessage(message);
+                            dataKelasPertemuanEditView.backPressed();
+                        } else {
+                            globalProcess.onErrorMessage(message);
+                        }
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                        globalProcess.onErrorMessage(globalMessage.getMessageResponseError() + e.toString());
+                    }
+                },
+                error -> globalProcess.onErrorMessage(globalMessage.getMessageConnectionError())) {
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<>();
+                params.put("id_kelas_pertemuan", id_kelas_pertemuan);
+                params.put("id_sharing", id_sharing);
+                params.put("nama_sharing", nama_sharing);
                 return params;
             }
         };
