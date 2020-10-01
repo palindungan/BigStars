@@ -190,7 +190,7 @@
                         android:layout_marginLeft="5sp"
                         android:contentDescription="@string/todo"
                         android:src="@drawable/ic_share_black"
-                        android:visibility="visible" />
+                        android:visibility="gone" />
 
                     <ImageButton
                         android:id="@+id/btn_delete_sharing"
@@ -200,7 +200,7 @@
                         android:layout_marginLeft="2sp"
                         android:contentDescription="@string/todo"
                         android:src="@drawable/ic_close_black"
-                        android:visibility="visible" />
+                        android:visibility="gone" />
 
                 </LinearLayout>
 
