@@ -144,9 +144,9 @@ public class DataKelasPertemuanEditActivity extends AppCompatActivity implements
     private void showDialog() {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
                 this);
-        alertDialogBuilder.setTitle(globalMessage.getValidasiAddData());
+        alertDialogBuilder.setTitle(globalMessage.getValidasiUpdateData());
         alertDialogBuilder
-                .setMessage(globalMessage.getPilihYaAddData())
+                .setMessage(globalMessage.getPilihYaUpdateData())
                 .setPositiveButton(globalMessage.getYa(), (dialog, id) -> {
 
                     String inputNamaPelajaran = edtNamaMataPelajaran.getText().toString().trim();
@@ -196,7 +196,7 @@ public class DataKelasPertemuanEditActivity extends AppCompatActivity implements
                         }
 
                     } catch (Exception e) {
-                        globalProcess.onErrorMessage(globalMessage.getErrorAddData() + e.toString());
+                        globalProcess.onErrorMessage(globalMessage.getErrorUpdateData() + e.toString());
                     }
                 })
                 .setNegativeButton(globalMessage.getTidak(), (dialog, id) -> dialog.cancel());
