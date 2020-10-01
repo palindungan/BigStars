@@ -28,6 +28,7 @@ public class GlobalMessage {
     String validasiUpdateData;
     String validasiHapusData;
     String validasiAddData;
+    String validasiHapusSharing;
 
     String pilihYaUpdateData;
     String pilihYaHapusData;
@@ -67,6 +68,7 @@ public class GlobalMessage {
         validasiUpdateData = "Ingin Mengupdate Data ?";
         validasiHapusData = "Ingin Menghapus Data ";
         validasiAddData = "Ingin Menambah Data ?";
+        validasiHapusSharing = "Ingin Mengapus Sharing Kelas Pertemuan ?";
 
         pilihYaUpdateData = "Klik Ya untuk melakukan update !";
         pilihYaHapusData = "Klik Ya untuk melakukan hapus !";
@@ -162,6 +164,10 @@ public class GlobalMessage {
 
     public String getValidasiAddData() {
         return validasiAddData;
+    }
+
+    public String getValidasiHapusSharing() {
+        return validasiHapusSharing;
     }
 
     public String getPilihYaUpdateData() {

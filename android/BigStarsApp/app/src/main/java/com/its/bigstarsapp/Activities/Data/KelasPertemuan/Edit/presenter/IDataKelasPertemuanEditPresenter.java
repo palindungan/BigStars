@@ -14,6 +14,8 @@ public interface IDataKelasPertemuanEditPresenter {
                                  String id_sharing,
                                  String nama_sharing);
 
+    void onDeleteSharingKelasPertemuan(String id_kelas_pertemuan);
+
     void onLoadDataListMataPelajaran();
 
     void onLoadDataListPengajar();

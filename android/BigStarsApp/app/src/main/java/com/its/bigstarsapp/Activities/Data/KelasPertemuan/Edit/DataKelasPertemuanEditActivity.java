@@ -227,6 +227,27 @@ public class DataKelasPertemuanEditActivity extends AppCompatActivity implements
         dataKelasPertemuanEditPresenter.onLoadDataListPengajar();
     }
 
+    private void showDialogDeleteSharing() {
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+                this);
+        alertDialogBuilder.setTitle(globalMessage.getValidasiHapusSharing());
+        alertDialogBuilder
+                .setMessage(globalMessage.getPilihYaHapusData())
+                .setPositiveButton(globalMessage.getYa(), (dialog, id) -> {
+
+                    try {
+                        dataKelasPertemuanEditPresenter.onDeleteSharingKelasPertemuan("" + id_kelas_pertemuan);
+                    } catch (Exception e) {
+                        globalProcess.onErrorMessage(globalMessage.getErrorHapusData() + e.toString());
+                    }
+
+                })
+                .setNegativeButton(globalMessage.getTidak(), (dialog, id) -> dialog.cancel());
+
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
+    }
+
     private void showDialogTimePicker(Button btn, String kode) {
         final Calendar c = Calendar.getInstance();
         int hour = c.get(Calendar.HOUR_OF_DAY);
@@ -262,7 +283,7 @@ public class DataKelasPertemuanEditActivity extends AppCompatActivity implements
         } else if (view.getId() == R.id.ib_sharing) {
             showDialogSharing();
         } else if (view.getId() == R.id.ib_delete_sharing) {
-            //
+            showDialogDeleteSharing();
         }
     }
 

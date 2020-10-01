@@ -177,6 +177,37 @@ class Kelas_pertemuan extends REST_Controller
         }
     }
 
+    function delete_sharing_data_post()
+    {
+        $id_kelas_pertemuan = $this->post('id_kelas_pertemuan');
+        $id_sharing = "null";
+        $nama_sharing = "kosong";
+
+        $data = array(
+            'id_sharing'            => $id_sharing,
+            'nama_sharing'          => $nama_sharing
+        );
+
+        $where = array(
+            'id_kelas_pertemuan' => $id_kelas_pertemuan
+        );
+
+        $update =  $this->M_universal->update_data($where, 'Kelas_pertemuan', $data);
+        if ($update) {
+
+            // membuat array untuk di transfer ke API
+            $result["success"] = "1";
+            $result["message"] = "Berhasil Menghapus Sharing";
+            $this->response($result, 200);
+        } else {
+
+            // membuat array untuk di transfer ke API
+            $result["success"] = "0";
+            $result["message"] = "Gagal Menghapus Sharing";
+            $this->response($result, 200);
+        }
+    }
+
     function update_data_post()
     {
         $id_Kelas_pertemuan = $this->post('id_Kelas_pertemuan');
