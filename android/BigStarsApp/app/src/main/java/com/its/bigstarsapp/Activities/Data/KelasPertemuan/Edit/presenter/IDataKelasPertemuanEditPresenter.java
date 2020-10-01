@@ -11,4 +11,6 @@ public interface IDataKelasPertemuanEditPresenter {
                   String harga_spp);
 
     void onLoadDataListMataPelajaran();
+
+    void onLoadDataListPengajar();
 }

@@ -12,6 +12,7 @@ import com.its.bigstarsapp.Controllers.GlobalProcess;
 import com.its.bigstarsapp.Controllers.GlobalVariable;
 import com.its.bigstarsapp.Controllers.SessionManager;
 import com.its.bigstarsapp.Models.MataPelajaran;
+import com.its.bigstarsapp.Models.Pengajar;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -31,6 +32,7 @@ public class DataKelasPertemuanEditPresenter implements IDataKelasPertemuanEditP
     SessionManager sessionManager;
 
     ArrayList<MataPelajaran> dataModelArrayListMataPelajaran;
+    ArrayList<Pengajar> dataModelArrayListPengajar;
 
     public DataKelasPertemuanEditPresenter(Context context, IDataKelasPertemuanEditView dataKelasPertemuanEditView) {
         this.context = context;
@@ -122,6 +124,60 @@ public class DataKelasPertemuanEditPresenter implements IDataKelasPertemuanEditP
                 } else {
                     dataModelArrayListMataPelajaran = new ArrayList<>();
                     dataKelasPertemuanEditView.onSetupListViewMataPelajaran(dataModelArrayListMataPelajaran);
+                    globalProcess.onErrorMessage(message);
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+                globalProcess.onErrorMessage(globalMessage.getMessageResponseError() + e.toString());
+            }
+        }, error -> globalProcess.onErrorMessage(globalMessage.getMessageConnectionError()));
+
+        RequestQueue requestQueue = Volley.newRequestQueue(context);
+        requestQueue.add(stringRequest);
+    }
+
+    @Override
+    public void onLoadDataListPengajar() {
+        String base_url = globalVariable.getUrlData();
+        String URL_DATA = base_url + "data/pengajar/list_data"; // url http request
+
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, URL_DATA, response -> {
+            try {
+
+                JSONObject obj = new JSONObject(response);
+
+                String success = obj.getString("success");
+                String message = obj.getString("message");
+
+                if (success.equals("1")) {
+
+                    dataModelArrayListPengajar = new ArrayList<>();
+                    JSONArray dataArray = obj.getJSONArray("data_result");
+                    for (int i = 0; i < dataArray.length(); i++) {
+
+                        Pengajar playerModel = new Pengajar();
+                        JSONObject dataobj = dataArray.getJSONObject(i);
+
+                        String id_pengajar = dataobj.getString("id_pengajar");
+                        String nama = dataobj.getString("nama");
+                        String username = dataobj.getString("username");
+                        String alamat = dataobj.getString("alamat");
+                        String no_hp = dataobj.getString("no_hp");
+                        String foto = dataobj.getString("foto");
+
+                        playerModel.setId_pengajar(id_pengajar);
+                        playerModel.setNama(nama);
+                        playerModel.setUsername(username);
+                        playerModel.setAlamat(alamat);
+                        playerModel.setNo_hp(no_hp);
+                        playerModel.setFoto(foto);
+
+                        dataModelArrayListPengajar.add(playerModel);
+                    }
+                    dataKelasPertemuanEditView.onSetupListViewPengajar(dataModelArrayListPengajar);
+                } else {
+                    dataModelArrayListPengajar = new ArrayList<>();
+                    dataKelasPertemuanEditView.onSetupListViewPengajar(dataModelArrayListPengajar);
                     globalProcess.onErrorMessage(message);
                 }
             } catch (JSONException e) {

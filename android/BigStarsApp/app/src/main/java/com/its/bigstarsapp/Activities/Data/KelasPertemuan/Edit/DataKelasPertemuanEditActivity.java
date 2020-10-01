@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Dialog;
 import android.app.TimePickerDialog;
-import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.MenuItem;
@@ -21,13 +20,14 @@ import android.widget.TextView;
 import com.its.bigstarsapp.Activities.Data.KelasPertemuan.Edit.presenter.DataKelasPertemuanEditPresenter;
 import com.its.bigstarsapp.Activities.Data.KelasPertemuan.Edit.presenter.IDataKelasPertemuanEditPresenter;
 import com.its.bigstarsapp.Activities.Data.KelasPertemuan.Edit.view.IDataKelasPertemuanEditView;
-import com.its.bigstarsapp.Activities.Data.Pengajar.List.DataPengajarListActivity;
 import com.its.bigstarsapp.Adapters.AdapterDataMataPelajaranList;
+import com.its.bigstarsapp.Adapters.AdapterDataPengajarList;
 import com.its.bigstarsapp.Controllers.GlobalMessage;
 import com.its.bigstarsapp.Controllers.GlobalProcess;
 import com.its.bigstarsapp.Controllers.GlobalVariable;
 import com.its.bigstarsapp.Controllers.SessionManager;
 import com.its.bigstarsapp.Models.MataPelajaran;
+import com.its.bigstarsapp.Models.Pengajar;
 import com.its.bigstarsapp.R;
 
 import java.util.ArrayList;
@@ -57,8 +57,6 @@ public class DataKelasPertemuanEditActivity extends AppCompatActivity implements
     GlobalProcess globalProcess;
     GlobalVariable globalVariable;
     SessionManager sessionManager;
-
-    AdapterDataMataPelajaranList adapterDataMataPelajaranList;
 
     Toolbar toolbar;
     RecyclerView recyclerView;
@@ -120,6 +118,8 @@ public class DataKelasPertemuanEditActivity extends AppCompatActivity implements
         btnJamMulai.setOnClickListener(this);
         btnJamBerakhir.setOnClickListener(this);
         btnUpdate.setOnClickListener(this);
+        ibSharing.setOnClickListener(this);
+        ibDeleteSharing.setOnClickListener(this);
     }
 
     private void inisiasiAwal(String nama_mata_pelajaran, String hari, String jam_mulai, String jam_berakhir, String harga_fee, String harga_spp) {
@@ -216,6 +216,17 @@ public class DataKelasPertemuanEditActivity extends AppCompatActivity implements
         dataKelasPertemuanEditPresenter.onLoadDataListMataPelajaran();
     }
 
+    private void showDialogSharing() {
+        dialog = new Dialog(this);
+        // dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setCancelable(false);
+        dialog.setContentView(R.layout.dialog_list);
+
+        Button btnCancel = dialog.findViewById(R.id.btn_cancel);
+        btnCancel.setOnClickListener(v -> dialog.dismiss());
+        dataKelasPertemuanEditPresenter.onLoadDataListPengajar();
+    }
+
     private void showDialogTimePicker(Button btn, String kode) {
         final Calendar c = Calendar.getInstance();
         int hour = c.get(Calendar.HOUR_OF_DAY);
@@ -249,7 +260,7 @@ public class DataKelasPertemuanEditActivity extends AppCompatActivity implements
         } else if (view.getId() == R.id.btn_update) {
             showDialog();
         } else if (view.getId() == R.id.ib_sharing) {
-            //
+            showDialogSharing();
         } else if (view.getId() == R.id.ib_delete_sharing) {
             //
         }
@@ -258,7 +269,7 @@ public class DataKelasPertemuanEditActivity extends AppCompatActivity implements
     @Override
     public void onSetupListViewMataPelajaran(ArrayList<MataPelajaran> dataModelArrayList) {
         recyclerView = dialog.findViewById(R.id.recycler);
-        adapterDataMataPelajaranList = new AdapterDataMataPelajaranList(this, dataModelArrayList);
+        AdapterDataMataPelajaranList adapterDataMataPelajaranList = new AdapterDataMataPelajaranList(this, dataModelArrayList);
         GridLayoutManager layoutManager = new GridLayoutManager(this, 1, GridLayoutManager.VERTICAL, false);
 
         recyclerView.setAdapter(adapterDataMataPelajaranList);
@@ -270,6 +281,27 @@ public class DataKelasPertemuanEditActivity extends AppCompatActivity implements
             nama_mata_pelajaran = dataModelArrayList.get(position).getNama();
 
             edtNamaMataPelajaran.setText(nama_mata_pelajaran);
+            dialog.dismiss();
+        });
+
+        dialog.show();
+    }
+
+    @Override
+    public void onSetupListViewPengajar(ArrayList<Pengajar> dataModelArrayList) {
+        recyclerView = dialog.findViewById(R.id.recycler);
+        AdapterDataPengajarList adapterDataPengajarList = new AdapterDataPengajarList(this, dataModelArrayList);
+        GridLayoutManager layoutManager = new GridLayoutManager(this, 1, GridLayoutManager.VERTICAL, false);
+
+        recyclerView.setAdapter(adapterDataPengajarList);
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setNestedScrollingEnabled(true);
+
+        adapterDataPengajarList.setOnItemClickListener((view, position) -> {
+//            id_mata_pelajaran = dataModelArrayList.get(position).getId_mata_pelajaran();
+//            nama_mata_pelajaran = dataModelArrayList.get(position).getNama();
+//
+//            edtNamaMataPelajaran.setText(nama_mata_pelajaran);
             dialog.dismiss();
         });
 
