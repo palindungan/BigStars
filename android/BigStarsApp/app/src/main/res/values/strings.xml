@@ -42,4 +42,5 @@
     <string name="jam_berakhir">Berakhir</string>
     <string name="harga_fee">Harga Fee</string>
     <string name="harga_spp">Harga SPP</string>
+    <string name="status_tidak_dibagikan">Status : Tidak Dibagikan</string>
 </resources>
