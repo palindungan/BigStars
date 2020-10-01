@@ -14,6 +14,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.TextView;
 
 import com.its.bigstarsapp.Activities.Data.KelasPertemuan.Edit.presenter.DataKelasPertemuanEditPresenter;
 import com.its.bigstarsapp.Activities.Data.KelasPertemuan.Edit.presenter.IDataKelasPertemuanEditPresenter;
@@ -60,6 +62,8 @@ public class DataKelasPertemuanEditActivity extends AppCompatActivity implements
     RecyclerView recyclerView;
     EditText edtNamaMataPelajaran, edtHari, edtHargaFee, edtHargaSpp;
     Button btnPilih, btnJamMulai, btnJamBerakhir, btnUpdate;
+    TextView tvStatusSharing;
+    ImageButton ibSharing, ibDeleteSharing;
 
     public static Dialog dialog;
 
@@ -84,6 +88,9 @@ public class DataKelasPertemuanEditActivity extends AppCompatActivity implements
         btnJamMulai = findViewById(R.id.btn_jam_mulai);
         btnJamBerakhir = findViewById(R.id.btn_jam_berakhir);
         btnUpdate = findViewById(R.id.btn_update);
+        tvStatusSharing = findViewById(R.id.tv_status_sharing);
+        ibSharing = findViewById(R.id.ib_sharing);
+        ibDeleteSharing = findViewById(R.id.ib_delete_sharing);
 
         id_kelas_pertemuan = getIntent().getStringExtra(EXTRA_ID_KELAS_PERTEMUAN);
         id_pengajar = getIntent().getStringExtra(EXTRA_ID_PENGAJAR);
