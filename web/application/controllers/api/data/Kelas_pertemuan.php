@@ -148,7 +148,7 @@ class Kelas_pertemuan extends REST_Controller
 
     function update_data_post()
     {
-        $id_Kelas_pertemuan = $this->post('id_Kelas_pertemuan');
+        $id_kelas_pertemuan = $this->post('id_kelas_pertemuan');
         $id_pengajar = $this->post('id_pengajar');
         $id_mata_pelajaran = $this->post('id_mata_pelajaran');
         $hari = $this->post('hari');
@@ -158,7 +158,7 @@ class Kelas_pertemuan extends REST_Controller
         $harga_spp = $this->post('harga_spp');
 
         $data = array(
-            'id_Kelas_pertemuan'    => $id_Kelas_pertemuan,
+            'id_kelas_pertemuan'    => $id_kelas_pertemuan,
             'id_pengajar'           => $id_pengajar,
             'id_mata_pelajaran'     => $id_mata_pelajaran,
             'hari'                  => $hari,
@@ -169,7 +169,7 @@ class Kelas_pertemuan extends REST_Controller
         );
 
         $where = array(
-            'id_Kelas_pertemuan' => $id_Kelas_pertemuan
+            'id_kelas_pertemuan' => $id_kelas_pertemuan
         );
 
         $update =  $this->M_universal->update_data($where, 'Kelas_pertemuan', $data);
