@@ -322,10 +322,14 @@ public class DataKelasPertemuanEditActivity extends AppCompatActivity implements
             id_sharing = dataModelArrayList.get(position).getId_pengajar();
             nama_sharing = dataModelArrayList.get(position).getNama();
 
-            dataKelasPertemuanEditPresenter.onSharingKelasPertemuan(
-                    "" + id_kelas_pertemuan,
-                    "" + id_sharing,
-                    "" + nama_sharing);
+            if (id_pengajar.equals(id_sharing)) {
+                globalProcess.onErrorMessage("Pilih Pengajar Lain !");
+            } else {
+                dataKelasPertemuanEditPresenter.onSharingKelasPertemuan(
+                        "" + id_kelas_pertemuan,
+                        "" + id_sharing,
+                        "" + nama_sharing);
+            }
 
             dialog.dismiss();
         });
