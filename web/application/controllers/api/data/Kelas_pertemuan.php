@@ -146,6 +146,48 @@ class Kelas_pertemuan extends REST_Controller
         }
     }
 
+    function update_data_post()
+    {
+        $id_Kelas_pertemuan = $this->post('id_Kelas_pertemuan');
+        $id_pengajar = $this->post('id_pengajar');
+        $id_mata_pelajaran = $this->post('id_mata_pelajaran');
+        $hari = $this->post('hari');
+        $jam_mulai = $this->post('jam_mulai');
+        $jam_berakhir = $this->post('jam_berakhir');
+        $harga_fee = $this->post('harga_fee');
+        $harga_spp = $this->post('harga_spp');
+
+        $data = array(
+            'id_Kelas_pertemuan'    => $id_Kelas_pertemuan,
+            'id_pengajar'           => $id_pengajar,
+            'id_mata_pelajaran'     => $id_mata_pelajaran,
+            'hari'                  => $hari,
+            'jam_mulai'             => $jam_mulai,
+            'jam_berakhir'          => $jam_berakhir,
+            'harga_fee'             => $harga_fee,
+            'harga_spp'             => $harga_spp
+        );
+
+        $where = array(
+            'id_Kelas_pertemuan' => $id_Kelas_pertemuan
+        );
+
+        $update =  $this->M_universal->update_data($where, 'Kelas_pertemuan', $data);
+        if ($update) {
+
+            // membuat array untuk di transfer ke API
+            $result["success"] = "1";
+            $result["message"] = "Berhasil Mengupdate Data";
+            $this->response($result, 200);
+        } else {
+
+            // membuat array untuk di transfer ke API
+            $result["success"] = "0";
+            $result["message"] = "Gagal Mengupdate Data";
+            $this->response($result, 200);
+        }
+    }
+
     function sharing_data_post()
     {
         $id_kelas_pertemuan = $this->post('id_kelas_pertemuan');
@@ -204,38 +246,6 @@ class Kelas_pertemuan extends REST_Controller
             // membuat array untuk di transfer ke API
             $result["success"] = "0";
             $result["message"] = "Gagal Menghapus Sharing";
-            $this->response($result, 200);
-        }
-    }
-
-    function update_data_post()
-    {
-        $id_Kelas_pertemuan = $this->post('id_Kelas_pertemuan');
-        $nama = $this->post('nama');
-
-        $data = array();
-
-        $data = array(
-            'id_Kelas_pertemuan' => $id_Kelas_pertemuan,
-            'nama'          => $nama
-        );
-
-        $where = array(
-            'id_Kelas_pertemuan' => $id_Kelas_pertemuan
-        );
-
-        $update =  $this->M_universal->update_data($where, 'Kelas_pertemuan', $data);
-        if ($update) {
-
-            // membuat array untuk di transfer ke API
-            $result["success"] = "1";
-            $result["message"] = "Berhasil Mengupdate Data";
-            $this->response($result, 200);
-        } else {
-
-            // membuat array untuk di transfer ke API
-            $result["success"] = "0";
-            $result["message"] = "Gagal Mengupdate Data";
             $this->response($result, 200);
         }
     }
