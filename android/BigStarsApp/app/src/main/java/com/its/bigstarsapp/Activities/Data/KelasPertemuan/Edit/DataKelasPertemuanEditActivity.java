@@ -127,6 +127,14 @@ public class DataKelasPertemuanEditActivity extends AppCompatActivity implements
         btnJamBerakhir.setText(jam_berakhir);
         edtHargaFee.setText(harga_fee);
         edtHargaSpp.setText(harga_spp);
+
+        if (id_sharing.equals("null")) {
+            ibSharing.setVisibility(View.VISIBLE);
+            tvStatusSharing.setText("Status : Tidak Sedang Dibagikan");
+        } else {
+            ibDeleteSharing.setVisibility(View.VISIBLE);
+            tvStatusSharing.setText("Status : Dibagikan Kepada " + nama_sharing);
+        }
     }
 
     private void showDialog() {
