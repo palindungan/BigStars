@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Dialog;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.MenuItem;
@@ -20,6 +21,7 @@ import android.widget.TextView;
 import com.its.bigstarsapp.Activities.Data.KelasPertemuan.Edit.presenter.DataKelasPertemuanEditPresenter;
 import com.its.bigstarsapp.Activities.Data.KelasPertemuan.Edit.presenter.IDataKelasPertemuanEditPresenter;
 import com.its.bigstarsapp.Activities.Data.KelasPertemuan.Edit.view.IDataKelasPertemuanEditView;
+import com.its.bigstarsapp.Activities.Data.Pengajar.List.DataPengajarListActivity;
 import com.its.bigstarsapp.Adapters.AdapterDataMataPelajaranList;
 import com.its.bigstarsapp.Controllers.GlobalMessage;
 import com.its.bigstarsapp.Controllers.GlobalProcess;
@@ -130,10 +132,12 @@ public class DataKelasPertemuanEditActivity extends AppCompatActivity implements
 
         if (id_sharing.equals("null")) {
             ibSharing.setVisibility(View.VISIBLE);
-            tvStatusSharing.setText("Status : Tidak Sedang Dibagikan");
+            String txtStatusSharing = "Status : Tidak Sedang Dibagikan";
+            tvStatusSharing.setText(txtStatusSharing);
         } else {
             ibDeleteSharing.setVisibility(View.VISIBLE);
-            tvStatusSharing.setText("Status : Dibagikan Kepada " + nama_sharing);
+            String txtStatusSharing = "Status : Dibagikan Kepada " + nama_sharing;
+            tvStatusSharing.setText(txtStatusSharing);
         }
     }
 
@@ -244,6 +248,10 @@ public class DataKelasPertemuanEditActivity extends AppCompatActivity implements
             showDialogTimePicker(btnJamBerakhir, "jam_berakhir");
         } else if (view.getId() == R.id.btn_update) {
             showDialog();
+        } else if (view.getId() == R.id.ib_sharing) {
+            //
+        } else if (view.getId() == R.id.ib_delete_sharing) {
+            //
         }
     }
 
