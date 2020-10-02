@@ -268,6 +268,71 @@ public class DataKelasPertemuanEditPresenter implements IDataKelasPertemuanEditP
     }
 
     @Override
+    public void onLoadDataListMuridSemua() {
+        String base_url = globalVariable.getUrlData();
+        String URL_DATA = base_url + "data/murid/list_data"; // url http request
+
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, URL_DATA, response -> {
+            try {
+
+                JSONObject obj = new JSONObject(response);
+
+                String success = obj.getString("success");
+                String message = obj.getString("message");
+
+                if (success.equals("1")) {
+
+                    dataModelArrayListMurid = new ArrayList<>();
+                    JSONArray dataArray = obj.getJSONArray("data_result");
+                    for (int i = 0; i < dataArray.length(); i++) {
+
+                        Murid playerModel = new Murid();
+                        JSONObject dataobj = dataArray.getJSONObject(i);
+
+                        String id_kelas_pertemuan_detail = "kosong";
+
+                        String id_kelas_pertemuan = "kosong";
+
+                        String id_murid = dataobj.getString("id_murid");
+                        String nama = dataobj.getString("nama");
+                        String foto = dataobj.getString("foto");
+
+                        String id_wali_murid = dataobj.getString("id_wali_murid");
+                        String nama_wali_murid = dataobj.getString("nama_wali_murid");
+                        String alamat = dataobj.getString("alamat");
+
+                        playerModel.setId_kelas_pertemuan_detail(id_kelas_pertemuan_detail);
+
+                        playerModel.setId_kelas_pertemuan(id_kelas_pertemuan);
+
+                        playerModel.setId_murid(id_murid);
+                        playerModel.setNama(nama);
+                        playerModel.setFoto(foto);
+
+                        playerModel.setId_wali_murid(id_wali_murid);
+                        playerModel.setNama_wali_murid(nama_wali_murid);
+                        playerModel.setAlamat(alamat);
+
+                        dataModelArrayListMurid.add(playerModel);
+                    }
+                    dataKelasPertemuanEditView.onSetupListViewMuridSemua(dataModelArrayListMurid);
+
+                } else {
+                    dataModelArrayListMurid = new ArrayList<>();
+                    dataKelasPertemuanEditView.onSetupListViewMuridSemua(dataModelArrayListMurid);
+                    globalProcess.onErrorMessage(message);
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+                globalProcess.onErrorMessage(globalMessage.getMessageResponseError() + e.toString());
+            }
+        }, error -> globalProcess.onErrorMessage(globalMessage.getMessageConnectionError()));
+
+        RequestQueue requestQueue = Volley.newRequestQueue(context);
+        requestQueue.add(stringRequest);
+    }
+
+    @Override
     public void onLoadDataListMurid(String id_kelas_pertemuan) {
         String base_url = globalVariable.getUrlData();
         String URL_DATA = base_url + "data/kelas_pertemuan/list_murid_data"; // url http request

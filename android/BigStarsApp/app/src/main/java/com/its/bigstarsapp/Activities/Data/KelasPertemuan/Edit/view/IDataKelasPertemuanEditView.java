@@ -11,6 +11,8 @@ public interface IDataKelasPertemuanEditView {
 
     void onSetupListViewPengajar(ArrayList<Pengajar> dataModelArrayList);
 
+    void onSetupListViewMuridSemua(ArrayList<Murid> dataModelArrayList);
+
     void backPressed();
 
     void onSetupListViewMurid(ArrayList<Murid> dataModelArrayList);

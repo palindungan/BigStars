@@ -305,6 +305,17 @@ public class DataKelasPertemuanEditActivity extends AppCompatActivity implements
         timePickerDialog.show();
     }
 
+    private void showDialogAddMurid() {
+        dialog = new Dialog(this);
+        // dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setCancelable(false);
+        dialog.setContentView(R.layout.dialog_list);
+
+        Button btnCancel = dialog.findViewById(R.id.btn_cancel);
+        btnCancel.setOnClickListener(v -> dialog.dismiss());
+        dataKelasPertemuanEditPresenter.onLoadDataListMuridSemua();
+    }
+
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.btn_pilih) {
@@ -319,6 +330,8 @@ public class DataKelasPertemuanEditActivity extends AppCompatActivity implements
             showDialogSharing();
         } else if (view.getId() == R.id.ib_delete_sharing) {
             showDialogDeleteSharing();
+        } else if (view.getId() == R.id.fab) {
+            showDialogAddMurid();
         }
     }
 
@@ -365,6 +378,24 @@ public class DataKelasPertemuanEditActivity extends AppCompatActivity implements
                         "" + id_sharing,
                         "" + nama_sharing);
             }
+
+            dialog.dismiss();
+        });
+
+        dialog.show();
+    }
+
+    @Override
+    public void onSetupListViewMuridSemua(ArrayList<Murid> dataModelArrayList) {
+        recyclerView = dialog.findViewById(R.id.recycler);
+        AdapterDataMuridList adapterDataMuridList = new AdapterDataMuridList(this, dataModelArrayList);
+        GridLayoutManager layoutManager = new GridLayoutManager(this, 1, GridLayoutManager.VERTICAL, false);
+
+        recyclerView.setAdapter(adapterDataMuridList);
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setNestedScrollingEnabled(true);
+
+        adapterDataMuridList.setOnItemClickListener((view, position) -> {
 
             dialog.dismiss();
         });
