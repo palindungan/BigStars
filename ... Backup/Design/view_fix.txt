@@ -20,9 +20,9 @@ ORDER BY kp.id_kelas_pertemuan ASC;
 
 CREATE VIEW view_kelas_pertemuan_detail AS
 SELECT 
-    kpd.id_kelas_pertemuan_detail,
+    kpd.id_kelas_pertemuan_detail, kpd.status_data,
     kp.id_kelas_pertemuan,
-    m.id_murid, m.nama, m.foto, m.status_data,
+    m.id_murid, m.nama, m.foto,
     wm.id_wali_murid, wm.nama AS nama_wali_murid, wm.username, wm.alamat, wm.no_hp 
 FROM 
     kelas_pertemuan_detail kpd JOIN 

@@ -301,6 +301,8 @@ public class DataKelasPertemuanEditPresenter implements IDataKelasPertemuanEditP
 
                                 playerModel.setId_kelas_pertemuan_detail(id_kelas_pertemuan_detail);
 
+                                playerModel.setId_kelas_pertemuan(id_kelas_pertemuan);
+
                                 playerModel.setId_murid(id_murid);
                                 playerModel.setNama(nama);
                                 playerModel.setFoto(foto);

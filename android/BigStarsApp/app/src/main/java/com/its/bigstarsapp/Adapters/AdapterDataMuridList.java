@@ -10,6 +10,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.its.bigstarsapp.Activities.Data.KelasPertemuan.Edit.DataKelasPertemuanEditActivity;
+import com.its.bigstarsapp.Activities.Data.KelasPertemuan.Edit.view.IDataKelasPertemuanEditView;
 import com.its.bigstarsapp.Activities.Data.Murid.List.DataMuridListActivity;
 import com.its.bigstarsapp.Activities.Data.Murid.List.view.IDataMuridListView;
 import com.its.bigstarsapp.Controllers.GlobalMessage;
@@ -86,14 +88,15 @@ public class AdapterDataMuridList extends RecyclerView.Adapter<AdapterDataMuridL
                 dataMuridListView.showDialogDelete(
                         "" + kode,
                         "" + nama);
+            } else if (statusActivity.equals("listPengajar->view->editKelasPertemuan")) {
+                String getId_kelas_pertemuan = dataModelArrayList.get(position).getId_kelas_pertemuan();
+                IDataKelasPertemuanEditView dataKelasPertemuanEditView = (DataKelasPertemuanEditActivity) context;
+                dataKelasPertemuanEditView.showDialogDeleteMurid(
+                        "" + getId_kelas_pertemuan,
+                        "" + kode,
+                        "" + nama
+                );
             }
-//                else if (statusActivity.equals("listPengajar->view->editKelasPertemuan")) {
-//                    String id_detail_kelas_p = dataModelArrayList.get(position).getId_detail_kelas_p();
-//                    IDataKelasEditView dataKelasEditView = (DataKelasEditActivity) context;
-//                    dataKelasEditView.showDialogDeleteMurid(
-//                            "" + id_detail_kelas_p,
-//                            "" + nama);
-//                }
         });
 
         String alamatFoto = globalVariable.getUrlUpload() + "image/murid/" + dataModelArrayList.get(position).getFoto() + ".jpg";
