@@ -249,4 +249,53 @@ class Kelas_pertemuan extends REST_Controller
             $this->response($result, 200);
         }
     }
+
+    function list_murid_data_post()
+    {
+        $id_kelas_pertemuan = $this->post('id_kelas_pertemuan');
+
+        // variable array
+        $result['data_result'] = array();
+
+        // data array untuk where db
+        $where = array(
+            'id_kelas_pertemuan' => $id_kelas_pertemuan,
+            'status_data' => 'active'
+        );
+
+        // mengambil data
+        $query = $this->M_universal->get_data('view_kelas_pertemuan_detail', $where);
+
+        if ($query->num_rows() > 0) {
+
+            // mengeluarkan data dari database
+            foreach ($query->result_array() as $row) {
+
+                // ambil detail data db
+                $data = array(
+                    'id_kelas_pertemuan_detail' => $row["id_kelas_pertemuan_detail"],
+                    'id_murid' => $row["id_murid"],
+                    'nama' => $row["nama"],
+                    'foto' => $row["foto"],
+                    'id_wali_murid' => $row["id_wali_murid"],
+                    'nama_wali_murid' => $row["nama_wali_murid"],
+                    'username' => $row["username"],
+                    'alamat' => $row["alamat"],
+                    'no_hp' => $row["no_hp"]
+                );
+
+                array_push($result['data_result'], $data);
+
+                // membuat array untuk di transfer
+                $result["success"] = "1";
+                $result["message"] = "Success Berhasil Mengambil Data";
+                $this->response($result, 200);
+            }
+        } else {
+            // membuat array untuk di transfer ke API
+            $result["success"] = "0";
+            $result["message"] = "Data Masih kosong";
+            $this->response($result, 200);
+        }
+    }
 }
