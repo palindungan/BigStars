@@ -142,7 +142,7 @@ public class DataKelasPertemuanEditActivity extends AppCompatActivity implements
         });
 
         statusActivity = sessionManager.getStatusActivity();
-        if (statusActivity.equals("home->view->editMurid")) {
+        if (statusActivity.equals("listPengajar->view->editKelasPertemuan")) {
             fab.show();
         }
 
@@ -391,7 +391,7 @@ public class DataKelasPertemuanEditActivity extends AppCompatActivity implements
                 if (dy > 0 && fab.getVisibility() == View.VISIBLE) {
                     fab.hide();
                 } else if (dy < 0 && fab.getVisibility() != View.VISIBLE) {
-                    if (statusActivity.equals("home->view->editMurid")) {
+                    if (statusActivity.equals("listPengajar->view->editKelasPertemuan")) {
                         fab.show();
                     }
                 }
