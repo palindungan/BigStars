@@ -434,4 +434,10 @@ public class DataKelasPertemuanEditActivity extends AppCompatActivity implements
         }
         return true;
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        dataKelasPertemuanEditPresenter.onLoadDataListMurid("" + id_kelas_pertemuan);
+    }
 }
