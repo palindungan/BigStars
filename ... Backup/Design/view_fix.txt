@@ -17,3 +17,16 @@ FROM
     mata_pelajaran mp USING(id_mata_pelajaran) JOIN
     pengajar p USING(id_pengajar) 
 ORDER BY kp.id_kelas_pertemuan ASC;
+
+CREATE VIEW view_kelas_pertemuan_detail AS
+SELECT 
+    kpd.id_kelas_pertemuan_detail,
+    kp.id_kelas_pertemuan,
+    m.id_murid, m.nama, m.foto, m.status_data,
+    wm.id_wali_murid, wm.nama AS nama_wali_murid, wm.username, wm.alamat, wm.no_hp 
+FROM 
+    kelas_pertemuan_detail kpd JOIN 
+    kelas_pertemuan kp USING(id_kelas_pertemuan) JOIN
+    murid m USING(id_murid) JOIN
+    wali_murid wm USING (id_wali_murid)
+ORDER BY kpd.id_kelas_pertemuan_detail ASC;

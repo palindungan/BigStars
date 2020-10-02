@@ -1,8 +1,8 @@
 package com.its.bigstarsapp.Models;
 
 public class Murid {
-    String id_murid, id_wali_murid ,nama, nama_wali_murid, alamat, foto;
-    String id_kelas_p , id_detail_kelas_p;
+    String id_murid, id_wali_murid, nama, nama_wali_murid, alamat, foto;
+    String id_kelas_pertemuan, id_kelas_pertemuan_detail;
 
     public String getId_murid() {
         return id_murid;
@@ -52,19 +52,19 @@ public class Murid {
         this.foto = foto;
     }
 
-    public String getId_kelas_p() {
-        return id_kelas_p;
+    public String getId_kelas_pertemuan() {
+        return id_kelas_pertemuan;
     }
 
-    public void setId_kelas_p(String id_kelas_p) {
-        this.id_kelas_p = id_kelas_p;
+    public void setId_kelas_pertemuan(String id_kelas_pertemuan) {
+        this.id_kelas_pertemuan = id_kelas_pertemuan;
     }
 
-    public String getId_detail_kelas_p() {
-        return id_detail_kelas_p;
+    public String getId_kelas_pertemuan_detail() {
+        return id_kelas_pertemuan_detail;
     }
 
-    public void setId_detail_kelas_p(String id_detail_kelas_p) {
-        this.id_detail_kelas_p = id_detail_kelas_p;
+    public void setId_kelas_pertemuan_detail(String id_kelas_pertemuan_detail) {
+        this.id_kelas_pertemuan_detail = id_kelas_pertemuan_detail;
     }
 }
