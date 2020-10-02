@@ -19,4 +19,8 @@ public interface IDataKelasPertemuanEditPresenter {
     void onLoadDataListMataPelajaran();
 
     void onLoadDataListPengajar();
+
+    void onLoadDataListMurid(String id_kelas_pertemuan);
+
+    void onDeleteMurid(String id_kelas_pertemuan, String id_murid);
 }

@@ -1,14 +1,17 @@
 package com.its.bigstarsapp.Activities.Data.KelasPertemuan.Edit;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.app.Dialog;
 import android.app.TimePickerDialog;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.TextUtils;
 import android.view.MenuItem;
 import android.view.View;
@@ -17,16 +20,19 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.its.bigstarsapp.Activities.Data.KelasPertemuan.Edit.presenter.DataKelasPertemuanEditPresenter;
 import com.its.bigstarsapp.Activities.Data.KelasPertemuan.Edit.presenter.IDataKelasPertemuanEditPresenter;
 import com.its.bigstarsapp.Activities.Data.KelasPertemuan.Edit.view.IDataKelasPertemuanEditView;
 import com.its.bigstarsapp.Adapters.AdapterDataMataPelajaranList;
+import com.its.bigstarsapp.Adapters.AdapterDataMuridList;
 import com.its.bigstarsapp.Adapters.AdapterDataPengajarList;
 import com.its.bigstarsapp.Controllers.GlobalMessage;
 import com.its.bigstarsapp.Controllers.GlobalProcess;
 import com.its.bigstarsapp.Controllers.GlobalVariable;
 import com.its.bigstarsapp.Controllers.SessionManager;
 import com.its.bigstarsapp.Models.MataPelajaran;
+import com.its.bigstarsapp.Models.Murid;
 import com.its.bigstarsapp.Models.Pengajar;
 import com.its.bigstarsapp.R;
 
@@ -59,11 +65,15 @@ public class DataKelasPertemuanEditActivity extends AppCompatActivity implements
     SessionManager sessionManager;
 
     Toolbar toolbar;
+    FloatingActionButton fab;
     RecyclerView recyclerView;
+    private SwipeRefreshLayout swipeRefreshLayout;
     EditText edtNamaMataPelajaran, edtHari, edtHargaFee, edtHargaSpp;
     Button btnPilih, btnJamMulai, btnJamBerakhir, btnUpdate;
     TextView tvStatusSharing;
     ImageButton ibSharing, ibDeleteSharing;
+
+    String statusActivity;
 
     public static Dialog dialog;
 
@@ -92,6 +102,9 @@ public class DataKelasPertemuanEditActivity extends AppCompatActivity implements
         ibSharing = findViewById(R.id.ib_sharing);
         ibDeleteSharing = findViewById(R.id.ib_delete_sharing);
 
+        fab = findViewById(R.id.fab);
+        swipeRefreshLayout = findViewById(R.id.swipe_refresh_layout);
+
         id_kelas_pertemuan = getIntent().getStringExtra(EXTRA_ID_KELAS_PERTEMUAN);
         id_pengajar = getIntent().getStringExtra(EXTRA_ID_PENGAJAR);
         id_mata_pelajaran = getIntent().getStringExtra(EXTRA_ID_MATA_PELAJARAN);
@@ -114,6 +127,26 @@ public class DataKelasPertemuanEditActivity extends AppCompatActivity implements
                 "" + harga_fee,
                 "" + harga_spp);
 
+        dataKelasPertemuanEditPresenter.onLoadDataListMurid("" + id_kelas_pertemuan);
+        swipeRefreshLayout.setOnRefreshListener(() -> {
+            // Your code to make your refresh action
+            dataKelasPertemuanEditPresenter.onLoadDataListMurid("" + id_kelas_pertemuan);
+
+            // CallYourRefreshingMethod();
+            final Handler handler = new Handler();
+            handler.postDelayed(() -> {
+                if (swipeRefreshLayout.isRefreshing()) {
+                    swipeRefreshLayout.setRefreshing(false);
+                }
+            }, 1000);
+        });
+
+        statusActivity = sessionManager.getStatusActivity();
+        if (statusActivity.equals("home->view->editMurid")) {
+            fab.show();
+        }
+
+        fab.setOnClickListener(this);
         btnPilih.setOnClickListener(this);
         btnJamMulai.setOnClickListener(this);
         btnJamBerakhir.setOnClickListener(this);
@@ -340,6 +373,39 @@ public class DataKelasPertemuanEditActivity extends AppCompatActivity implements
     @Override
     public void backPressed() {
         onBackPressed();
+    }
+
+    @Override
+    public void onSetupListViewMurid(ArrayList<Murid> dataModelArrayList) {
+        AdapterDataMuridList adapterDataMuridList = new AdapterDataMuridList(this, dataModelArrayList);
+        GridLayoutManager layoutManager = new GridLayoutManager(this, 1, GridLayoutManager.VERTICAL, false);
+        recyclerView = findViewById(R.id.recycle_view);
+        recyclerView.setAdapter(adapterDataMuridList);
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setNestedScrollingEnabled(true);
+
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                if (dy > 0 && fab.getVisibility() == View.VISIBLE) {
+                    fab.hide();
+                } else if (dy < 0 && fab.getVisibility() != View.VISIBLE) {
+                    if (statusActivity.equals("home->view->editMurid")) {
+                        fab.show();
+                    }
+                }
+            }
+        });
+
+        adapterDataMuridList.setOnItemClickListener((view, position) -> {
+            //
+        });
+    }
+
+    @Override
+    public void showDialogDeleteMurid(String id_kelas_pertemuan, String id_murid, String nama) {
+
     }
 
     @Override

@@ -12,6 +12,7 @@ import com.its.bigstarsapp.Controllers.GlobalProcess;
 import com.its.bigstarsapp.Controllers.GlobalVariable;
 import com.its.bigstarsapp.Controllers.SessionManager;
 import com.its.bigstarsapp.Models.MataPelajaran;
+import com.its.bigstarsapp.Models.Murid;
 import com.its.bigstarsapp.Models.Pengajar;
 
 import org.json.JSONArray;
@@ -33,6 +34,7 @@ public class DataKelasPertemuanEditPresenter implements IDataKelasPertemuanEditP
 
     ArrayList<MataPelajaran> dataModelArrayListMataPelajaran;
     ArrayList<Pengajar> dataModelArrayListPengajar;
+    ArrayList<Murid> dataModelArrayListMurid;
 
     public DataKelasPertemuanEditPresenter(Context context, IDataKelasPertemuanEditView dataKelasPertemuanEditView) {
         this.context = context;
@@ -260,6 +262,108 @@ public class DataKelasPertemuanEditPresenter implements IDataKelasPertemuanEditP
                 globalProcess.onErrorMessage(globalMessage.getMessageResponseError() + e.toString());
             }
         }, error -> globalProcess.onErrorMessage(globalMessage.getMessageConnectionError()));
+
+        RequestQueue requestQueue = Volley.newRequestQueue(context);
+        requestQueue.add(stringRequest);
+    }
+
+    @Override
+    public void onLoadDataListMurid(String id_kelas_pertemuan) {
+        String base_url = globalVariable.getUrlData();
+        String URL_DATA = base_url + "data/kelas_pertemuan/list_murid_data"; // url http request
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_DATA,
+                response -> {
+                    try {
+                        JSONObject obj = new JSONObject(response);
+
+                        String success = obj.getString("success");
+                        String message = obj.getString("message");
+
+                        if (success.equals("1")) {
+
+                            dataModelArrayListMurid = new ArrayList<>();
+                            JSONArray dataArray = obj.getJSONArray("data_result");
+                            for (int i = 0; i < dataArray.length(); i++) {
+
+                                Murid playerModel = new Murid();
+                                JSONObject dataobj = dataArray.getJSONObject(i);
+
+                                String id_murid = dataobj.getString("id_murid");
+                                String nama = dataobj.getString("nama");
+                                String id_wali_murid = dataobj.getString("id_wali_murid");
+                                String nama_wali_murid = dataobj.getString("nama_wali_murid");
+                                String alamat = dataobj.getString("alamat");
+                                String foto = dataobj.getString("foto");
+
+                                playerModel.setId_murid(id_murid);
+                                playerModel.setNama(nama);
+                                playerModel.setId_wali_murid(id_wali_murid);
+                                playerModel.setNama_wali_murid(nama_wali_murid);
+                                playerModel.setAlamat(alamat);
+                                playerModel.setFoto(foto);
+
+                                dataModelArrayListMurid.add(playerModel);
+                            }
+                            dataKelasPertemuanEditView.onSetupListViewMurid(dataModelArrayListMurid);
+
+                        } else {
+                            dataModelArrayListMurid = new ArrayList<>();
+                            dataKelasPertemuanEditView.onSetupListViewMurid(dataModelArrayListMurid);
+                            globalProcess.onErrorMessage(message);
+                        }
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                        globalProcess.onErrorMessage(globalMessage.getMessageResponseError() + e.toString());
+                    }
+                },
+                error -> globalProcess.onErrorMessage(globalMessage.getMessageConnectionError())) {
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<>();
+                params.put("id_kelas_pertemuan", id_kelas_pertemuan);
+                return params;
+            }
+        };
+
+        RequestQueue requestQueue = Volley.newRequestQueue(context);
+        requestQueue.add(stringRequest);
+    }
+
+    @Override
+    public void onDeleteMurid(String id_kelas_pertemuan, String id_murid) {
+        String base_url = globalVariable.getUrlData();
+        String URL_DATA = base_url + "data/kelas_pertemuan/inactive_murid_data"; // url http request
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_DATA,
+                response -> {
+                    try {
+                        JSONObject jsonObject = new JSONObject(response);
+                        String success = jsonObject.getString("success");
+                        String message = jsonObject.getString("message");
+
+                        if (success.equals("1")) {
+                            globalProcess.onSuccessMessage(message);
+                            onLoadDataListMurid("" + id_kelas_pertemuan);
+                        } else {
+                            globalProcess.onErrorMessage(message);
+                        }
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                        globalProcess.onErrorMessage(globalMessage.getMessageResponseError() + e.toString());
+                    }
+                },
+                error -> globalProcess.onErrorMessage(globalMessage.getMessageConnectionError())) {
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<>();
+                params.put("id_kelas_pertemuan", id_kelas_pertemuan);
+                params.put("id_murid", id_murid);
+                return params;
+            }
+        };
 
         RequestQueue requestQueue = Volley.newRequestQueue(context);
         requestQueue.add(stringRequest);
