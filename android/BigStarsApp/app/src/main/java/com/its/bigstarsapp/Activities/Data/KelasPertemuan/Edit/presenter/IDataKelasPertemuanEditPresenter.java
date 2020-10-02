@@ -1,6 +1,9 @@
 package com.its.bigstarsapp.Activities.Data.KelasPertemuan.Edit.presenter;
 
 public interface IDataKelasPertemuanEditPresenter {
+    void onSubmitkelasPertemuanDetail(String id_kelas_pertemuan,
+                                      String id_murid);
+
     void onUpdate(String id_kelas_pertemuan,
                   String id_pengajar,
                   String id_mata_pelajaran,

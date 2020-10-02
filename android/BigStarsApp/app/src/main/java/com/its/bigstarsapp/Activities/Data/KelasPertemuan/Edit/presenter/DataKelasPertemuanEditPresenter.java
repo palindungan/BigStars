@@ -47,6 +47,44 @@ public class DataKelasPertemuanEditPresenter implements IDataKelasPertemuanEditP
     }
 
     @Override
+    public void onSubmitkelasPertemuanDetail(String id_kelas_pertemuan, String id_murid) {
+        String base_url = globalVariable.getUrlData();
+        String URL_DATA = base_url + "data/kelas_pertemuan/add_detail_data"; // url http request
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_DATA,
+                response -> {
+                    try {
+                        JSONObject jsonObject = new JSONObject(response);
+                        String success = jsonObject.getString("success");
+                        String message = jsonObject.getString("message");
+
+                        if (success.equals("1")) {
+                            globalProcess.onSuccessMessage(message);
+                            dataKelasPertemuanEditView.backPressed();
+                        } else {
+                            globalProcess.onErrorMessage(message);
+                        }
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                        globalProcess.onErrorMessage(globalMessage.getMessageResponseError() + e.toString());
+                    }
+                },
+                error -> globalProcess.onErrorMessage(globalMessage.getMessageConnectionError())) {
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<>();
+                params.put("id_kelas_pertemuan", id_kelas_pertemuan);
+                params.put("id_murid", id_murid);
+                return params;
+            }
+        };
+
+        RequestQueue requestQueue = Volley.newRequestQueue(context);
+        requestQueue.add(stringRequest);
+    }
+
+    @Override
     public void onUpdate(String id_kelas_pertemuan, String id_pengajar, String id_mata_pelajaran, String hari, String jam_mulai, String jam_berakhir, String harga_fee, String harga_spp) {
         String base_url = globalVariable.getUrlData();
         String URL_DATA = base_url + "data/kelas_pertemuan/update_data"; // url http request

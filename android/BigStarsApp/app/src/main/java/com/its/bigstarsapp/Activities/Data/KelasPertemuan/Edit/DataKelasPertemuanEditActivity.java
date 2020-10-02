@@ -396,7 +396,11 @@ public class DataKelasPertemuanEditActivity extends AppCompatActivity implements
         recyclerView.setNestedScrollingEnabled(true);
 
         adapterDataMuridList.setOnItemClickListener((view, position) -> {
+            String id_murid = dataModelArrayList.get(position).getId_murid();
 
+            dataKelasPertemuanEditPresenter.onSubmitkelasPertemuanDetail(
+                    "" + id_kelas_pertemuan,
+                    "" + id_murid);
             dialog.dismiss();
         });
 
