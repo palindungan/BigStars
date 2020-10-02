@@ -10,6 +10,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.app.Dialog;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
@@ -24,6 +25,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.its.bigstarsapp.Activities.Data.KelasPertemuan.Edit.presenter.DataKelasPertemuanEditPresenter;
 import com.its.bigstarsapp.Activities.Data.KelasPertemuan.Edit.presenter.IDataKelasPertemuanEditPresenter;
 import com.its.bigstarsapp.Activities.Data.KelasPertemuan.Edit.view.IDataKelasPertemuanEditView;
+import com.its.bigstarsapp.Activities.Data.Murid.Edit.DataMuridEditActivity;
 import com.its.bigstarsapp.Adapters.AdapterDataMataPelajaranList;
 import com.its.bigstarsapp.Adapters.AdapterDataMuridList;
 import com.its.bigstarsapp.Adapters.AdapterDataPengajarList;
@@ -399,7 +401,14 @@ public class DataKelasPertemuanEditActivity extends AppCompatActivity implements
         });
 
         adapterDataMuridList.setOnItemClickListener((view, position) -> {
-            //
+            Intent intent = new Intent(getApplicationContext(), DataMuridEditActivity.class);
+            intent.putExtra(DataMuridEditActivity.EXTRA_ID_MURID, dataModelArrayList.get(position).getId_murid());
+            intent.putExtra(DataMuridEditActivity.EXTRA_NAMA, dataModelArrayList.get(position).getNama());
+            intent.putExtra(DataMuridEditActivity.EXTRA_ID_WALI_MURID, dataModelArrayList.get(position).getId_wali_murid());
+            intent.putExtra(DataMuridEditActivity.EXTRA_NAMA_WALI_MURID, dataModelArrayList.get(position).getNama_wali_murid());
+            intent.putExtra(DataMuridEditActivity.EXTRA_ALAMAT, dataModelArrayList.get(position).getAlamat());
+            intent.putExtra(DataMuridEditActivity.EXTRA_FOTO, dataModelArrayList.get(position).getFoto());
+            startActivity(intent);
         });
     }
 

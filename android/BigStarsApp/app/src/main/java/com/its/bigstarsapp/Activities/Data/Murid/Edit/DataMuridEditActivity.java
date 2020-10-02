@@ -67,6 +67,8 @@ public class DataMuridEditActivity extends AppCompatActivity implements View.OnC
 
     public static Dialog dialog;
 
+    String statusActivity;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -102,9 +104,16 @@ public class DataMuridEditActivity extends AppCompatActivity implements View.OnC
                 "" + alamat,
                 "" + foto);
 
-        ivFoto.setOnClickListener(this);
-        btnPilih.setOnClickListener(this);
-        btnUpdate.setOnClickListener(this);
+        statusActivity = sessionManager.getStatusActivity();
+        if (statusActivity.equals("listPengajar->view->editKelasPertemuan")) {
+            btnPilih.setVisibility(View.GONE);
+            btnUpdate.setVisibility(View.GONE);
+            edtNama.setFocusable(false);
+        } else if (statusActivity.equals("home->view->editMurid")) {
+            ivFoto.setOnClickListener(this);
+            btnPilih.setOnClickListener(this);
+            btnUpdate.setOnClickListener(this);
+        }
     }
 
     private void inisiasiAwal(String nama, String nama_wali_murid, String alamat, String foto) {
