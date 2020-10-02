@@ -131,9 +131,9 @@ public class DataPengajarListActivity extends AppCompatActivity implements View.
                 startActivity(intent);
             } else if (statusActivity.equals("home->view->listKelasPertemuan")) {
                 sessionManager.setStatusActivity("listPengajar->view->editKelasPertemuan");
-                    intent = new Intent(getApplicationContext(), DataKelasPertemuanListActivity.class);
-                    intent.putExtra(DataKelasPertemuanListActivity.EXTRA_ID_PENGAJAR, dataModelArrayList.get(position).getId_pengajar());
-                    startActivity(intent);
+                intent = new Intent(getApplicationContext(), DataKelasPertemuanListActivity.class);
+                intent.putExtra(DataKelasPertemuanListActivity.EXTRA_ID_PENGAJAR, dataModelArrayList.get(position).getId_pengajar());
+                startActivity(intent);
             }
         });
     }
