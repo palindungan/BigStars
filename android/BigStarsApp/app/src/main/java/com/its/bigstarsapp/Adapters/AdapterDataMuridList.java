@@ -89,11 +89,10 @@ public class AdapterDataMuridList extends RecyclerView.Adapter<AdapterDataMuridL
                         "" + kode,
                         "" + nama);
             } else if (statusActivity.equals("listPengajar->view->editKelasPertemuan")) {
-                String getId_kelas_pertemuan = dataModelArrayList.get(position).getId_kelas_pertemuan();
+                String id_kelas_pertemuan_detail = dataModelArrayList.get(position).getId_kelas_pertemuan_detail();
                 IDataKelasPertemuanEditView dataKelasPertemuanEditView = (DataKelasPertemuanEditActivity) context;
                 dataKelasPertemuanEditView.showDialogDeleteMurid(
-                        "" + getId_kelas_pertemuan,
-                        "" + kode,
+                        "" + id_kelas_pertemuan_detail,
                         "" + nama
                 );
             }

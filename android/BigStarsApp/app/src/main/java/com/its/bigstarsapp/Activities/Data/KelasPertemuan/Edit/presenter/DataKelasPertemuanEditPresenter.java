@@ -443,7 +443,7 @@ public class DataKelasPertemuanEditPresenter implements IDataKelasPertemuanEditP
     }
 
     @Override
-    public void onDeleteMurid(String id_kelas_pertemuan, String id_murid) {
+    public void onDeleteMurid(String id_kelas_pertemuan_detail, String id_kelas_pertemuan) {
         String base_url = globalVariable.getUrlData();
         String URL_DATA = base_url + "data/kelas_pertemuan/inactive_murid_data"; // url http request
 
@@ -470,8 +470,8 @@ public class DataKelasPertemuanEditPresenter implements IDataKelasPertemuanEditP
             @Override
             protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<>();
+                params.put("id_kelas_pertemuan_detail", id_kelas_pertemuan_detail);
                 params.put("id_kelas_pertemuan", id_kelas_pertemuan);
-                params.put("id_murid", id_murid);
                 return params;
             }
         };

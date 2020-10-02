@@ -17,5 +17,5 @@ public interface IDataKelasPertemuanEditView {
 
     void onSetupListViewMurid(ArrayList<Murid> dataModelArrayList);
 
-    void showDialogDeleteMurid(String id_kelas_pertemuan,String id_murid, String nama);
+    void showDialogDeleteMurid(String id_kelas_pertemuan_detail, String nama);
 }

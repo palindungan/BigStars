@@ -448,7 +448,7 @@ public class DataKelasPertemuanEditActivity extends AppCompatActivity implements
     }
 
     @Override
-    public void showDialogDeleteMurid(String id_kelas_pertemuan, String id_murid, String nama) {
+    public void showDialogDeleteMurid(String id_kelas_pertemuan_detail, String nama) {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
                 this);
         alertDialogBuilder.setTitle(globalMessage.getValidasiHapusData() + nama + " ?");
@@ -458,8 +458,8 @@ public class DataKelasPertemuanEditActivity extends AppCompatActivity implements
 
                     try {
                         dataKelasPertemuanEditPresenter.onDeleteMurid(
-                                "" + id_kelas_pertemuan,
-                                "" + id_murid);
+                                "" + id_kelas_pertemuan_detail,
+                                "" + id_kelas_pertemuan);
                     } catch (Exception e) {
                         globalProcess.onErrorMessage(globalMessage.getErrorHapusData() + e.toString());
                     }

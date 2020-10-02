@@ -301,18 +301,14 @@ class Kelas_pertemuan extends REST_Controller
 
     function inactive_murid_data_post()
     {
-        $id_kelas_pertemuan = $this->post('id_kelas_pertemuan');
-        $id_murid = $this->post('id_murid');
-
-        $data = array();
+        $id_kelas_pertemuan_detail = $this->post('id_kelas_pertemuan_detail');
 
         $data = array(
             'status_data' => 'inactive'
         );
 
         $where = array(
-            'id_kelas_pertemuan' => $id_kelas_pertemuan,
-            'id_murid' => $id_murid
+            'id_kelas_pertemuan_detail' => $id_kelas_pertemuan_detail
         );
 
         $update =  $this->M_universal->update_data($where, 'kelas_pertemuan_detail', $data);
