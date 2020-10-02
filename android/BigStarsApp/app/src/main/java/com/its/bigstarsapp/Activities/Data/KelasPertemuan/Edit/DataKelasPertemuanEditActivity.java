@@ -405,7 +405,26 @@ public class DataKelasPertemuanEditActivity extends AppCompatActivity implements
 
     @Override
     public void showDialogDeleteMurid(String id_kelas_pertemuan, String id_murid, String nama) {
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+                this);
+        alertDialogBuilder.setTitle(globalMessage.getValidasiHapusData() + nama + " ?");
+        alertDialogBuilder
+                .setMessage(globalMessage.getPilihYaHapusData())
+                .setPositiveButton(globalMessage.getYa(), (dialog, id) -> {
 
+                    try {
+                        dataKelasPertemuanEditPresenter.onDeleteMurid(
+                                "" + id_kelas_pertemuan,
+                                "" + id_murid);
+                    } catch (Exception e) {
+                        globalProcess.onErrorMessage(globalMessage.getErrorHapusData() + e.toString());
+                    }
+
+                })
+                .setNegativeButton(globalMessage.getTidak(), (dialog, id) -> dialog.cancel());
+
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
     }
 
     @Override
