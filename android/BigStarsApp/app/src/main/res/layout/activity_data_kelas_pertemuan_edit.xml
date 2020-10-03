@@ -223,6 +223,7 @@
                             android:id="@+id/btn_absen"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_marginTop="10sp"
                             android:background="@drawable/button_white"
                             android:text="@string/klik_untuk_memulai_pertemuan"
                             android:textColor="@color/red"

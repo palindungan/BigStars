@@ -29,10 +29,12 @@ public class GlobalMessage {
     String validasiHapusData;
     String validasiAddData;
     String validasiHapusSharing;
+    String validasiMulaiAbsen;
 
     String pilihYaUpdateData;
     String pilihYaHapusData;
     String pilihYaAddData;
+    String pilihYaMulaiAbsen;
 
     String pilihGambar;
 
@@ -69,10 +71,12 @@ public class GlobalMessage {
         validasiHapusData = "Ingin Menghapus Data ";
         validasiAddData = "Ingin Menambah Data ?";
         validasiHapusSharing = "Ingin Mengapus Sharing Kelas Pertemuan ?";
+        validasiMulaiAbsen = "Mulai Absensi Kelas Pertemuan ?";
 
         pilihYaUpdateData = "Klik Ya untuk melakukan update !";
         pilihYaHapusData = "Klik Ya untuk melakukan hapus !";
         pilihYaAddData = "Klik Ya untuk menambah data !";
+        pilihYaMulaiAbsen = "Klik Ya untuk memulai absensi !";
 
         pilihGambar = "Pilih Gambar";
 
@@ -170,6 +174,10 @@ public class GlobalMessage {
         return validasiHapusSharing;
     }
 
+    public String getValidasiMulaiAbsen() {
+        return validasiMulaiAbsen;
+    }
+
     public String getPilihYaUpdateData() {
         return pilihYaUpdateData;
     }
@@ -180,6 +188,10 @@ public class GlobalMessage {
 
     public String getPilihYaAddData() {
         return pilihYaAddData;
+    }
+
+    public String getPilihYaMulaiAbsen() {
+        return pilihYaMulaiAbsen;
     }
 
     public String getPilihGambar() {
