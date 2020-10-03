@@ -330,6 +330,26 @@ public class DataKelasPertemuanEditActivity extends AppCompatActivity implements
         dataKelasPertemuanEditPresenter.onLoadDataListMuridSemua();
     }
 
+    private void showDialogMulaiAbsen() {
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+                this);
+        alertDialogBuilder.setTitle(globalMessage.getValidasiMulaiAbsen());
+        alertDialogBuilder
+                .setMessage(globalMessage.getPilihYaMulaiAbsen())
+                .setPositiveButton(globalMessage.getYa(), (dialog, id) -> {
+
+                    try {
+
+                    } catch (Exception e) {
+                        globalProcess.onErrorMessage(globalMessage.getErrorMulaiAbsen() + e.toString());
+                    }
+                })
+                .setNegativeButton(globalMessage.getTidak(), (dialog, id) -> dialog.cancel());
+
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
+    }
+
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.btn_pilih) {

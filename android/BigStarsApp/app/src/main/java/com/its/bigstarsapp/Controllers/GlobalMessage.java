@@ -42,6 +42,7 @@ public class GlobalMessage {
     String errorHapusData;
     String errorAddData;
     String errorLoadingGambar;
+    String errorMulaiAbsen;
 
     public GlobalMessage() {
         messageConnectionError = "Tidak Ada Koneksi Ke Server !, Periksa Kembali Koneksi Anda";
@@ -84,6 +85,7 @@ public class GlobalMessage {
         errorHapusData = "Terjadi Kesalahan Hapus : ";
         errorAddData = "Terjadi Kesalahan Menambah Data : ";
         errorLoadingGambar = "Error, pilih gambar lainnya !";
+        errorMulaiAbsen = "Terjadi Kesalahan Absensi : ";
     }
 
     public String getMessageConnectionError() {
@@ -212,5 +214,9 @@ public class GlobalMessage {
 
     public String getErrorLoadingGambar() {
         return errorLoadingGambar;
+    }
+
+    public String getErrorMulaiAbsen() {
+        return errorMulaiAbsen;
     }
 }
