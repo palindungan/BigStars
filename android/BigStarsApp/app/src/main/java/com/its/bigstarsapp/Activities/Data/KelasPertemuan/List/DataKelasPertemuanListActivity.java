@@ -127,7 +127,7 @@ public class DataKelasPertemuanListActivity extends AppCompatActivity implements
 
         adapterDataKelasPertemuanList.setOnItemClickListener((view, position) -> {
             Intent intent;
-            if (statusActivity.equals("listPengajar->view->editKelasPertemuan")) {
+            if (statusActivity.equals("listPengajar->view->editKelasPertemuan") || statusActivity.equals("homePengajar->view->dataKelasPertemuanEdit")) {
                 intent = new Intent(getApplicationContext(), DataKelasPertemuanEditActivity.class);
                 intent.putExtra(DataKelasPertemuanEditActivity.EXTRA_ID_KELAS_PERTEMUAN, dataModelArrayList.get(position).getId_kelas_pertemuan());
                 intent.putExtra(DataKelasPertemuanEditActivity.EXTRA_ID_PENGAJAR, dataModelArrayList.get(position).getId_pengajar());

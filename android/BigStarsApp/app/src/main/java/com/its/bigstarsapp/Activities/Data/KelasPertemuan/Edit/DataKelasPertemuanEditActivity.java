@@ -146,15 +146,24 @@ public class DataKelasPertemuanEditActivity extends AppCompatActivity implements
         statusActivity = sessionManager.getStatusActivity();
         if (statusActivity.equals("listPengajar->view->editKelasPertemuan")) {
             fab.show();
-        }
 
-        fab.setOnClickListener(this);
-        btnPilih.setOnClickListener(this);
-        btnJamMulai.setOnClickListener(this);
-        btnJamBerakhir.setOnClickListener(this);
-        btnUpdate.setOnClickListener(this);
-        ibSharing.setOnClickListener(this);
-        ibDeleteSharing.setOnClickListener(this);
+            fab.setOnClickListener(this);
+            btnPilih.setOnClickListener(this);
+            btnJamMulai.setOnClickListener(this);
+            btnJamBerakhir.setOnClickListener(this);
+            btnUpdate.setOnClickListener(this);
+            ibSharing.setOnClickListener(this);
+            ibDeleteSharing.setOnClickListener(this);
+        } else if (statusActivity.equals("homePengajar->view->dataKelasPertemuanEdit")){
+            btnPilih.setVisibility(View.GONE);
+            btnUpdate.setVisibility(View.GONE);
+            ibSharing.setVisibility(View.GONE);
+            ibDeleteSharing.setVisibility(View.GONE);
+
+            edtHari.setFocusable(false);
+            edtHargaFee.setFocusable(false);
+            edtHargaSpp.setFocusable(false);
+        }
     }
 
     private void inisiasiAwal(String nama_mata_pelajaran, String hari, String jam_mulai, String jam_berakhir, String harga_fee, String harga_spp) {

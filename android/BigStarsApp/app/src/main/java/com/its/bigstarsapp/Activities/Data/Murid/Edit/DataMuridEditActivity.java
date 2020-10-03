@@ -105,7 +105,7 @@ public class DataMuridEditActivity extends AppCompatActivity implements View.OnC
                 "" + foto);
 
         statusActivity = sessionManager.getStatusActivity();
-        if (statusActivity.equals("listPengajar->view->editKelasPertemuan")) {
+        if (statusActivity.equals("listPengajar->view->editKelasPertemuan") || statusActivity.equals("homePengajar->view->dataKelasPertemuanEdit")) {
             btnPilih.setVisibility(View.GONE);
             btnUpdate.setVisibility(View.GONE);
             edtNama.setFocusable(false);
