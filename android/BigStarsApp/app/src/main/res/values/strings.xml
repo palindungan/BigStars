@@ -43,4 +43,8 @@
     <string name="harga_fee">Harga Fee</string>
     <string name="harga_spp">Harga SPP</string>
     <string name="status_tidak_dibagikan">Status : Tidak Dibagikan</string>
+    <string name="lakukan_absensi">Lakukan Absensi</string>
+    <string name="click_untuk_melakukan_absensi">Click Untuk Melakukan Absensi</string>
+    <string name="pertemuan_yang_masih_berjalan">Pertemuan Yang Masih Berjalan</string>
+    <string name="daftar_riwayat_pertemuan">Daftar Riwayat Pertemuan</string>
 </resources>
