@@ -61,4 +61,25 @@ class M_kode extends CI_Model
         }
         return $kd;
     }
+
+    function id_pertemuan()
+    {
+        date_default_timezone_set('Asia/Jakarta');
+        $field = "id_pertemuan";
+        $tabel = "pertemuan";
+        $digit = "4";
+        $ymd = date('ymd');
+
+        $q = $this->db->query("SELECT MAX(RIGHT($field,$digit)) AS kd_max FROM $tabel WHERE SUBSTR($field, 3, 6) = $ymd LIMIT 1");
+        $kd = "";
+        if ($q->num_rows() > 0) {
+            foreach ($q->result() as $k) {
+                $tmp = ((int) $k->kd_max) + 1;
+                $kd = sprintf('%0' . $digit . 's',  $tmp); // 0 berapa kali + $tmp
+            }
+        } else {
+            $kd = "0001";
+        }
+        return 'PT' . date('ymd') . '-' . $kd; // SELECT SUBSTR('PT191218-0001', 3, 6); dari digit ke 3 sampai 6 digit seanjutnya
+    }
 }

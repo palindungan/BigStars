@@ -28,7 +28,7 @@ class Pertemuan extends REST_Controller
             'id_kelas_pertemuan'    => $id_kelas_pertemuan,
         );
 
-        $insert =  $this->M_universal->input_data('mata_pelajaran', $data);
+        $insert =  $this->M_universal->input_data('pertemuan', $data);
         if ($insert) {
 
             // membuat array untuk di transfer ke API
