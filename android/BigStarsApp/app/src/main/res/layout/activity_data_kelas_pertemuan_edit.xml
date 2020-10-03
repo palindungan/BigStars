@@ -219,6 +219,15 @@
                             android:layout_height="wrap_content"
                             android:text="@string/update" />
 
+                        <Button
+                            android:id="@+id/btn_absen"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/button_white"
+                            android:text="@string/klik_untuk_memulai_pertemuan"
+                            android:textColor="@color/red"
+                            android:visibility="gone" />
+
                     </LinearLayout>
 
                 </androidx.cardview.widget.CardView>

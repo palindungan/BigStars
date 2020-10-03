@@ -71,7 +71,7 @@ public class DataKelasPertemuanEditActivity extends AppCompatActivity implements
     RecyclerView recyclerView;
     private SwipeRefreshLayout swipeRefreshLayout;
     EditText edtNamaMataPelajaran, edtHari, edtHargaFee, edtHargaSpp;
-    Button btnPilih, btnJamMulai, btnJamBerakhir, btnUpdate;
+    Button btnPilih, btnJamMulai, btnJamBerakhir, btnUpdate, btnAbsen;
     TextView tvStatusSharing;
     ImageButton ibSharing, ibDeleteSharing;
 
@@ -103,6 +103,8 @@ public class DataKelasPertemuanEditActivity extends AppCompatActivity implements
         tvStatusSharing = findViewById(R.id.tv_status_sharing);
         ibSharing = findViewById(R.id.ib_sharing);
         ibDeleteSharing = findViewById(R.id.ib_delete_sharing);
+
+        btnUpdate = findViewById(R.id.btn_update);
 
         fab = findViewById(R.id.fab);
         swipeRefreshLayout = findViewById(R.id.swipe_refresh_layout);
@@ -154,7 +156,7 @@ public class DataKelasPertemuanEditActivity extends AppCompatActivity implements
             btnUpdate.setOnClickListener(this);
             ibSharing.setOnClickListener(this);
             ibDeleteSharing.setOnClickListener(this);
-        } else if (statusActivity.equals("homePengajar->view->dataKelasPertemuanEdit")){
+        } else if (statusActivity.equals("homePengajar->view->dataKelasPertemuanEdit")) {
             btnPilih.setVisibility(View.GONE);
             btnUpdate.setVisibility(View.GONE);
             ibSharing.setVisibility(View.GONE);
@@ -163,6 +165,9 @@ public class DataKelasPertemuanEditActivity extends AppCompatActivity implements
             edtHari.setFocusable(false);
             edtHargaFee.setFocusable(false);
             edtHargaSpp.setFocusable(false);
+
+            btnAbsen.setVisibility(View.VISIBLE);
+            btnAbsen.setOnClickListener(this);
         }
     }
 
@@ -341,6 +346,8 @@ public class DataKelasPertemuanEditActivity extends AppCompatActivity implements
             showDialogDeleteSharing();
         } else if (view.getId() == R.id.fab) {
             showDialogAddMurid();
+        } else if (view.getId() == R.id.btn_absen) {
+            // 
         }
     }
 
