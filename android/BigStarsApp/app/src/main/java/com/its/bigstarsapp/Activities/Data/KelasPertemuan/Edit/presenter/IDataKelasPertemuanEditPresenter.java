@@ -28,4 +28,6 @@ public interface IDataKelasPertemuanEditPresenter {
     void onLoadDataListMurid(String id_kelas_pertemuan);
 
     void onDeleteMurid(String id_kelas_pertemuan_detail, String id_kelas_pertemuan);
+
+    void onMulaiAbsen(String id_pengajar, String id_kelas_pertemuan);
 }

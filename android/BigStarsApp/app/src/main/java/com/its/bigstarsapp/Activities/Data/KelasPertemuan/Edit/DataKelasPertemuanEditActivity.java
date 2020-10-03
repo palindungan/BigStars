@@ -40,6 +40,7 @@ import com.its.bigstarsapp.R;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
 
 public class DataKelasPertemuanEditActivity extends AppCompatActivity implements View.OnClickListener, IDataKelasPertemuanEditView {
 
@@ -338,8 +339,13 @@ public class DataKelasPertemuanEditActivity extends AppCompatActivity implements
                 .setMessage(globalMessage.getPilihYaMulaiAbsen())
                 .setPositiveButton(globalMessage.getYa(), (dialog, id) -> {
 
-                    try {
+                    HashMap<String, String> user = sessionManager.getDataUser();
+                    String id_user = user.get(sessionManager.ID_USER);
 
+                    try {
+                        dataKelasPertemuanEditPresenter.onMulaiAbsen(
+                                "" + id_user,
+                                "" + id_kelas_pertemuan);
                     } catch (Exception e) {
                         globalProcess.onErrorMessage(globalMessage.getErrorMulaiAbsen() + e.toString());
                     }
@@ -367,7 +373,7 @@ public class DataKelasPertemuanEditActivity extends AppCompatActivity implements
         } else if (view.getId() == R.id.fab) {
             showDialogAddMurid();
         } else if (view.getId() == R.id.btn_absen) {
-            //
+            showDialogMulaiAbsen();
         }
     }
 
