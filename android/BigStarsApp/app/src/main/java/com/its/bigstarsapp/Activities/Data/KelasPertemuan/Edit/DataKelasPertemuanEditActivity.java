@@ -104,7 +104,7 @@ public class DataKelasPertemuanEditActivity extends AppCompatActivity implements
         ibSharing = findViewById(R.id.ib_sharing);
         ibDeleteSharing = findViewById(R.id.ib_delete_sharing);
 
-        btnUpdate = findViewById(R.id.btn_update);
+        btnAbsen = findViewById(R.id.btn_absen);
 
         fab = findViewById(R.id.fab);
         swipeRefreshLayout = findViewById(R.id.swipe_refresh_layout);
@@ -347,7 +347,7 @@ public class DataKelasPertemuanEditActivity extends AppCompatActivity implements
         } else if (view.getId() == R.id.fab) {
             showDialogAddMurid();
         } else if (view.getId() == R.id.btn_absen) {
-            // 
+            //
         }
     }
 
