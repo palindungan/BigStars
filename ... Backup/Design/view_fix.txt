@@ -30,3 +30,29 @@ FROM
     murid m USING(id_murid) JOIN
     wali_murid wm USING (id_wali_murid)
 ORDER BY kpd.id_kelas_pertemuan_detail ASC;
+
+CREATE VIEW view_pertemuan_detail AS
+SELECT 
+    pd.id_pertemuan_detail,
+    p.id_pertemuan,
+    m.id_murid, m.nama AS nama_siswa, m.foto, 
+    wm.id_wali_murid, wm.nama AS nama_wali_murid, wm.alamat, wm.no_hp
+FROM 
+    pertemuan_detail pd JOIN 
+    pertemuan p USING(id_pertemuan) JOIN
+    murid m USING(id_murid) JOIN
+    wali_murid wm USING(id_wali_murid)
+ORDER BY pd.id_pertemuan_detail ASC;
+
+CREATE VIEW view_pertemuan AS
+SELECT 
+    p.id_pertemuan, p.hari, p.waktu_mulai, p.waktu_berakhir, p.lokasi_mulai_la, p.lokasi_mulai_lo, p.lokasi_berakhir_la, p.lokasi_berakhir_lo, p.deskripsi, p.harga_fee, p.harga_spp, p.status_fee, p.status_spp, p.status_konfirmasi, p.status_pertemuan,
+    pe.id_pengajar, pe.nama AS nama_pengajar,
+    kp.id_kelas_pertemuan, 
+    mp.id_mata_pelajaran, mp.nama AS nama_mata_pelajaran
+FROM 
+    pertemuan p JOIN 
+    pengajar pe USING(id_pengajar) JOIN
+    kelas_pertemuan kp USING(id_kelas_pertemuan) JOIN
+    mata_pelajaran mp USING(id_mata_pelajaran)
+ORDER BY p.waktu_mulai DESC;
