@@ -24,6 +24,7 @@
         android:usesCleartextTraffic="true"
         tools:ignore="AllowBackup"
         tools:targetApi="m">
+        <activity android:name=".Activities.Data.Pertemuan.List.DataPertemuanListActivity"></activity>
         <activity android:name=".Activities.Data.KelasPertemuan.Add.DataKelasPertemuanAddActivity" />
         <activity android:name=".Activities.Data.KelasPertemuan.Edit.DataKelasPertemuanEditActivity" />
         <activity android:name=".Activities.Data.KelasPertemuan.List.DataKelasPertemuanListActivity" />
