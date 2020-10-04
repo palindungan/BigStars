@@ -1,4 +1,4 @@
 package com.its.bigstarsapp.Activities.Data.Pertemuan.List.presenter;
 
-public class DataPertemuanListPresenter {
+public class DataPertemuanListPresenter implements IDataPertemuanListPresenter {
 }
