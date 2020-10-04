@@ -46,9 +46,9 @@ ORDER BY pd.id_pertemuan_detail ASC;
 
 CREATE VIEW view_pertemuan AS
 SELECT 
-    p.id_pertemuan, p.hari, p.waktu_mulai, p.waktu_berakhir, p.lokasi_mulai_la, p.lokasi_mulai_lo, p.lokasi_berakhir_la, p.lokasi_berakhir_lo, p.deskripsi, p.harga_fee, p.harga_spp, p.status_fee, p.status_spp, p.status_konfirmasi, p.status_pertemuan,
+    p.id_pertemuan, p.hari AS hari_pertemuan, p.waktu_mulai, p.waktu_berakhir, p.lokasi_mulai_la, p.lokasi_mulai_lo, p.lokasi_berakhir_la, p.lokasi_berakhir_lo, p.deskripsi, p.harga_fee, p.harga_spp, p.status_fee, p.status_spp, p.status_konfirmasi, p.status_pertemuan,
     pe.id_pengajar, pe.nama AS nama_pengajar,
-    kp.id_kelas_pertemuan, 
+    kp.id_kelas_pertemuan, kp.hari AS hari_kelas_pertemuan, kp.jam_mulai, kp.jam_berakhir,
     mp.id_mata_pelajaran, mp.nama AS nama_mata_pelajaran
 FROM 
     pertemuan p JOIN 
