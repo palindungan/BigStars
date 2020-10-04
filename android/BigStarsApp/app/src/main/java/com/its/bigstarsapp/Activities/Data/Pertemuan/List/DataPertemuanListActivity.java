@@ -6,7 +6,10 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.its.bigstarsapp.Activities.Data.Pertemuan.List.view.IDataPertemuanListView;
+import com.its.bigstarsapp.Models.Pertemuan;
 import com.its.bigstarsapp.R;
+
+import java.util.ArrayList;
 
 public class DataPertemuanListActivity extends AppCompatActivity implements View.OnClickListener, IDataPertemuanListView {
 
@@ -18,6 +21,11 @@ public class DataPertemuanListActivity extends AppCompatActivity implements View
 
     @Override
     public void onClick(View view) {
+
+    }
+
+    @Override
+    public void onSetupListView(ArrayList<Pertemuan> dataModelArrayList) {
 
     }
 }
