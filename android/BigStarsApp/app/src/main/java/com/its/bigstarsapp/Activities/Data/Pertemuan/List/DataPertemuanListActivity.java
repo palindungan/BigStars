@@ -95,12 +95,11 @@ public class DataPertemuanListActivity extends AppCompatActivity implements View
         recyclerView.setNestedScrollingEnabled(true);
         adapterDataPertemuanList.notifyDataSetChanged();
 
-//        adapterDataPertemuanList.setOnItemClickListener((view, position) -> {
-//            Intent intent;
-//            if (statusActivity.equals("")) {
-//
-//            }
-//        });
+        adapterDataPertemuanList.setOnItemClickListener((view, position) -> {
+            if (statusActivity.equals("")) {
+                
+            }
+        });
     }
 
     @Override
