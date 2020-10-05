@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.its.bigstarsapp.Activities.Data.KelasPertemuan.List.DataKelasPertemuanListActivity;
+import com.its.bigstarsapp.Activities.Data.Pertemuan.List.DataPertemuanListActivity;
 import com.its.bigstarsapp.Controllers.GlobalProcess;
 import com.its.bigstarsapp.Controllers.SessionManager;
 import com.its.bigstarsapp.R;
@@ -52,9 +53,15 @@ public class HomePengajarActivity extends AppCompatActivity implements View.OnCl
             intent.putExtra(DataKelasPertemuanListActivity.EXTRA_ID_PENGAJAR, id_pengajar);
             startActivity(intent);
         } else if (view.getId() == R.id.link_pengajar_kelas_pertemuan_aktif) {
-            //
+            sessionManager.setStatusActivity("homePengajar->view->dataPertemuanAktif");
+            intent = new Intent(getApplicationContext(), DataPertemuanListActivity.class);
+            intent.putExtra(DataPertemuanListActivity.EXTRA_ID_PENGAJAR, id_pengajar);
+            startActivity(intent);
         } else if (view.getId() == R.id.link_pengajar_riwayat_absen) {
-            //
+            sessionManager.setStatusActivity("homePengajar->view->dataPertemuanHistory");
+            intent = new Intent(getApplicationContext(), DataPertemuanListActivity.class);
+            intent.putExtra(DataPertemuanListActivity.EXTRA_ID_PENGAJAR, id_pengajar);
+            startActivity(intent);
         }
     }
 }

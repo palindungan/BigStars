@@ -33,6 +33,8 @@ public class DataPertemuanListPresenter implements IDataPertemuanListPresenter {
 
     ArrayList<Pertemuan> dataModelArrayList;
 
+    String statusActivity;
+
     public DataPertemuanListPresenter(Context context, IDataPertemuanListView dataPertemuanListView) {
         this.context = context;
         this.dataPertemuanListView = dataPertemuanListView;
@@ -41,12 +43,19 @@ public class DataPertemuanListPresenter implements IDataPertemuanListPresenter {
         globalProcess = new GlobalProcess(context);
         globalVariable = new GlobalVariable();
         sessionManager = new SessionManager(context);
+
+        statusActivity = sessionManager.getStatusActivity();
     }
 
     @Override
     public void onLoadDataList(String id_pengajar) {
         String base_url = globalVariable.getUrlData();
-        String URL_DATA = base_url + "data/pertemuan/list_data"; // url http request
+        String URL_DATA = "";
+        if (statusActivity.equals("homePengajar->view->dataPertemuanAktif")) {
+            URL_DATA = base_url + "absensi/pertemuan/list_data_aktif"; // url http request
+        } else if (statusActivity.equals("homePengajar->view->dataPertemuanHistory")){
+            URL_DATA = base_url + "absensi/pertemuan/list_data_history"; // url http request
+        }
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_DATA,
                 response -> {

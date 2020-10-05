@@ -70,13 +70,13 @@ public class AdapterDataPertemuanList extends RecyclerView.Adapter<AdapterDataPe
         String status_spp = dataModelArrayList.get(position).getStatus_spp();
         String status_konfirmasi = dataModelArrayList.get(position).getStatus_konfirmasi();
         String status_pertemuan = dataModelArrayList.get(position).getStatus_pertemuan();
-        String nama_pengajar = dataModelArrayList.get(position).getId_pertemuan();
-        String id_kelas_pertemuan = dataModelArrayList.get(position).getId_pertemuan();
-        String hari_kelas_pertemuan = dataModelArrayList.get(position).getId_pertemuan();
-        String jam_mulai = dataModelArrayList.get(position).getId_pertemuan();
-        String jam_berakhir = dataModelArrayList.get(position).getId_pertemuan();
-        String id_mata_pelajaran = dataModelArrayList.get(position).getId_pertemuan();
-        String nama_mata_pelajaran = dataModelArrayList.get(position).getId_pertemuan();
+        String nama_pengajar = dataModelArrayList.get(position).getNama_pengajar();
+        String id_kelas_pertemuan = dataModelArrayList.get(position).getId_kelas_pertemuan();
+        String hari_kelas_pertemuan = dataModelArrayList.get(position).getHari_kelas_pertemuan();
+        String jam_mulai = dataModelArrayList.get(position).getJam_mulai();
+        String jam_berakhir = dataModelArrayList.get(position).getJam_berakhir();
+        String id_mata_pelajaran = dataModelArrayList.get(position).getId_mata_pelajaran();
+        String nama_mata_pelajaran = dataModelArrayList.get(position).getNama_mata_pelajaran();
 
         String setJadwalKelasPertemuan = "(" + hari_kelas_pertemuan + ", " + jam_mulai + " - " + jam_berakhir + ")";
         String setWaktuMulai = "Dimulai : " + hari_pertemuan + ", " + waktu_mulai;
@@ -84,6 +84,7 @@ public class AdapterDataPertemuanList extends RecyclerView.Adapter<AdapterDataPe
         String setStatusPertemuan = "Status Pertemuan : " + status_pertemuan;
         String setStatusFee = "FEE : " + status_fee;
         String setStatusSpp = "SPP : " + status_spp;
+        String setStatusKonfirmasi = "Konfirmasi : " + status_konfirmasi;
 
         holder.tvNamaMataPelajaran.setText(nama_mata_pelajaran);
         holder.tvJadwalKelasPertemuan.setText(setJadwalKelasPertemuan);
@@ -92,7 +93,7 @@ public class AdapterDataPertemuanList extends RecyclerView.Adapter<AdapterDataPe
         holder.tvStatusPertemuan.setText(setStatusPertemuan);
         holder.tvStatusFee.setText(setStatusFee);
         holder.tvStatusSpp.setText(setStatusSpp);
-        holder.tvStatusKonfirmasi.setText("");
+        holder.tvStatusKonfirmasi.setText(setStatusKonfirmasi);
 
         if (waktu_mulai.equals(waktu_berakhir)) {
             holder.tvWaktuBerakhir.setVisibility(View.GONE);
