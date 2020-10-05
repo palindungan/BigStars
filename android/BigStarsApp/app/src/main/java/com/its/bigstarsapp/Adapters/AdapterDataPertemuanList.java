@@ -55,39 +55,43 @@ public class AdapterDataPertemuanList extends RecyclerView.Adapter<AdapterDataPe
     @Override
     public void onBindViewHolder(@NonNull AdapterDataPertemuanListViewHolder holder, int position) {
 
-        String id_pertemuan = dataobj.getString("id_pertemuan");
-        String hari_pertemuan = dataobj.getString("hari_pertemuan");
-        String waktu_mulai = dataobj.getString("waktu_mulai");
-        String waktu_berakhir = dataobj.getString("waktu_berakhir");
-        String lokasi_mulai_la = dataobj.getString("lokasi_mulai_la");
-        String lokasi_mulai_lo = dataobj.getString("lokasi_mulai_lo");
-        String lokasi_berakhir_la = dataobj.getString("lokasi_berakhir_la");
-        String lokasi_berakhir_lo = dataobj.getString("lokasi_berakhir_lo");
-        String deskripsi = dataobj.getString("deskripsi");
-        String harga_fee = dataobj.getString("harga_fee");
-        String harga_spp = dataobj.getString("harga_spp");
-        String status_fee = dataobj.getString("status_fee");
-        String status_spp = dataobj.getString("status_spp");
-        String status_konfirmasi = dataobj.getString("status_konfirmasi");
-        String status_pertemuan = dataobj.getString("status_pertemuan");
+        String id_pertemuan = dataModelArrayList.get(position).getId_pertemuan();
+        String hari_pertemuan = dataModelArrayList.get(position).getHari_pertemuan();
+        String waktu_mulai = dataModelArrayList.get(position).getWaktu_mulai();
+        String waktu_berakhir = dataModelArrayList.get(position).getWaktu_berakhir();
+        String lokasi_mulai_la = dataModelArrayList.get(position).getLokasi_mulai_la();
+        String lokasi_mulai_lo = dataModelArrayList.get(position).getLokasi_mulai_lo();
+        String lokasi_berakhir_la = dataModelArrayList.get(position).getLokasi_berakhir_la();
+        String lokasi_berakhir_lo = dataModelArrayList.get(position).getLokasi_berakhir_lo();
+        String deskripsi = dataModelArrayList.get(position).getDeskripsi();
+        String harga_fee = dataModelArrayList.get(position).getHarga_fee();
+        String harga_spp = dataModelArrayList.get(position).getHarga_spp();
+        String status_fee = dataModelArrayList.get(position).getStatus_fee();
+        String status_spp = dataModelArrayList.get(position).getStatus_spp();
+        String status_konfirmasi = dataModelArrayList.get(position).getStatus_konfirmasi();
+        String status_pertemuan = dataModelArrayList.get(position).getStatus_pertemuan();
+        String nama_pengajar = dataModelArrayList.get(position).getId_pertemuan();
+        String id_kelas_pertemuan = dataModelArrayList.get(position).getId_pertemuan();
+        String hari_kelas_pertemuan = dataModelArrayList.get(position).getId_pertemuan();
+        String jam_mulai = dataModelArrayList.get(position).getId_pertemuan();
+        String jam_berakhir = dataModelArrayList.get(position).getId_pertemuan();
+        String id_mata_pelajaran = dataModelArrayList.get(position).getId_pertemuan();
+        String nama_mata_pelajaran = dataModelArrayList.get(position).getId_pertemuan();
 
-        String nama_pengajar = dataobj.getString("nama_pengajar");
+        String setJadwalKelasPertemuan = "(" + hari_kelas_pertemuan + ", " + jam_mulai + " - " + jam_berakhir + ")";
+        String setWaktuMulai = "Dimulai : " + hari_pertemuan + ", " + waktu_mulai;
+        String setWaktuBerakhir = "Berakhir : " + hari_pertemuan + ", " + waktu_berakhir;
+        String setStatusPertemuan = "Status Pertemuan : " + status_pertemuan;
+        String setStatusFee = "FEE : " + status_fee;
+        String setStatusSpp = "SPP : " + status_spp;
 
-        String id_kelas_pertemuan = dataobj.getString("id_kelas_pertemuan");
-        String hari_kelas_pertemuan = dataobj.getString("hari_kelas_pertemuan");
-        String jam_mulai = dataobj.getString("jam_mulai");
-        String jam_berakhir = dataobj.getString("jam_berakhir");
-
-        String id_mata_pelajaran = dataobj.getString("id_mata_pelajaran");
-        String nama_mata_pelajaran = dataobj.getString("nama_mata_pelajaran");
-
-        holder.tvNamaMataPelajaran.setText("");
-        holder.tvJadwalKelasPertemuan.setText("");
-        holder.tvWaktuMulai.setText("");
-        holder.tvWaktuBerakhir.setText("");
-        holder.tvStatusPertemuan.setText("");
-        holder.tvStatusFee.setText("");
-        holder.tvStatusSpp.setText("");
+        holder.tvNamaMataPelajaran.setText(nama_mata_pelajaran);
+        holder.tvJadwalKelasPertemuan.setText(setJadwalKelasPertemuan);
+        holder.tvWaktuMulai.setText(setWaktuMulai);
+        holder.tvWaktuBerakhir.setText(setWaktuBerakhir);
+        holder.tvStatusPertemuan.setText(setStatusPertemuan);
+        holder.tvStatusFee.setText(setStatusFee);
+        holder.tvStatusSpp.setText(setStatusSpp);
         holder.tvStatusKonfirmasi.setText("");
 
         if (waktu_mulai.equals(waktu_berakhir)) {
