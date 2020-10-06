@@ -48,4 +48,13 @@
     <string name="pertemuan_yang_masih_berjalan">Pertemuan Yang Masih Berjalan</string>
     <string name="daftar_riwayat_pertemuan">Daftar Riwayat Pertemuan</string>
     <string name="klik_untuk_memulai_pertemuan">Klik Untuk Memulai Pertemuan !!</string>
+    <string name="waktu_mulai">Waktu Mulai</string>
+    <string name="waktu_berakhir">Waktu Berakhir</string>
+    <string name="pertemuan_belum_selesai">Pertemuan : Belum Selesai</string>
+    <string name="konfirmasi_invalid">Konfirmasi : Invalid</string>
+    <string name="batal">Batal</string>
+    <string name="valid">Valid</string>
+    <string name="invalid">Invalid</string>
+    <string name="refresh_peta">Refresh Peta</string>
+    <string name="next">Next</string>
 </resources>

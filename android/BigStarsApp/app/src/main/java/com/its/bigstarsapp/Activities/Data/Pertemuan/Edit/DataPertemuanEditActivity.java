@@ -84,7 +84,32 @@ public class DataPertemuanEditActivity extends AppCompatActivity implements View
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_data_pertemuan_edit);
 
-        
+        id_pertemuan = getIntent().getStringExtra(EXTRA_ID_PERTEMUAN);
+        hari_pertemuan = getIntent().getStringExtra(EXTRA_HARI_PERTEMUAN);
+        waktu_mulai = getIntent().getStringExtra(EXTRA_WAKTU_MULAI);
+        waktu_berakhir = getIntent().getStringExtra(EXTRA_WAKTU_BERAKHIR);
+        lokasi_mulai_la = getIntent().getStringExtra(EXTRA_LOKASI_MULAI_LA);
+        lokasi_mulai_lo = getIntent().getStringExtra(EXTRA_LOKASI_MULAI_LO);
+        lokasi_berakhir_la = getIntent().getStringExtra(EXTRA_LOKASI_BERAKHIR_LA);
+        lokasi_berakhir_lo = getIntent().getStringExtra(EXTRA_LOKASI_BERAKHIR_LO);
+        deskripsi = getIntent().getStringExtra(EXTRA_DESKRIPSI);
+        harga_fee = getIntent().getStringExtra(EXTRA_HARGA_FEE);
+        harga_spp = getIntent().getStringExtra(EXTRA_HARGA_SPP);
+        status_fee = getIntent().getStringExtra(EXTRA_STATUS_FEE);
+        status_spp = getIntent().getStringExtra(EXTRA_STATUS_SPP);
+        status_konfirmasi = getIntent().getStringExtra(EXTRA_STATUS_KONFIRMASI);
+        status_pertemuan = getIntent().getStringExtra(EXTRA_STATUS_PERTEMUAN);
+
+        id_pengajar = getIntent().getStringExtra(EXTRA_ID_PENGAJAR);
+        nama_pengajar = getIntent().getStringExtra(EXTRA_NAMA_PENGAJAR);
+
+        id_kelas_pertemuan = getIntent().getStringExtra(EXTRA_ID_KELAS_PERTEMUAN);
+        hari_kelas_pertemuan = getIntent().getStringExtra(EXTRA_HARI_KELAS_PERTEMUAN);
+        jam_mulai = getIntent().getStringExtra(EXTRA_JAM_MULAI);
+        jam_berakhir = getIntent().getStringExtra(EXTRA_JAM_BERAKHIR);
+
+        id_mata_pelajaran = getIntent().getStringExtra(EXTRA_ID_MATA_PELAJARAN);
+        nama_mata_pelajaran = getIntent().getStringExtra(EXTRA_NAMA_MATA_PELAJARAN);
 
         dataPertemuanEditPresenter = new DataPertemuanEditPresenter(this, this);
 
@@ -107,7 +132,25 @@ public class DataPertemuanEditActivity extends AppCompatActivity implements View
         btnRefresh = findViewById(R.id.btn_refresh);
         btnNext = findViewById(R.id.btn_next);
 
+        inisiasiAwal();
+    }
 
+    private void inisiasiAwal() {
+        String setNamaMataPelajaran = nama_mata_pelajaran;
+        String setWaktuMulai = waktu_mulai;
+        String setWaktuBerakhir = waktu_berakhir;
+        String setHargaFee = harga_fee;
+        String setHargaSpp = harga_spp;
+        String setStatusPertemuan = "Pertemuan : " + status_pertemuan;
+        String setStatusKonfirmasi = "Konfirmasi : " + status_konfirmasi;
+
+        edtNamaMataPelajaran.setText(setNamaMataPelajaran);
+        edtWaktuMulai.setText(setWaktuMulai);
+        edtWaktuBerakhir.setText(setWaktuBerakhir);
+        edtHargaFee.setText(setHargaFee);
+        edtHargaSpp.setText(setHargaSpp);
+        tvStatusPertemuan.setText(setStatusPertemuan);
+        tvStatusKonfirmasi.setText(setStatusKonfirmasi);
     }
 
     @Override

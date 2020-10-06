@@ -76,7 +76,7 @@
                             android:autofillHints=""
                             android:backgroundTint="@color/white"
                             android:focusable="false"
-                            android:hint="Waktu Mulai"
+                            android:hint="@string/waktu_mulai"
                             android:inputType="text"
                             android:textColor="@color/white"
                             tools:targetApi="lollipop" />
@@ -95,7 +95,7 @@
                             android:autofillHints=""
                             android:backgroundTint="@color/white"
                             android:focusable="false"
-                            android:hint="Waktu Berakhir"
+                            android:hint="@string/waktu_berakhir"
                             android:inputType="text"
                             android:textColor="@color/white"
                             tools:targetApi="lollipop" />
@@ -150,7 +150,7 @@
                             android:id="@+id/tv_status_pertemuan"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Pertemuan : Belum Selesai"
+                            android:text="@string/pertemuan_belum_selesai"
                             android:textColor="@color/white"
                             android:textSize="15sp" />
 
@@ -158,7 +158,7 @@
                             android:id="@+id/tv_status_konfirmasi"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Konfirmasi : Invalid"
+                            android:text="@string/konfirmasi_invalid"
                             android:textColor="@color/white"
                             android:textSize="15sp" />
 
@@ -168,7 +168,7 @@
                         android:id="@+id/btn_batal"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Batal" />
+                        android:text="@string/batal" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -180,14 +180,16 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="Valid" />
+                            android:text="@string/valid"
+                            tools:ignore="ButtonStyle" />
 
                         <Button
                             android:id="@+id/btn_invalid"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="Invalid" />
+                            android:text="@string/invalid"
+                            tools:ignore="ButtonStyle" />
 
                     </LinearLayout>
 
@@ -206,13 +208,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="5sp"
-                    android:text="Refresh Peta" />
+                    android:text="@string/refresh_peta" />
 
                 <fragment
                     android:id="@+id/map_fragment"
                     class="com.google.android.gms.maps.SupportMapFragment"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="250dp" />
 
             </LinearLayout>
 
@@ -226,6 +228,6 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_margin="10sp"
-        android:text="Next" />
+        android:text="@string/next" />
 
 </RelativeLayout>

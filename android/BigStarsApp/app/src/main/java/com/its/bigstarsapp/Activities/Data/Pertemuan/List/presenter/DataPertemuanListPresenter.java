@@ -53,7 +53,7 @@ public class DataPertemuanListPresenter implements IDataPertemuanListPresenter {
         String URL_DATA = "";
         if (statusActivity.equals("homePengajar->view->dataPertemuanAktif")) {
             URL_DATA = base_url + "absensi/pertemuan/list_data_aktif"; // url http request
-        } else if (statusActivity.equals("homePengajar->view->dataPertemuanHistory")){
+        } else if (statusActivity.equals("homePengajar->view->dataPertemuanHistory")) {
             URL_DATA = base_url + "absensi/pertemuan/list_data_history"; // url http request
         }
 
@@ -117,6 +117,7 @@ public class DataPertemuanListPresenter implements IDataPertemuanListPresenter {
                                 playerModel.setStatus_konfirmasi(status_konfirmasi);
                                 playerModel.setStatus_pertemuan(status_pertemuan);
 
+                                playerModel.setId_pengajar(id_pengajar);
                                 playerModel.setNama_pengajar(nama_pengajar);
 
                                 playerModel.setId_kelas_pertemuan(id_kelas_pertemuan);
