@@ -68,10 +68,10 @@ public class DataPertemuanEditActivity extends AppCompatActivity implements View
     SessionManager sessionManager;
 
     Toolbar toolbar;
-    EditText edt_nama_mata_pelajaran, edt_waktu_mulai, edt_waktu_berakhir, edt_harga_fee, edt_harga_spp;
-    TextView tv_status_pertemuan, tv_status_konfirmasi;
-    Button btn_batal, btn_valid, btn_invalid, btn_refresh, btn_next;
-    Fragment map_fragment;
+    EditText edtNamaMataPelajaran, edtWaktuMulai, edtWaktuBerakhir, edtHargaFee, edtHargaSpp;
+    TextView tvStatusPertemuan, tvStatusKonfirmasi;
+    Button btnBatal, btnValid, btnInvalid, btnRefresh, btnNext;
+    Fragment mapFragment;
 
     String statusActivity;
 
