@@ -272,9 +272,6 @@ public class DataPertemuanEditActivity extends AppCompatActivity implements View
         // [END_EXCLUDE]
     }
 
-    /**
-     * Gets the current location of the device, and positions the map's camera.
-     */
     // [START maps_current_place_get_device_location]
     private void getDeviceLocation() {
         /*
@@ -311,9 +308,6 @@ public class DataPertemuanEditActivity extends AppCompatActivity implements View
     }
     // [END maps_current_place_get_device_location]
 
-    /**
-     * Prompts the user for permission to use the device location.
-     */
     // [START maps_current_place_location_permission]
     private void getLocationPermission() {
         /*
@@ -333,10 +327,6 @@ public class DataPertemuanEditActivity extends AppCompatActivity implements View
     }
     // [END maps_current_place_location_permission]
 
-    /**
-     * Prompts the user to select the current place from a list of likely places, and shows the
-     * current place on the map - provided the user has granted location permission.
-     */
     // [START maps_current_place_show_current_place]
     private void showCurrentPlace() {
         if (map == null) {
@@ -411,9 +401,6 @@ public class DataPertemuanEditActivity extends AppCompatActivity implements View
     }
     // [END maps_current_place_show_current_place]
 
-    /**
-     * Displays a form allowing the user to select a place from a list of likely places.
-     */
     // [START maps_current_place_open_places_dialog]
     private void openPlacesDialog() {
         // Ask the user to choose the place where they are now.
@@ -448,9 +435,6 @@ public class DataPertemuanEditActivity extends AppCompatActivity implements View
     }
     // [END maps_current_place_open_places_dialog]
 
-    /**
-     * Updates the map's UI settings based on whether the user has granted location permission.
-     */
     // [START maps_current_place_update_location_ui]
     private void updateLocationUI() {
         if (map == null) {
@@ -482,10 +466,6 @@ public class DataPertemuanEditActivity extends AppCompatActivity implements View
         onBackPressed();
     }
 
-    /**
-     * Manipulates the map when it's available.
-     * This callback is triggered when the map is ready to be used.
-     */
     // [START maps_current_place_on_map_ready]
     @Override
     public void onMapReady(GoogleMap map) {
@@ -532,52 +512,14 @@ public class DataPertemuanEditActivity extends AppCompatActivity implements View
     }
     // [END maps_current_place_on_map_ready]
 
-    /**
-     * Sets up the options menu.
-     *
-     * @param menu The options menu.
-     * @return Boolean.
-     */
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.current_place_menu, menu);
-        return true;
-    }
-
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
             onBackPressed();
-        } else if (item.getItemId() == R.id.option_get_place) {
-            showCurrentPlace();
         }
         return super.onOptionsItemSelected(item);
     }
 
-    /**
-     * Saves the state of the map when the activity is paused.
-     */
-    // [START maps_current_place_on_save_instance_state]
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        if (map != null) {
-            outState.putParcelable(KEY_CAMERA_POSITION, map.getCameraPosition());
-            outState.putParcelable(KEY_LOCATION, lastKnownLocation);
-        }
-        super.onSaveInstanceState(outState);
-    }
-    // [END maps_current_place_on_save_instance_state]
-
-    /**
-     * Sets up the options menu.
-     * @param menu The options menu.
-     * @return Boolean.
-     */
-
-    /**
-     * Handles the result of the request for location permissions.
-     */
     // [START maps_current_place_on_request_permissions_result]
     @Override
     public void onRequestPermissionsResult(int requestCode,
@@ -596,4 +538,15 @@ public class DataPertemuanEditActivity extends AppCompatActivity implements View
         updateLocationUI();
     }
     // [END maps_current_place_on_request_permissions_result]
+
+    // [START maps_current_place_on_save_instance_state]
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        if (map != null) {
+            outState.putParcelable(KEY_CAMERA_POSITION, map.getCameraPosition());
+            outState.putParcelable(KEY_LOCATION, lastKnownLocation);
+        }
+        super.onSaveInstanceState(outState);
+    }
+    // [END maps_current_place_on_save_instance_state]
 }
