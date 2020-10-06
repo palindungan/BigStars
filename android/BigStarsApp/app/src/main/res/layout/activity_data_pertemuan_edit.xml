@@ -204,11 +204,11 @@
                 android:padding="8sp">
 
                 <Button
-                    android:id="@+id/btn_refresh"
+                    android:id="@+id/btn_get_lokasi"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="5sp"
-                    android:text="@string/refresh_peta" />
+                    android:text="@string/ambil_lokasi_sekarang" />
 
                 <fragment
                     android:id="@+id/map_fragment"

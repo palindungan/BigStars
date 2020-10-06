@@ -72,7 +72,7 @@ public class DataPertemuanEditActivity extends AppCompatActivity implements View
     Toolbar toolbar;
     EditText edtNamaMataPelajaran, edtWaktuMulai, edtWaktuBerakhir, edtHargaFee, edtHargaSpp;
     TextView tvStatusPertemuan, tvStatusKonfirmasi;
-    Button btnBatal, btnValid, btnInvalid, btnRefresh, btnNext;
+    Button btnBatal, btnValid, btnInvalid, btnGetLokasi, btnNext;
     Fragment mapFragment;
 
     String statusActivity;
@@ -129,7 +129,7 @@ public class DataPertemuanEditActivity extends AppCompatActivity implements View
         btnBatal = findViewById(R.id.btn_batal);
         btnValid = findViewById(R.id.btn_valid);
         btnInvalid = findViewById(R.id.btn_invalid);
-        btnRefresh = findViewById(R.id.btn_refresh);
+        btnGetLokasi = findViewById(R.id.btn_get_lokasi);
         btnNext = findViewById(R.id.btn_next);
 
         inisiasiAwal();

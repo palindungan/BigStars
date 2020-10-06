@@ -55,6 +55,6 @@
     <string name="batal">Batal</string>
     <string name="valid">Valid</string>
     <string name="invalid">Invalid</string>
-    <string name="refresh_peta">Refresh Peta</string>
     <string name="next">Next</string>
+    <string name="ambil_lokasi_sekarang">Ambil Lokasi Sekarang</string>
 </resources>
