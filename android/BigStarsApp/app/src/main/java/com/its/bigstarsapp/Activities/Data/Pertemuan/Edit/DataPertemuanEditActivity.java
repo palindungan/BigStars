@@ -1,11 +1,27 @@
 package com.its.bigstarsapp.Activities.Data.Pertemuan.Edit;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.app.Dialog;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.TextView;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.its.bigstarsapp.Activities.Data.KelasPertemuan.Edit.presenter.IDataKelasPertemuanEditPresenter;
+import com.its.bigstarsapp.Activities.Data.Pertemuan.Edit.presenter.IDataPertemuanEditPresenter;
 import com.its.bigstarsapp.Activities.Data.Pertemuan.Edit.view.IDataPertemuanEditView;
+import com.its.bigstarsapp.Controllers.GlobalMessage;
+import com.its.bigstarsapp.Controllers.GlobalProcess;
+import com.its.bigstarsapp.Controllers.GlobalVariable;
+import com.its.bigstarsapp.Controllers.SessionManager;
 import com.its.bigstarsapp.R;
 
 public class DataPertemuanEditActivity extends AppCompatActivity implements View.OnClickListener, IDataPertemuanEditView {
@@ -36,6 +52,30 @@ public class DataPertemuanEditActivity extends AppCompatActivity implements View
 
     public static final String EXTRA_ID_MATA_PELAJARAN = "EXTRA_ID_MATA_PELAJARAN";
     public static final String EXTRA_NAMA_MATA_PELAJARAN = "EXTRA_NAMA_MATA_PELAJARAN";
+
+    String id_pertemuan, hari_pertemuan, waktu_mulai, waktu_berakhir, lokasi_mulai_la,
+            lokasi_mulai_lo, lokasi_berakhir_la, lokasi_berakhir_lo, deskripsi, harga_fee,
+            harga_spp, status_fee, status_spp, status_konfirmasi, status_pertemuan;
+    String id_pengajar, nama_pengajar;
+    String id_kelas_pertemuan, hari_kelas_pertemuan, jam_mulai, jam_berakhir;
+    String id_mata_pelajaran, nama_mata_pelajaran;
+
+    IDataPertemuanEditPresenter dataPertemuanEditPresenter;
+
+    GlobalMessage globalMessage;
+    GlobalProcess globalProcess;
+    GlobalVariable globalVariable;
+    SessionManager sessionManager;
+
+    Toolbar toolbar;
+    EditText edt_nama_mata_pelajaran, edt_waktu_mulai, edt_waktu_berakhir, edt_harga_fee, edt_harga_spp;
+    TextView tv_status_pertemuan, tv_status_konfirmasi;
+    Button btn_batal, btn_valid, btn_invalid, btn_refresh, btn_next;
+    Fragment map_fragment;
+
+    String statusActivity;
+
+    public static Dialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

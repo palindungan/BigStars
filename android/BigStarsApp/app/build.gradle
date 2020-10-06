@@ -44,4 +44,9 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.1'
 
+    // kebutuhan gradle untuk gmaps
+    implementation 'com.google.android.gms:play-services-location:17.0.0'
+    implementation 'com.karumi:dexter:6.0.1'
+    implementation 'org.greenrobot:eventbus:3.1.1'
+    implementation 'com.google.android.gms:play-services-maps:17.0.0'
 }
