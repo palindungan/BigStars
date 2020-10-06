@@ -15,7 +15,9 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.its.bigstarsapp.Activities.Data.KelasPertemuan.Edit.presenter.DataKelasPertemuanEditPresenter;
 import com.its.bigstarsapp.Activities.Data.KelasPertemuan.Edit.presenter.IDataKelasPertemuanEditPresenter;
+import com.its.bigstarsapp.Activities.Data.Pertemuan.Edit.presenter.DataPertemuanEditPresenter;
 import com.its.bigstarsapp.Activities.Data.Pertemuan.Edit.presenter.IDataPertemuanEditPresenter;
 import com.its.bigstarsapp.Activities.Data.Pertemuan.Edit.view.IDataPertemuanEditView;
 import com.its.bigstarsapp.Controllers.GlobalMessage;
@@ -81,6 +83,31 @@ public class DataPertemuanEditActivity extends AppCompatActivity implements View
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_data_pertemuan_edit);
+
+        
+
+        dataPertemuanEditPresenter = new DataPertemuanEditPresenter(this, this);
+
+        globalMessage = new GlobalMessage();
+        globalProcess = new GlobalProcess(this);
+        globalVariable = new GlobalVariable();
+        sessionManager = new SessionManager(this);
+
+        toolbar = findViewById(R.id.toolbar);
+        edtNamaMataPelajaran = findViewById(R.id.edt_nama_mata_pelajaran);
+        edtWaktuMulai = findViewById(R.id.edt_waktu_mulai);
+        edtWaktuBerakhir = findViewById(R.id.edt_waktu_berakhir);
+        edtHargaFee = findViewById(R.id.edt_harga_fee);
+        edtHargaSpp = findViewById(R.id.edt_harga_spp);
+        tvStatusPertemuan = findViewById(R.id.tv_status_pertemuan);
+        tvStatusKonfirmasi = findViewById(R.id.tv_status_konfirmasi);
+        btnBatal = findViewById(R.id.btn_batal);
+        btnValid = findViewById(R.id.btn_valid);
+        btnInvalid = findViewById(R.id.btn_invalid);
+        btnRefresh = findViewById(R.id.btn_refresh);
+        btnNext = findViewById(R.id.btn_next);
+
+
     }
 
     @Override
