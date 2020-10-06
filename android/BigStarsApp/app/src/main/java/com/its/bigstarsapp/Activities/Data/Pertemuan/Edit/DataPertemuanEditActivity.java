@@ -1,28 +1,21 @@
 package com.its.bigstarsapp.Activities.Data.Pertemuan.Edit;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.app.Dialog;
-import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
-import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -31,21 +24,10 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
-import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.libraries.places.api.Places;
-import com.google.android.libraries.places.api.model.Place;
-import com.google.android.libraries.places.api.model.PlaceLikelihood;
-import com.google.android.libraries.places.api.net.FindCurrentPlaceRequest;
-import com.google.android.libraries.places.api.net.FindCurrentPlaceResponse;
-import com.google.android.libraries.places.api.net.PlacesClient;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.its.bigstarsapp.Activities.Data.KelasPertemuan.Edit.presenter.DataKelasPertemuanEditPresenter;
-import com.its.bigstarsapp.Activities.Data.KelasPertemuan.Edit.presenter.IDataKelasPertemuanEditPresenter;
 import com.its.bigstarsapp.Activities.Data.Pertemuan.Edit.presenter.DataPertemuanEditPresenter;
 import com.its.bigstarsapp.Activities.Data.Pertemuan.Edit.presenter.IDataPertemuanEditPresenter;
 import com.its.bigstarsapp.Activities.Data.Pertemuan.Edit.view.IDataPertemuanEditView;
@@ -55,9 +37,8 @@ import com.its.bigstarsapp.Controllers.GlobalVariable;
 import com.its.bigstarsapp.Controllers.SessionManager;
 import com.its.bigstarsapp.R;
 
-import java.util.Arrays;
 import java.util.HashMap;
-import java.util.List;
+import java.util.Objects;
 
 public class DataPertemuanEditActivity extends AppCompatActivity implements View.OnClickListener, IDataPertemuanEditView, OnMapReadyCallback {
 
@@ -107,17 +88,13 @@ public class DataPertemuanEditActivity extends AppCompatActivity implements View
     TextView tvStatusPertemuan, tvStatusKonfirmasi;
     Button btnBatal, btnValid, btnInvalid, btnGetLokasi, btnNext;
 
-    String statusActivity;
+    // String statusActivity;
 
     public static Dialog dialog;
 
     // ------------------ start google map ---------------------
     private static final String TAG = DataPertemuanEditActivity.class.getSimpleName();
     private GoogleMap map;
-    private CameraPosition cameraPosition;
-
-    // The entry point to the Places API.
-    private PlacesClient placesClient;
 
     // The entry point to the Fused Location Provider.
     private FusedLocationProviderClient fusedLocationProviderClient;
@@ -139,13 +116,6 @@ public class DataPertemuanEditActivity extends AppCompatActivity implements View
     private static final String KEY_LOCATION = "location";
     // [END maps_current_place_state_keys]
 
-    // Used for selecting the current place.
-    private static final int M_MAX_ENTRIES = 5;
-    private String[] likelyPlaceNames;
-    private String[] likelyPlaceAddresses;
-    private List[] likelyPlaceAttributions;
-    private LatLng[] likelyPlaceLatLngs;
-
     // --------------------- end of google map -------------------
 
     @Override
@@ -158,7 +128,7 @@ public class DataPertemuanEditActivity extends AppCompatActivity implements View
         // Retrieve location and camera position from saved instance state.
         if (savedInstanceState != null) {
             lastKnownLocation = savedInstanceState.getParcelable(KEY_LOCATION);
-            cameraPosition = savedInstanceState.getParcelable(KEY_CAMERA_POSITION);
+            // CameraPosition cameraPosition = savedInstanceState.getParcelable(KEY_CAMERA_POSITION);
         }
         // [END maps_current_place_on_create_save_instance_state]
         // [END_EXCLUDE]
@@ -249,13 +219,15 @@ public class DataPertemuanEditActivity extends AppCompatActivity implements View
 
         HashMap<String, String> user = sessionManager.getDataUser();
         String hak_akses = user.get(sessionManager.HAK_AKSES);
-        if (hak_akses.equals("admin")) {
-            btnBatal.setVisibility(View.VISIBLE);
-            btnValid.setVisibility(View.VISIBLE);
-            btnInvalid.setVisibility(View.VISIBLE);
-        } else if (hak_akses.equals("pengajar")) {
-            btnBatal.setVisibility(View.VISIBLE);
-            btnGetLokasi.setVisibility(View.VISIBLE);
+        if (hak_akses != null) {
+            if (hak_akses.equals("admin")) {
+                btnBatal.setVisibility(View.VISIBLE);
+                btnValid.setVisibility(View.VISIBLE);
+                btnInvalid.setVisibility(View.VISIBLE);
+            } else if (hak_akses.equals("pengajar")) {
+                btnBatal.setVisibility(View.VISIBLE);
+                btnGetLokasi.setVisibility(View.VISIBLE);
+            }
         }
     }
 
@@ -263,7 +235,8 @@ public class DataPertemuanEditActivity extends AppCompatActivity implements View
         // [START_EXCLUDE silent]
         // Construct a PlacesClient
         Places.initialize(getApplicationContext(), getString(R.string.maps_api_key));
-        placesClient = Places.createClient(this);
+        // The entry point to the Places API.
+        // PlacesClient placesClient = Places.createClient(this);
 
         // Construct a FusedLocationProviderClient.
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
@@ -272,7 +245,9 @@ public class DataPertemuanEditActivity extends AppCompatActivity implements View
         // [START maps_current_place_map_fragment]
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
-        mapFragment.getMapAsync(this);
+        if (mapFragment != null) {
+            mapFragment.getMapAsync(this);
+        }
         // [END maps_current_place_map_fragment]
         // [END_EXCLUDE]
     }
@@ -312,7 +287,7 @@ public class DataPertemuanEditActivity extends AppCompatActivity implements View
                 getLocationPermission();
             }
         } catch (SecurityException e) {
-            Log.e("Exception: %s", e.getMessage());
+            Log.e("Exception: %s", Objects.requireNonNull(e.getMessage()));
         }
     }
     // [END maps_current_place_update_location_ui]
@@ -326,24 +301,21 @@ public class DataPertemuanEditActivity extends AppCompatActivity implements View
         try {
             if (locationPermissionGranted) {
                 Task<Location> locationResult = fusedLocationProviderClient.getLastLocation();
-                locationResult.addOnCompleteListener(this, new OnCompleteListener<Location>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Location> task) {
-                        if (task.isSuccessful()) {
-                            // Set the map's camera position to the current location of the device.
-                            lastKnownLocation = task.getResult();
-                            if (lastKnownLocation != null) {
-                                map.moveCamera(CameraUpdateFactory.newLatLngZoom(
-                                        new LatLng(lastKnownLocation.getLatitude(),
-                                                lastKnownLocation.getLongitude()), DEFAULT_ZOOM));
-                            }
-                        } else {
-                            Log.d(TAG, "Current location is null. Using defaults.");
-                            Log.e(TAG, "Exception: %s", task.getException());
-                            map.moveCamera(CameraUpdateFactory
-                                    .newLatLngZoom(defaultLocation, DEFAULT_ZOOM));
-                            map.getUiSettings().setMyLocationButtonEnabled(false);
+                locationResult.addOnCompleteListener(this, task -> {
+                    if (task.isSuccessful()) {
+                        // Set the map's camera position to the current location of the device.
+                        lastKnownLocation = task.getResult();
+                        if (lastKnownLocation != null) {
+                            map.moveCamera(CameraUpdateFactory.newLatLngZoom(
+                                    new LatLng(lastKnownLocation.getLatitude(),
+                                            lastKnownLocation.getLongitude()), DEFAULT_ZOOM));
                         }
+                    } else {
+                        Log.d(TAG, "Current location is null. Using defaults.");
+                        Log.e(TAG, "Exception: %s", task.getException());
+                        map.moveCamera(CameraUpdateFactory
+                                .newLatLngZoom(defaultLocation, DEFAULT_ZOOM));
+                        map.getUiSettings().setMyLocationButtonEnabled(false);
                     }
                 });
             }
@@ -431,13 +403,10 @@ public class DataPertemuanEditActivity extends AppCompatActivity implements View
                                            @NonNull String[] permissions,
                                            @NonNull int[] grantResults) {
         locationPermissionGranted = false;
-        switch (requestCode) {
-            case PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION: {
-                // If request is cancelled, the result arrays are empty.
-                if (grantResults.length > 0
-                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    locationPermissionGranted = true;
-                }
+        if (requestCode == PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION) {// If request is cancelled, the result arrays are empty.
+            if (grantResults.length > 0
+                    && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                locationPermissionGranted = true;
             }
         }
     }
@@ -445,7 +414,7 @@ public class DataPertemuanEditActivity extends AppCompatActivity implements View
 
     // [START maps_current_place_on_save_instance_state]
     @Override
-    protected void onSaveInstanceState(Bundle outState) {
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
         if (map != null) {
             outState.putParcelable(KEY_CAMERA_POSITION, map.getCameraPosition());
             outState.putParcelable(KEY_LOCATION, lastKnownLocation);
