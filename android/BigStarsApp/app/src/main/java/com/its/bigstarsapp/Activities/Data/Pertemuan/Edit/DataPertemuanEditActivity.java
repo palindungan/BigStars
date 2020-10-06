@@ -8,6 +8,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.app.Dialog;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -25,6 +26,8 @@ import com.its.bigstarsapp.Controllers.GlobalProcess;
 import com.its.bigstarsapp.Controllers.GlobalVariable;
 import com.its.bigstarsapp.Controllers.SessionManager;
 import com.its.bigstarsapp.R;
+
+import java.util.HashMap;
 
 public class DataPertemuanEditActivity extends AppCompatActivity implements View.OnClickListener, IDataPertemuanEditView {
 
@@ -132,6 +135,8 @@ public class DataPertemuanEditActivity extends AppCompatActivity implements View
         btnGetLokasi = findViewById(R.id.btn_get_lokasi);
         btnNext = findViewById(R.id.btn_next);
 
+        globalProcess.initActionBar(toolbar);
+
         inisiasiAwal();
     }
 
@@ -151,10 +156,38 @@ public class DataPertemuanEditActivity extends AppCompatActivity implements View
         edtHargaSpp.setText(setHargaSpp);
         tvStatusPertemuan.setText(setStatusPertemuan);
         tvStatusKonfirmasi.setText(setStatusKonfirmasi);
+
+        if (waktu_mulai.equals(waktu_berakhir)) {
+            edtWaktuBerakhir.setVisibility(View.GONE);
+        }
+
+        HashMap<String, String> user = sessionManager.getDataUser();
+        String hak_akses = user.get(sessionManager.HAK_AKSES);
+        if (hak_akses.equals("admin")) {
+            btnBatal.setVisibility(View.VISIBLE);
+            btnValid.setVisibility(View.VISIBLE);
+            btnInvalid.setVisibility(View.VISIBLE);
+        } else if (hak_akses.equals("pengajar")) {
+            btnBatal.setVisibility(View.VISIBLE);
+            btnGetLokasi.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override
     public void onClick(View view) {
 
+    }
+
+    @Override
+    public void backPressed() {
+        onBackPressed();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
