@@ -128,7 +128,6 @@ public class DataPertemuanEditActivity extends AppCompatActivity implements View
         // Retrieve location and camera position from saved instance state.
         if (savedInstanceState != null) {
             lastKnownLocation = savedInstanceState.getParcelable(KEY_LOCATION);
-            // CameraPosition cameraPosition = savedInstanceState.getParcelable(KEY_CAMERA_POSITION);
         }
         // [END maps_current_place_on_create_save_instance_state]
         // [END_EXCLUDE]
@@ -236,7 +235,6 @@ public class DataPertemuanEditActivity extends AppCompatActivity implements View
         // Construct a PlacesClient
         Places.initialize(getApplicationContext(), getString(R.string.maps_api_key));
         // The entry point to the Places API.
-        // PlacesClient placesClient = Places.createClient(this);
 
         // Construct a FusedLocationProviderClient.
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
@@ -339,7 +337,6 @@ public class DataPertemuanEditActivity extends AppCompatActivity implements View
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.btn_get_lokasi) {
-            // showCurrentPlace();
             onLoadGoogleMap();
         }
     }
