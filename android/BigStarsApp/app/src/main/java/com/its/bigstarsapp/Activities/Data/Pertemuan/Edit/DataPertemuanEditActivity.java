@@ -106,7 +106,6 @@ public class DataPertemuanEditActivity extends AppCompatActivity implements View
     EditText edtNamaMataPelajaran, edtWaktuMulai, edtWaktuBerakhir, edtHargaFee, edtHargaSpp;
     TextView tvStatusPertemuan, tvStatusKonfirmasi;
     Button btnBatal, btnValid, btnInvalid, btnGetLokasi, btnNext;
-    Fragment mapFragment;
 
     String statusActivity;
 
@@ -219,6 +218,12 @@ public class DataPertemuanEditActivity extends AppCompatActivity implements View
 
         inisiasiAwal();
         inisiasiGmap();
+
+        btnBatal.setOnClickListener(this);
+        btnValid.setOnClickListener(this);
+        btnInvalid.setOnClickListener(this);
+        btnGetLokasi.setOnClickListener(this);
+        btnNext.setOnClickListener(this);
     }
 
     private void inisiasiAwal() {
@@ -456,9 +461,23 @@ public class DataPertemuanEditActivity extends AppCompatActivity implements View
     }
     // [END maps_current_place_update_location_ui]
 
+    private void onLoadGoogleMap() {
+        // Prompt the user for permission.
+        getLocationPermission();
+
+        // Turn on the My Location layer and the related control on the map.
+        updateLocationUI();
+
+        // Get the current location of the device and set the position of the map.
+        getDeviceLocation();
+    }
+
     @Override
     public void onClick(View view) {
-
+        if (view.getId() == R.id.btn_get_lokasi) {
+            // showCurrentPlace();
+            onLoadGoogleMap();
+        }
     }
 
     @Override
@@ -506,9 +525,6 @@ public class DataPertemuanEditActivity extends AppCompatActivity implements View
 
         // Turn on the My Location layer and the related control on the map.
         updateLocationUI();
-
-        // Get the current location of the device and set the position of the map.
-        getDeviceLocation();
     }
     // [END maps_current_place_on_map_ready]
 
