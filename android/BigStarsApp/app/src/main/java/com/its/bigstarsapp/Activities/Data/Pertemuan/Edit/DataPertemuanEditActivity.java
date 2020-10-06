@@ -277,6 +277,46 @@ public class DataPertemuanEditActivity extends AppCompatActivity implements View
         // [END_EXCLUDE]
     }
 
+    // [START maps_current_place_location_permission]
+    private void getLocationPermission() {
+        /*
+         * Request location permission, so that we can get the location of the
+         * device. The result of the permission request is handled by a callback,
+         * onRequestPermissionsResult.
+         */
+        if (ContextCompat.checkSelfPermission(this.getApplicationContext(),
+                android.Manifest.permission.ACCESS_FINE_LOCATION)
+                == PackageManager.PERMISSION_GRANTED) {
+            locationPermissionGranted = true;
+        } else {
+            ActivityCompat.requestPermissions(this,
+                    new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION},
+                    PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION);
+        }
+    }
+    // [END maps_current_place_location_permission]
+
+    // [START maps_current_place_update_location_ui]
+    private void updateLocationUI() {
+        if (map == null) {
+            return;
+        }
+        try {
+            if (locationPermissionGranted) {
+                map.setMyLocationEnabled(true);
+                map.getUiSettings().setMyLocationButtonEnabled(true);
+            } else {
+                map.setMyLocationEnabled(false);
+                map.getUiSettings().setMyLocationButtonEnabled(false);
+                lastKnownLocation = null;
+                getLocationPermission();
+            }
+        } catch (SecurityException e) {
+            Log.e("Exception: %s", e.getMessage());
+        }
+    }
+    // [END maps_current_place_update_location_ui]
+
     // [START maps_current_place_get_device_location]
     private void getDeviceLocation() {
         /*
@@ -312,154 +352,6 @@ public class DataPertemuanEditActivity extends AppCompatActivity implements View
         }
     }
     // [END maps_current_place_get_device_location]
-
-    // [START maps_current_place_location_permission]
-    private void getLocationPermission() {
-        /*
-         * Request location permission, so that we can get the location of the
-         * device. The result of the permission request is handled by a callback,
-         * onRequestPermissionsResult.
-         */
-        if (ContextCompat.checkSelfPermission(this.getApplicationContext(),
-                android.Manifest.permission.ACCESS_FINE_LOCATION)
-                == PackageManager.PERMISSION_GRANTED) {
-            locationPermissionGranted = true;
-        } else {
-            ActivityCompat.requestPermissions(this,
-                    new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION},
-                    PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION);
-        }
-    }
-    // [END maps_current_place_location_permission]
-
-    // [START maps_current_place_show_current_place]
-    private void showCurrentPlace() {
-        if (map == null) {
-            return;
-        }
-
-        if (locationPermissionGranted) {
-            // Use fields to define the data types to return.
-            List<Place.Field> placeFields = Arrays.asList(Place.Field.NAME, Place.Field.ADDRESS,
-                    Place.Field.LAT_LNG);
-
-            // Use the builder to create a FindCurrentPlaceRequest.
-            FindCurrentPlaceRequest request =
-                    FindCurrentPlaceRequest.newInstance(placeFields);
-
-            // Get the likely places - that is, the businesses and other points of interest that
-            // are the best match for the device's current location.
-            @SuppressWarnings("MissingPermission") final Task<FindCurrentPlaceResponse> placeResult =
-                    placesClient.findCurrentPlace(request);
-            placeResult.addOnCompleteListener(task -> {
-                if (task.isSuccessful() && task.getResult() != null) {
-                    FindCurrentPlaceResponse likelyPlaces = task.getResult();
-
-                    // Set the count, handling cases where less than 5 entries are returned.
-                    int count;
-                    if (likelyPlaces.getPlaceLikelihoods().size() < M_MAX_ENTRIES) {
-                        count = likelyPlaces.getPlaceLikelihoods().size();
-                    } else {
-                        count = M_MAX_ENTRIES;
-                    }
-
-                    int i = 0;
-                    likelyPlaceNames = new String[count];
-                    likelyPlaceAddresses = new String[count];
-                    likelyPlaceAttributions = new List[count];
-                    likelyPlaceLatLngs = new LatLng[count];
-
-                    for (PlaceLikelihood placeLikelihood : likelyPlaces.getPlaceLikelihoods()) {
-                        // Build a list of likely places to show the user.
-                        likelyPlaceNames[i] = placeLikelihood.getPlace().getName();
-                        likelyPlaceAddresses[i] = placeLikelihood.getPlace().getAddress();
-                        likelyPlaceAttributions[i] = placeLikelihood.getPlace()
-                                .getAttributions();
-                        likelyPlaceLatLngs[i] = placeLikelihood.getPlace().getLatLng();
-
-                        i++;
-                        if (i > (count - 1)) {
-                            break;
-                        }
-                    }
-
-                    // Show a dialog offering the user the list of likely places, and add a
-                    // marker at the selected place.
-                    DataPertemuanEditActivity.this.openPlacesDialog();
-                } else {
-                    Log.e(TAG, "Exception: %s", task.getException());
-                }
-            });
-        } else {
-            // The user has not granted permission.
-            Log.i(TAG, "The user did not grant location permission.");
-
-            // Add a default marker, because the user hasn't selected a place.
-            map.addMarker(new MarkerOptions()
-                    .title(getString(R.string.default_info_title))
-                    .position(defaultLocation)
-                    .snippet(getString(R.string.default_info_snippet)));
-
-            // Prompt the user for permission.
-            getLocationPermission();
-        }
-    }
-    // [END maps_current_place_show_current_place]
-
-    // [START maps_current_place_open_places_dialog]
-    private void openPlacesDialog() {
-        // Ask the user to choose the place where they are now.
-        DialogInterface.OnClickListener listener = new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                // The "which" argument contains the position of the selected item.
-                LatLng markerLatLng = likelyPlaceLatLngs[which];
-                String markerSnippet = likelyPlaceAddresses[which];
-                if (likelyPlaceAttributions[which] != null) {
-                    markerSnippet = markerSnippet + "\n" + likelyPlaceAttributions[which];
-                }
-
-                // Add a marker for the selected place, with an info window
-                // showing information about that place.
-                map.addMarker(new MarkerOptions()
-                        .title(likelyPlaceNames[which])
-                        .position(markerLatLng)
-                        .snippet(markerSnippet));
-
-                // Position the map's camera at the location of the marker.
-                map.moveCamera(CameraUpdateFactory.newLatLngZoom(markerLatLng,
-                        DEFAULT_ZOOM));
-            }
-        };
-
-        // Display the dialog.
-        AlertDialog dialog = new AlertDialog.Builder(this)
-                .setTitle(R.string.pick_place)
-                .setItems(likelyPlaceNames, listener)
-                .show();
-    }
-    // [END maps_current_place_open_places_dialog]
-
-    // [START maps_current_place_update_location_ui]
-    private void updateLocationUI() {
-        if (map == null) {
-            return;
-        }
-        try {
-            if (locationPermissionGranted) {
-                map.setMyLocationEnabled(true);
-                map.getUiSettings().setMyLocationButtonEnabled(true);
-            } else {
-                map.setMyLocationEnabled(false);
-                map.getUiSettings().setMyLocationButtonEnabled(false);
-                lastKnownLocation = null;
-                getLocationPermission();
-            }
-        } catch (SecurityException e) {
-            Log.e("Exception: %s", e.getMessage());
-        }
-    }
-    // [END maps_current_place_update_location_ui]
 
     private void onLoadGoogleMap() {
         // Prompt the user for permission.
@@ -522,9 +414,6 @@ public class DataPertemuanEditActivity extends AppCompatActivity implements View
         // Prompt the user for permission.
         getLocationPermission();
         // [END_EXCLUDE]
-
-        // Turn on the My Location layer and the related control on the map.
-        updateLocationUI();
     }
     // [END maps_current_place_on_map_ready]
 
@@ -551,7 +440,6 @@ public class DataPertemuanEditActivity extends AppCompatActivity implements View
                 }
             }
         }
-        updateLocationUI();
     }
     // [END maps_current_place_on_request_permissions_result]
 
