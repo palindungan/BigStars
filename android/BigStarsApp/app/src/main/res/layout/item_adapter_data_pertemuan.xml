@@ -12,6 +12,7 @@
     app:cardElevation="5dp">
 
     <RelativeLayout
+        android:id="@+id/rl_background"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorPrimaryDark2">
@@ -67,8 +68,7 @@
                 android:layout_weight="1"
                 android:text="Status Pertemuan : Belum Selesai"
                 android:textColor="@color/white"
-                android:textSize="16dp"
-                android:visibility="gone" />
+                android:textSize="16dp" />
 
             <TextView
                 android:id="@+id/tv_status_fee"

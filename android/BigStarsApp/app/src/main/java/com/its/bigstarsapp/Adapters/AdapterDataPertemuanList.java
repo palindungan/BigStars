@@ -1,9 +1,11 @@
 package com.its.bigstarsapp.Adapters;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -17,6 +19,7 @@ import com.its.bigstarsapp.Models.Pertemuan;
 import com.its.bigstarsapp.R;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import butterknife.ButterKnife;
 
@@ -95,8 +98,22 @@ public class AdapterDataPertemuanList extends RecyclerView.Adapter<AdapterDataPe
         holder.tvStatusSpp.setText(setStatusSpp);
         holder.tvStatusKonfirmasi.setText(setStatusKonfirmasi);
 
+        if (status_pertemuan.equals("Belum Selesai")) {
+            holder.rlBackground.setBackgroundColor(Color.GREEN);
+        } else if (status_pertemuan.equals("Batal")) {
+            holder.rlBackground.setBackgroundColor(Color.RED);
+        }
+
         if (waktu_mulai.equals(waktu_berakhir)) {
             holder.tvWaktuBerakhir.setVisibility(View.GONE);
+        }
+
+        HashMap<String, String> user = sessionManager.getDataUser();
+        String hak_akses = user.get(sessionManager.HAK_AKSES);
+        if (hak_akses.equals("pengajar")) {
+            holder.tvStatusSpp.setVisibility(View.GONE);
+        } else if (hak_akses.equals("wali_murid")) {
+            holder.tvStatusFee.setVisibility(View.GONE);
         }
     }
 
@@ -110,6 +127,8 @@ public class AdapterDataPertemuanList extends RecyclerView.Adapter<AdapterDataPe
         protected TextView tvNamaMataPelajaran, tvJadwalKelasPertemuan, tvWaktuMulai,
                 tvWaktuBerakhir, tvStatusPertemuan, tvStatusFee, tvStatusSpp, tvStatusKonfirmasi;
 
+        protected RelativeLayout rlBackground;
+
         public AdapterDataPertemuanListViewHolder(@NonNull View itemView) {
             super(itemView);
 
@@ -121,6 +140,8 @@ public class AdapterDataPertemuanList extends RecyclerView.Adapter<AdapterDataPe
             tvStatusFee = itemView.findViewById(R.id.tv_status_fee);
             tvStatusSpp = itemView.findViewById(R.id.tv_status_spp);
             tvStatusKonfirmasi = itemView.findViewById(R.id.tv_status_konfirmasi);
+
+            rlBackground = itemView.findViewById(R.id.rl_background);
 
             ButterKnife.bind(this, itemView);
             itemView.setOnClickListener(this);
