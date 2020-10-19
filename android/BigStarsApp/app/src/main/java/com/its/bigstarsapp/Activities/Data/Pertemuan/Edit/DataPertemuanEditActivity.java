@@ -392,6 +392,17 @@ public class DataPertemuanEditActivity extends AppCompatActivity implements View
         // Prompt the user for permission.
         getLocationPermission();
         // [END_EXCLUDE]
+
+        // Turn on the My Location layer and the related control on the map.
+        if (!lokasi_mulai_la.equals("kosong") && !lokasi_mulai_lo.equals("kosong")) {
+            updateLocationUI();
+
+            this.map.moveCamera(CameraUpdateFactory.newLatLngZoom(
+                    new LatLng(
+                            Double.parseDouble(lokasi_mulai_la),
+                            Double.parseDouble(lokasi_mulai_lo)
+                    ), DEFAULT_ZOOM));
+        }
     }
     // [END maps_current_place_on_map_ready]
 
