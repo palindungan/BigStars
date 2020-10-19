@@ -345,12 +345,17 @@ public class DataPertemuanEditActivity extends AppCompatActivity implements View
         if (view.getId() == R.id.btn_get_lokasi) {
             onLoadGoogleMap();
         } else if (view.getId() == R.id.btn_next) {
-            if (lastKnownLocation != null) {
-                Double la = lastKnownLocation.getLatitude();
-                Double lo = lastKnownLocation.getLongitude();
-                globalProcess.onSuccessMessage(la + " , " + lo);
+
+            if (!lokasi_mulai_la.equals("kosong") && !lokasi_mulai_lo.equals("kosong")) {
+                globalProcess.onSuccessMessage("next");
             } else {
-                globalProcess.onErrorMessage("Ambil Lokasi Google Maps !");
+
+                if (lastKnownLocation != null) {
+                    globalProcess.onSuccessMessage("next");
+                } else {
+                    globalProcess.onErrorMessage("Ambil Lokasi Google Maps !");
+                }
+
             }
         }
     }
