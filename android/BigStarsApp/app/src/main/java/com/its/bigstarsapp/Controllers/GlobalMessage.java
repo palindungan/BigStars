@@ -43,6 +43,7 @@ public class GlobalMessage {
     String errorAddData;
     String errorLoadingGambar;
     String errorMulaiAbsen;
+    String errorAmbilLokasi;
 
     public GlobalMessage() {
         messageConnectionError = "Tidak Ada Koneksi Ke Server !, Periksa Kembali Koneksi Anda";
@@ -86,6 +87,7 @@ public class GlobalMessage {
         errorAddData = "Terjadi Kesalahan Menambah Data : ";
         errorLoadingGambar = "Error, pilih gambar lainnya !";
         errorMulaiAbsen = "Terjadi Kesalahan Absensi : ";
+        errorAmbilLokasi = "Ambil Lokasi Google Maps !";
     }
 
     public String getMessageConnectionError() {
@@ -218,5 +220,9 @@ public class GlobalMessage {
 
     public String getErrorMulaiAbsen() {
         return errorMulaiAbsen;
+    }
+
+    public String getErrorAmbilLokasi() {
+        return errorAmbilLokasi;
     }
 }

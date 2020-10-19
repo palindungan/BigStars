@@ -186,7 +186,6 @@ public class DataPertemuanEditActivity extends AppCompatActivity implements View
         globalProcess.initActionBar(toolbar);
 
         inisiasiAwal();
-        inisiasiGmap();
 
         btnBatal.setOnClickListener(this);
         btnValid.setOnClickListener(this);
@@ -228,6 +227,8 @@ public class DataPertemuanEditActivity extends AppCompatActivity implements View
                 btnGetLokasi.setVisibility(View.VISIBLE);
             }
         }
+
+        inisiasiGmap();
     }
 
     private void inisiasiGmap() {
@@ -338,6 +339,14 @@ public class DataPertemuanEditActivity extends AppCompatActivity implements View
     public void onClick(View view) {
         if (view.getId() == R.id.btn_get_lokasi) {
             onLoadGoogleMap();
+        } else if (view.getId() == R.id.btn_next) {
+            if (lastKnownLocation != null) {
+                Double la = lastKnownLocation.getLatitude();
+                Double lo = lastKnownLocation.getLongitude();
+                globalProcess.onSuccessMessage(la + " , " + lo);
+            } else {
+                globalProcess.onErrorMessage("Ambil Lokasi Google Maps !");
+            }
         }
     }
 
