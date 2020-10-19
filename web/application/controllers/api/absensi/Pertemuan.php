@@ -48,8 +48,8 @@ class Pertemuan extends REST_Controller
             $hari               = "kosong";
             $waktu_mulai        = $tanggal;
             $waktu_berakhir     = $tanggal;
-            $lokasi_mulai_la    = "kosong";
-            $lokasi_mulai_lo    = "kosong";
+            $lokasi_mulai_la    = $this->post('lokasi_mulai_la');
+            $lokasi_mulai_lo    = $this->post('lokasi_mulai_lo');
             $lokasi_berakhir_la = "kosong";
             $lokasi_berakhir_lo = "kosong";
             $deskripsi          = "kosong";
