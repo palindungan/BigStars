@@ -1,12 +1,14 @@
 package com.its.bigstarsapp.Activities.Data.KelasPertemuan.Edit.presenter;
 
 import android.content.Context;
+import android.content.Intent;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.its.bigstarsapp.Activities.Data.KelasPertemuan.Edit.view.IDataKelasPertemuanEditView;
+import com.its.bigstarsapp.Activities.Data.Pertemuan.List.DataPertemuanListActivity;
 import com.its.bigstarsapp.Controllers.GlobalMessage;
 import com.its.bigstarsapp.Controllers.GlobalProcess;
 import com.its.bigstarsapp.Controllers.GlobalVariable;
@@ -494,7 +496,10 @@ public class DataKelasPertemuanEditPresenter implements IDataKelasPertemuanEditP
 
                         if (success.equals("1")) {
                             globalProcess.onSuccessMessage(message);
-                            dataKelasPertemuanEditView.backPressed();
+                            sessionManager.setStatusActivity("editKelasPertemuan->view->dataPertemuanAktif");
+                            Intent intent = new Intent(context, DataPertemuanListActivity.class);
+                            intent.putExtra(DataPertemuanListActivity.EXTRA_ID_PENGAJAR, id_pengajar);
+                            context.startActivity(intent);
                         } else {
                             globalProcess.onErrorMessage(message);
                         }
