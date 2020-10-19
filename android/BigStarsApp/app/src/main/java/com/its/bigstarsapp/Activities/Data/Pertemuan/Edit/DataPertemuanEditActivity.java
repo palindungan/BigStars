@@ -228,6 +228,11 @@ public class DataPertemuanEditActivity extends AppCompatActivity implements View
             }
         }
 
+        if (status_pertemuan.equals("Selesai") || status_pertemuan.equals("Batal")) {
+            btnBatal.setVisibility(View.GONE);
+            btnGetLokasi.setVisibility(View.GONE);
+        }
+
         inisiasiGmap();
     }
 
