@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
@@ -11,9 +13,12 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import android.app.Dialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.location.Location;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -21,11 +26,16 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.tasks.Task;
+import com.google.android.libraries.places.api.Places;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.its.bigstarsapp.Activities.Data.KelasPertemuan.Edit.presenter.DataKelasPertemuanEditPresenter;
 import com.its.bigstarsapp.Activities.Data.KelasPertemuan.Edit.presenter.IDataKelasPertemuanEditPresenter;
 import com.its.bigstarsapp.Activities.Data.KelasPertemuan.Edit.view.IDataKelasPertemuanEditView;
 import com.its.bigstarsapp.Activities.Data.Murid.Edit.DataMuridEditActivity;
+import com.its.bigstarsapp.Activities.Data.Pertemuan.Edit.DataPertemuanEditActivity;
 import com.its.bigstarsapp.Adapters.AdapterDataMataPelajaranList;
 import com.its.bigstarsapp.Adapters.AdapterDataMuridList;
 import com.its.bigstarsapp.Adapters.AdapterDataPengajarList;
@@ -60,6 +70,8 @@ public class DataKelasPertemuanEditActivity extends AppCompatActivity implements
     String id_mata_pelajaran, nama_mata_pelajaran;
     String id_pengajar;
 
+    String lokasi_mulai_la, lokasi_mulai_lo = "kosong";
+
     IDataKelasPertemuanEditPresenter dataKelasPertemuanEditPresenter;
 
     GlobalMessage globalMessage;
@@ -80,9 +92,43 @@ public class DataKelasPertemuanEditActivity extends AppCompatActivity implements
 
     public static Dialog dialog;
 
+    // ------------------ start google map ---------------------
+    private static final String TAG = DataPertemuanEditActivity.class.getSimpleName();
+
+    // The entry point to the Fused Location Provider.
+    private FusedLocationProviderClient fusedLocationProviderClient;
+
+    // A default location (Sydney, Australia) and default zoom to use when location permission is
+    // not granted.
+    private static final int PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 1;
+    private boolean locationPermissionGranted;
+
+    // The geographical location where the device is currently located. That is, the last-known
+    // location retrieved by the Fused Location Provider.
+    private Location lastKnownLocation;
+
+    // Keys for storing activity state.
+    // [START maps_current_place_state_keys]
+    private static final String KEY_LOCATION = "location";
+    // [END maps_current_place_state_keys]
+
+    // --------------------- end of google map -------------------
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // ------------------ start google map ---------------------
+        // [START_EXCLUDE silent]
+        // [START maps_current_place_on_create_save_instance_state]
+        // Retrieve location and camera position from saved instance state.
+        if (savedInstanceState != null) {
+            lastKnownLocation = savedInstanceState.getParcelable(KEY_LOCATION);
+        }
+        // [END maps_current_place_on_create_save_instance_state]
+        // [END_EXCLUDE]
+        // --------------------- end of google map -------------------
+
         setContentView(R.layout.activity_data_kelas_pertemuan_edit);
 
         dataKelasPertemuanEditPresenter = new DataKelasPertemuanEditPresenter(this, this);
@@ -189,6 +235,78 @@ public class DataKelasPertemuanEditActivity extends AppCompatActivity implements
             String txtStatusSharing = "Dibagikan Kepada " + nama_sharing;
             tvStatusSharing.setText(txtStatusSharing);
         }
+
+        inisiasiGmap();
+    }
+
+    private void inisiasiGmap() {
+        // [START_EXCLUDE silent]
+        // Construct a PlacesClient
+        Places.initialize(getApplicationContext(), getString(R.string.maps_api_key));
+        // The entry point to the Places API.
+
+        // Construct a FusedLocationProviderClient.
+        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
+        // [END_EXCLUDE]
+    }
+
+    // [START maps_current_place_location_permission]
+    private void getLocationPermission() {
+        /*
+         * Request location permission, so that we can get the location of the
+         * device. The result of the permission request is handled by a callback,
+         * onRequestPermissionsResult.
+         */
+        if (ContextCompat.checkSelfPermission(this.getApplicationContext(),
+                android.Manifest.permission.ACCESS_FINE_LOCATION)
+                == PackageManager.PERMISSION_GRANTED) {
+            locationPermissionGranted = true;
+        } else {
+            ActivityCompat.requestPermissions(this,
+                    new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION},
+                    PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION);
+        }
+    }
+    // [END maps_current_place_location_permission]
+
+    // [START maps_current_place_get_device_location]
+    private void getDeviceLocation() {
+        /*
+         * Get the best and most recent location of the device, which may be null in rare
+         * cases when a location is not available.
+         */
+        try {
+            if (locationPermissionGranted) {
+                Task<Location> locationResult = fusedLocationProviderClient.getLastLocation();
+                locationResult.addOnCompleteListener(this, task -> {
+                    if (task.isSuccessful()) {
+                        // Set the map's camera position to the current location of the device.
+                        lastKnownLocation = task.getResult();
+                        if (lastKnownLocation != null) {
+                            double la = lastKnownLocation.getLatitude();
+                            double lo = lastKnownLocation.getLongitude();
+                            lokasi_mulai_la = String.valueOf(la);
+                            lokasi_mulai_lo = String.valueOf(lo);
+                        }
+                    } else {
+                        Log.d(TAG, "Current location is null. Using defaults.");
+                        Log.e(TAG, "Exception: %s", task.getException());
+
+                    }
+                });
+            }
+        } catch (SecurityException e) {
+            Log.e("Exception: %s", e.getMessage(), e);
+        }
+    }
+    // [END maps_current_place_get_device_location]
+
+    private void onGetGoogleMap() {
+        // Prompt the user for permission.
+        getLocationPermission();
+
+        // Get the current location of the device and set the position of the map.
+        getDeviceLocation();
     }
 
     private void showDialog() {
@@ -343,6 +461,8 @@ public class DataKelasPertemuanEditActivity extends AppCompatActivity implements
                     String id_user = user.get(sessionManager.ID_USER);
 
                     try {
+                        onGetGoogleMap();
+
                         dataKelasPertemuanEditPresenter.onMulaiAbsen(
                                 "" + id_user,
                                 "" + id_kelas_pertemuan);
@@ -512,6 +632,21 @@ public class DataKelasPertemuanEditActivity extends AppCompatActivity implements
         AlertDialog alertDialog = alertDialogBuilder.create();
         alertDialog.show();
     }
+
+    // [START maps_current_place_on_request_permissions_result]
+    @Override
+    public void onRequestPermissionsResult(int requestCode,
+                                           @NonNull String[] permissions,
+                                           @NonNull int[] grantResults) {
+        locationPermissionGranted = false;
+        if (requestCode == PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION) {// If request is cancelled, the result arrays are empty.
+            if (grantResults.length > 0
+                    && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                locationPermissionGranted = true;
+            }
+        }
+    }
+    // [END maps_current_place_on_request_permissions_result]
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
