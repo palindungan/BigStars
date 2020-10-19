@@ -395,14 +395,6 @@ public class DataPertemuanEditActivity extends AppCompatActivity implements View
     }
     // [END maps_current_place_on_map_ready]
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == android.R.id.home) {
-            onBackPressed();
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
     // [START maps_current_place_on_request_permissions_result]
     @Override
     public void onRequestPermissionsResult(int requestCode,
@@ -428,4 +420,12 @@ public class DataPertemuanEditActivity extends AppCompatActivity implements View
         super.onSaveInstanceState(outState);
     }
     // [END maps_current_place_on_save_instance_state]
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }
