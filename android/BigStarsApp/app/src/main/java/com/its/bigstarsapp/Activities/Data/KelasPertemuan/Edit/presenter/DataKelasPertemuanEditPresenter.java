@@ -481,7 +481,7 @@ public class DataKelasPertemuanEditPresenter implements IDataKelasPertemuanEditP
     }
 
     @Override
-    public void onMulaiAbsen(String id_pengajar, String id_kelas_pertemuan) {
+    public void onMulaiAbsen(String id_pengajar, String id_kelas_pertemuan, String lokasi_mulai_la, String lokasi_mulai_lo) {
         String base_url = globalVariable.getUrlData();
         String URL_DATA = base_url + "absensi/pertemuan/mulai_absen"; // url http request
 
@@ -510,6 +510,8 @@ public class DataKelasPertemuanEditPresenter implements IDataKelasPertemuanEditP
                 Map<String, String> params = new HashMap<>();
                 params.put("id_pengajar", id_pengajar);
                 params.put("id_kelas_pertemuan", id_kelas_pertemuan);
+                params.put("lokasi_mulai_la", lokasi_mulai_la);
+                params.put("lokasi_mulai_lo", lokasi_mulai_lo);
                 return params;
             }
         };

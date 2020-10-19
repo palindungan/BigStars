@@ -70,7 +70,8 @@ public class DataKelasPertemuanEditActivity extends AppCompatActivity implements
     String id_mata_pelajaran, nama_mata_pelajaran;
     String id_pengajar;
 
-    String lokasi_mulai_la, lokasi_mulai_lo = "kosong";
+    String lokasi_mulai_la = "kosong";
+    String lokasi_mulai_lo = "kosong";
 
     IDataKelasPertemuanEditPresenter dataKelasPertemuanEditPresenter;
 
@@ -450,6 +451,8 @@ public class DataKelasPertemuanEditActivity extends AppCompatActivity implements
     }
 
     private void showDialogMulaiAbsen() {
+        onGetGoogleMap();
+
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
                 this);
         alertDialogBuilder.setTitle(globalMessage.getValidasiMulaiAbsen());
@@ -461,11 +464,17 @@ public class DataKelasPertemuanEditActivity extends AppCompatActivity implements
                     String id_user = user.get(sessionManager.ID_USER);
 
                     try {
-                        onGetGoogleMap();
+                        if (!lokasi_mulai_la.equals("kosong") && !lokasi_mulai_lo.equals("kosong")) {
+                            dataKelasPertemuanEditPresenter.onMulaiAbsen(
+                                    "" + id_user,
+                                    "" + id_kelas_pertemuan,
+                                    "" + lokasi_mulai_la,
+                                    "" + lokasi_mulai_lo);
+                        } else {
+                            onGetGoogleMap();
+                            globalProcess.onErrorMessage("Gagal Pengambilan Lokasi, Coba Lagi");
+                        }
 
-                        dataKelasPertemuanEditPresenter.onMulaiAbsen(
-                                "" + id_user,
-                                "" + id_kelas_pertemuan);
                     } catch (Exception e) {
                         globalProcess.onErrorMessage(globalMessage.getErrorMulaiAbsen() + e.toString());
                     }

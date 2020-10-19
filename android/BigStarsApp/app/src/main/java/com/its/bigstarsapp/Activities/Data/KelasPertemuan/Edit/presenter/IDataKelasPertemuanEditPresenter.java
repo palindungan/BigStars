@@ -29,5 +29,5 @@ public interface IDataKelasPertemuanEditPresenter {
 
     void onDeleteMurid(String id_kelas_pertemuan_detail, String id_kelas_pertemuan);
 
-    void onMulaiAbsen(String id_pengajar, String id_kelas_pertemuan);
+    void onMulaiAbsen(String id_pengajar, String id_kelas_pertemuan, String lokasi_mulai_la, String lokasi_mulai_lo);
 }
