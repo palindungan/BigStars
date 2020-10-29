@@ -41,7 +41,6 @@ import java.util.HashMap;
 import java.util.Objects;
 
 public class DataPertemuanEdit2Activity extends AppCompatActivity implements View.OnClickListener, IDataPertemuanEdit2View, OnMapReadyCallback {
-
     public static final String EXTRA_ID_PERTEMUAN = "EXTRA_ID_PERTEMUAN";
     public static final String EXTRA_HARI_PERTEMUAN = "EXTRA_HARI_PERTEMUAN";
     public static final String EXTRA_WAKTU_MULAI = "EXTRA_WAKTU_MULAI";
@@ -277,8 +276,8 @@ public class DataPertemuanEdit2Activity extends AppCompatActivity implements Vie
 
                             double la = lastKnownLocation.getLatitude();
                             double lo = lastKnownLocation.getLongitude();
-                            lokasi_mulai_la = String.valueOf(la);
-                            lokasi_mulai_lo = String.valueOf(lo);
+                            lokasi_berakhir_la = String.valueOf(la);
+                            lokasi_berakhir_lo = String.valueOf(lo);
                         }
                     } else {
                         Log.d(TAG, "Current location is null. Using defaults.");
@@ -313,6 +312,11 @@ public class DataPertemuanEdit2Activity extends AppCompatActivity implements Vie
         } else if (view.getId() == R.id.btn_finish) {
             globalProcess.onSuccessMessage("finish");
         }
+    }
+
+    @Override
+    public void goToDataPertemuanListScreen() {
+
     }
 
     // [START maps_current_place_on_map_ready]
@@ -354,13 +358,13 @@ public class DataPertemuanEdit2Activity extends AppCompatActivity implements Vie
         // [END_EXCLUDE]
 
         // Turn on the My Location layer and the related control on the map.
-        if (!lokasi_mulai_la.equals("kosong") && !lokasi_mulai_lo.equals("kosong")) {
+        if (!lokasi_berakhir_la.equals("kosong") && !lokasi_berakhir_lo.equals("kosong")) {
             updateLocationUI();
 
             this.map.moveCamera(CameraUpdateFactory.newLatLngZoom(
                     new LatLng(
-                            Double.parseDouble(lokasi_mulai_la),
-                            Double.parseDouble(lokasi_mulai_lo)
+                            Double.parseDouble(lokasi_berakhir_la),
+                            Double.parseDouble(lokasi_berakhir_lo)
                     ), DEFAULT_ZOOM));
         }
     }
