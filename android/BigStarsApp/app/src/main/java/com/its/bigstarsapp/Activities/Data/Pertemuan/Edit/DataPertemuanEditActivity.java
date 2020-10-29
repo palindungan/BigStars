@@ -8,6 +8,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
@@ -32,6 +33,7 @@ import com.google.android.libraries.places.api.Places;
 import com.its.bigstarsapp.Activities.Data.Pertemuan.Edit.presenter.DataPertemuanEditPresenter;
 import com.its.bigstarsapp.Activities.Data.Pertemuan.Edit.presenter.IDataPertemuanEditPresenter;
 import com.its.bigstarsapp.Activities.Data.Pertemuan.Edit.view.IDataPertemuanEditView;
+import com.its.bigstarsapp.Activities.Data.Pertemuan.Edit2.DataPertemuanEdit2Activity;
 import com.its.bigstarsapp.Controllers.GlobalMessage;
 import com.its.bigstarsapp.Controllers.GlobalProcess;
 import com.its.bigstarsapp.Controllers.GlobalVariable;
@@ -367,6 +369,34 @@ public class DataPertemuanEditActivity extends AppCompatActivity implements View
         alertDialog.show();
     }
 
+    private void onNext() {
+        Intent intent = new Intent(getApplicationContext(), DataPertemuanEdit2Activity.class);
+        intent.putExtra(DataPertemuanEdit2Activity.EXTRA_ID_PERTEMUAN, id_pertemuan);
+        intent.putExtra(DataPertemuanEdit2Activity.EXTRA_HARI_PERTEMUAN, hari_pertemuan);
+        intent.putExtra(DataPertemuanEdit2Activity.EXTRA_WAKTU_MULAI, waktu_mulai);
+        intent.putExtra(DataPertemuanEdit2Activity.EXTRA_WAKTU_BERAKHIR, waktu_berakhir);
+        intent.putExtra(DataPertemuanEdit2Activity.EXTRA_LOKASI_MULAI_LA, lokasi_mulai_la);
+        intent.putExtra(DataPertemuanEdit2Activity.EXTRA_LOKASI_MULAI_LO, lokasi_mulai_lo);
+        intent.putExtra(DataPertemuanEdit2Activity.EXTRA_LOKASI_BERAKHIR_LA, lokasi_berakhir_la);
+        intent.putExtra(DataPertemuanEdit2Activity.EXTRA_LOKASI_BERAKHIR_LO, lokasi_berakhir_lo);
+        intent.putExtra(DataPertemuanEdit2Activity.EXTRA_DESKRIPSI, deskripsi);
+        intent.putExtra(DataPertemuanEdit2Activity.EXTRA_HARGA_FEE, harga_fee);
+        intent.putExtra(DataPertemuanEdit2Activity.EXTRA_HARGA_SPP, harga_spp);
+        intent.putExtra(DataPertemuanEdit2Activity.EXTRA_STATUS_FEE, status_fee);
+        intent.putExtra(DataPertemuanEdit2Activity.EXTRA_STATUS_SPP, status_spp);
+        intent.putExtra(DataPertemuanEdit2Activity.EXTRA_STATUS_KONFIRMASI, status_konfirmasi);
+        intent.putExtra(DataPertemuanEdit2Activity.EXTRA_STATUS_PERTEMUAN, status_pertemuan);
+        intent.putExtra(DataPertemuanEdit2Activity.EXTRA_ID_PENGAJAR, id_pengajar);
+        intent.putExtra(DataPertemuanEdit2Activity.EXTRA_NAMA_PENGAJAR, nama_pengajar);
+        intent.putExtra(DataPertemuanEdit2Activity.EXTRA_ID_KELAS_PERTEMUAN, id_kelas_pertemuan);
+        intent.putExtra(DataPertemuanEdit2Activity.EXTRA_HARI_KELAS_PERTEMUAN, hari_kelas_pertemuan);
+        intent.putExtra(DataPertemuanEdit2Activity.EXTRA_JAM_MULAI, jam_mulai);
+        intent.putExtra(DataPertemuanEdit2Activity.EXTRA_JAM_BERAKHIR, jam_berakhir);
+        intent.putExtra(DataPertemuanEdit2Activity.EXTRA_ID_MATA_PELAJARAN, id_mata_pelajaran);
+        intent.putExtra(DataPertemuanEdit2Activity.EXTRA_NAMA_MATA_PELAJARAN, nama_mata_pelajaran);
+        startActivity(intent);
+    }
+
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.btn_get_lokasi) {
@@ -374,11 +404,11 @@ public class DataPertemuanEditActivity extends AppCompatActivity implements View
         } else if (view.getId() == R.id.btn_next) {
 
             if (!lokasi_mulai_la.equals("kosong") && !lokasi_mulai_lo.equals("kosong")) {
-                globalProcess.onSuccessMessage("next");
+                onNext();
             } else {
 
                 if (lastKnownLocation != null) {
-                    globalProcess.onSuccessMessage("next");
+                    onNext();
                 } else {
                     globalProcess.onErrorMessage("Ambil Lokasi Google Maps !");
                 }
