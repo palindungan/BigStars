@@ -1,6 +1,7 @@
 package com.its.bigstarsapp.Activities.Data.Pertemuan.Edit;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
@@ -340,6 +341,27 @@ public class DataPertemuanEditActivity extends AppCompatActivity implements View
         getDeviceLocation();
     }
 
+    private void showDialogBatalPertemuan() {
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+                this);
+        alertDialogBuilder.setTitle(globalMessage.getValidasiBatalAbsen());
+        alertDialogBuilder
+                .setMessage(globalMessage.getPilihYaBatalAbsen())
+                .setPositiveButton(globalMessage.getYa(), (dialog, id) -> {
+
+                    try {
+                        dataPertemuanEditPresenter.onBatalPertemuan("" + id_pertemuan);
+                    } catch (Exception e) {
+                        globalProcess.onErrorMessage(globalMessage.getErrorBatalAbsen() + e.toString());
+                    }
+
+                })
+                .setNegativeButton(globalMessage.getTidak(), (dialog, id) -> dialog.cancel());
+
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
+    }
+
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.btn_get_lokasi) {
@@ -357,6 +379,8 @@ public class DataPertemuanEditActivity extends AppCompatActivity implements View
                 }
 
             }
+        } else if (view.getId() == R.id.btn_batal) {
+            showDialogBatalPertemuan();
         }
     }
 
