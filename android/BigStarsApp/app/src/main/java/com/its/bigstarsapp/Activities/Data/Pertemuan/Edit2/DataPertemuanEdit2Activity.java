@@ -37,6 +37,7 @@ import com.its.bigstarsapp.Controllers.GlobalVariable;
 import com.its.bigstarsapp.Controllers.SessionManager;
 import com.its.bigstarsapp.R;
 
+import java.util.HashMap;
 import java.util.Objects;
 
 public class DataPertemuanEdit2Activity extends AppCompatActivity implements View.OnClickListener, IDataPertemuanEdit2View, OnMapReadyCallback {
@@ -178,6 +179,21 @@ public class DataPertemuanEdit2Activity extends AppCompatActivity implements Vie
     }
 
     private void inisiasiAwal() {
+
+        HashMap<String, String> user = sessionManager.getDataUser();
+        String hak_akses = user.get(sessionManager.HAK_AKSES);
+        if (hak_akses != null) {
+            if (hak_akses.equals("pengajar")) {
+                btnFinish.setVisibility(View.VISIBLE);
+                btnGetLokasi.setVisibility(View.VISIBLE);
+            }
+        }
+
+        if (status_pertemuan.equals("Selesai") || status_pertemuan.equals("Batal")) {
+            btnFinish.setVisibility(View.GONE);
+            btnGetLokasi.setVisibility(View.GONE);
+        }
+
         inisiasiGmap();
     }
 
