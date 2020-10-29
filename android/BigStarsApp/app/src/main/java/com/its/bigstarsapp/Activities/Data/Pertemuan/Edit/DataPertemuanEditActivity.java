@@ -314,6 +314,11 @@ public class DataPertemuanEditActivity extends AppCompatActivity implements View
                             map.moveCamera(CameraUpdateFactory.newLatLngZoom(
                                     new LatLng(lastKnownLocation.getLatitude(),
                                             lastKnownLocation.getLongitude()), DEFAULT_ZOOM));
+
+                            double la = lastKnownLocation.getLatitude();
+                            double lo = lastKnownLocation.getLongitude();
+                            lokasi_mulai_la = String.valueOf(la);
+                            lokasi_mulai_lo = String.valueOf(lo);
                         }
                     } else {
                         Log.d(TAG, "Current location is null. Using defaults.");
