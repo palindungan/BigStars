@@ -35,6 +35,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10sp"
                 android:layout_marginRight="10sp"
+                android:layout_marginBottom="5sp"
                 app:cardBackgroundColor="@color/colorPrimary"
                 app:cardCornerRadius="5dp"
                 app:cardElevation="5dp">
@@ -70,7 +71,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="7sp"
-                android:layout_marginTop="5sp"
                 android:layout_marginRight="7sp"
                 android:text="@string/ambil_lokasi_sekarang"
                 android:visibility="gone" />

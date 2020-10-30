@@ -302,4 +302,38 @@ class Pertemuan extends REST_Controller
             $this->response($result, 200);
         }
     }
+
+    function finish_data_post()
+    {
+        $id_pertemuan = $this->post('id_pertemuan');
+        $deskripsi = $this->post('deskripsi');
+        $lokasi_berakhir_la = $this->post('lokasi_berakhir_la');
+        $lokasi_berakhir_lo = $this->post('lokasi_berakhir_lo');
+
+        $data = array(
+            'status_pertemuan' => 'Selesai',
+            'deskripsi' =>  $deskripsi,
+            'lokasi_berakhir_la' =>  $lokasi_berakhir_la,
+            'lokasi_berakhir_lo' =>  $lokasi_berakhir_lo
+        );
+
+        $where = array(
+            'id_pertemuan' => $id_pertemuan
+        );
+
+        $update =  $this->M_universal->update_data($where, 'pertemuan', $data);
+        if ($update) {
+
+            // membuat array untuk di transfer ke API
+            $result["success"] = "1";
+            $result["message"] = "Berhasil Mengakhiri Pertemuan";
+            $this->response($result, 200);
+        } else {
+
+            // membuat array untuk di transfer ke API
+            $result["success"] = "0";
+            $result["message"] = "Gagal Mengakhiri Pertemuan ";
+            $this->response($result, 200);
+        }
+    }
 }

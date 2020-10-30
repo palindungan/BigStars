@@ -1,6 +1,7 @@
 package com.its.bigstarsapp.Activities.Data.Pertemuan.Edit2;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
@@ -32,6 +33,9 @@ import com.google.android.libraries.places.api.Places;
 import com.its.bigstarsapp.Activities.Data.Pertemuan.Edit2.presenter.DataPertemuanEdit2Presenter;
 import com.its.bigstarsapp.Activities.Data.Pertemuan.Edit2.presenter.IDataPertemuanEdit2Presenter;
 import com.its.bigstarsapp.Activities.Data.Pertemuan.Edit2.view.IDataPertemuanEdit2View;
+import com.its.bigstarsapp.Activities.Data.Pertemuan.List.DataPertemuanListActivity;
+import com.its.bigstarsapp.Activities.Home.Pengajar.HomePengajarActivity;
+import com.its.bigstarsapp.Activities._Main.MainActivity;
 import com.its.bigstarsapp.Controllers.GlobalMessage;
 import com.its.bigstarsapp.Controllers.GlobalProcess;
 import com.its.bigstarsapp.Controllers.GlobalVariable;
@@ -179,6 +183,9 @@ public class DataPertemuanEdit2Activity extends AppCompatActivity implements Vie
     }
 
     private void inisiasiAwal() {
+        if (!deskripsi.equals("kosong")) {
+            edtDeskripsi.setText(deskripsi);
+        }
 
         HashMap<String, String> user = sessionManager.getDataUser();
         hak_akses = user.get(sessionManager.HAK_AKSES);
@@ -332,7 +339,7 @@ public class DataPertemuanEdit2Activity extends AppCompatActivity implements Vie
                         if (!isEmpty) {
                             dataPertemuanEdit2Presenter.onFinish(
                                     "" + id_pertemuan,
-                                    "" + deskripsi,
+                                    "" + inputDeskripsi,
                                     "" + lokasi_berakhir_la,
                                     "" + lokasi_berakhir_lo);
                         }
@@ -357,13 +364,18 @@ public class DataPertemuanEdit2Activity extends AppCompatActivity implements Vie
     }
 
     @Override
-    public void goToDataPertemuanListScreen() {
-
+    public void goToDataRiwayatPertemuanListScreen() {
+        sessionManager.setStatusActivity("homePengajar->view->dataPertemuanHistory");
+        Intent intent = new Intent(getApplicationContext(), DataPertemuanListActivity.class);
+        intent.putExtra(DataPertemuanListActivity.EXTRA_ID_PENGAJAR, id_pengajar);
+        startActivity(intent);
     }
 
     @Override
-    public void goToHomeScreen() {
-
+    public void goToHomePengajarScreen() {
+        Intent intent = new Intent(this, HomePengajarActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
     }
 
     // [START maps_current_place_on_map_ready]
