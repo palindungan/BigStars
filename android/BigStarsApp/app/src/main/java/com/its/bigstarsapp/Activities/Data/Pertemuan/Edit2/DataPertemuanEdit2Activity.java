@@ -84,7 +84,7 @@ public class DataPertemuanEdit2Activity extends AppCompatActivity implements Vie
     EditText edtDeskripsi;
     Button btnGetLokasi, btnFinish;
 
-    // String statusActivity;
+    String hak_akses;
 
     public static Dialog dialog;
 
@@ -181,9 +181,11 @@ public class DataPertemuanEdit2Activity extends AppCompatActivity implements Vie
     private void inisiasiAwal() {
 
         HashMap<String, String> user = sessionManager.getDataUser();
-        String hak_akses = user.get(sessionManager.HAK_AKSES);
+        hak_akses = user.get(sessionManager.HAK_AKSES);
         if (hak_akses != null) {
-            if (hak_akses.equals("pengajar")) {
+            if (hak_akses.equals("admin")) {
+                // disable all fungsi edit text
+            } else if (hak_akses.equals("pengajar")) {
                 btnFinish.setVisibility(View.VISIBLE);
                 btnGetLokasi.setVisibility(View.VISIBLE);
             }
@@ -359,6 +361,11 @@ public class DataPertemuanEdit2Activity extends AppCompatActivity implements Vie
 
     }
 
+    @Override
+    public void goToHomeScreen() {
+
+    }
+
     // [START maps_current_place_on_map_ready]
     @Override
     public void onMapReady(GoogleMap map) {
@@ -407,7 +414,9 @@ public class DataPertemuanEdit2Activity extends AppCompatActivity implements Vie
                             Double.parseDouble(lokasi_berakhir_lo)
                     ), DEFAULT_ZOOM));
         } else {
-            onLoadGoogleMap();
+            if (hak_akses.equals("pengajar")) {
+                onLoadGoogleMap();
+            }
         }
     }
     // [END maps_current_place_on_map_ready]
