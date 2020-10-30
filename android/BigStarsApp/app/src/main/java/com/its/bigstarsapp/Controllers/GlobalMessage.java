@@ -16,6 +16,8 @@ public class GlobalMessage {
     String validasiJamBerakhirKosong;
     String validasiHargaFeeKosong;
     String validasiHargaSppKosong;
+    String validasiDeskripsiKosong;
+    String validasiLokasiKosong;
 
     String validasiKonfirmasiPasswordSalah;
 
@@ -63,6 +65,8 @@ public class GlobalMessage {
         validasiJamBerakhirKosong = "Isi Jam Berakhir Dengan Lengkap";
         validasiHargaFeeKosong = "Isi Harga Fee Dengan Lengkap";
         validasiHargaSppKosong = "Isi Harga Spp Dengan Lengkap";
+        validasiDeskripsiKosong = "Isi Deskripsi Dengan Lengkap";
+        validasiLokasiKosong = "Ambil Lokasi Google Maps !";
 
         validasiKonfirmasiPasswordSalah = "Konfirmasi Password Salah !";
 
@@ -146,6 +150,14 @@ public class GlobalMessage {
 
     public String getValidasiHargaSppKosong() {
         return validasiHargaSppKosong;
+    }
+
+    public String getValidasiDeskripsiKosong() {
+        return validasiDeskripsiKosong;
+    }
+
+    public String getValidasiLokasiKosong() {
+        return validasiLokasiKosong;
     }
 
     public String getValidasiKonfirmasiPasswordSalah() {

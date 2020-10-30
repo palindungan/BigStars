@@ -1,22 +1,23 @@
 package com.its.bigstarsapp.Activities.Data.Pertemuan.Edit2;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-
 import android.app.Dialog;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.FrameLayout;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
@@ -305,12 +306,51 @@ public class DataPertemuanEdit2Activity extends AppCompatActivity implements Vie
         getDeviceLocation();
     }
 
+    private void showDialogFinishPertemuan() {
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+                this);
+        alertDialogBuilder.setTitle(globalMessage.getValidasiBatalAbsen());
+        alertDialogBuilder
+                .setMessage(globalMessage.getPilihYaBatalAbsen())
+                .setPositiveButton(globalMessage.getYa(), (dialog, id) -> {
+
+                    String inputDeskripsi = edtDeskripsi.getText().toString().trim();
+                    boolean isEmpty = false;
+
+                    if (TextUtils.isEmpty(inputDeskripsi)) {
+                        isEmpty = true;
+                        edtDeskripsi.setError(globalMessage.getValidasiDeskripsiKosong());
+                        globalProcess.onErrorMessage(globalMessage.getValidasiDeskripsiKosong());
+                    } else if (lokasi_berakhir_la.equals("kosong") && lokasi_berakhir_lo.equals("kosong")) {
+                        isEmpty = true;
+                        globalProcess.onErrorMessage(globalMessage.getValidasiLokasiKosong());
+                    }
+
+                    try {
+                        if (!isEmpty) {
+                            dataPertemuanEdit2Presenter.onFinish(
+                                    "" + id_pertemuan,
+                                    "" + deskripsi,
+                                    "" + lokasi_berakhir_la,
+                                    "" + lokasi_berakhir_lo);
+                        }
+                    } catch (Exception e) {
+                        globalProcess.onErrorMessage(globalMessage.getErrorBatalAbsen() + e.toString());
+                    }
+
+                })
+                .setNegativeButton(globalMessage.getTidak(), (dialog, id) -> dialog.cancel());
+
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
+    }
+
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.btn_get_lokasi) {
             onLoadGoogleMap();
         } else if (view.getId() == R.id.btn_finish) {
-            globalProcess.onSuccessMessage("finish");
+            showDialogFinishPertemuan();
         }
     }
 
@@ -340,7 +380,7 @@ public class DataPertemuanEdit2Activity extends AppCompatActivity implements Vie
             public View getInfoContents(Marker marker) {
                 // Inflate the layouts for the info window, title and snippet.
                 View infoWindow = getLayoutInflater().inflate(R.layout.custom_info_contents,
-                        (FrameLayout) findViewById(R.id.map), false);
+                        findViewById(R.id.map), false);
 
                 TextView title = infoWindow.findViewById(R.id.title);
                 title.setText(marker.getTitle());
@@ -366,6 +406,8 @@ public class DataPertemuanEdit2Activity extends AppCompatActivity implements Vie
                             Double.parseDouble(lokasi_berakhir_la),
                             Double.parseDouble(lokasi_berakhir_lo)
                     ), DEFAULT_ZOOM));
+        } else {
+            onLoadGoogleMap();
         }
     }
     // [END maps_current_place_on_map_ready]
