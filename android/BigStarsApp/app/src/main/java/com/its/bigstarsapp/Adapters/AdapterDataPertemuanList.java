@@ -102,6 +102,8 @@ public class AdapterDataPertemuanList extends RecyclerView.Adapter<AdapterDataPe
             holder.rlBackground.setBackgroundColor(Color.GREEN);
         } else if (status_pertemuan.equals("Batal")) {
             holder.rlBackground.setBackgroundColor(Color.RED);
+        } else if (status_pertemuan.equals("Selesai")) {
+            holder.rlBackground.setBackgroundColor(context.getResources().getColor(R.color.colorPrimaryDark2));
         }
 
         if (waktu_mulai.equals(waktu_berakhir)) {
