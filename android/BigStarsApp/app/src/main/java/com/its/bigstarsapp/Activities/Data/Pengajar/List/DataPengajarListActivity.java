@@ -135,7 +135,7 @@ public class DataPengajarListActivity extends AppCompatActivity implements View.
                 intent = new Intent(getApplicationContext(), DataKelasPertemuanListActivity.class);
                 intent.putExtra(DataKelasPertemuanListActivity.EXTRA_ID_PENGAJAR, dataModelArrayList.get(position).getId_pengajar());
                 startActivity(intent);
-            } else if (statusActivity.equals("home->view->listPertemuanAktif")) {
+            } else if (statusActivity.equals("home->view->listPertemuanAktif") || statusActivity.equals("home->view->listPertemuanSemuaRiwayat")) {
                 intent = new Intent(getApplicationContext(), DataPertemuanListActivity.class);
                 intent.putExtra(DataPertemuanListActivity.EXTRA_ID_PENGAJAR, dataModelArrayList.get(position).getId_pengajar());
                 startActivity(intent);

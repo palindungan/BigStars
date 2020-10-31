@@ -140,10 +140,9 @@ public class HomeAdminActivity extends AppCompatActivity implements View.OnClick
         }
 
         if (id == R.id.menu_riwayat) {
-//            String id_pengajar = "Semua";
-//            intent = new Intent(getApplicationContext(), PengajarRiwayatAbsenActivity.class);
-//            intent.putExtra(PengajarRiwayatAbsenActivity.EXTRA_ID_PENGAJAR, id_pengajar);
-//            startActivity(intent);
+            sessionManager.setStatusActivity("home->view->listPertemuanSemuaRiwayat");
+            intent = new Intent(getApplicationContext(), DataPengajarListActivity.class);
+            startActivity(intent);
             return true;
         } else if (id == R.id.menu_akun_saya) {
             intent = new Intent(getApplicationContext(), AkunAdminActivity.class);

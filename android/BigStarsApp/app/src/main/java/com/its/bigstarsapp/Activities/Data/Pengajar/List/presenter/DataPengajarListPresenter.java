@@ -54,6 +54,8 @@ public class DataPengajarListPresenter implements IDataPengajarListPresenter {
 
         if (statusActivity.equals("home->view->listPertemuanAktif")) {
             URL_DATA = base_url + "absensi/pertemuan/list_all_data_aktif"; // url http request
+        } else if (statusActivity.equals("home->view->listPertemuanSemuaRiwayat")) {
+            URL_DATA = base_url + "absensi/pertemuan/list_all_data_riwayat"; // url http request
         }
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, URL_DATA, response -> {
@@ -80,7 +82,7 @@ public class DataPengajarListPresenter implements IDataPengajarListPresenter {
                         String no_hp = "";
                         String foto = "";
 
-                        if (statusActivity.equals("home->view->listPertemuanAktif")) {
+                        if (statusActivity.equals("home->view->listPertemuanAktif") || statusActivity.equals("home->view->listPertemuanSemuaRiwayat")) {
                             id_pengajar = dataobj.getString("id_pengajar");
                             nama = dataobj.getString("nama_pengajar");
                             username = dataobj.getString("username_pengajar");

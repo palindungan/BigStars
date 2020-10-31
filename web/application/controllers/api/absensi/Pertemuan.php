@@ -251,6 +251,50 @@ class Pertemuan extends REST_Controller
         }
     }
 
+    function list_all_data_riwayat_get()
+    {
+        // variable array
+        $result['data_result'] = array();
+
+        // data array untuk where db
+        $where = array(
+        );
+        $group_by = "id_pengajar";
+        $order_by = "waktu_mulai";
+
+        // mengambil data
+        $query = $this->M_universal->get_data_group_by('view_pertemuan', $where, $group_by, $order_by);
+
+        if ($query->num_rows() > 0) {
+
+            // mengeluarkan data dari database
+            foreach ($query->result_array() as $row) {
+
+                // ambil detail data db
+                $data = array(
+                    'id_pengajar'           => $row["id_pengajar"],
+                    'nama_pengajar'         => $row["nama_pengajar"],
+                    'username_pengajar'     => $row["username_pengajar"],
+                    'alamat_pengajar'       => $row["alamat_pengajar"],
+                    'no_hp_pengajar'        => $row["no_hp_pengajar"],
+                    'foto_pengajar'         => $row["foto_pengajar"],
+                );
+
+                array_push($result['data_result'], $data);
+
+                // membuat array untuk di transfer
+                $result["success"] = "1";
+                $result["message"] = "Success Berhasil Mengambil Data";
+                $this->response($result, 200);
+            }
+        } else {
+            // membuat array untuk di transfer ke API
+            $result["success"] = "0";
+            $result["message"] = "Data Masih kosong";
+            $this->response($result, 200);
+        }
+    }
+
     function list_data_history_post()
     {
         $id_pengajar        = $this->post('id_pengajar');
