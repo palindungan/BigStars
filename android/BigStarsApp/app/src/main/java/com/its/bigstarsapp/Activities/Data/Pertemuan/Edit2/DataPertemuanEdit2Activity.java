@@ -191,7 +191,8 @@ public class DataPertemuanEdit2Activity extends AppCompatActivity implements Vie
         hak_akses = user.get(sessionManager.HAK_AKSES);
         if (hak_akses != null) {
             if (hak_akses.equals("admin")) {
-                // disable all fungsi edit text
+                btnFinish.setVisibility(View.GONE);
+                edtDeskripsi.setFocusable(false);
             } else if (hak_akses.equals("pengajar")) {
                 btnFinish.setVisibility(View.VISIBLE);
                 btnGetLokasi.setVisibility(View.VISIBLE);
@@ -318,9 +319,9 @@ public class DataPertemuanEdit2Activity extends AppCompatActivity implements Vie
     private void showDialogFinishPertemuan() {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
                 this);
-        alertDialogBuilder.setTitle(globalMessage.getValidasiBatalAbsen());
+        alertDialogBuilder.setTitle(globalMessage.getValidasiFinishAbsen());
         alertDialogBuilder
-                .setMessage(globalMessage.getPilihYaBatalAbsen())
+                .setMessage(globalMessage.getPilihYaFinishAbsen())
                 .setPositiveButton(globalMessage.getYa(), (dialog, id) -> {
 
                     String inputDeskripsi = edtDeskripsi.getText().toString().trim();
@@ -344,7 +345,7 @@ public class DataPertemuanEdit2Activity extends AppCompatActivity implements Vie
                                     "" + lokasi_berakhir_lo);
                         }
                     } catch (Exception e) {
-                        globalProcess.onErrorMessage(globalMessage.getErrorBatalAbsen() + e.toString());
+                        globalProcess.onErrorMessage(globalMessage.getErrorFinishAbsen() + e.toString());
                     }
 
                 })

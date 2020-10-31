@@ -21,6 +21,7 @@ import com.its.bigstarsapp.Activities.Data.Pengajar.Edit.DataPengajarEditActivit
 import com.its.bigstarsapp.Activities.Data.Pengajar.List.presenter.DataPengajarListPresenter;
 import com.its.bigstarsapp.Activities.Data.Pengajar.List.presenter.IDataPengajarListPresenter;
 import com.its.bigstarsapp.Activities.Data.Pengajar.List.view.IDataPengajarListView;
+import com.its.bigstarsapp.Activities.Data.Pertemuan.List.DataPertemuanListActivity;
 import com.its.bigstarsapp.Adapters.AdapterDataPengajarList;
 import com.its.bigstarsapp.Controllers.GlobalMessage;
 import com.its.bigstarsapp.Controllers.GlobalProcess;
@@ -133,6 +134,10 @@ public class DataPengajarListActivity extends AppCompatActivity implements View.
                 sessionManager.setStatusActivity("listPengajar->view->editKelasPertemuan");
                 intent = new Intent(getApplicationContext(), DataKelasPertemuanListActivity.class);
                 intent.putExtra(DataKelasPertemuanListActivity.EXTRA_ID_PENGAJAR, dataModelArrayList.get(position).getId_pengajar());
+                startActivity(intent);
+            } else if (statusActivity.equals("home->view->listPertemuanAktif")) {
+                intent = new Intent(getApplicationContext(), DataPertemuanListActivity.class);
+                intent.putExtra(DataPertemuanListActivity.EXTRA_ID_PENGAJAR, dataModelArrayList.get(position).getId_pengajar());
                 startActivity(intent);
             }
         });

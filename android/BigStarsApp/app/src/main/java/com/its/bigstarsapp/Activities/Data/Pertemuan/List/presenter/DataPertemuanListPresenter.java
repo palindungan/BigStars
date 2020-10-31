@@ -51,7 +51,7 @@ public class DataPertemuanListPresenter implements IDataPertemuanListPresenter {
     public void onLoadDataList(String id_pengajar) {
         String base_url = globalVariable.getUrlData();
         String URL_DATA = "";
-        if (statusActivity.equals("homePengajar->view->dataPertemuanAktif") || statusActivity.equals("editKelasPertemuan->view->dataPertemuanAktif")) {
+        if (statusActivity.equals("homePengajar->view->dataPertemuanAktif") || statusActivity.equals("editKelasPertemuan->view->dataPertemuanAktif") || statusActivity.equals("home->view->listPertemuanAktif")) {
             URL_DATA = base_url + "absensi/pertemuan/list_data_aktif"; // url http request
         } else if (statusActivity.equals("homePengajar->view->dataPertemuanHistory")) {
             URL_DATA = base_url + "absensi/pertemuan/list_data_history"; // url http request

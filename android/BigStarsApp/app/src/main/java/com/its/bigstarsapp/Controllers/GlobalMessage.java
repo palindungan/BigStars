@@ -33,12 +33,14 @@ public class GlobalMessage {
     String validasiHapusSharing;
     String validasiMulaiAbsen;
     String validasiBatalAbsen;
+    String validasiFinishAbsen;
 
     String pilihYaUpdateData;
     String pilihYaHapusData;
     String pilihYaAddData;
     String pilihYaMulaiAbsen;
     String pilihYaBatalAbsen;
+    String pilihYaFinishAbsen;
 
     String pilihGambar;
 
@@ -49,6 +51,7 @@ public class GlobalMessage {
     String errorMulaiAbsen;
     String errorAmbilLokasi;
     String errorBatalAbsen;
+    String errorFinishAbsen;
 
     public GlobalMessage() {
         messageConnectionError = "Tidak Ada Koneksi Ke Server !, Periksa Kembali Koneksi Anda";
@@ -82,12 +85,14 @@ public class GlobalMessage {
         validasiHapusSharing = "Ingin Mengapus Sharing Kelas Pertemuan ?";
         validasiMulaiAbsen = "Mulai Absensi Kelas Pertemuan ?";
         validasiBatalAbsen = "Ingin Membatalkan Pertemuan ?";
+        validasiFinishAbsen = "Ingin Mengakhiri Absen ?";
 
         pilihYaUpdateData = "Klik Ya untuk melakukan update !";
         pilihYaHapusData = "Klik Ya untuk melakukan hapus !";
         pilihYaAddData = "Klik Ya untuk menambah data !";
         pilihYaMulaiAbsen = "Klik Ya untuk memulai absensi !";
         pilihYaBatalAbsen = "Klik Ya untuk Membatalkan Absensi !";
+        pilihYaFinishAbsen = "Klik Ya untuk Mengakhiri Absensi !";
 
         pilihGambar = "Pilih Gambar";
 
@@ -98,6 +103,7 @@ public class GlobalMessage {
         errorMulaiAbsen = "Terjadi Kesalahan Absensi : ";
         errorAmbilLokasi = "Ambil Lokasi Google Maps !";
         errorBatalAbsen = "Gagal membatalkan absensi !";
+        errorFinishAbsen = "Gagal Mengakhiri absensi !";
     }
 
     public String getMessageConnectionError() {
@@ -204,6 +210,10 @@ public class GlobalMessage {
         return validasiBatalAbsen;
     }
 
+    public String getValidasiFinishAbsen() {
+        return validasiFinishAbsen;
+    }
+
     public String getPilihYaUpdateData() {
         return pilihYaUpdateData;
     }
@@ -222,6 +232,10 @@ public class GlobalMessage {
 
     public String getPilihYaBatalAbsen() {
         return pilihYaBatalAbsen;
+    }
+
+    public String getPilihYaFinishAbsen() {
+        return pilihYaFinishAbsen;
     }
 
     public String getPilihGambar() {
@@ -254,5 +268,9 @@ public class GlobalMessage {
 
     public String getErrorBatalAbsen() {
         return errorBatalAbsen;
+    }
+
+    public String getErrorFinishAbsen() {
+        return errorFinishAbsen;
     }
 }
