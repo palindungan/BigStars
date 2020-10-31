@@ -73,4 +73,14 @@ public class DataPertemuanEditPresenter implements IDataPertemuanEditPresenter {
         RequestQueue requestQueue = Volley.newRequestQueue(context);
         requestQueue.add(stringRequest);
     }
+
+    @Override
+    public void onValidasiPertemuan(String id_pertemuan) {
+        globalProcess.onSuccessMessage(id_pertemuan);
+    }
+
+    @Override
+    public void onInValidasiPertemuan(String id_pertemuan) {
+        globalProcess.onErrorMessage(id_pertemuan);
+    }
 }

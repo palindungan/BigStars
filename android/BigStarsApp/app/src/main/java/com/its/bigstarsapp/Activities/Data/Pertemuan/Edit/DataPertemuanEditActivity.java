@@ -416,6 +416,10 @@ public class DataPertemuanEditActivity extends AppCompatActivity implements View
             }
         } else if (view.getId() == R.id.btn_batal) {
             showDialogBatalPertemuan();
+        } else if (view.getId() == R.id.btn_valid) {
+            dataPertemuanEditPresenter.onValidasiPertemuan("" + id_pertemuan);
+        } else if (view.getId() == R.id.btn_invalid) {
+            dataPertemuanEditPresenter.onInValidasiPertemuan("" + id_pertemuan);
         }
     }
 
