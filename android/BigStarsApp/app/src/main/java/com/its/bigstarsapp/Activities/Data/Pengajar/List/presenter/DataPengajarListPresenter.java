@@ -33,6 +33,8 @@ public class DataPengajarListPresenter implements IDataPengajarListPresenter {
 
     ArrayList<Pengajar> dataModelArrayList;
 
+    String statusActivity;
+
     public DataPengajarListPresenter(Context context, IDataPengajarListView dataPengajarListView) {
         this.context = context;
         this.dataPengajarListView = dataPengajarListView;
@@ -41,12 +43,18 @@ public class DataPengajarListPresenter implements IDataPengajarListPresenter {
         globalProcess = new GlobalProcess(context);
         globalVariable = new GlobalVariable();
         sessionManager = new SessionManager(context);
+
+        statusActivity = sessionManager.getStatusActivity();
     }
 
     @Override
     public void onLoadDataList() {
         String base_url = globalVariable.getUrlData();
         String URL_DATA = base_url + "data/pengajar/list_data"; // url http request
+
+        if (statusActivity.equals("home->view->listPertemuanAktif")) {
+            URL_DATA = base_url + "absensi/pertemuan/list_all_data_aktif"; // url http request
+        }
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, URL_DATA, response -> {
             try {
@@ -65,12 +73,28 @@ public class DataPengajarListPresenter implements IDataPengajarListPresenter {
                         Pengajar playerModel = new Pengajar();
                         JSONObject dataobj = dataArray.getJSONObject(i);
 
-                        String id_pengajar = dataobj.getString("id_pengajar");
-                        String nama = dataobj.getString("nama");
-                        String username = dataobj.getString("username");
-                        String alamat = dataobj.getString("alamat");
-                        String no_hp = dataobj.getString("no_hp");
-                        String foto = dataobj.getString("foto");
+                        String id_pengajar = "";
+                        String nama = "";
+                        String username = "";
+                        String alamat = "";
+                        String no_hp = "";
+                        String foto = "";
+
+                        if (statusActivity.equals("home->view->listPertemuanAktif")) {
+                            id_pengajar = dataobj.getString("id_pengajar");
+                            nama = dataobj.getString("nama_pengajar");
+                            username = dataobj.getString("username_pengajar");
+                            alamat = dataobj.getString("alamat_pengajar");
+                            no_hp = dataobj.getString("no_hp_pengajar");
+                            foto = dataobj.getString("foto_pengajar");
+                        } else {
+                            id_pengajar = dataobj.getString("id_pengajar");
+                            nama = dataobj.getString("nama");
+                            username = dataobj.getString("username");
+                            alamat = dataobj.getString("alamat");
+                            no_hp = dataobj.getString("no_hp");
+                            foto = dataobj.getString("foto");
+                        }
 
                         playerModel.setId_pengajar(id_pengajar);
                         playerModel.setNama(nama);
