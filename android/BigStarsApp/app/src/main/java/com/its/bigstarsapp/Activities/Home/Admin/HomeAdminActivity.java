@@ -49,7 +49,7 @@ public class HomeAdminActivity extends AppCompatActivity implements View.OnClick
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         navigationView.setNavigationItemSelectedListener(item -> {
             int id = item.getItemId();
-            // Intent intent = new Intent();
+            Intent intent = new Intent();
             switch (id) {
                 case R.id.monitoring:
                     // intent = new Intent(getApplicationContext(), AdminPengajarTampilActivity.class);
@@ -64,8 +64,8 @@ public class HomeAdminActivity extends AppCompatActivity implements View.OnClick
                     // intent.putExtra(AdminWaliMuridTampilActivity.EXTRA_STATUS_ACTIVITY, "to_riwayat_spp");
                     break;
                 case R.id.gaji_pengajar:
-                    // intent = new Intent(getApplicationContext(), AdminPengajarTampilActivity.class);
-                    // intent.putExtra(AdminPengajarTampilActivity.EXTRA_STATUS_ACTIVITY, "to_transaksi_gaji");
+                    sessionManager.setStatusActivity("home->view->detailPembayaranFee");
+                    intent = new Intent(getApplicationContext(), DataPengajarListActivity.class);
                     break;
                 case R.id.riwayat_penggajian:
                     // intent = new Intent(getApplicationContext(), AdminPengajarTampilActivity.class);
@@ -74,7 +74,7 @@ public class HomeAdminActivity extends AppCompatActivity implements View.OnClick
                 default:
                     return true;
             }
-            // startActivity(intent);
+            startActivity(intent);
             return true;
         });
 
