@@ -65,4 +65,5 @@
     <string name="pick_place">Choose a place</string>
     <string name="deskripsi_pertemuan">Deskripsi Pertemuan</string>
     <string name="klik_untuk_mengakhiri_pertemuan">Klik Untuk Mengakhiri Pertemuan</string>
+    <string name="pertemuan">Pertemuan :</string>
 </resources>

@@ -24,6 +24,7 @@
         android:usesCleartextTraffic="true"
         tools:ignore="AllowBackup"
         tools:targetApi="m">
+        <activity android:name=".Activities.Data.Pembayaran.Fee.Detail.DataPembayaranFeeDetailActivity"></activity>
         <activity android:name=".Activities.Data.Pertemuan.Edit2.DataPertemuanEdit2Activity" />
         <activity android:name=".Activities.Data.Pertemuan.Edit.DataPertemuanEditActivity" />
         <activity android:name=".Activities.Data.Pertemuan.List.DataPertemuanListActivity" />
