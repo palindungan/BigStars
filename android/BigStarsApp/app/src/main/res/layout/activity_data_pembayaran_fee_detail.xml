@@ -51,12 +51,12 @@
                         android:textColorHint="@color/white">
 
                         <EditText
-                            android:id="@+id/edt_harga_fee"
+                            android:id="@+id/edt_nama_pengajar"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:autofillHints=""
                             android:backgroundTint="@color/white"
-                            android:hint="@string/harga_fee"
+                            android:hint="@string/nama_pengajar"
                             android:inputType="number"
                             android:textColor="@color/white"
                             tools:targetApi="lollipop" />
@@ -69,12 +69,30 @@
                         android:textColorHint="@color/white">
 
                         <EditText
-                            android:id="@+id/edt_harga_spp"
+                            android:id="@+id/edt_total_pertemuan"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:autofillHints=""
                             android:backgroundTint="@color/white"
-                            android:hint="@string/harga_spp"
+                            android:hint="@string/total_pertemuan"
+                            android:inputType="number"
+                            android:textColor="@color/white"
+                            tools:targetApi="lollipop" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColorHint="@color/white">
+
+                        <EditText
+                            android:id="@+id/edt_total_fee"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:autofillHints=""
+                            android:backgroundTint="@color/white"
+                            android:hint="@string/total_fee"
                             android:inputType="number"
                             android:textColor="@color/white"
                             tools:targetApi="lollipop" />
@@ -82,10 +100,10 @@
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <Button
-                        android:id="@+id/btn_submit"
+                        android:id="@+id/btn_bayar"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/submit" />
+                        android:text="@string/bayar_fee" />
 
                 </LinearLayout>
 

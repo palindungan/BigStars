@@ -66,4 +66,7 @@
     <string name="deskripsi_pertemuan">Deskripsi Pertemuan</string>
     <string name="klik_untuk_mengakhiri_pertemuan">Klik Untuk Mengakhiri Pertemuan</string>
     <string name="pertemuan">Pertemuan :</string>
+    <string name="total_pertemuan">Total Pertemuan</string>
+    <string name="total_fee">Total FEE</string>
+    <string name="bayar_fee">Bayar FEE</string>
 </resources>
