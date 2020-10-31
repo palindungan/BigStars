@@ -423,4 +423,60 @@ class Pertemuan extends REST_Controller
             $this->response($result, 200);
         }
     }
+
+    function valid_data_post()
+    {
+        $id_pertemuan = $this->post('id_pertemuan');
+
+        $data = array(
+            'status_konfirmasi' => 'Valid'
+        );
+
+        $where = array(
+            'id_pertemuan' => $id_pertemuan
+        );
+
+        $update =  $this->M_universal->update_data($where, 'pertemuan', $data);
+        if ($update) {
+
+            // membuat array untuk di transfer ke API
+            $result["success"] = "1";
+            $result["message"] = "Pertemuan Sudah Valid";
+            $this->response($result, 200);
+        } else {
+
+            // membuat array untuk di transfer ke API
+            $result["success"] = "0";
+            $result["message"] = "Gagal Validasi Pertemuan ";
+            $this->response($result, 200);
+        }
+    }
+
+    function invalid_data_post()
+    {
+        $id_pertemuan = $this->post('id_pertemuan');
+
+        $data = array(
+            'status_konfirmasi' => 'Invalid'
+        );
+
+        $where = array(
+            'id_pertemuan' => $id_pertemuan
+        );
+
+        $update =  $this->M_universal->update_data($where, 'pertemuan', $data);
+        if ($update) {
+
+            // membuat array untuk di transfer ke API
+            $result["success"] = "1";
+            $result["message"] = "Pertemuan Invalid";
+            $this->response($result, 200);
+        } else {
+
+            // membuat array untuk di transfer ke API
+            $result["success"] = "0";
+            $result["message"] = "Gagal Validasi Pertemuan ";
+            $this->response($result, 200);
+        }
+    }
 }

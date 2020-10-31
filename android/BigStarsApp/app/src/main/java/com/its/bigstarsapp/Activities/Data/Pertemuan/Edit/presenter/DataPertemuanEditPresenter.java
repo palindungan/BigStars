@@ -76,11 +76,75 @@ public class DataPertemuanEditPresenter implements IDataPertemuanEditPresenter {
 
     @Override
     public void onValidasiPertemuan(String id_pertemuan) {
-        globalProcess.onSuccessMessage(id_pertemuan);
+        String base_url = globalVariable.getUrlData();
+        String URL_DATA = base_url + "absensi/pertemuan/valid_data"; // url http request
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_DATA,
+                response -> {
+                    try {
+                        JSONObject jsonObject = new JSONObject(response);
+                        String success = jsonObject.getString("success");
+                        String message = jsonObject.getString("message");
+
+                        if (success.equals("1")) {
+                            globalProcess.onSuccessMessage(message);
+                            dataPertemuanEditView.backPressed();
+                        } else {
+                            globalProcess.onErrorMessage(message);
+                        }
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                        globalProcess.onErrorMessage(globalMessage.getMessageResponseError() + e.toString());
+                    }
+                },
+                error -> globalProcess.onErrorMessage(globalMessage.getMessageConnectionError())) {
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<>();
+                params.put("id_pertemuan", id_pertemuan);
+                return params;
+            }
+        };
+
+        RequestQueue requestQueue = Volley.newRequestQueue(context);
+        requestQueue.add(stringRequest);
     }
 
     @Override
     public void onInValidasiPertemuan(String id_pertemuan) {
-        globalProcess.onErrorMessage(id_pertemuan);
+        String base_url = globalVariable.getUrlData();
+        String URL_DATA = base_url + "absensi/pertemuan/invalid_data"; // url http request
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_DATA,
+                response -> {
+                    try {
+                        JSONObject jsonObject = new JSONObject(response);
+                        String success = jsonObject.getString("success");
+                        String message = jsonObject.getString("message");
+
+                        if (success.equals("1")) {
+                            globalProcess.onSuccessMessage(message);
+                            dataPertemuanEditView.backPressed();
+                        } else {
+                            globalProcess.onErrorMessage(message);
+                        }
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                        globalProcess.onErrorMessage(globalMessage.getMessageResponseError() + e.toString());
+                    }
+                },
+                error -> globalProcess.onErrorMessage(globalMessage.getMessageConnectionError())) {
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<>();
+                params.put("id_pertemuan", id_pertemuan);
+                return params;
+            }
+        };
+
+        RequestQueue requestQueue = Volley.newRequestQueue(context);
+        requestQueue.add(stringRequest);
     }
 }
