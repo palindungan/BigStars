@@ -138,6 +138,8 @@ public class DataPembayaranFeeDetailActivity extends AppCompatActivity implement
                 "" + id_bayar_fee,
                 "" + id_pengajar);
 
-        dataPembayaranFeeDetailPresenter.onLoadDataListPertemuan("" + id_pengajar);
+        dataPembayaranFeeDetailPresenter.onLoadDataListPertemuan(
+                "" + id_bayar_fee,
+                "" + id_pengajar);
     }
 }

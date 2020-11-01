@@ -142,8 +142,8 @@ public class DataPengajarListActivity extends AppCompatActivity implements View.
                 startActivity(intent);
             } else if (statusActivity.equals("home->view->detailPembayaranFee")) {
                 intent = new Intent(getApplicationContext(), DataPembayaranFeeDetailActivity.class);
-                intent.putExtra(DataPembayaranFeeDetailActivity.EXTRA_ID_PENGAJAR, dataModelArrayList.get(position).getId_pengajar());
                 intent.putExtra(DataPembayaranFeeDetailActivity.EXTRA_ID_BAYAR_FEE, "kosong");
+                intent.putExtra(DataPembayaranFeeDetailActivity.EXTRA_ID_PENGAJAR, dataModelArrayList.get(position).getId_pengajar());
                 startActivity(intent);
             }
         });

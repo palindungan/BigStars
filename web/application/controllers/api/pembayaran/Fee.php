@@ -28,7 +28,8 @@ class Fee extends REST_Controller
         $where = array(
             'id_pengajar' => $id_pengajar,
             'status_fee' => 'Belum Terbayar',
-            'status_konfirmasi' => 'Valid'
+            'status_konfirmasi' => 'Valid',
+            'status_pertemuan' => 'Selesai'
         );
 
         // mengambil data

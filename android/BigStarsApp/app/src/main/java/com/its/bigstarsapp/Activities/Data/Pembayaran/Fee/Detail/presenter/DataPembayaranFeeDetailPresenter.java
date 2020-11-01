@@ -45,6 +45,11 @@ public class DataPembayaranFeeDetailPresenter implements IDataPembayaranFeeDetai
 
     @Override
     public void onLoadDataDetail(String id_bayar_fee, String id_pengajar) {
+
+    }
+
+    @Override
+    public void onLoadDataListPertemuan(String id_bayar_fee, String id_pengajar) {
         String base_url = globalVariable.getUrlData();
         String URL_DATA = base_url + "pembayaran/fee/list_data"; // url http request
 
@@ -144,10 +149,5 @@ public class DataPembayaranFeeDetailPresenter implements IDataPembayaranFeeDetai
 
         RequestQueue requestQueue = Volley.newRequestQueue(context);
         requestQueue.add(stringRequest);
-    }
-
-    @Override
-    public void onLoadDataListPertemuan(String id_pengajar) {
-
     }
 }
