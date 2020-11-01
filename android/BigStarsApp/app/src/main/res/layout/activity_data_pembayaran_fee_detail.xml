@@ -106,7 +106,8 @@
                         android:id="@+id/btn_bayar"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/bayar_fee" />
+                        android:text="@string/bayar_fee"
+                        android:visibility="gone" />
 
                 </LinearLayout>
 

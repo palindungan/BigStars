@@ -26,4 +26,14 @@ public class DataPembayaranFeeDetailPresenter implements IDataPembayaranFeeDetai
         globalVariable = new GlobalVariable();
         sessionManager = new SessionManager(context);
     }
+
+    @Override
+    public void onLoadDataDetail() {
+
+    }
+
+    @Override
+    public void onLoadDataListPertemuan() {
+
+    }
 }

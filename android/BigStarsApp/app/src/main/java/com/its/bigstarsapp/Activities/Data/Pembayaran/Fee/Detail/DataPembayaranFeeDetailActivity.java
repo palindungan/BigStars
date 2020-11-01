@@ -6,6 +6,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 
 import com.its.bigstarsapp.Activities.Data.Pembayaran.Fee.Detail.presenter.DataPembayaranFeeDetailPresenter;
 import com.its.bigstarsapp.Activities.Data.Pembayaran.Fee.Detail.presenter.IDataPembayaranFeeDetailPresenter;
@@ -30,6 +32,8 @@ public class DataPembayaranFeeDetailActivity extends AppCompatActivity implement
 
     Toolbar toolbar;
     RecyclerView recyclerView;
+    EditText edtNamaPengajar, edtTotalPertemuan, edtTotalFee;
+    Button btnBayar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,8 +49,15 @@ public class DataPembayaranFeeDetailActivity extends AppCompatActivity implement
 
         toolbar = findViewById(R.id.toolbar);
         recyclerView = findViewById(R.id.recycle_view);
+        edtNamaPengajar = findViewById(R.id.edt_nama_pengajar);
+        edtTotalPertemuan = findViewById(R.id.edt_total_pertemuan);
+        edtTotalFee = findViewById(R.id.edt_total_fee);
+
+        btnBayar = findViewById(R.id.btn_bayar);
 
         globalProcess.initActionBar(toolbar);
+
+        btnBayar.setOnClickListener(this);
     }
 
     @Override
