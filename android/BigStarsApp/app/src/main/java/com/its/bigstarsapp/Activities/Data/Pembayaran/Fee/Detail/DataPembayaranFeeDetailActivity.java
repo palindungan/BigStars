@@ -18,6 +18,9 @@ import com.its.bigstarsapp.R;
 
 public class DataPembayaranFeeDetailActivity extends AppCompatActivity implements View.OnClickListener, IDataPembayaranFeeDetailView {
 
+    public static final String EXTRA_ID_PENGAJAR = "EXTRA_ID_PENGAJAR";
+    public static final String EXTRA_ID_BAYAR_FEE = "EXTRA_ID_BAYAR_FEE";
+
     IDataPembayaranFeeDetailPresenter dataPembayaranFeeDetailPresenter;
 
     GlobalMessage globalMessage;

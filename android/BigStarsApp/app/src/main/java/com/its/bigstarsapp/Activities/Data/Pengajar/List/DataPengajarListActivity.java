@@ -16,6 +16,7 @@ import android.view.View;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.its.bigstarsapp.Activities.Data.KelasPertemuan.List.DataKelasPertemuanListActivity;
+import com.its.bigstarsapp.Activities.Data.Pembayaran.Fee.Detail.DataPembayaranFeeDetailActivity;
 import com.its.bigstarsapp.Activities.Data.Pengajar.Add.DataPengajarAddActivity;
 import com.its.bigstarsapp.Activities.Data.Pengajar.Edit.DataPengajarEditActivity;
 import com.its.bigstarsapp.Activities.Data.Pengajar.List.presenter.DataPengajarListPresenter;
@@ -138,6 +139,11 @@ public class DataPengajarListActivity extends AppCompatActivity implements View.
             } else if (statusActivity.equals("home->view->listPertemuanAktif") || statusActivity.equals("home->view->listPertemuanSemuaRiwayat")) {
                 intent = new Intent(getApplicationContext(), DataPertemuanListActivity.class);
                 intent.putExtra(DataPertemuanListActivity.EXTRA_ID_PENGAJAR, dataModelArrayList.get(position).getId_pengajar());
+                startActivity(intent);
+            } else if (statusActivity.equals("home->view->detailPembayaranFee")) {
+                intent = new Intent(getApplicationContext(), DataPembayaranFeeDetailActivity.class);
+                intent.putExtra(DataPembayaranFeeDetailActivity.EXTRA_ID_PENGAJAR, dataModelArrayList.get(position).getId_pengajar());
+                intent.putExtra(DataPembayaranFeeDetailActivity.EXTRA_ID_BAYAR_FEE, "kosong");
                 startActivity(intent);
             }
         });
