@@ -1,7 +1,7 @@
 package com.its.bigstarsapp.Activities.Data.Pembayaran.Fee.Detail.presenter;
 
 public interface IDataPembayaranFeeDetailPresenter {
-    void onLoadDataDetail();
+    void onLoadDataDetail(String id_pertemuan, String id_pengajar);
 
-    void onLoadDataListPertemuan();
+    void onLoadDataListPertemuan(String id_pengajar);
 }

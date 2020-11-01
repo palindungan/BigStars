@@ -28,12 +28,12 @@ public class DataPembayaranFeeDetailPresenter implements IDataPembayaranFeeDetai
     }
 
     @Override
-    public void onLoadDataDetail() {
+    public void onLoadDataDetail(String id_pertemuan, String id_pengajar) {
 
     }
 
     @Override
-    public void onLoadDataListPertemuan() {
+    public void onLoadDataListPertemuan(String id_pengajar) {
 
     }
 }
