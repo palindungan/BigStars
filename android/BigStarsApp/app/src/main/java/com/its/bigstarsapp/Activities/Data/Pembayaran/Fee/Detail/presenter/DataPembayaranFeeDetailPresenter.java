@@ -79,7 +79,7 @@ public class DataPembayaranFeeDetailPresenter implements IDataPembayaranFeeDetai
                                 String deskripsi = dataobj.getString("deskripsi");
                                 String harga_fee = dataobj.getString("harga_fee");
                                 String harga_spp = dataobj.getString("harga_spp");
-                                String status_fee = dataobj.getString("status_fee");
+                                String status_fee = dataobj.getString("status_fee") + " (" + harga_fee + ")";
                                 String status_spp = dataobj.getString("status_spp");
                                 String status_konfirmasi = dataobj.getString("status_konfirmasi");
                                 String status_pertemuan = dataobj.getString("status_pertemuan");
