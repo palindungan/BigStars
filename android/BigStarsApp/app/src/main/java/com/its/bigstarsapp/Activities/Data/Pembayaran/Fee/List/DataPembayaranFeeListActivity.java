@@ -1,5 +1,6 @@
 package com.its.bigstarsapp.Activities.Data.Pembayaran.Fee.List;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.MenuItem;
@@ -11,6 +12,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import com.its.bigstarsapp.Activities.Data.Pembayaran.Fee.Detail.DataPembayaranFeeDetailActivity;
 import com.its.bigstarsapp.Activities.Data.Pembayaran.Fee.List.presenter.DataPembayaranFeeListPresenter;
 import com.its.bigstarsapp.Activities.Data.Pembayaran.Fee.List.presenter.IDataPembayaranFeeListPresenter;
 import com.its.bigstarsapp.Activities.Data.Pembayaran.Fee.List.view.IDataPembayaranFeeListView;
@@ -93,7 +95,10 @@ public class DataPembayaranFeeListActivity extends AppCompatActivity implements 
         adapterDataPembayaranFeeList.notifyDataSetChanged();
 
         adapterDataPembayaranFeeList.setOnItemClickListener((view, position) -> {
-
+            Intent intent = new Intent(getApplicationContext(), DataPembayaranFeeDetailActivity.class);
+            intent.putExtra(DataPembayaranFeeDetailActivity.EXTRA_ID_BAYAR_FEE, dataModelArrayList.get(position).getId_bayar_fee());
+            intent.putExtra(DataPembayaranFeeDetailActivity.EXTRA_ID_PENGAJAR, dataModelArrayList.get(position).getId_pengajar());
+            startActivity(intent);
         });
     }
 

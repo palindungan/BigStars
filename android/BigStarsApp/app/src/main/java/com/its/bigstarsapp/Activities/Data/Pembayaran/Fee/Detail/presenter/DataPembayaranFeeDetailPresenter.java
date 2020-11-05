@@ -47,6 +47,10 @@ public class DataPembayaranFeeDetailPresenter implements IDataPembayaranFeeDetai
         String base_url = globalVariable.getUrlData();
         String URL_DATA = base_url + "pembayaran/fee/list_data_pertemuan"; // url http request
 
+        if (!id_bayar_fee.equals("kosong")) {
+            URL_DATA = base_url + "pembayaran/fee/list_data_bayar_fee_detail"; // url http request
+        }
+
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_DATA,
                 response -> {
                     try {
