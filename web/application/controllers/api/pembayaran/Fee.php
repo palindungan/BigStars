@@ -43,9 +43,6 @@ class Fee extends REST_Controller
                 // ambil detail data db
                 $data = array(
                     'id_pertemuan'          => $row["id_pertemuan"],
-                    'id_pengajar'           => $row["id_pengajar"],
-                    'id_kelas_pertemuan'    => $row["id_kelas_pertemuan"],
-
                     'hari_pertemuan'        => $row["hari_pertemuan"],
                     'waktu_mulai'           => $row["waktu_mulai"],
                     'waktu_berakhir'        => $row["waktu_berakhir"],
@@ -61,6 +58,7 @@ class Fee extends REST_Controller
                     'status_konfirmasi'     => $row["status_konfirmasi"],
                     'status_pertemuan'      => $row["status_pertemuan"],
 
+                    'id_pengajar'           => $row["id_pengajar"],
                     'nama_pengajar'         => $row["nama_pengajar"],
 
                     'id_kelas_pertemuan'    => $row["id_kelas_pertemuan"],
