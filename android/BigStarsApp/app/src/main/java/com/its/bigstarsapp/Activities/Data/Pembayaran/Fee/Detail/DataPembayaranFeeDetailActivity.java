@@ -50,6 +50,8 @@ public class DataPembayaranFeeDetailActivity extends AppCompatActivity implement
     Button btnBayar;
 
     String id_pengajar, id_bayar_fee, id_user;
+    String hak_akses;
+    String statusActivity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,6 +80,8 @@ public class DataPembayaranFeeDetailActivity extends AppCompatActivity implement
         id_pengajar = getIntent().getStringExtra(EXTRA_ID_PENGAJAR);
         HashMap<String, String> user = sessionManager.getDataUser();
         id_user = user.get(sessionManager.ID_USER);
+        hak_akses = user.get(sessionManager.HAK_AKSES);
+        statusActivity = sessionManager.getStatusActivity();
 
         onLoadData();
 
@@ -110,8 +114,10 @@ public class DataPembayaranFeeDetailActivity extends AppCompatActivity implement
         edtTotalPertemuan.setText(String.valueOf(totalPertemuan));
         edtTotalFee.setText(String.valueOf(totalFee));
 
-        if (totalPertemuan > 0) {
-            btnBayar.setVisibility(View.VISIBLE);
+        if (totalPertemuan > 0 && hak_akses.equals("admin")) {
+            if (!statusActivity.equals("home->view->ListPembayaranFee")) {
+                btnBayar.setVisibility(View.VISIBLE);
+            }
         }
     }
 
