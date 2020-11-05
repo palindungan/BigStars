@@ -26,6 +26,7 @@ import java.util.ArrayList;
 
 public class DataPembayaranFeeListActivity extends AppCompatActivity implements View.OnClickListener, IDataPembayaranFeeListView {
 
+    public static final String EXTRA_ID_BAYAR_FEE = "EXTRA_ID_BAYAR_FEE";
     public static final String EXTRA_ID_PENGAJAR = "EXTRA_ID_PENGAJAR";
 
     IDataPembayaranFeeListPresenter dataPembayaranFeeListPresenter;
