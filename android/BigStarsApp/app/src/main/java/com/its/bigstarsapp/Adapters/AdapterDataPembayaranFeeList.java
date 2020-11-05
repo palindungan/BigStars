@@ -20,7 +20,8 @@ import java.util.ArrayList;
 
 import butterknife.ButterKnife;
 
-public class AdapterDataBayarFeeList extends RecyclerView.Adapter<AdapterDataBayarFeeList.DataBayarFeeListViewHolder> {
+public class AdapterDataPembayaranFeeList extends RecyclerView.Adapter<AdapterDataPembayaranFeeList.DataPembayaranFeeListViewHolder> {
+
     Context context;
     ArrayList<BayarFee> dataModelArrayList;
 
@@ -33,7 +34,7 @@ public class AdapterDataBayarFeeList extends RecyclerView.Adapter<AdapterDataBay
 
     String statusActivity;
 
-    public AdapterDataBayarFeeList(Context context, ArrayList<BayarFee> dataModelArrayList) {
+    public AdapterDataPembayaranFeeList(Context context, ArrayList<BayarFee> dataModelArrayList) {
         this.context = context;
         this.dataModelArrayList = dataModelArrayList;
 
@@ -47,13 +48,13 @@ public class AdapterDataBayarFeeList extends RecyclerView.Adapter<AdapterDataBay
 
     @NonNull
     @Override
-    public AdapterDataBayarFeeList.DataBayarFeeListViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public AdapterDataPembayaranFeeList.DataPembayaranFeeListViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(context).inflate(R.layout.item_adapter_data_pembayaran_list, parent, false);
-        return new DataBayarFeeListViewHolder(itemView);
+        return new DataPembayaranFeeListViewHolder(itemView);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull AdapterDataBayarFeeList.DataBayarFeeListViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull AdapterDataPembayaranFeeList.DataPembayaranFeeListViewHolder holder, int position) {
         String nama_pengajar = dataModelArrayList.get(position).getNama_pengajar();
         String waktu = dataModelArrayList.get(position).getWaktu();
         String total_pertemuan = dataModelArrayList.get(position).getTotal_pertemuan();
@@ -70,11 +71,11 @@ public class AdapterDataBayarFeeList extends RecyclerView.Adapter<AdapterDataBay
         return dataModelArrayList.size();
     }
 
-    public static class DataBayarFeeListViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public static class DataPembayaranFeeListViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         protected TextView tvNamaPengajar, tvWaktu, tvTotalPertemuan, tvTotalHargaFee;
 
-        public DataBayarFeeListViewHolder(@NonNull View itemView) {
+        public DataPembayaranFeeListViewHolder(@NonNull View itemView) {
             super(itemView);
 
             tvNamaPengajar = itemView.findViewById(R.id.tv_nama_pengajar);
@@ -97,6 +98,6 @@ public class AdapterDataBayarFeeList extends RecyclerView.Adapter<AdapterDataBay
     }
 
     public void setOnItemClickListener(ClickListener clickListener) {
-        AdapterDataBayarFeeList.clickListener = clickListener;
+        AdapterDataPembayaranFeeList.clickListener = clickListener;
     }
 }
