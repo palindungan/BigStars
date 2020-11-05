@@ -193,7 +193,8 @@ class Fee extends REST_Controller
                     'total_harga_fee' => $row["total_harga_fee"],
                     'id_pengajar' => $row["id_pengajar"],
                     'nama_pengajar' => $row["nama_pengajar"],
-                    'id_admin' => $row["id_admin"]
+                    'id_admin' => $row["id_admin"],
+                    'nama_admin' => $row["nama_admin"]
                 );
 
                 array_push($result['data_result'], $data);

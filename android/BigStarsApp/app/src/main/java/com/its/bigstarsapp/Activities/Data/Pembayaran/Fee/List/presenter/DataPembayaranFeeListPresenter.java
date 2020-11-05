@@ -66,17 +66,23 @@ public class DataPembayaranFeeListPresenter implements IDataPembayaranFeeListPre
                                 JSONObject dataobj = dataArray.getJSONObject(i);
 
                                 String id_bayar_fee = dataobj.getString("id_bayar_fee");
-                                String id_admin = dataobj.getString("id_admin");
                                 String waktu = dataobj.getString("waktu");
                                 String total_pertemuan = dataobj.getString("total_pertemuan");
                                 String total_harga_fee = dataobj.getString("total_harga_fee");
 
-                                playerModel.setId_bayar_fee(id_bayar_fee);
+                                String nama_pengajar = dataobj.getString("nama_pengajar");
 
-                                playerModel.setId_admin(id_admin);
+                                String id_admin = dataobj.getString("id_admin");
+
+                                playerModel.setId_bayar_fee(id_bayar_fee);
                                 playerModel.setWaktu(waktu);
                                 playerModel.setTotal_pertemuan(total_pertemuan);
                                 playerModel.setTotal_harga_fee(total_harga_fee);
+
+                                playerModel.setId_pengajar(id_pengajar);
+                                playerModel.setNama_pengajar(nama_pengajar);
+
+                                playerModel.setId_admin(id_admin);
 
                                 dataModelArrayList.add(playerModel);
                             }
