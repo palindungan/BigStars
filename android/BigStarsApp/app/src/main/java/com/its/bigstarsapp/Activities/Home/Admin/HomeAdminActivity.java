@@ -49,7 +49,7 @@ public class HomeAdminActivity extends AppCompatActivity implements View.OnClick
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         navigationView.setNavigationItemSelectedListener(item -> {
             int id = item.getItemId();
-            Intent intent = new Intent();
+            Intent intent;
             switch (id) {
                 case R.id.monitoring:
                     // intent = new Intent(getApplicationContext(), AdminPengajarTampilActivity.class);
@@ -66,6 +66,7 @@ public class HomeAdminActivity extends AppCompatActivity implements View.OnClick
                 case R.id.gaji_pengajar:
                     sessionManager.setStatusActivity("home->view->detailPembayaranFee");
                     intent = new Intent(getApplicationContext(), DataPengajarListActivity.class);
+                    startActivity(intent);
                     break;
                 case R.id.riwayat_penggajian:
                     // intent = new Intent(getApplicationContext(), AdminPengajarTampilActivity.class);
@@ -74,7 +75,6 @@ public class HomeAdminActivity extends AppCompatActivity implements View.OnClick
                 default:
                     return true;
             }
-            startActivity(intent);
             return true;
         });
 
