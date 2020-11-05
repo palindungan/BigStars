@@ -1,5 +1,6 @@
 package com.its.bigstarsapp.Activities.Data.Pembayaran.Fee.Detail;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -9,6 +10,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.TextUtils;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -27,6 +29,7 @@ import com.its.bigstarsapp.Models.Pertemuan;
 import com.its.bigstarsapp.R;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class DataPembayaranFeeDetailActivity extends AppCompatActivity implements View.OnClickListener, IDataPembayaranFeeDetailView {
 
@@ -46,7 +49,7 @@ public class DataPembayaranFeeDetailActivity extends AppCompatActivity implement
     EditText edtNamaPengajar, edtTotalPertemuan, edtTotalFee;
     Button btnBayar;
 
-    String id_pengajar, id_bayar_fee;
+    String id_pengajar, id_bayar_fee, id_user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,6 +76,8 @@ public class DataPembayaranFeeDetailActivity extends AppCompatActivity implement
 
         id_bayar_fee = getIntent().getStringExtra(EXTRA_ID_BAYAR_FEE);
         id_pengajar = getIntent().getStringExtra(EXTRA_ID_PENGAJAR);
+        HashMap<String, String> user = sessionManager.getDataUser();
+        id_user = user.get(sessionManager.ID_USER);
 
         onLoadData();
 
@@ -95,7 +100,7 @@ public class DataPembayaranFeeDetailActivity extends AppCompatActivity implement
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.btn_bayar) {
-            globalProcess.onSuccessMessage("test");
+            showDialogBayar();
         }
     }
 
@@ -195,5 +200,41 @@ public class DataPembayaranFeeDetailActivity extends AppCompatActivity implement
         dataPembayaranFeeDetailPresenter.onLoadDataListPertemuan(
                 "" + id_bayar_fee,
                 "" + id_pengajar);
+    }
+
+    private void showDialogBayar() {
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+                this);
+        alertDialogBuilder.setTitle("Ingin Lakukan Pembayaran FEE ?");
+        alertDialogBuilder
+                .setMessage("Pilih Ya untuk melakukan pembayaran FEE.")
+                .setPositiveButton(globalMessage.getYa(), (dialog, id) -> {
+                    String inputTotalPertemuan = edtTotalPertemuan.getText().toString().trim();
+                    String inputTotalFee = edtTotalFee.getText().toString().trim();
+                    boolean isEmpty = false;
+                    if (TextUtils.isEmpty(inputTotalPertemuan)) {
+                        isEmpty = true;
+                        edtTotalPertemuan.setError(globalMessage.getValidasiNamaKosong());
+                    } else if (TextUtils.isEmpty(inputTotalFee)) {
+                        isEmpty = true;
+                        edtTotalFee.setError(globalMessage.getValidasiNamaKosong());
+                    }
+                    try {
+                        if (!isEmpty) {
+                            globalProcess.onSuccessMessage("berhasil");
+                            dataPembayaranFeeDetailPresenter.onBayar(
+                                    "" + id_pengajar,
+                                    "" + id_user,
+                                    "" + inputTotalPertemuan,
+                                    "" + inputTotalFee);
+                        }
+                    } catch (Exception e) {
+                        globalProcess.onErrorMessage("Gagal Melakukan Pembayaran " + e.toString());
+                    }
+                })
+                .setNegativeButton(globalMessage.getTidak(), (dialog, id) -> dialog.cancel());
+
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
     }
 }

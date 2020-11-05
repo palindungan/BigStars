@@ -86,4 +86,42 @@ class Fee extends REST_Controller
             $this->response($result, 200);
         }
     }
+
+    function add_data_post()
+    {
+        $tanggal = date('Y-m-d H:i:s');
+        // ambil data
+        $id_bayar_fee       = $this->M_kode->id_bayar_fee();
+        $id_pengajar        = $this->post('id_pengajar');
+        $id_admin           = $this->post('id_admin');
+        $waktu              = $tanggal;
+        $total_pertemuan    = $this->post('total_pertemuan');
+        $total_harga_fee    = $this->post('total_harga_fee');
+        $status_data        = "active";
+
+        $data = array(
+            'id_bayar_fee'      => $id_bayar_fee,
+            'id_pengajar'       => $id_pengajar,
+            'id_admin'          => $id_admin,
+            'waktu'             => $waktu,
+            'total_pertemuan'   => $total_pertemuan,
+            'total_harga_fee'   => $total_harga_fee,
+            'status_data'       => $status_data
+        );
+
+        $insert =  $this->M_universal->input_data('bayar_fee', $data);
+        if ($insert) {
+
+            // membuat array untuk di transfer ke API
+            $result["success"] = "1";
+            $result["message"] = "Berhasil Pembayaran Fee";
+            $this->response($result, 200);
+        } else {
+
+            // membuat array untuk di transfer ke API
+            $result["success"] = "0";
+            $result["message"] = "Gagal Pembayaran Fee";
+            $this->response($result, 200);
+        }
+    }
 }

@@ -155,4 +155,44 @@ public class DataPembayaranFeeDetailPresenter implements IDataPembayaranFeeDetai
         RequestQueue requestQueue = Volley.newRequestQueue(context);
         requestQueue.add(stringRequest);
     }
+
+    @Override
+    public void onBayar(String id_pengajar, String id_admin, String total_pertemuan, String total_harga_fee) {
+        String base_url = globalVariable.getUrlData();
+        String URL_DATA = base_url + "pembayaran/fee/add_data"; // url http request
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_DATA,
+                response -> {
+                    try {
+                        JSONObject jsonObject = new JSONObject(response);
+                        String success = jsonObject.getString("success");
+                        String message = jsonObject.getString("message");
+
+                        if (success.equals("1")) {
+                            globalProcess.onSuccessMessage(message);
+                            dataPembayaranFeeDetailView.backPressed();
+                        } else {
+                            globalProcess.onErrorMessage(message);
+                        }
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                        globalProcess.onErrorMessage(globalMessage.getMessageResponseError() + e.toString());
+                    }
+                },
+                error -> globalProcess.onErrorMessage(globalMessage.getMessageConnectionError())) {
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<>();
+                params.put("id_pengajar", id_pengajar);
+                params.put("id_admin", id_admin);
+                params.put("total_pertemuan", total_pertemuan);
+                params.put("total_harga_fee", total_harga_fee);
+                return params;
+            }
+        };
+
+        RequestQueue requestQueue = Volley.newRequestQueue(context);
+        requestQueue.add(stringRequest);
+    }
 }
