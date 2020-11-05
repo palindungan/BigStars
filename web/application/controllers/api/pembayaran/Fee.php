@@ -112,6 +112,8 @@ class Fee extends REST_Controller
         $insert =  $this->M_universal->input_data('bayar_fee', $data);
         if ($insert) {
 
+            $this->add_data_detail($id_bayar_fee, $id_pengajar);
+
             // membuat array untuk di transfer ke API
             $result["success"] = "1";
             $result["message"] = "Berhasil Pembayaran Fee";
@@ -122,6 +124,31 @@ class Fee extends REST_Controller
             $result["success"] = "0";
             $result["message"] = "Gagal Pembayaran Fee";
             $this->response($result, 200);
+        }
+    }
+
+    function add_data_detail($id_bayar_fee, $id_pengajar){
+
+        // data array untuk where db
+        $where = array(
+            'id_pengajar' => $id_pengajar,
+            'status_fee' => 'Belum Terbayar',
+            'status_konfirmasi' => 'Valid',
+            'status_pertemuan' => 'Selesai'
+        );
+
+        // mengambil data
+        $query = $this->M_universal->get_data('view_pertemuan', $where);
+        if ($query->num_rows() > 0) {
+
+            // mengeluarkan data dari database
+            foreach ($query->result_array() as $row) {
+                $data = array(
+                    'id_bayar_fee'  => $id_bayar_fee,
+                    'id_pertemuan'  => $row["id_pertemuan"]
+                );
+                $insert =  $this->M_universal->input_data('bayar_fee_detail', $data);
+            }
         }
     }
 }
