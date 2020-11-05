@@ -143,12 +143,71 @@ class Fee extends REST_Controller
 
             // mengeluarkan data dari database
             foreach ($query->result_array() as $row) {
+
+                $id_pertemuan = $row["id_pertemuan"];
+
                 $data = array(
                     'id_bayar_fee'  => $id_bayar_fee,
-                    'id_pertemuan'  => $row["id_pertemuan"]
+                    'id_pertemuan'  => $id_pertemuan
                 );
                 $insert =  $this->M_universal->input_data('bayar_fee_detail', $data);
+
+                 // data array untuk where db
+                $where = array(
+                    'id_pertemuan'  => $id_pertemuan
+                );
+                $data = array(
+                    'status_fee'  => 'Sudah Terbayar'
+                );
+                $update =  $this->M_universal->update_data($where, 'pertemuan', $data);
             }
+        }
+    }
+
+    function list_data_post()
+    {
+        $id_pengajar    = $this->post('id_pengajar');
+
+        // variable array
+        $result['data_result'] = array();
+
+        // data array untuk where db
+        $where = array(
+            'status_data' => 'active',
+            'id_pengajar' =>  $id_pengajar
+        );
+
+        // mengambil data
+        $query = $this->M_universal->get_data('view_bayar_fee', $where);
+
+        if ($query->num_rows() > 0) {
+
+            // mengeluarkan data dari database
+            foreach ($query->result_array() as $row) {
+
+                // ambil detail data db
+                $data = array(
+                    'id_bayar_fee' => $row["id_bayar_fee"],
+                    'waktu' => $row["waktu"],
+                    'total_pertemuan' => $row["total_pertemuan"],
+                    'total_harga_fee' => $row["total_harga_fee"],
+                    'id_pengajar' => $row["id_pengajar"],
+                    'nama_pengajar' => $row["nama_pengajar"],
+                    'id_admin' => $row["id_admin"]
+                );
+
+                array_push($result['data_result'], $data);
+
+                // membuat array untuk di transfer
+                $result["success"] = "1";
+                $result["message"] = "Success Berhasil Mengambil Data";
+                $this->response($result, 200);
+            }
+        } else {
+            // membuat array untuk di transfer ke API
+            $result["success"] = "0";
+            $result["message"] = "Data Masih kosong";
+            $this->response($result, 200);
         }
     }
 }
