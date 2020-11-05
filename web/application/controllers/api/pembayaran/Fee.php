@@ -113,9 +113,6 @@ class Fee extends REST_Controller
                     'id_bayar_fee'          => $row["id_bayar_fee"],
 
                     'id_pertemuan'          => $row["id_pertemuan"],
-                    'id_pengajar'           => $row["id_pengajar"],
-                    'id_kelas_pertemuan'    => $row["id_kelas_pertemuan"],
-
                     'hari_pertemuan'        => $row["hari_pertemuan"],
                     'waktu_mulai'           => $row["waktu_mulai"],
                     'waktu_berakhir'        => $row["waktu_berakhir"],
@@ -131,6 +128,7 @@ class Fee extends REST_Controller
                     'status_konfirmasi'     => $row["status_konfirmasi"],
                     'status_pertemuan'      => $row["status_pertemuan"],
 
+                    'id_pengajar'           => $row["id_pengajar"],
                     'nama_pengajar'         => $row["nama_pengajar"],
 
                     'id_kelas_pertemuan'    => $row["id_kelas_pertemuan"],
