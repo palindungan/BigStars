@@ -16,9 +16,9 @@ class Fee extends REST_Controller
         date_default_timezone_set('Asia/Jakarta');
     }
     
-    function list_data_post()
+    function list_data_pertemuan_post()
     {
-        $id_bayar_fee   = $this->post('id_bayar_fee');
+        // $id_bayar_fee   = $this->post('id_bayar_fee');
         $id_pengajar    = $this->post('id_pengajar');
 
         // variable array
