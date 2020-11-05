@@ -5,7 +5,7 @@ import com.its.bigstarsapp.Models.Pertemuan;
 import java.util.ArrayList;
 
 public interface IDataPembayaranFeeDetailView {
-    void onSetData();
+    void onSetData(String setNamaPengajar, int totalPertemuan, int totalFee);
 
     void onSetupListView(ArrayList<Pertemuan> dataModelArrayList);
 

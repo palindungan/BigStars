@@ -98,8 +98,10 @@ public class DataPembayaranFeeDetailActivity extends AppCompatActivity implement
     }
 
     @Override
-    public void onSetData() {
-
+    public void onSetData(String setNamaPengajar, int totalPertemuan, int totalFee) {
+        edtNamaPengajar.setText(setNamaPengajar);
+        edtTotalPertemuan.setText(String.valueOf(totalPertemuan));
+        edtTotalFee.setText(String.valueOf(totalFee));
     }
 
     @Override
@@ -184,10 +186,6 @@ public class DataPembayaranFeeDetailActivity extends AppCompatActivity implement
     }
 
     private void onLoadData() {
-        dataPembayaranFeeDetailPresenter.onLoadDataDetail(
-                "" + id_bayar_fee,
-                "" + id_pengajar);
-
         dataPembayaranFeeDetailPresenter.onLoadDataListPertemuan(
                 "" + id_bayar_fee,
                 "" + id_pengajar);

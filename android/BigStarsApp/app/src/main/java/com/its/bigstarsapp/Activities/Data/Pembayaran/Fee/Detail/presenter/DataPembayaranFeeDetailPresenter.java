@@ -43,11 +43,6 @@ public class DataPembayaranFeeDetailPresenter implements IDataPembayaranFeeDetai
     }
 
     @Override
-    public void onLoadDataDetail(String id_bayar_fee, String id_pengajar) {
-
-    }
-
-    @Override
     public void onLoadDataListPertemuan(String id_bayar_fee, String id_pengajar) {
         String base_url = globalVariable.getUrlData();
         String URL_DATA = base_url + "pembayaran/fee/list_data_pertemuan"; // url http request
@@ -61,6 +56,10 @@ public class DataPembayaranFeeDetailPresenter implements IDataPembayaranFeeDetai
                         String message = obj.getString("message");
 
                         if (success.equals("1")) {
+
+                            String setNamaPengajar = "";
+                            int totalPertemuan = 0;
+                            int totalFee = 0;
 
                             dataModelArrayList = new ArrayList<>();
                             JSONArray dataArray = obj.getJSONArray("data_result");
@@ -123,9 +122,16 @@ public class DataPembayaranFeeDetailPresenter implements IDataPembayaranFeeDetai
                                 playerModel.setNama_mata_pelajaran(nama_mata_pelajaran);
 
                                 dataModelArrayList.add(playerModel);
-                            }
-                            dataPembayaranFeeDetailView.onSetupListView(dataModelArrayList);
 
+                                setNamaPengajar = nama_pengajar;
+                                totalPertemuan = totalPertemuan + 1;
+                                totalFee = totalFee + Integer.parseInt(harga_fee);
+                            }
+                            dataPembayaranFeeDetailView.onSetData(
+                                    setNamaPengajar,
+                                    totalPertemuan,
+                                    totalFee);
+                            dataPembayaranFeeDetailView.onSetupListView(dataModelArrayList);
                         } else {
                             dataModelArrayList = new ArrayList<>();
                             dataPembayaranFeeDetailView.onSetupListView(dataModelArrayList);
