@@ -94,7 +94,9 @@ public class DataPembayaranFeeDetailActivity extends AppCompatActivity implement
 
     @Override
     public void onClick(View view) {
-
+        if (view.getId() == R.id.btn_bayar) {
+            globalProcess.onSuccessMessage("test");
+        }
     }
 
     @Override
@@ -102,6 +104,10 @@ public class DataPembayaranFeeDetailActivity extends AppCompatActivity implement
         edtNamaPengajar.setText(setNamaPengajar);
         edtTotalPertemuan.setText(String.valueOf(totalPertemuan));
         edtTotalFee.setText(String.valueOf(totalFee));
+
+        if (totalPertemuan > 0) {
+            btnBayar.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override
