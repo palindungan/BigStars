@@ -6,7 +6,10 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.its.bigstarsapp.Activities.Data.Pembayaran.Fee.List.view.IDataPembayaranFeeListView;
+import com.its.bigstarsapp.Models.BayarFee;
 import com.its.bigstarsapp.R;
+
+import java.util.ArrayList;
 
 public class DataPembayaranFeeListActivity extends AppCompatActivity implements View.OnClickListener, IDataPembayaranFeeListView {
 
@@ -18,6 +21,11 @@ public class DataPembayaranFeeListActivity extends AppCompatActivity implements 
 
     @Override
     public void onClick(View view) {
+
+    }
+
+    @Override
+    public void onSetupListView(ArrayList<BayarFee> dataModelArrayList) {
 
     }
 }

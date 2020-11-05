@@ -7,6 +7,7 @@ public class Pertemuan {
     String id_pengajar, nama_pengajar;
     String id_kelas_pertemuan, hari_kelas_pertemuan, jam_mulai, jam_berakhir;
     String id_mata_pelajaran, nama_mata_pelajaran;
+    String id_bayar_fee_detail, id_bayar_fee;
 
     public String getId_pertemuan() {
         return id_pertemuan;
@@ -190,5 +191,21 @@ public class Pertemuan {
 
     public void setNama_mata_pelajaran(String nama_mata_pelajaran) {
         this.nama_mata_pelajaran = nama_mata_pelajaran;
+    }
+
+    public String getId_bayar_fee_detail() {
+        return id_bayar_fee_detail;
+    }
+
+    public void setId_bayar_fee_detail(String id_bayar_fee_detail) {
+        this.id_bayar_fee_detail = id_bayar_fee_detail;
+    }
+
+    public String getId_bayar_fee() {
+        return id_bayar_fee;
+    }
+
+    public void setId_bayar_fee(String id_bayar_fee) {
+        this.id_bayar_fee = id_bayar_fee;
     }
 }
