@@ -8,6 +8,9 @@ public class Pertemuan {
     String id_kelas_pertemuan, hari_kelas_pertemuan, jam_mulai, jam_berakhir;
     String id_mata_pelajaran, nama_mata_pelajaran;
     String id_bayar_fee_detail, id_bayar_fee;
+    String id_bayar_spp_detail, id_bayar_spp;
+    String id_pertemuan_detail, status_spp_detail;
+    String id_murid, nama_murid, id_wali_murid, nama_wali_murid, alamat;
 
     public String getId_pertemuan() {
         return id_pertemuan;
@@ -207,5 +210,77 @@ public class Pertemuan {
 
     public void setId_bayar_fee(String id_bayar_fee) {
         this.id_bayar_fee = id_bayar_fee;
+    }
+
+    public String getId_bayar_spp_detail() {
+        return id_bayar_spp_detail;
+    }
+
+    public void setId_bayar_spp_detail(String id_bayar_spp_detail) {
+        this.id_bayar_spp_detail = id_bayar_spp_detail;
+    }
+
+    public String getId_bayar_spp() {
+        return id_bayar_spp;
+    }
+
+    public void setId_bayar_spp(String id_bayar_spp) {
+        this.id_bayar_spp = id_bayar_spp;
+    }
+
+    public String getId_pertemuan_detail() {
+        return id_pertemuan_detail;
+    }
+
+    public void setId_pertemuan_detail(String id_pertemuan_detail) {
+        this.id_pertemuan_detail = id_pertemuan_detail;
+    }
+
+    public String getStatus_spp_detail() {
+        return status_spp_detail;
+    }
+
+    public void setStatus_spp_detail(String status_spp_detail) {
+        this.status_spp_detail = status_spp_detail;
+    }
+
+    public String getId_murid() {
+        return id_murid;
+    }
+
+    public void setId_murid(String id_murid) {
+        this.id_murid = id_murid;
+    }
+
+    public String getNama_murid() {
+        return nama_murid;
+    }
+
+    public void setNama_murid(String nama_murid) {
+        this.nama_murid = nama_murid;
+    }
+
+    public String getId_wali_murid() {
+        return id_wali_murid;
+    }
+
+    public void setId_wali_murid(String id_wali_murid) {
+        this.id_wali_murid = id_wali_murid;
+    }
+
+    public String getNama_wali_murid() {
+        return nama_wali_murid;
+    }
+
+    public void setNama_wali_murid(String nama_wali_murid) {
+        this.nama_wali_murid = nama_wali_murid;
+    }
+
+    public String getAlamat() {
+        return alamat;
+    }
+
+    public void setAlamat(String alamat) {
+        this.alamat = alamat;
     }
 }
