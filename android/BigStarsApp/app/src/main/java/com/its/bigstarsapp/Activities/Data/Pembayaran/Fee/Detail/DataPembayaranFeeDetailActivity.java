@@ -220,10 +220,10 @@ public class DataPembayaranFeeDetailActivity extends AppCompatActivity implement
                     boolean isEmpty = false;
                     if (TextUtils.isEmpty(inputTotalPertemuan)) {
                         isEmpty = true;
-                        edtTotalPertemuan.setError(globalMessage.getValidasiNamaKosong());
+                        edtTotalPertemuan.setError("Data Kosong");
                     } else if (TextUtils.isEmpty(inputTotalFee)) {
                         isEmpty = true;
-                        edtTotalFee.setError(globalMessage.getValidasiNamaKosong());
+                        edtTotalFee.setError("Data Kosong");
                     }
                     try {
                         if (!isEmpty) {
