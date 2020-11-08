@@ -1,11 +1,13 @@
 package com.its.bigstarsapp.Activities.Home.Pengajar;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
-
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import com.its.bigstarsapp.Activities.Data.KelasPertemuan.List.DataKelasPertemuanListActivity;
 import com.its.bigstarsapp.Activities.Data.Pertemuan.List.DataPertemuanListActivity;
@@ -63,5 +65,23 @@ public class HomePengajarActivity extends AppCompatActivity implements View.OnCl
             intent.putExtra(DataPertemuanListActivity.EXTRA_ID_PENGAJAR, id_pengajar);
             startActivity(intent);
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.action_bar_home_pengajar, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        int id = item.getItemId();
+        if (id == R.id.menu_keluar) {
+            globalProcess.dialogLogout(this);
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }

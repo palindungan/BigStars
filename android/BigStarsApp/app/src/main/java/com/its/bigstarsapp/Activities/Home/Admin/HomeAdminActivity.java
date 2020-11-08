@@ -51,10 +51,6 @@ public class HomeAdminActivity extends AppCompatActivity implements View.OnClick
             int id = item.getItemId();
             Intent intent;
             switch (id) {
-                case R.id.monitoring:
-                    // intent = new Intent(getApplicationContext(), AdminPengajarTampilActivity.class);
-                    // intent.putExtra(AdminPengajarTampilActivity.EXTRA_STATUS_ACTIVITY, "to_monitoring");
-                    break;
                 case R.id.bayar_spp:
                     sessionManager.setStatusActivity("home->view->detailPembayaranSpp");
                     intent = new Intent(getApplicationContext(), DataWaliMuridListActivity.class);
