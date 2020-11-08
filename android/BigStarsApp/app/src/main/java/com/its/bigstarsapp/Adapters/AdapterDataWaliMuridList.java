@@ -64,7 +64,7 @@ public class AdapterDataWaliMuridList extends RecyclerView.Adapter<AdapterDataWa
             holder.ivDelete.setVisibility(View.VISIBLE);
         }
 
-        String setNama = "Nama : " + dataModelArrayList.get(position).getNama();
+        String setNama = "Wali Murid : " + dataModelArrayList.get(position).getNama();
         String setUsername = "Username : " + dataModelArrayList.get(position).getUsername();
         String setNoHp = "No. Hp : " + dataModelArrayList.get(position).getNo_hp();
 

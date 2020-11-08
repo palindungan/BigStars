@@ -75,7 +75,7 @@ public class AdapterDataMuridList extends RecyclerView.Adapter<AdapterDataMuridL
         String kode = dataModelArrayList.get(position).getId_murid();
         String nama = dataModelArrayList.get(position).getNama();
 
-        String setNama = "Nama : " + nama;
+        String setNama = "Murid : " + nama;
         String setNamaWaliMurid = "Wali Murid : " + dataModelArrayList.get(position).getNama_wali_murid();
         String setAlamat = "Alamat : " + dataModelArrayList.get(position).getAlamat();
 

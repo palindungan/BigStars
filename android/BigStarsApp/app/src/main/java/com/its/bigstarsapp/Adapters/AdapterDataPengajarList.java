@@ -68,7 +68,7 @@ public class AdapterDataPengajarList extends RecyclerView.Adapter<AdapterDataPen
             holder.ivDelete.setVisibility(View.VISIBLE);
         }
 
-        String setNama = "Nama : " + nama;
+        String setNama = "Pengajar : " + nama;
         String setUsername = "Username : " + dataModelArrayList.get(position).getUsername();
         String setNoHp = "No : " + dataModelArrayList.get(position).getNo_hp();
 
