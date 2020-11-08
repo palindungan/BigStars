@@ -227,7 +227,6 @@ public class DataPembayaranFeeDetailActivity extends AppCompatActivity implement
                     }
                     try {
                         if (!isEmpty) {
-                            globalProcess.onSuccessMessage("berhasil");
                             dataPembayaranFeeDetailPresenter.onBayar(
                                     "" + id_pengajar,
                                     "" + id_user,

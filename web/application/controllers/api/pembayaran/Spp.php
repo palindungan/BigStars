@@ -87,4 +87,81 @@ class Spp extends REST_Controller
             $this->response($result, 200);
         }
     }
+
+    function add_data_post()
+    {
+        $tanggal = date('Y-m-d H:i:s');
+        // ambil data
+        $id_bayar_spp       = $this->M_kode->id_bayar_spp();
+        $id_wali_murid      = $this->post('id_wali_murid');
+        $id_admin           = $this->post('id_admin');
+        $waktu              = $tanggal;
+        $total_pertemuan    = $this->post('total_pertemuan');
+        $total_harga_spp    = $this->post('total_harga_spp');
+        $status_data        = "active";
+
+        $data = array(
+            'id_bayar_spp'      => $id_bayar_spp,
+            'id_wali_murid'     => $id_wali_murid,
+            'id_admin'          => $id_admin,
+            'waktu'             => $waktu,
+            'total_pertemuan'   => $total_pertemuan,
+            'total_harga_spp'   => $total_harga_spp,
+            'status_data'       => $status_data
+        );
+
+        $insert =  $this->M_universal->input_data('bayar_spp', $data);
+        if ($insert) {
+
+            $this->add_data_detail($id_bayar_spp, $id_wali_murid);
+
+            // membuat array untuk di transfer ke API
+            $result["success"] = "1";
+            $result["message"] = "Berhasil Pembayaran Spp";
+            $this->response($result, 200);
+        } else {
+
+            // membuat array untuk di transfer ke API
+            $result["success"] = "0";
+            $result["message"] = "Gagal Pembayaran Spp";
+            $this->response($result, 200);
+        }
+    }
+
+    function add_data_detail($id_bayar_spp, $id_wali_murid){
+
+        // data array untuk where db
+        $where = array(
+            'id_wali_murid' => $id_wali_murid,
+            'status_spp_detail' => 'Belum Lunas',
+            'status_konfirmasi' => 'Valid',
+            'status_pertemuan' => 'Selesai'
+        );
+
+        // mengambil data
+        $query = $this->M_universal->get_data('view_pertemuan_detail', $where);
+        if ($query->num_rows() > 0) {
+
+            // mengeluarkan data dari database
+            foreach ($query->result_array() as $row) {
+
+                $id_pertemuan_detail = $row["id_pertemuan_detail"];
+
+                $data = array(
+                    'id_bayar_spp'  => $id_bayar_spp,
+                    'id_pertemuan_detail'  => $id_pertemuan_detail
+                );
+                $insert =  $this->M_universal->input_data('bayar_spp_detail', $data);
+
+                 // data array untuk where db
+                $where = array(
+                    'id_pertemuan_detail'  => $id_pertemuan_detail
+                );
+                $data = array(
+                    'status_spp_detail'  => 'Sudah Lunas'
+                );
+                $update =  $this->M_universal->update_data($where, 'pertemuan_detail', $data);
+            }
+        }
+    }
 }

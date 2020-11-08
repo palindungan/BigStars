@@ -227,7 +227,6 @@ public class DataPembayaranSppDetailActivity extends AppCompatActivity implement
                     }
                     try {
                         if (!isEmpty) {
-                            globalProcess.onSuccessMessage("berhasil");
                             dataPembayaranSppDetailPresenter.onBayar(
                                     "" + id_wali_murid,
                                     "" + id_user,
