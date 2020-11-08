@@ -232,7 +232,7 @@ class Spp extends REST_Controller
         }
     }
 
-    function list_data_bayar_fee_detail_post()
+    function list_data_bayar_spp_detail_post()
     {
         $id_bayar_spp   = $this->post('id_bayar_spp');
        

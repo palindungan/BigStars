@@ -115,7 +115,7 @@ public class DataPembayaranSppDetailActivity extends AppCompatActivity implement
         edtTotalSpp.setText(String.valueOf(totalSpp));
 
         if (totalPertemuan > 0 && hak_akses.equals("admin")) {
-            if (!statusActivity.equals("home->view->ListPembayaranSpp")) {
+            if (!statusActivity.equals("home->view->listPembayaranSpp")) {
                 btnBayar.setVisibility(View.VISIBLE);
             }
         }

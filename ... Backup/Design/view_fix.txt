@@ -107,6 +107,7 @@ SELECT
     p.id_pertemuan, p.hari AS hari_pertemuan, p.waktu_mulai, p.waktu_berakhir, p.lokasi_mulai_la, p.lokasi_mulai_lo, p.lokasi_berakhir_la, p.lokasi_berakhir_lo, p.deskripsi, p.harga_fee, p.harga_spp, p.status_fee, p.status_spp, p.status_konfirmasi, p.status_pertemuan,
     m.id_murid, m.nama AS nama_murid, m.foto AS foto_murid,
     wm.id_wali_murid, wm.nama AS nama_wali_murid, wm.alamat, wm.no_hp,
+    pe.id_pengajar, pe.nama AS nama_pengajar, pe.username AS username_pengajar, pe.alamat AS alamat_pengajar, pe.no_hp AS no_hp_pengajar, pe.foto AS foto_pengajar,
     kp.id_kelas_pertemuan, kp.hari AS hari_kelas_pertemuan, kp.jam_mulai, kp.jam_berakhir,
     mp.id_mata_pelajaran, mp.nama AS nama_mata_pelajaran
 FROM 
@@ -115,6 +116,7 @@ FROM
     pertemuan p USING(id_pertemuan) JOIN
     murid m USING(id_murid) JOIN
     wali_murid wm USING(id_wali_murid) JOIN
+    pengajar pe USING(id_pengajar) JOIN
     kelas_pertemuan kp USING(id_kelas_pertemuan) JOIN
     mata_pelajaran mp USING(id_mata_pelajaran)
 ORDER BY p.waktu_mulai DESC;
