@@ -61,8 +61,9 @@ public class HomeAdminActivity extends AppCompatActivity implements View.OnClick
                     startActivity(intent);
                     break;
                 case R.id.riwayat_bayar_spp:
-                    // intent = new Intent(getApplicationContext(), AdminWaliMuridTampilActivity.class);
-                    // intent.putExtra(AdminWaliMuridTampilActivity.EXTRA_STATUS_ACTIVITY, "to_riwayat_spp");
+                    sessionManager.setStatusActivity("home->view->listPembayaranSpp");
+                    intent = new Intent(getApplicationContext(), DataWaliMuridListActivity.class);
+                    startActivity(intent);
                     break;
                 case R.id.gaji_pengajar:
                     sessionManager.setStatusActivity("home->view->detailPembayaranFee");

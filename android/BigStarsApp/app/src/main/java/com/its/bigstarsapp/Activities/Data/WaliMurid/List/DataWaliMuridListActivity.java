@@ -16,6 +16,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.its.bigstarsapp.Activities.Data.Pembayaran.Spp.Detail.DataPembayaranSppDetailActivity;
+import com.its.bigstarsapp.Activities.Data.Pembayaran.Spp.List.DataPembayaranSppListActivity;
 import com.its.bigstarsapp.Activities.Data.WaliMurid.Add.DataWaliMuridAddActivity;
 import com.its.bigstarsapp.Activities.Data.WaliMurid.Edit.DataWaliMuridEditActivity;
 import com.its.bigstarsapp.Activities.Data.WaliMurid.List.presenter.DataWaliMuridListPresenter;
@@ -128,11 +129,15 @@ public class DataWaliMuridListActivity extends AppCompatActivity implements View
                 intent.putExtra(DataWaliMuridEditActivity.EXTRA_ALAMAT, dataModelArrayList.get(position).getAlamat());
                 intent.putExtra(DataWaliMuridEditActivity.EXTRA_NO_HP, dataModelArrayList.get(position).getNo_hp());
                 startActivity(intent);
-            }
-            if (statusActivity.equals("home->view->detailPembayaranSpp")) {
+            } else if (statusActivity.equals("home->view->detailPembayaranSpp")) {
                 intent = new Intent(getApplicationContext(), DataPembayaranSppDetailActivity.class);
                 intent.putExtra(DataPembayaranSppDetailActivity.EXTRA_ID_BAYAR_SPP, "kosong");
                 intent.putExtra(DataPembayaranSppDetailActivity.EXTRA_ID_WALI_MURID, dataModelArrayList.get(position).getId_wali_murid());
+                startActivity(intent);
+            } else if (statusActivity.equals("home->view->listPembayaranSpp")) {
+                intent = new Intent(getApplicationContext(), DataPembayaranSppListActivity.class);
+                intent.putExtra(DataPembayaranSppListActivity.EXTRA_ID_BAYAR_SPP, "kosong");
+                intent.putExtra(DataPembayaranSppListActivity.EXTRA_ID_WALI_MURID, dataModelArrayList.get(position).getId_wali_murid());
                 startActivity(intent);
             }
         });
