@@ -24,7 +24,7 @@ class Kelas_pertemuan extends REST_Controller
         $result['data_result'] = array();
 
         // mengambil data
-        $query = $this->M_universal->get_data_or('view_Kelas_pertemuan', $id_pengajar, 'id_pengajar', 'id_sharing');
+        $query = $this->M_universal->get_data_or('view_kelas_pertemuan', $id_pengajar, 'id_pengajar', 'id_sharing');
 
         if ($query->num_rows() > 0) {
 
@@ -87,7 +87,7 @@ class Kelas_pertemuan extends REST_Controller
             'id_kelas_pertemuan' => $id_kelas_pertemuan
         );
 
-        $update =  $this->M_universal->update_data($where, 'Kelas_pertemuan', $data);
+        $update =  $this->M_universal->update_data($where, 'kelas_pertemuan', $data);
         if ($update) {
 
             // membuat array untuk di transfer ke API
@@ -130,7 +130,7 @@ class Kelas_pertemuan extends REST_Controller
             'nama_sharing'          => $nama_sharing,
         );
 
-        $insert =  $this->M_universal->input_data('Kelas_pertemuan', $data);
+        $insert =  $this->M_universal->input_data('kelas_pertemuan', $data);
         if ($insert) {
 
             // membuat array untuk di transfer ke API
@@ -172,7 +172,7 @@ class Kelas_pertemuan extends REST_Controller
             'id_kelas_pertemuan' => $id_kelas_pertemuan
         );
 
-        $update =  $this->M_universal->update_data($where, 'Kelas_pertemuan', $data);
+        $update =  $this->M_universal->update_data($where, 'kelas_pertemuan', $data);
         if ($update) {
 
             // membuat array untuk di transfer ke API
@@ -203,7 +203,7 @@ class Kelas_pertemuan extends REST_Controller
             'id_kelas_pertemuan' => $id_kelas_pertemuan
         );
 
-        $update =  $this->M_universal->update_data($where, 'Kelas_pertemuan', $data);
+        $update =  $this->M_universal->update_data($where, 'kelas_pertemuan', $data);
         if ($update) {
 
             // membuat array untuk di transfer ke API
@@ -234,7 +234,7 @@ class Kelas_pertemuan extends REST_Controller
             'id_kelas_pertemuan' => $id_kelas_pertemuan
         );
 
-        $update =  $this->M_universal->update_data($where, 'Kelas_pertemuan', $data);
+        $update =  $this->M_universal->update_data($where, 'kelas_pertemuan', $data);
         if ($update) {
 
             // membuat array untuk di transfer ke API
