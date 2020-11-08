@@ -117,7 +117,7 @@
                 android:layout_marginTop="10sp"
                 android:layout_marginBottom="5sp"
                 android:text="@string/pertemuan"
-                android:textSize="15sp"
+                android:textSize="18sp"
                 android:textStyle="bold" />
 
             <androidx.recyclerview.widget.RecyclerView
