@@ -84,8 +84,8 @@ public class DataPembayaranSppDetailPresenter implements IDataPembayaranSppDetai
                                 String deskripsi = dataobj.getString("deskripsi");
                                 String harga_fee = dataobj.getString("harga_fee");
                                 String harga_spp = dataobj.getString("harga_spp");
-                                String status_fee = dataobj.getString("status_fee") + " (" + harga_fee + ")";
-                                String status_spp = dataobj.getString("status_spp");
+                                String status_fee = dataobj.getString("status_fee");
+                                String status_spp = dataobj.getString("status_spp") + " (" + harga_spp + ")";
                                 String status_konfirmasi = dataobj.getString("status_konfirmasi");
                                 String status_pertemuan = dataobj.getString("status_pertemuan");
 
@@ -129,11 +129,14 @@ public class DataPembayaranSppDetailPresenter implements IDataPembayaranSppDetai
                                 playerModel.setId_mata_pelajaran(id_mata_pelajaran);
                                 playerModel.setNama_mata_pelajaran(nama_mata_pelajaran);
 
+                                playerModel.setId_wali_murid(id_wali_murid);
+                                playerModel.setNama_wali_murid(nama_wali_murid);
+
                                 dataModelArrayList.add(playerModel);
 
                                 setNamaWaliMurid = nama_wali_murid;
                                 totalPertemuan = totalPertemuan + 1;
-                                totalSpp = totalSpp + Integer.parseInt(harga_fee);
+                                totalSpp = totalSpp + Integer.parseInt(harga_spp);
                             }
                             dataPembayaranSppDetailView.onSetData(
                                     setNamaWaliMurid,

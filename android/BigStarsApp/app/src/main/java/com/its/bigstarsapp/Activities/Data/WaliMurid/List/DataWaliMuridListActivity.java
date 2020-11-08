@@ -1,5 +1,11 @@
 package com.its.bigstarsapp.Activities.Data.WaliMurid.List;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Handler;
+import android.view.MenuItem;
+import android.view.View;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,13 +14,8 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.os.Handler;
-import android.view.MenuItem;
-import android.view.View;
-
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.its.bigstarsapp.Activities.Data.Pembayaran.Spp.Detail.DataPembayaranSppDetailActivity;
 import com.its.bigstarsapp.Activities.Data.WaliMurid.Add.DataWaliMuridAddActivity;
 import com.its.bigstarsapp.Activities.Data.WaliMurid.Edit.DataWaliMuridEditActivity;
 import com.its.bigstarsapp.Activities.Data.WaliMurid.List.presenter.DataWaliMuridListPresenter;
@@ -126,6 +127,12 @@ public class DataWaliMuridListActivity extends AppCompatActivity implements View
                 intent.putExtra(DataWaliMuridEditActivity.EXTRA_USERNAME, dataModelArrayList.get(position).getUsername());
                 intent.putExtra(DataWaliMuridEditActivity.EXTRA_ALAMAT, dataModelArrayList.get(position).getAlamat());
                 intent.putExtra(DataWaliMuridEditActivity.EXTRA_NO_HP, dataModelArrayList.get(position).getNo_hp());
+                startActivity(intent);
+            }
+            if (statusActivity.equals("home->view->detailPembayaranSpp")) {
+                intent = new Intent(getApplicationContext(), DataPembayaranSppDetailActivity.class);
+                intent.putExtra(DataPembayaranSppDetailActivity.EXTRA_ID_BAYAR_SPP, "kosong");
+                intent.putExtra(DataPembayaranSppDetailActivity.EXTRA_ID_WALI_MURID, dataModelArrayList.get(position).getId_wali_murid());
                 startActivity(intent);
             }
         });
