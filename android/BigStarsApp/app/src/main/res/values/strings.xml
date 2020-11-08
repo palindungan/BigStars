@@ -69,4 +69,5 @@
     <string name="total_pertemuan">Total Pertemuan</string>
     <string name="total_fee">Total FEE</string>
     <string name="bayar_fee">Bayar FEE</string>
+    <string name="total_spp">Total Spp</string>
 </resources>
