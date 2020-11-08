@@ -60,10 +60,10 @@ public class AdapterDataPembayaranFeeList extends RecyclerView.Adapter<AdapterDa
         String total_pertemuan = "Total Pertemuan : " + dataModelArrayList.get(position).getTotal_pertemuan();
         String total_harga_fee = "Total Harga : " + dataModelArrayList.get(position).getTotal_harga_fee();
 
-        holder.tvNamaPengajar.setText(nama_pengajar);
+        holder.tvNama.setText(nama_pengajar);
         holder.tvWaktu.setText(waktu);
         holder.tvTotalPertemuan.setText(total_pertemuan);
-        holder.tvTotalHargaFee.setText(total_harga_fee);
+        holder.tvTotalHarga.setText(total_harga_fee);
     }
 
     @Override
@@ -73,15 +73,15 @@ public class AdapterDataPembayaranFeeList extends RecyclerView.Adapter<AdapterDa
 
     public static class DataPembayaranFeeListViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        protected TextView tvNamaPengajar, tvWaktu, tvTotalPertemuan, tvTotalHargaFee;
+        protected TextView tvNama, tvWaktu, tvTotalPertemuan, tvTotalHarga;
 
         public DataPembayaranFeeListViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            tvNamaPengajar = itemView.findViewById(R.id.tv_nama_pengajar);
+            tvNama = itemView.findViewById(R.id.tv_nama);
             tvWaktu = itemView.findViewById(R.id.tv_waktu);
             tvTotalPertemuan = itemView.findViewById(R.id.tv_total_pertemuan);
-            tvTotalHargaFee = itemView.findViewById(R.id.tv_total_harga_fee);
+            tvTotalHarga = itemView.findViewById(R.id.tv_total_harga);
 
             ButterKnife.bind(this, itemView);
             itemView.setOnClickListener(this);

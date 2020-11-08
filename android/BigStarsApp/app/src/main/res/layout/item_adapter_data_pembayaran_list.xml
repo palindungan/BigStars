@@ -25,10 +25,10 @@
             android:padding="10sp">
 
             <TextView
-                android:id="@+id/tv_nama_pengajar"
+                android:id="@+id/tv_nama"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/nama_pengajar"
+                android:text="@string/nama"
                 android:textColor="@color/white"
                 android:textSize="16dp"
                 android:textStyle="bold" />
@@ -50,7 +50,7 @@
                 android:textSize="16dp" />
 
             <TextView
-                android:id="@+id/tv_total_harga_fee"
+                android:id="@+id/tv_total_harga"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Total Fee : 100000"
