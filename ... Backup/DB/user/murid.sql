@@ -85,9 +85,7 @@ INSERT INTO `murid` (`id_murid`, `id_wali_murid`, `nama`, `foto`) VALUES
 ('MR00054', '1', 'Lili', 'NONE'),
 ('MR00055', '1', 'Stanley', 'NONE'),
 ('MR00056', '1', 'rafael', 'NONE'),
-('MR00057', '1', 'rafael', 'NONE'),
-('MR00058', '1', 'rafael', 'NONE'),
-('MR00059', '1', 'lyvia', 'NONE');
+('MR00057', '1', 'lyvia', 'NONE');
 
 --
 -- Indexes for dumped tables
