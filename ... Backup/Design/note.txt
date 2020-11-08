@@ -3,3 +3,4 @@
 'database' => 'bigstars_tab_absen',
 
 $config['base_url'] = 'http://bigstarsjember.online/web/api/';
+String ipAddress = "http://bigstarsjember.online/";
