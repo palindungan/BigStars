@@ -122,6 +122,6 @@ class M_kode extends CI_Model
         } else {
             $kd = "0001";
         }
-        return 'SP' . date('ymd') . '-' . $kd; // SELECT SUBSTR('PT191218-0001', 3, 6); dari digit ke 3 sampai 6 digit seanjutnya
+        return 'BS' . date('ymd') . '-' . $kd; // SELECT SUBSTR('PT191218-0001', 3, 6); dari digit ke 3 sampai 6 digit seanjutnya
     }
 }
