@@ -99,3 +99,22 @@ FROM
     wali_murid wm USING(id_wali_murid) JOIN
     admin a USING(id_admin)
 ORDER BY bs.waktu DESC;
+
+CREATE VIEW view_bayar_spp_detail AS
+SELECT 
+	bsd.id_bayar_spp_detail, bsd.id_bayar_spp,
+    pd.id_pertemuan_detail, pd.status_spp_detail,
+    p.id_pertemuan, p.hari AS hari_pertemuan, p.waktu_mulai, p.waktu_berakhir, p.lokasi_mulai_la, p.lokasi_mulai_lo, p.lokasi_berakhir_la, p.lokasi_berakhir_lo, p.deskripsi, p.harga_fee, p.harga_spp, p.status_fee, p.status_spp, p.status_konfirmasi, p.status_pertemuan,
+    m.id_murid, m.nama AS nama_murid, m.foto AS foto_murid,
+    wm.id_wali_murid, wm.nama AS nama_wali_murid, wm.alamat, wm.no_hp,
+    kp.id_kelas_pertemuan, kp.hari AS hari_kelas_pertemuan, kp.jam_mulai, kp.jam_berakhir,
+    mp.id_mata_pelajaran, mp.nama AS nama_mata_pelajaran
+FROM 
+	bayar_spp_detail bsd JOIN
+    pertemuan_detail pd USING(id_pertemuan_detail) JOIN
+    pertemuan p USING(id_pertemuan) JOIN
+    murid m USING(id_murid) JOIN
+    wali_murid wm USING(id_wali_murid) JOIN
+    kelas_pertemuan kp USING(id_kelas_pertemuan) JOIN
+    mata_pelajaran mp USING(id_mata_pelajaran)
+ORDER BY p.waktu_mulai DESC;
