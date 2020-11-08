@@ -183,4 +183,52 @@ class Spp extends REST_Controller
             }
         }
     }
+
+    function list_data_post()
+    {
+        $id_wali_murid    = $this->post('id_wali_murid');
+
+        // variable array
+        $result['data_result'] = array();
+
+        // data array untuk where db
+        $where = array(
+            'status_data' => 'active',
+            'id_wali_murid' =>  $id_wali_murid
+        );
+
+        // mengambil data
+        $query = $this->M_universal->get_data('view_bayar_spp', $where);
+
+        if ($query->num_rows() > 0) {
+
+            // mengeluarkan data dari database
+            foreach ($query->result_array() as $row) {
+
+                // ambil detail data db
+                $data = array(
+                    'id_bayar_spp' => $row["id_bayar_spp"],
+                    'waktu' => $row["waktu"],
+                    'total_pertemuan' => $row["total_pertemuan"],
+                    'total_harga_spp' => $row["total_harga_spp"],
+                    'id_wali_murid' => $row["id_wali_murid"],
+                    'nama_wali_murid' => $row["nama_wali_murid"],
+                    'id_admin' => $row["id_admin"],
+                    'nama_admin' => $row["nama_admin"]
+                );
+
+                array_push($result['data_result'], $data);
+
+                // membuat array untuk di transfer
+                $result["success"] = "1";
+                $result["message"] = "Success Berhasil Mengambil Data";
+                $this->response($result, 200);
+            }
+        } else {
+            // membuat array untuk di transfer ke API
+            $result["success"] = "0";
+            $result["message"] = "Data Masih kosong";
+            $this->response($result, 200);
+        }
+    }
 }
