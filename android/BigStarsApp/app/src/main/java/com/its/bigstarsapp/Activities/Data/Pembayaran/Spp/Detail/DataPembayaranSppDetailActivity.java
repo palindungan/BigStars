@@ -11,12 +11,14 @@ import android.widget.EditText;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.its.bigstarsapp.Activities.Data.Pembayaran.Spp.Detail.presenter.DataPembayaranSppDetailPresenter;
 import com.its.bigstarsapp.Activities.Data.Pembayaran.Spp.Detail.presenter.IDataPembayaranSppDetailPresenter;
 import com.its.bigstarsapp.Activities.Data.Pembayaran.Spp.Detail.view.IDataPembayaranSppDetailView;
+import com.its.bigstarsapp.Adapters.AdapterDataPertemuanList;
 import com.its.bigstarsapp.Controllers.GlobalMessage;
 import com.its.bigstarsapp.Controllers.GlobalProcess;
 import com.its.bigstarsapp.Controllers.GlobalVariable;
@@ -119,7 +121,16 @@ public class DataPembayaranSppDetailActivity extends AppCompatActivity implement
 
     @Override
     public void onSetupListView(ArrayList<Pertemuan> dataModelArrayList) {
+        AdapterDataPertemuanList adapterDataPertemuanList = new AdapterDataPertemuanList(this, dataModelArrayList);
+        GridLayoutManager layoutManager = new GridLayoutManager(this, 1, GridLayoutManager.VERTICAL, false);
+        recyclerView.setAdapter(adapterDataPertemuanList);
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setNestedScrollingEnabled(true);
+        adapterDataPertemuanList.notifyDataSetChanged();
 
+        adapterDataPertemuanList.setOnItemClickListener((view, position) -> {
+
+        });
     }
 
     @Override
