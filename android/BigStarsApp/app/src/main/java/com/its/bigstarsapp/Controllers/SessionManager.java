@@ -4,13 +4,12 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.widget.Toast;
 
+import com.its.bigstarsapp.Activities.Home.Admin.HomeAdminActivity;
+import com.its.bigstarsapp.Activities.Home.Pengajar.HomePengajarActivity;
 import com.its.bigstarsapp.Activities._Main.MainActivity;
 
 import java.util.HashMap;
-
-import es.dmoral.toasty.Toasty;
 
 public class SessionManager {
 
@@ -58,11 +57,21 @@ public class SessionManager {
     }
 
     public void checkLogin() {
-        if (!this.getStatusLogin()) {
-            logout();
-
-            String message = "Pastikan Anda Login Dahulu";
-            Toasty.error(context, message, Toast.LENGTH_SHORT).show();
+        if (this.getStatusLogin()) {
+            String hak_akses = getHakAkses();
+            Intent intent;
+            switch (hak_akses) {
+                case "admin":
+                    intent = new Intent(context, HomeAdminActivity.class);
+                    context.startActivity(intent);
+                    break;
+                case "pengajar":
+                    intent = new Intent(context, HomePengajarActivity.class);
+                    context.startActivity(intent);
+                    break;
+                case "wali_murid":
+                    break;
+            }
         }
     }
 
@@ -86,5 +95,9 @@ public class SessionManager {
 
     public String getStatusActivity() {
         return sharedPreferences.getString(STATUS_ACTIVITY, "kosong");
+    }
+
+    public String getHakAkses() {
+        return sharedPreferences.getString(HAK_AKSES, "kosong");
     }
 }
