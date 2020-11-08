@@ -1,0 +1,5 @@
+'username' => 'bigstars_admin',
+'password' => 'bigstars_admin_satu',
+'database' => 'bigstars_tab_absen',
+
+$config['base_url'] = 'http://bigstarsjember.online/web/api/';
