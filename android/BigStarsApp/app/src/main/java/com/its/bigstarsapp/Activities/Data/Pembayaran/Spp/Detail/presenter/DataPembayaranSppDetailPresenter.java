@@ -168,7 +168,7 @@ public class DataPembayaranSppDetailPresenter implements IDataPembayaranSppDetai
     }
 
     @Override
-    public void onBayar(String id_wali_murid, String id_admin, String total_pertemuan, String total_spp) {
+    public void onBayar(String id_wali_murid, String id_admin, String total_pertemuan, String total_harga_spp) {
         String base_url = globalVariable.getUrlData();
         String URL_DATA = base_url + "pembayaran/spp/add_data"; // url http request
 
@@ -198,7 +198,7 @@ public class DataPembayaranSppDetailPresenter implements IDataPembayaranSppDetai
                 params.put("id_wali_murid", id_wali_murid);
                 params.put("id_admin", id_admin);
                 params.put("total_pertemuan", total_pertemuan);
-                params.put("total_spp", total_spp);
+                params.put("total_harga_spp", total_harga_spp);
                 return params;
             }
         };

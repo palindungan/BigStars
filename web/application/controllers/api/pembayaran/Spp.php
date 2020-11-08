@@ -153,7 +153,7 @@ class Spp extends REST_Controller
                 );
                 $insert =  $this->M_universal->input_data('bayar_spp_detail', $data);
 
-                 // data array untuk where db
+                // data array untuk where db
                 $where = array(
                     'id_pertemuan_detail'  => $id_pertemuan_detail
                 );
@@ -161,6 +161,8 @@ class Spp extends REST_Controller
                     'status_spp_detail'  => 'Sudah Lunas'
                 );
                 $update =  $this->M_universal->update_data($where, 'pertemuan_detail', $data);
+
+                
             }
         }
     }
