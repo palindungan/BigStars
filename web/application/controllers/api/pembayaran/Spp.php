@@ -162,7 +162,24 @@ class Spp extends REST_Controller
                 );
                 $update =  $this->M_universal->update_data($where, 'pertemuan_detail', $data);
 
-                
+                $id_pertemuan = $row["id_pertemuan"];
+                $where = array(
+                    'id_pertemuan'      => $id_pertemuan,
+                    'status_spp_detail' => 'Belum Lunas'
+                );
+                $query = $this->M_universal->get_data('view_pertemuan_detail', $where);
+                if ($query->num_rows() <= 0) {
+
+                    // data array untuk where db
+                    $where = array(
+                        'id_pertemuan'  => $id_pertemuan
+                    );
+                    $data = array(
+                        'status_spp'  => 'Sudah Lunas'
+                    );
+                    $update =  $this->M_universal->update_data($where, 'pertemuan', $data);
+
+                }
             }
         }
     }
