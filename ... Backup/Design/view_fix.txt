@@ -88,3 +88,14 @@ FROM
     kelas_pertemuan kp USING(id_kelas_pertemuan) JOIN
     mata_pelajaran mp USING(id_mata_pelajaran)
 ORDER BY p.waktu_mulai DESC;
+
+CREATE VIEW view_bayar_spp AS
+SELECT 
+    bs.id_bayar_spp, bs.waktu, bs.total_pertemuan, bs.total_harga_spp, bs.status_data,
+    wm.id_wali_murid, wm.nama AS nama_wali_murid, 
+    a.id_admin, a.nama AS nama_admin
+FROM 
+    bayar_spp bs JOIN
+    wali_murid wm USING(id_wali_murid) JOIN
+    admin a USING(id_admin)
+ORDER BY bs.waktu DESC;
