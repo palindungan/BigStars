@@ -29,6 +29,7 @@ import com.its.bigstarsapp.Models.Murid;
 import com.its.bigstarsapp.R;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class DataMuridListActivity extends AppCompatActivity implements View.OnClickListener, IDataMuridListView {
 
@@ -45,6 +46,8 @@ public class DataMuridListActivity extends AppCompatActivity implements View.OnC
     private SwipeRefreshLayout swipeRefreshLayout;
 
     String statusActivity;
+
+    String id_wali_murid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,10 +68,16 @@ public class DataMuridListActivity extends AppCompatActivity implements View.OnC
 
         globalProcess.initActionBar(toolbar);
 
-        dataMuridListPresenter.onLoadDataList();
+        statusActivity = sessionManager.getStatusActivity();
+
+        HashMap<String, String> user = sessionManager.getDataUser();
+        id_wali_murid = user.get(sessionManager.ID_USER);
+
+        onLoad();
+
         swipeRefreshLayout.setOnRefreshListener(() -> {
             // Your code to make your refresh action
-            dataMuridListPresenter.onLoadDataList();
+            onLoad();
 
             // CallYourRefreshingMethod();
             final Handler handler = new Handler();
@@ -79,7 +88,6 @@ public class DataMuridListActivity extends AppCompatActivity implements View.OnC
             }, 1000);
         });
 
-        statusActivity = sessionManager.getStatusActivity();
         if (statusActivity.equals("home->view->editMurid")) {
             fab.show();
         }
@@ -163,6 +171,14 @@ public class DataMuridListActivity extends AppCompatActivity implements View.OnC
     @Override
     protected void onResume() {
         super.onResume();
-        dataMuridListPresenter.onLoadDataList();
+        onLoad();
+    }
+
+    protected void onLoad() {
+        if (statusActivity.equals("homeWaliMurid->view->dataMuridList")) {
+            dataMuridListPresenter.onLoadDataListMuridBy("" + id_wali_murid);
+        } else {
+            dataMuridListPresenter.onLoadDataList();
+        }
     }
 }

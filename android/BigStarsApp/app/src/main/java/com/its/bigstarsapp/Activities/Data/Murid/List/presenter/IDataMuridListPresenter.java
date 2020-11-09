@@ -4,4 +4,6 @@ public interface IDataMuridListPresenter {
     void onLoadDataList();
 
     void onDelete(String id_murid);
+
+    void onLoadDataListMuridBy(String id_wali_murid);
 }

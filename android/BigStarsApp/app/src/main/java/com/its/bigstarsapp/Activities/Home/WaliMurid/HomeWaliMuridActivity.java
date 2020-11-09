@@ -9,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.its.bigstarsapp.Activities.Data.Murid.List.DataMuridListActivity;
 import com.its.bigstarsapp.Controllers.GlobalProcess;
 import com.its.bigstarsapp.Controllers.SessionManager;
 import com.its.bigstarsapp.R;
@@ -22,8 +23,6 @@ public class HomeWaliMuridActivity extends AppCompatActivity implements View.OnC
 
     CardView cvLihatKelasPertemuan, cvDetailTagihanSpp, cvRiwayatPembayaranSpp;
 
-    String id_wali_murid;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,9 +30,6 @@ public class HomeWaliMuridActivity extends AppCompatActivity implements View.OnC
 
         sessionManager = new SessionManager(this);
         globalProcess = new GlobalProcess(this);
-
-        HashMap<String, String> user = sessionManager.getDataUser();
-        id_wali_murid = user.get(sessionManager.ID_USER);
 
         cvLihatKelasPertemuan = findViewById(R.id.cv_lihat_kelas_pertemuan);
         cvDetailTagihanSpp = findViewById(R.id.cv_detail_tagihan_spp);
@@ -48,10 +44,9 @@ public class HomeWaliMuridActivity extends AppCompatActivity implements View.OnC
     public void onClick(View view) {
         Intent intent;
         if (view.getId() == R.id.cv_lihat_kelas_pertemuan) {
-//            sessionManager.setStatusActivity("homePengajar->view->dataKelasPertemuanEdit");
-//            intent = new Intent(getApplicationContext(), DataKelasPertemuanListActivity.class);
-//            intent.putExtra(DataKelasPertemuanListActivity.EXTRA_ID_PENGAJAR, id_pengajar);
-//            startActivity(intent);
+            sessionManager.setStatusActivity("homeWaliMurid->view->dataMuridList");
+            intent = new Intent(getApplicationContext(), DataMuridListActivity.class);
+            startActivity(intent);
         } else if (view.getId() == R.id.cv_detail_tagihan_spp) {
 //            sessionManager.setStatusActivity("homePengajar->view->dataPertemuanAktif");
 //            intent = new Intent(getApplicationContext(), DataPertemuanListActivity.class);
