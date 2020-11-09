@@ -71,4 +71,8 @@
     <string name="bayar_fee">Bayar FEE</string>
     <string name="total_spp">Total Spp</string>
     <string name="murid">Murid :</string>
+    <string name="riwayat_pembayaran_spp">Riwayat Pembayaran SPP</string>
+    <string name="detail_tagihan_spp">Detail Tagihan SPP</string>
+    <string name="daftar_kelas_pertemuan">Daftar Kelas Pertemuan</string>
+    <string name="lihat_kelas_pertemuan">Lihat Kelas Pertemuan</string>
 </resources>
