@@ -69,7 +69,7 @@ public class HomePengajarActivity extends AppCompatActivity implements View.OnCl
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.action_bar_home_pengajar, menu);
+        getMenuInflater().inflate(R.menu.action_bar_home_global, menu);
         return true;
     }
 

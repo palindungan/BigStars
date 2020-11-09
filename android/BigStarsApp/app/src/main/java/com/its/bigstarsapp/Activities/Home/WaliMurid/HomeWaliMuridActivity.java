@@ -9,8 +9,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.its.bigstarsapp.Activities.Data.KelasPertemuan.List.DataKelasPertemuanListActivity;
-import com.its.bigstarsapp.Activities.Data.Pertemuan.List.DataPertemuanListActivity;
 import com.its.bigstarsapp.Controllers.GlobalProcess;
 import com.its.bigstarsapp.Controllers.SessionManager;
 import com.its.bigstarsapp.R;
@@ -69,7 +67,7 @@ public class HomeWaliMuridActivity extends AppCompatActivity implements View.OnC
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.action_bar_home_pengajar, menu);
+        getMenuInflater().inflate(R.menu.action_bar_home_global, menu);
         return true;
     }
 
