@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 
 import com.its.bigstarsapp.Activities.Home.Admin.HomeAdminActivity;
 import com.its.bigstarsapp.Activities.Home.Pengajar.HomePengajarActivity;
+import com.its.bigstarsapp.Activities.Home.WaliMurid.HomeWaliMuridActivity;
 import com.its.bigstarsapp.Activities._Main.MainActivity;
 
 import java.util.HashMap;
@@ -70,6 +71,8 @@ public class SessionManager {
                     context.startActivity(intent);
                     break;
                 case "wali_murid":
+                    intent = new Intent(context, HomeWaliMuridActivity.class);
+                    context.startActivity(intent);
                     break;
             }
         }
