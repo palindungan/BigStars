@@ -479,4 +479,71 @@ class Pertemuan extends REST_Controller
             $this->response($result, 200);
         }
     }
+
+    function list_data_detail_by_murid_post()
+    {
+        $id_murid   = $this->post('id_murid');
+
+        // variable array
+        $result['data_result'] = array();
+
+        // data array untuk where db
+        $where = array(
+            'id_murid' => $id_murid
+        );
+
+        // mengambil data
+        $query = $this->M_universal->get_data('view_pertemuan_detail', $where);
+
+        if ($query->num_rows() > 0) {
+
+            // mengeluarkan data dari database
+            foreach ($query->result_array() as $row) {
+
+                // ambil detail data db
+                $data = array(
+                    'id_pertemuan'          => $row["id_pertemuan"],
+                    'id_kelas_pertemuan'    => $row["id_kelas_pertemuan"],
+
+                    'hari_pertemuan'        => $row["hari_pertemuan"],
+                    'waktu_mulai'           => $row["waktu_mulai"],
+                    'waktu_berakhir'        => $row["waktu_berakhir"],
+                    'lokasi_mulai_la'       => $row["lokasi_mulai_la"],
+                    'lokasi_mulai_lo'       => $row["lokasi_mulai_lo"],
+                    'lokasi_berakhir_la'    => $row["lokasi_berakhir_la"],
+                    'lokasi_berakhir_lo'    => $row["lokasi_berakhir_lo"],
+                    'deskripsi'             => $row["deskripsi"],
+                    'harga_fee'             => $row["harga_fee"],
+                    'harga_spp'             => $row["harga_spp"],
+                    'status_fee'            => $row["status_fee"],
+                    'status_spp'            => $row["status_spp"],
+                    'status_konfirmasi'     => $row["status_konfirmasi"],
+                    'status_pertemuan'      => $row["status_pertemuan"],
+
+                    'id_pengajar'           => $row["id_pengajar"],
+                    'nama_pengajar'         => $row["nama_pengajar"],
+
+                    'id_kelas_pertemuan'    => $row["id_kelas_pertemuan"],
+                    'hari_kelas_pertemuan'  => $row["hari_kelas_pertemuan"],
+                    'jam_mulai'             => $row["jam_mulai"],
+                    'jam_berakhir'          => $row["jam_berakhir"],
+
+                    'id_mata_pelajaran'     => $row["id_mata_pelajaran"],
+                    'nama_mata_pelajaran'   => $row["nama_mata_pelajaran"],
+                );
+
+                array_push($result['data_result'], $data);
+
+                // membuat array untuk di transfer
+                $result["success"] = "1";
+                $result["message"] = "Success Berhasil Mengambil Data";
+                $this->response($result, 200);
+            }
+        } else {
+            // membuat array untuk di transfer ke API
+            $result["success"] = "0";
+            $result["message"] = "Data Masih kosong";
+            $this->response($result, 200);
+        }
+    }
 }

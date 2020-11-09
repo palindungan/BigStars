@@ -20,6 +20,7 @@ import com.its.bigstarsapp.Activities.Data.Murid.Edit.DataMuridEditActivity;
 import com.its.bigstarsapp.Activities.Data.Murid.List.presenter.DataMuridListPresenter;
 import com.its.bigstarsapp.Activities.Data.Murid.List.presenter.IDataMuridListPresenter;
 import com.its.bigstarsapp.Activities.Data.Murid.List.view.IDataMuridListView;
+import com.its.bigstarsapp.Activities.Data.Pertemuan.List.DataPertemuanListActivity;
 import com.its.bigstarsapp.Adapters.AdapterDataMuridList;
 import com.its.bigstarsapp.Controllers.GlobalMessage;
 import com.its.bigstarsapp.Controllers.GlobalProcess;
@@ -133,6 +134,11 @@ public class DataMuridListActivity extends AppCompatActivity implements View.OnC
                 intent.putExtra(DataMuridEditActivity.EXTRA_NAMA_WALI_MURID, dataModelArrayList.get(position).getNama_wali_murid());
                 intent.putExtra(DataMuridEditActivity.EXTRA_ALAMAT, dataModelArrayList.get(position).getAlamat());
                 intent.putExtra(DataMuridEditActivity.EXTRA_FOTO, dataModelArrayList.get(position).getFoto());
+                startActivity(intent);
+            } else if (statusActivity.equals("homeWaliMurid->view->dataMuridList")) {
+                Intent intent = new Intent(getApplicationContext(), DataPertemuanListActivity.class);
+                intent.putExtra(DataPertemuanListActivity.EXTRA_ID_PENGAJAR, "kosong");
+                intent.putExtra(DataPertemuanListActivity.EXTRA_ID_MURID, dataModelArrayList.get(position).getId_murid());
                 startActivity(intent);
             }
         });

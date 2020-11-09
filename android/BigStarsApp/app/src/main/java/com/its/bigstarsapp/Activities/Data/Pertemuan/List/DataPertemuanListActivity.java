@@ -1,18 +1,17 @@
 package com.its.bigstarsapp.Activities.Data.Pertemuan.List;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.its.bigstarsapp.Activities.Data.MataPelajaran.Edit.DataMataPelajaranEditActivity;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+
 import com.its.bigstarsapp.Activities.Data.Pertemuan.Edit.DataPertemuanEditActivity;
 import com.its.bigstarsapp.Activities.Data.Pertemuan.List.presenter.DataPertemuanListPresenter;
 import com.its.bigstarsapp.Activities.Data.Pertemuan.List.presenter.IDataPertemuanListPresenter;
@@ -30,6 +29,7 @@ import java.util.ArrayList;
 public class DataPertemuanListActivity extends AppCompatActivity implements View.OnClickListener, IDataPertemuanListView {
 
     public static final String EXTRA_ID_PENGAJAR = "EXTRA_ID_PENGAJAR";
+    public static final String EXTRA_ID_MURID = "EXTRA_ID_MURID";
 
     IDataPertemuanListPresenter dataPertemuanListPresenter;
 
@@ -68,11 +68,11 @@ public class DataPertemuanListActivity extends AppCompatActivity implements View
 
         statusActivity = sessionManager.getStatusActivity();
 
-        dataPertemuanListPresenter.onLoadDataList("" + id_pengajar);
+        onLoad();
 
         swipeRefreshLayout.setOnRefreshListener(() -> {
             // Your code to make your refresh action
-            dataPertemuanListPresenter.onLoadDataList("" + id_pengajar);
+            onLoad();
 
             // CallYourRefreshingMethod();
             final Handler handler = new Handler();
@@ -162,6 +162,15 @@ public class DataPertemuanListActivity extends AppCompatActivity implements View
     @Override
     protected void onResume() {
         super.onResume();
-        dataPertemuanListPresenter.onLoadDataList("" + id_pengajar);
+        onLoad();
+    }
+
+    protected void onLoad() {
+        if (statusActivity.equals("homeWaliMurid->view->dataMuridList")) {
+            String id_murid = getIntent().getStringExtra(EXTRA_ID_MURID);
+            dataPertemuanListPresenter.onLoadDataListByMurid("" + id_murid);
+        } else {
+            dataPertemuanListPresenter.onLoadDataList("" + id_pengajar);
+        }
     }
 }
