@@ -26,6 +26,7 @@
         android:usesCleartextTraffic="true"
         tools:ignore="AllowBackup"
         tools:targetApi="m">
+        <activity android:name=".Activities.Home.WaliMurid.HomeWaliMuridActivity" />
         <activity android:name=".Activities.Data.Pembayaran.Spp.List.DataPembayaranSppListActivity" />
         <activity android:name=".Activities.Data.Pembayaran.Fee.List.DataPembayaranFeeListActivity" />
         <activity android:name=".Activities.Data.Pembayaran.Spp.Detail.DataPembayaranSppDetailActivity" />
