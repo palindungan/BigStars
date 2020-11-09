@@ -46,7 +46,7 @@
                     android:src="@drawable/img_5" />
 
                 <ImageView
-                    android:id="@+id/iv_play"
+                    android:id="@+id/iv_search"
                     android:layout_width="100sp"
                     android:layout_height="100sp"
                     android:layout_centerInParent="true"
@@ -67,7 +67,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/iv_play"
+                    android:layout_below="@id/iv_search"
                     android:layout_centerHorizontal="true"
                     android:layout_marginStart="10sp"
                     android:layout_marginLeft="10sp"
