@@ -9,6 +9,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.its.bigstarsapp.Activities.Home.Admin.HomeAdminActivity;
 import com.its.bigstarsapp.Activities.Home.Pengajar.HomePengajarActivity;
+import com.its.bigstarsapp.Activities.Home.WaliMurid.HomeWaliMuridActivity;
 import com.its.bigstarsapp.Activities._Login.view.ILoginView;
 import com.its.bigstarsapp.Controllers.GlobalMessage;
 import com.its.bigstarsapp.Controllers.GlobalProcess;
@@ -74,9 +75,10 @@ public class LoginPresenter implements ILoginPresenter {
                                         intent = new Intent(context, HomePengajarActivity.class);
                                         break;
                                     case "wali_murid":
+                                        intent = new Intent(context, HomeWaliMuridActivity.class);
                                         break;
                                     default:
-                                        sessionManager.logout();
+                                        //intent = new Intent(context, .class);
                                         break;
                                 }
 

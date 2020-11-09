@@ -69,14 +69,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             }
 
             if (!isEmpty) {
-                if (!hak_akses.equals("wali_murid")) {
-                    loginPresenter.onLogin(
-                            "" + inputUsername,
-                            "" + inputPassword,
-                            "" + hak_akses);
-                } else {
-                    globalProcess.onErrorMessage("Fitur Wali Murid Masih Belum Tersedia");
-                }
+                loginPresenter.onLogin(
+                        "" + inputUsername,
+                        "" + inputPassword,
+                        "" + hak_akses);
             }
         }
     }
