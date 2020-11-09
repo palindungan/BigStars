@@ -10,6 +10,8 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.its.bigstarsapp.Activities.Data.Murid.List.DataMuridListActivity;
+import com.its.bigstarsapp.Activities.Data.Pembayaran.Spp.Detail.DataPembayaranSppDetailActivity;
+import com.its.bigstarsapp.Activities.Data.Pembayaran.Spp.List.DataPembayaranSppListActivity;
 import com.its.bigstarsapp.Controllers.GlobalProcess;
 import com.its.bigstarsapp.Controllers.SessionManager;
 import com.its.bigstarsapp.R;
@@ -23,6 +25,8 @@ public class HomeWaliMuridActivity extends AppCompatActivity implements View.OnC
 
     CardView cvLihatKelasPertemuan, cvDetailTagihanSpp, cvRiwayatPembayaranSpp;
 
+    String id_wali_murid;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +34,9 @@ public class HomeWaliMuridActivity extends AppCompatActivity implements View.OnC
 
         sessionManager = new SessionManager(this);
         globalProcess = new GlobalProcess(this);
+
+        HashMap<String, String> user = sessionManager.getDataUser();
+        id_wali_murid = user.get(sessionManager.ID_USER);
 
         cvLihatKelasPertemuan = findViewById(R.id.cv_lihat_kelas_pertemuan);
         cvDetailTagihanSpp = findViewById(R.id.cv_detail_tagihan_spp);
@@ -48,15 +55,15 @@ public class HomeWaliMuridActivity extends AppCompatActivity implements View.OnC
             intent = new Intent(getApplicationContext(), DataMuridListActivity.class);
             startActivity(intent);
         } else if (view.getId() == R.id.cv_detail_tagihan_spp) {
-//            sessionManager.setStatusActivity("homePengajar->view->dataPertemuanAktif");
-//            intent = new Intent(getApplicationContext(), DataPertemuanListActivity.class);
-//            intent.putExtra(DataPertemuanListActivity.EXTRA_ID_PENGAJAR, id_pengajar);
-//            startActivity(intent);
+            intent = new Intent(getApplicationContext(), DataPembayaranSppDetailActivity.class);
+            intent.putExtra(DataPembayaranSppDetailActivity.EXTRA_ID_BAYAR_SPP, "kosong");
+            intent.putExtra(DataPembayaranSppDetailActivity.EXTRA_ID_WALI_MURID, id_wali_murid);
+            startActivity(intent);
         } else if (view.getId() == R.id.cv_riwayat_pembayaran_spp) {
-//            sessionManager.setStatusActivity("homePengajar->view->dataPertemuanHistory");
-//            intent = new Intent(getApplicationContext(), DataPertemuanListActivity.class);
-//            intent.putExtra(DataPertemuanListActivity.EXTRA_ID_PENGAJAR, id_pengajar);
-//            startActivity(intent);
+            intent = new Intent(getApplicationContext(), DataPembayaranSppListActivity.class);
+            intent.putExtra(DataPembayaranSppListActivity.EXTRA_ID_BAYAR_SPP, "kosong");
+            intent.putExtra(DataPembayaranSppListActivity.EXTRA_ID_WALI_MURID, id_wali_murid);
+            startActivity(intent);
         }
     }
 
