@@ -3,13 +3,13 @@ class M_universal extends CI_Model
 {
     function tampil_data($table)
     {
-        $this->db->limit(60);  // Produces: LIMIT
+        $this->db->limit(120);  // Produces: LIMIT
         return $this->db->get($table);
     }
 
     function tampil_data_order_by($table, $kolom, $by)
     {
-        $this->db->limit(60);  // Produces: LIMIT
+        $this->db->limit(120);  // Produces: LIMIT
         $this->db->order_by($kolom, $by);
         return $this->db->get($table);
     }
@@ -29,13 +29,13 @@ class M_universal extends CI_Model
 
     function get_data($table, $where)
     {
-        $this->db->limit(60);  // Produces: LIMIT
+        $this->db->limit(120);  // Produces: LIMIT
         return $this->db->get_where($table, $where);
     }
 
     function get_data_group_by($table, $where, $group_by, $order_by)
     {
-        $this->db->limit(60);  // Produces: LIMIT
+        $this->db->limit(120);  // Produces: LIMIT
         $this->db->group_by($group_by);
         $this->db->order_by($order_by, "DESC");
         return $this->db->get_where($table, $where);
@@ -43,7 +43,7 @@ class M_universal extends CI_Model
 
     function get_data_or($table, $id, $where1, $where2)
     {
-        $this->db->limit(60);  // Produces: LIMIT
+        $this->db->limit(120);  // Produces: LIMIT
         $this->db->where('status_data' . ' =', 'active');
         $this->db->where('' . $where1 . ' =', $id);
         $this->db->or_where('' . $where2 . ' =', $id);
