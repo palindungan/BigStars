@@ -392,12 +392,17 @@ class Pertemuan extends REST_Controller
 
     function finish_data_post()
     {
+
+        $tanggal = date('Y-m-d H:i:s');
+        $waktu_berakhir = $tanggal;
+
         $id_pertemuan = $this->post('id_pertemuan');
         $deskripsi = $this->post('deskripsi');
         $lokasi_berakhir_la = $this->post('lokasi_berakhir_la');
         $lokasi_berakhir_lo = $this->post('lokasi_berakhir_lo');
 
         $data = array(
+            'waktu_berakhir' =>  $waktu_berakhir,
             'status_pertemuan' => 'Selesai',
             'deskripsi' =>  $deskripsi,
             'lokasi_berakhir_la' =>  $lokasi_berakhir_la,

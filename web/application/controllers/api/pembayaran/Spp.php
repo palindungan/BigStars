@@ -71,6 +71,9 @@ class Spp extends REST_Controller
 
                     'id_wali_murid'         => $row["id_wali_murid"],
                     'nama_wali_murid'       => $row["nama_wali_murid"],
+
+                    'id_murid'              => $row["id_murid"],
+                    'nama_siswa'            => $row["nama_siswa"],
                 );
 
                 array_push($result['data_result'], $data);
