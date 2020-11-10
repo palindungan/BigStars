@@ -117,7 +117,7 @@
                     android:layout_alignParentTop="true"
                     android:layout_centerHorizontal="true"
                     android:layout_margin="10sp"
-                    android:text="@string/detail_tagihan_spp"
+                    android:text="@string/tagihan_spp_sekarang"
                     android:textColor="@color/white"
                     android:textSize="20sp"
                     android:textStyle="bold" />

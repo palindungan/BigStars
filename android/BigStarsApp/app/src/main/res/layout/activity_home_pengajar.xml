@@ -216,7 +216,7 @@
                     android:layout_alignParentTop="true"
                     android:layout_centerHorizontal="true"
                     android:layout_margin="10sp"
-                    android:text="@string/detail_tagihan_fee"
+                    android:text="@string/fee_sekarang"
                     android:textColor="@color/white"
                     android:textSize="20sp"
                     android:textStyle="bold" />
