@@ -97,6 +97,9 @@ public class DataPembayaranSppDetailPresenter implements IDataPembayaranSppDetai
                                 String jam_mulai = dataobj.getString("jam_mulai");
                                 String jam_berakhir = dataobj.getString("jam_berakhir");
 
+                                String id_murid = dataobj.getString("id_murid");
+                                String nama_siswa = dataobj.getString("nama_siswa");
+
                                 String id_mata_pelajaran = dataobj.getString("id_mata_pelajaran");
                                 String nama_mata_pelajaran = dataobj.getString("nama_mata_pelajaran");
 
@@ -126,8 +129,11 @@ public class DataPembayaranSppDetailPresenter implements IDataPembayaranSppDetai
                                 playerModel.setJam_mulai(jam_mulai);
                                 playerModel.setJam_berakhir(jam_berakhir);
 
+                                playerModel.setId_murid(id_murid);
+                                playerModel.setNama_murid(nama_siswa);
+
                                 playerModel.setId_mata_pelajaran(id_mata_pelajaran);
-                                playerModel.setNama_mata_pelajaran(nama_mata_pelajaran);
+                                playerModel.setNama_mata_pelajaran(nama_mata_pelajaran + " (" + nama_siswa + ")");
 
                                 playerModel.setId_wali_murid(id_wali_murid);
                                 playerModel.setNama_wali_murid(nama_wali_murid);
