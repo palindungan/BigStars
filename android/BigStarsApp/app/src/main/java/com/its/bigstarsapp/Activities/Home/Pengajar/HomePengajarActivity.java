@@ -10,6 +10,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
 import com.its.bigstarsapp.Activities.Data.KelasPertemuan.List.DataKelasPertemuanListActivity;
+import com.its.bigstarsapp.Activities.Data.Pembayaran.Fee.Detail.DataPembayaranFeeDetailActivity;
+import com.its.bigstarsapp.Activities.Data.Pembayaran.Fee.List.DataPembayaranFeeListActivity;
 import com.its.bigstarsapp.Activities.Data.Pertemuan.List.DataPertemuanListActivity;
 import com.its.bigstarsapp.Controllers.GlobalProcess;
 import com.its.bigstarsapp.Controllers.SessionManager;
@@ -23,6 +25,7 @@ public class HomePengajarActivity extends AppCompatActivity implements View.OnCl
     GlobalProcess globalProcess;
 
     CardView linkPengajarKelasPertemuan, linkPengajarKelasPertemuanAktif, linkPengajarRiwayatAbsen;
+    CardView cvDetailTagihanFee, cvRiwayatPembayaranFee;
 
     String id_pengajar;
 
@@ -41,9 +44,15 @@ public class HomePengajarActivity extends AppCompatActivity implements View.OnCl
         linkPengajarKelasPertemuanAktif = findViewById(R.id.link_pengajar_kelas_pertemuan_aktif);
         linkPengajarRiwayatAbsen = findViewById(R.id.link_pengajar_riwayat_absen);
 
+        cvDetailTagihanFee = findViewById(R.id.cv_detail_tagihan_fee);
+        cvRiwayatPembayaranFee = findViewById(R.id.cv_riwayat_pembayaran_fee);
+
         linkPengajarKelasPertemuan.setOnClickListener(this);
         linkPengajarKelasPertemuanAktif.setOnClickListener(this);
         linkPengajarRiwayatAbsen.setOnClickListener(this);
+
+        cvDetailTagihanFee.setOnClickListener(this);
+        cvRiwayatPembayaranFee.setOnClickListener(this);
     }
 
     @Override
@@ -63,6 +72,18 @@ public class HomePengajarActivity extends AppCompatActivity implements View.OnCl
             sessionManager.setStatusActivity("homePengajar->view->dataPertemuanHistory");
             intent = new Intent(getApplicationContext(), DataPertemuanListActivity.class);
             intent.putExtra(DataPertemuanListActivity.EXTRA_ID_PENGAJAR, id_pengajar);
+            startActivity(intent);
+        } else if (view.getId() == R.id.cv_detail_tagihan_fee) {
+            sessionManager.setStatusActivity("homePengajar->view->detailPembayaranFee");
+            intent = new Intent(getApplicationContext(), DataPembayaranFeeDetailActivity.class);
+            intent.putExtra(DataPembayaranFeeDetailActivity.EXTRA_ID_BAYAR_FEE, "kosong");
+            intent.putExtra(DataPembayaranFeeDetailActivity.EXTRA_ID_PENGAJAR, id_pengajar);
+            startActivity(intent);
+        } else if (view.getId() == R.id.cv_riwayat_pembayaran_fee) {
+            sessionManager.setStatusActivity("homePengajar->view->ListPembayaranFee");
+            intent = new Intent(getApplicationContext(), DataPembayaranFeeListActivity.class);
+            intent.putExtra(DataPembayaranFeeListActivity.EXTRA_ID_BAYAR_FEE, "kosong");
+            intent.putExtra(DataPembayaranFeeListActivity.EXTRA_ID_PENGAJAR, id_pengajar);
             startActivity(intent);
         }
     }
