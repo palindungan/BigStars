@@ -75,4 +75,6 @@
     <string name="detail_tagihan_spp">Detail Tagihan SPP</string>
     <string name="daftar_kelas_pertemuan">Daftar Kelas Pertemuan</string>
     <string name="lihat_kelas_pertemuan">Lihat Kelas Pertemuan</string>
+    <string name="detail_tagihan_fee">Detail Tagihan Fee</string>
+    <string name="riwayat_pembayaran_fee">Riwayat Pembayaran Fee</string>
 </resources>
