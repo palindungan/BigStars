@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Waktu pembuatan: 01 Des 2020 pada 13.54
+-- Waktu pembuatan: 01 Des 2020 pada 13.38
 -- Versi server: 10.2.34-MariaDB-cll-lve
 -- Versi PHP: 7.3.6
 
@@ -258,27 +258,27 @@ CREATE TABLE `murid` (
 
 INSERT INTO `murid` (`id_murid`, `id_wali_murid`, `nama`, `foto`, `status_data`) VALUES
 ('MR00001', 1, 'Kevin Hoo', 'NONE', 'active'),
-('MR00002', 2, 'Christo', 'NONE', 'active'),
-('MR00003', 2, 'Alice', 'NONE', 'active'),
-('MR00004', 3, 'Michelle', 'NONE', 'active'),
-('MR00005', 4, 'Keiza', 'NONE', 'active'),
-('MR00006', 5, 'Jessyln', 'NONE', 'active'),
-('MR00007', 6, 'Carlos', 'NONE', 'active'),
-('MR00008', 7, 'Denaya', 'NONE', 'active'),
-('MR00009', 8, 'Janiece', 'NONE', 'active'),
-('MR00010', 9, 'Kayla', 'NONE', 'active'),
-('MR00011', 10, 'Alin', 'NONE', 'active'),
-('MR00012', 11, 'Lody', 'NONE', 'active'),
-('MR00013', 3, 'Meme', 'NONE', 'active'),
-('MR00014', 12, 'Matthew', 'NONE', 'active'),
-('MR00015', 13, 'Kevin', 'NONE', 'active'),
-('MR00016', 14, 'Feli', 'NONE', 'active'),
-('MR00017', 14, 'Grace', 'NONE', 'active'),
-('MR00018', 15, 'Kevin Rh', 'NONE', 'active'),
-('MR00019', 15, 'Lydia Rh', 'NONE', 'active'),
-('MR00020', 16, 'Evan', 'NONE', 'active'),
-('MR00021', 16, 'Ivan', 'NONE', 'active'),
-('MR00022', 17, 'Gwen', 'NONE', 'active');
+('MR00002', 1, 'Christo', 'NONE', 'active'),
+('MR00003', 1, 'Alice', 'NONE', 'active'),
+('MR00004', 1, 'Michelle', 'NONE', 'active'),
+('MR00005', 1, 'Keiza', 'NONE', 'active'),
+('MR00006', 1, 'Jessyln', 'NONE', 'active'),
+('MR00007', 1, 'Carlos', 'NONE', 'active'),
+('MR00008', 1, 'Denaya', 'NONE', 'active'),
+('MR00009', 1, 'Janiece', 'NONE', 'active'),
+('MR00010', 1, 'Kayla', 'NONE', 'active'),
+('MR00011', 1, 'Alin', 'NONE', 'active'),
+('MR00012', 1, 'Lody', 'NONE', 'active'),
+('MR00013', 1, 'Meme', 'NONE', 'active'),
+('MR00014', 1, 'Matthew', 'NONE', 'active'),
+('MR00015', 1, 'Kevin', 'NONE', 'active'),
+('MR00016', 1, 'Feli', 'NONE', 'active'),
+('MR00017', 1, 'Grace', 'NONE', 'active'),
+('MR00018', 1, 'Kevin Rh', 'NONE', 'active'),
+('MR00019', 1, 'Lydia Rh', 'NONE', 'active'),
+('MR00020', 1, 'Evan', 'NONE', 'active'),
+('MR00021', 1, 'Ivan', 'NONE', 'active'),
+('MR00022', 1, 'Gwen', 'NONE', 'active');
 
 -- --------------------------------------------------------
 
