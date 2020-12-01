@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Waktu pembuatan: 01 Des 2020 pada 13.29
+-- Waktu pembuatan: 01 Des 2020 pada 13.24
 -- Versi server: 10.2.34-MariaDB-cll-lve
 -- Versi PHP: 7.3.6
 
@@ -638,25 +638,25 @@ CREATE TABLE `wali_murid` (
 --
 
 INSERT INTO `wali_murid` (`id_wali_murid`, `nama`, `username`, `password`, `alamat`, `no_hp`, `status_data`) VALUES
-(1, 'Mama Kehin Hoo', 'mamakehinhoo', '$2y$10$HWrk7j1HgJBhgIjg5frwkOpFkEZgpBnVmI2RjND2F4hYtIGG9hoGm', 'jember', '0', 'active'),
-(2, 'Mama Christo', 'mamachristo', '$2y$10$HWrk7j1HgJBhgIjg5frwkOpFkEZgpBnVmI2RjND2F4hYtIGG9hoGm', 'jember', '0', 'active'),
-(3, 'Mama Alice', 'mamaalice', '$2y$10$HWrk7j1HgJBhgIjg5frwkOpFkEZgpBnVmI2RjND2F4hYtIGG9hoGm', 'jember', '0', 'active'),
-(4, 'Mama Michelle dan Meme', 'mamamichelle', '$2y$10$HWrk7j1HgJBhgIjg5frwkOpFkEZgpBnVmI2RjND2F4hYtIGG9hoGm', 'jember', '0', 'active'),
-(5, 'Mama Keiza', 'mamakeiza', '$2y$10$HWrk7j1HgJBhgIjg5frwkOpFkEZgpBnVmI2RjND2F4hYtIGG9hoGm', 'jember', '0', 'active'),
-(6, 'Mama Jessyln', 'mamajessyln', '$2y$10$HWrk7j1HgJBhgIjg5frwkOpFkEZgpBnVmI2RjND2F4hYtIGG9hoGm', 'jember', '0', 'active'),
-(7, 'Mama Carlos', 'mamacarlos', '$2y$10$HWrk7j1HgJBhgIjg5frwkOpFkEZgpBnVmI2RjND2F4hYtIGG9hoGm', 'jember', '0', 'active'),
-(8, 'Mama Denaya', 'mamadenaya', '$2y$10$HWrk7j1HgJBhgIjg5frwkOpFkEZgpBnVmI2RjND2F4hYtIGG9hoGm', 'jember', '0', 'active'),
-(9, 'Mama Janiece', 'mamajaniece', '$2y$10$HWrk7j1HgJBhgIjg5frwkOpFkEZgpBnVmI2RjND2F4hYtIGG9hoGm', 'jember', '0', 'active'),
-(10, 'Mama Kayla', 'mamakayla', '$2y$10$HWrk7j1HgJBhgIjg5frwkOpFkEZgpBnVmI2RjND2F4hYtIGG9hoGm', 'jember', '0', 'active'),
-(11, 'Mama Alin', 'mamaalin', '$2y$10$HWrk7j1HgJBhgIjg5frwkOpFkEZgpBnVmI2RjND2F4hYtIGG9hoGm', 'jember', '0', 'active'),
-(12, 'Mama Lody', 'mamalody', '$2y$10$HWrk7j1HgJBhgIjg5frwkOpFkEZgpBnVmI2RjND2F4hYtIGG9hoGm', 'jember', '0', 'active'),
-(13, 'Mama Matthew', 'mamamatthew', '$2y$10$HWrk7j1HgJBhgIjg5frwkOpFkEZgpBnVmI2RjND2F4hYtIGG9hoGm', 'jember', '0', 'active'),
-(14, 'Mama Kevin', 'mamakevin', '$2y$10$HWrk7j1HgJBhgIjg5frwkOpFkEZgpBnVmI2RjND2F4hYtIGG9hoGm', 'jember', '0', 'active'),
-(15, 'Mama Feli dan Grace', 'mamafeli', '$2y$10$HWrk7j1HgJBhgIjg5frwkOpFkEZgpBnVmI2RjND2F4hYtIGG9hoGm', 'jember', '0', 'active'),
-(16, 'Mama Kevin Rh dan Lydia Rh', 'mamakevinrh', '$2y$10$HWrk7j1HgJBhgIjg5frwkOpFkEZgpBnVmI2RjND2F4hYtIGG9hoGm', 'jember', '0', 'active'),
-(17, 'Mama Evan', 'mamaevan', '$2y$10$HWrk7j1HgJBhgIjg5frwkOpFkEZgpBnVmI2RjND2F4hYtIGG9hoGm', 'jember', '0', 'active'),
-(18, 'Mama Ivan', 'mamaivan', '$2y$10$HWrk7j1HgJBhgIjg5frwkOpFkEZgpBnVmI2RjND2F4hYtIGG9hoGm', 'jember', '0', 'active'),
-(19, 'Mama Gwen', 'mamagwen', '$2y$10$HWrk7j1HgJBhgIjg5frwkOpFkEZgpBnVmI2RjND2F4hYtIGG9hoGm', 'jember', '0', 'active');
+(1, 'Mama Kehin Hoo', 'mamakehinhoo', '$2y$10$7iPvtmYYQ4XRnWyV7Qk51OLxMEoJ2KKe5MqhtMqYQdg.zLiCoBAAq', 'jember', '0', 'active'),
+(2, 'Mama Christo', 'mamachristo', '$2y$10$7iPvtmYYQ4XRnWyV7Qk51OLxMEoJ2KKe5MqhtMqYQdg.zLiCoBAAq', 'jember', '0', 'active'),
+(3, 'Mama Alice', 'mamaalice', '$2y$10$7iPvtmYYQ4XRnWyV7Qk51OLxMEoJ2KKe5MqhtMqYQdg.zLiCoBAAq', 'jember', '0', 'active'),
+(4, 'Mama Michelle dan Meme', 'mamamichelle', '$2y$10$7iPvtmYYQ4XRnWyV7Qk51OLxMEoJ2KKe5MqhtMqYQdg.zLiCoBAAq', 'jember', '0', 'active'),
+(5, 'Mama Keiza', 'mamakeiza', '$2y$10$7iPvtmYYQ4XRnWyV7Qk51OLxMEoJ2KKe5MqhtMqYQdg.zLiCoBAAq', 'jember', '0', 'active'),
+(6, 'Mama Jessyln', 'mamajessyln', '$2y$10$7iPvtmYYQ4XRnWyV7Qk51OLxMEoJ2KKe5MqhtMqYQdg.zLiCoBAAq', 'jember', '0', 'active'),
+(7, 'Mama Carlos', 'mamacarlos', '$2y$10$7iPvtmYYQ4XRnWyV7Qk51OLxMEoJ2KKe5MqhtMqYQdg.zLiCoBAAq', 'jember', '0', 'active'),
+(8, 'Mama Denaya', 'mamadenaya', '$2y$10$7iPvtmYYQ4XRnWyV7Qk51OLxMEoJ2KKe5MqhtMqYQdg.zLiCoBAAq', 'jember', '0', 'active'),
+(9, 'Mama Janiece', 'mamajaniece', '$2y$10$7iPvtmYYQ4XRnWyV7Qk51OLxMEoJ2KKe5MqhtMqYQdg.zLiCoBAAq', 'jember', '0', 'active'),
+(10, 'Mama Kayla', 'mamakayla', '$2y$10$7iPvtmYYQ4XRnWyV7Qk51OLxMEoJ2KKe5MqhtMqYQdg.zLiCoBAAq', 'jember', '0', 'active'),
+(11, 'Mama Alin', 'mamaalin', '$2y$10$7iPvtmYYQ4XRnWyV7Qk51OLxMEoJ2KKe5MqhtMqYQdg.zLiCoBAAq', 'jember', '0', 'active'),
+(12, 'Mama Lody', 'mamalody', '$2y$10$7iPvtmYYQ4XRnWyV7Qk51OLxMEoJ2KKe5MqhtMqYQdg.zLiCoBAAq', 'jember', '0', 'active'),
+(13, 'Mama Matthew', 'mamamatthew', '$2y$10$7iPvtmYYQ4XRnWyV7Qk51OLxMEoJ2KKe5MqhtMqYQdg.zLiCoBAAq', 'jember', '0', 'active'),
+(14, 'Mama Kevin', 'mamakevin', '$2y$10$7iPvtmYYQ4XRnWyV7Qk51OLxMEoJ2KKe5MqhtMqYQdg.zLiCoBAAq', 'jember', '0', 'active'),
+(15, 'Mama Feli dan Grace', 'mamafeli', '$2y$10$7iPvtmYYQ4XRnWyV7Qk51OLxMEoJ2KKe5MqhtMqYQdg.zLiCoBAAq', 'jember', '0', 'active'),
+(16, 'Mama Kevin Rh dan Lydia Rh', 'mamakevinrh', '$2y$10$7iPvtmYYQ4XRnWyV7Qk51OLxMEoJ2KKe5MqhtMqYQdg.zLiCoBAAq', 'jember', '0', 'active'),
+(17, 'Mama Evan', 'mamaevan', '$2y$10$7iPvtmYYQ4XRnWyV7Qk51OLxMEoJ2KKe5MqhtMqYQdg.zLiCoBAAq', 'jember', '0', 'active'),
+(18, 'Mama Ivan', 'mamaivan', '$2y$10$7iPvtmYYQ4XRnWyV7Qk51OLxMEoJ2KKe5MqhtMqYQdg.zLiCoBAAq', 'jember', '0', 'active'),
+(19, 'Mama Gwen', 'mamagwen', '$2y$10$7iPvtmYYQ4XRnWyV7Qk51OLxMEoJ2KKe5MqhtMqYQdg.zLiCoBAAq', 'jember', '0', 'active');
 
 -- --------------------------------------------------------
 
