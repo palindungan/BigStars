@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Waktu pembuatan: 01 Des 2020 pada 13.24
+-- Waktu pembuatan: 01 Des 2020 pada 09.20
 -- Versi server: 10.2.34-MariaDB-cll-lve
 -- Versi PHP: 7.3.6
 
@@ -258,27 +258,27 @@ CREATE TABLE `murid` (
 
 INSERT INTO `murid` (`id_murid`, `id_wali_murid`, `nama`, `foto`, `status_data`) VALUES
 ('MR00001', 1, 'Kehin Hoo', 'NONE', 'active'),
-('MR00002', 2, 'Christo', 'NONE', 'active'),
-('MR00003', 3, 'Alice', 'NONE', 'active'),
-('MR00004', 4, 'Michelle', 'NONE', 'active'),
-('MR00005', 5, 'Keiza', 'NONE', 'active'),
-('MR00006', 6, 'Jessyln', 'NONE', 'active'),
-('MR00007', 7, 'Carlos', 'NONE', 'active'),
-('MR00008', 8, 'Denaya', 'NONE', 'active'),
-('MR00009', 9, 'Janiece', 'NONE', 'active'),
-('MR00010', 10, 'Kayla', 'NONE', 'active'),
-('MR00011', 11, 'Alin', 'NONE', 'active'),
-('MR00012', 12, 'Lody', 'NONE', 'active'),
-('MR00013', 4, 'Meme', 'NONE', 'active'),
-('MR00014', 13, 'Matthew', 'NONE', 'active'),
-('MR00015', 14, 'Kevin', 'NONE', 'active'),
-('MR00016', 15, 'Feli', 'NONE', 'active'),
-('MR00017', 15, 'Grace', 'NONE', 'active'),
-('MR00018', 16, 'Kevin Rh', 'NONE', 'active'),
-('MR00019', 16, 'Lydia Rh', 'NONE', 'active'),
-('MR00020', 17, 'Evan', 'NONE', 'active'),
-('MR00021', 18, 'Ivan', 'NONE', 'active'),
-('MR00022', 19, 'Gwen', 'NONE', 'active');
+('MR00002', 1, 'Christo', 'NONE', 'active'),
+('MR00003', 1, 'Alice', 'NONE', 'active'),
+('MR00004', 1, 'Michelle', 'NONE', 'active'),
+('MR00005', 1, 'Keiza', 'NONE', 'active'),
+('MR00006', 1, 'Jessyln', 'NONE', 'active'),
+('MR00007', 1, 'Carlos', 'NONE', 'active'),
+('MR00008', 1, 'Denaya', 'NONE', 'active'),
+('MR00009', 1, 'Janiece', 'NONE', 'active'),
+('MR00010', 1, 'Kayla', 'NONE', 'active'),
+('MR00011', 1, 'Alin', 'NONE', 'active'),
+('MR00012', 1, 'Lody', 'NONE', 'active'),
+('MR00013', 1, 'Meme', 'NONE', 'active'),
+('MR00014', 1, 'Matthew', 'NONE', 'active'),
+('MR00015', 1, 'Kevin', 'NONE', 'active'),
+('MR00016', 1, 'Feli', 'NONE', 'active'),
+('MR00017', 1, 'Grace', 'NONE', 'active'),
+('MR00018', 1, 'Kevin Rh', 'NONE', 'active'),
+('MR00019', 1, 'Lydia Rh', 'NONE', 'active'),
+('MR00020', 1, 'Evan', 'NONE', 'active'),
+('MR00021', 1, 'Ivan', 'NONE', 'active'),
+('MR00022', 1, 'Gwen', 'NONE', 'active');
 
 -- --------------------------------------------------------
 
@@ -861,7 +861,7 @@ ALTER TABLE `pertemuan_detail`
 -- AUTO_INCREMENT untuk tabel `wali_murid`
 --
 ALTER TABLE `wali_murid`
-  MODIFY `id_wali_murid` smallint(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id_wali_murid` smallint(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
