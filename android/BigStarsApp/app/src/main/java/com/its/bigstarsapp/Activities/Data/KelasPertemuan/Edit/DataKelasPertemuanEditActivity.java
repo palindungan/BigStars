@@ -220,6 +220,21 @@ public class DataKelasPertemuanEditActivity extends AppCompatActivity implements
     }
 
     private void inisiasiAwal(String nama_mata_pelajaran, String hari, String jam_mulai, String jam_berakhir, String harga_fee, String harga_spp) {
+        HashMap<String, String> user = sessionManager.getDataUser();
+        String hak_akses = user.get(sessionManager.HAK_AKSES);
+        if (hak_akses != null) {
+            if (hak_akses.equals("admin")) {
+
+            } else if (hak_akses.equals("pengajar")) {
+                edtHargaSpp.setVisibility(View.GONE);
+            } else if (hak_akses.equals("wali_murid")) {
+                edtHargaFee.setVisibility(View.GONE);
+            } else {
+                edtHargaFee.setVisibility(View.GONE);
+                edtHargaSpp.setVisibility(View.GONE);
+            }
+        }
+
         edtNamaMataPelajaran.setText(nama_mata_pelajaran);
         edtHari.setText(hari);
         btnJamMulai.setText(jam_mulai);

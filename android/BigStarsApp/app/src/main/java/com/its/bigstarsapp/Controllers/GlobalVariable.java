@@ -4,7 +4,7 @@ public class GlobalVariable {
     String urlData;
     String urlUpload;
 
-    String ipAddress = "http://192.168.137.1/BigStars/";
+    String ipAddress = "http://bigstarsjember.online/";
 
     public GlobalVariable() {
         urlData = ipAddress + "web/api/";

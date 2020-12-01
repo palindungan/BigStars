@@ -28,6 +28,7 @@ import com.its.bigstarsapp.R;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
 
 public class DataKelasPertemuanAddActivity extends AppCompatActivity implements View.OnClickListener, IDataKelasPertemuanAddView {
 
@@ -79,6 +80,21 @@ public class DataKelasPertemuanAddActivity extends AppCompatActivity implements 
         id_pengajar = getIntent().getStringExtra(EXTRA_ID_PENGAJAR);
 
         globalProcess.initActionBar(toolbar);
+
+        HashMap<String, String> user = sessionManager.getDataUser();
+        String hak_akses = user.get(sessionManager.HAK_AKSES);
+        if (hak_akses != null) {
+            if (hak_akses.equals("admin")) {
+
+            } else if (hak_akses.equals("pengajar")) {
+                edtHargaSpp.setVisibility(View.GONE);
+            } else if (hak_akses.equals("wali_murid")) {
+                edtHargaFee.setVisibility(View.GONE);
+            } else {
+                edtHargaFee.setVisibility(View.GONE);
+                edtHargaSpp.setVisibility(View.GONE);
+            }
+        }
 
         btnPilih.setOnClickListener(this);
         btnJamMulai.setOnClickListener(this);

@@ -228,6 +228,12 @@ public class DataPertemuanEditActivity extends AppCompatActivity implements View
             } else if (hak_akses.equals("pengajar")) {
                 btnBatal.setVisibility(View.VISIBLE);
                 btnGetLokasi.setVisibility(View.VISIBLE);
+                edtHargaSpp.setVisibility(View.GONE);
+            } else if (hak_akses.equals("wali_murid")) {
+                edtHargaFee.setVisibility(View.GONE);
+            } else {
+                edtHargaFee.setVisibility(View.GONE);
+                edtHargaSpp.setVisibility(View.GONE);
             }
         }
 
