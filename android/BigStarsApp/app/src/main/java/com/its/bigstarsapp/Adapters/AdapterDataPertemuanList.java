@@ -89,7 +89,7 @@ public class AdapterDataPertemuanList extends RecyclerView.Adapter<AdapterDataPe
         String setStatusSpp = "SPP : " + status_spp;
         String setStatusKonfirmasi = "Konfirmasi : " + status_konfirmasi;
 
-        holder.tvNamaMataPelajaran.setText(nama_mata_pelajaran);
+        holder.tvNamaMataPelajaran.setText((position + 1) + ". " + nama_mata_pelajaran);
         holder.tvJadwalKelasPertemuan.setText(setJadwalKelasPertemuan);
         holder.tvWaktuMulai.setText(setWaktuMulai);
         holder.tvWaktuBerakhir.setText(setWaktuBerakhir);
