@@ -55,7 +55,7 @@ public class AdapterDataPembayaranFeeList extends RecyclerView.Adapter<AdapterDa
 
     @Override
     public void onBindViewHolder(@NonNull AdapterDataPembayaranFeeList.DataPembayaranFeeListViewHolder holder, int position) {
-        String nama_pengajar = "Nama Pengajar : " + dataModelArrayList.get(position).getNama_pengajar();
+        String nama_pengajar = (position + 1) + "." + " Nama Pengajar : " + dataModelArrayList.get(position).getNama_pengajar();
         String waktu = "Waktu : " + dataModelArrayList.get(position).getWaktu();
         String total_pertemuan = "Total Pertemuan : " + dataModelArrayList.get(position).getTotal_pertemuan();
         String total_harga_fee = "Total Harga : " + dataModelArrayList.get(position).getTotal_harga_fee();
