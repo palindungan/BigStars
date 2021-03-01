@@ -39,6 +39,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center_vertical"
+                android:layout_marginStart="5sp"
+                android:layout_marginLeft="5sp"
                 android:layout_weight="6"
                 android:src="@drawable/ic_default_account_circle"
                 app:civ_border_color="#fff"

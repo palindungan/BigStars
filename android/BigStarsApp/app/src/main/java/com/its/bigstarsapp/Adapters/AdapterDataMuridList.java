@@ -79,9 +79,12 @@ public class AdapterDataMuridList extends RecyclerView.Adapter<AdapterDataMuridL
         String setNamaWaliMurid = "Wali Murid : " + dataModelArrayList.get(position).getNama_wali_murid();
         String setAlamat = "Alamat : " + dataModelArrayList.get(position).getAlamat();
 
+        String setNumber = String.valueOf(position + 1);
+
         holder.txtNama.setText(setNama);
         holder.txtNamaWaliMurid.setText(setNamaWaliMurid);
         holder.txtAlamat.setText(setAlamat);
+        holder.tvNumber.setText(setNumber);
         holder.ivDelete.setOnClickListener(v -> {
             if (statusActivity.equals("home->view->editMurid")) {
                 IDataMuridListView dataMuridListView = (DataMuridListActivity) context;
@@ -108,7 +111,7 @@ public class AdapterDataMuridList extends RecyclerView.Adapter<AdapterDataMuridL
     }
 
     public static class DataMuridListViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        protected TextView txtNama, txtNamaWaliMurid, txtAlamat;
+        protected TextView txtNama, txtNamaWaliMurid, txtAlamat, tvNumber;
         protected ImageView ivFoto, ivDelete;
 
         public DataMuridListViewHolder(@NonNull View itemView) {
@@ -117,6 +120,7 @@ public class AdapterDataMuridList extends RecyclerView.Adapter<AdapterDataMuridL
             txtNama = itemView.findViewById(R.id.tv_nama);
             txtNamaWaliMurid = itemView.findViewById(R.id.tv_nama_wali_murid);
             txtAlamat = itemView.findViewById(R.id.tv_alamat);
+            tvNumber = itemView.findViewById(R.id.tv_number);
             ivFoto = itemView.findViewById(R.id.iv_foto);
             ivDelete = itemView.findViewById(R.id.iv_delete);
 
