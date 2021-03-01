@@ -72,9 +72,12 @@ public class AdapterDataPengajarList extends RecyclerView.Adapter<AdapterDataPen
         String setUsername = "Username : " + dataModelArrayList.get(position).getUsername();
         String setNoHp = "No : " + dataModelArrayList.get(position).getNo_hp();
 
+        String setNumber = String.valueOf(position + 1);
+
         holder.tvNama.setText(setNama);
         holder.tvUsername.setText(setUsername);
         holder.tvNoHP.setText(setNoHp);
+        holder.tvNumber.setText(setNumber);
         holder.ivDelete.setOnClickListener(v -> {
             IDataPengajarListView dataPengajarListView = (DataPengajarListActivity) context;
             dataPengajarListView.showDialogDelete(
@@ -93,7 +96,7 @@ public class AdapterDataPengajarList extends RecyclerView.Adapter<AdapterDataPen
 
     public static class DataPengajarListViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        protected TextView tvNama, tvUsername, tvNoHP;
+        protected TextView tvNama, tvUsername, tvNoHP, tvNumber;
         protected ImageView ivFoto, ivDelete;
 
         public DataPengajarListViewHolder(@NonNull View itemView) {
@@ -102,6 +105,7 @@ public class AdapterDataPengajarList extends RecyclerView.Adapter<AdapterDataPen
             tvNama = itemView.findViewById(R.id.tv_nama);
             tvUsername = itemView.findViewById(R.id.tv_username);
             tvNoHP = itemView.findViewById(R.id.tv_no_hp);
+            tvNumber = itemView.findViewById(R.id.tv_number);
             ivFoto = itemView.findViewById(R.id.iv_foto);
             ivDelete = itemView.findViewById(R.id.iv_delete);
 
