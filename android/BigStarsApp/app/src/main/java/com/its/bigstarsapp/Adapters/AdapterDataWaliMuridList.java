@@ -68,9 +68,12 @@ public class AdapterDataWaliMuridList extends RecyclerView.Adapter<AdapterDataWa
         String setUsername = "Username : " + dataModelArrayList.get(position).getUsername();
         String setNoHp = "No. Hp : " + dataModelArrayList.get(position).getNo_hp();
 
+        String setNumber = String.valueOf(position + 1);
+
         holder.tvNama.setText(setNama);
         holder.tvUsername.setText(setUsername);
         holder.tvNoHp.setText(setNoHp);
+        holder.tvNumber.setText(setNumber);
         holder.ivDelete.setOnClickListener(v -> {
             IDataWaliMuridListView dataWaliMuridListView = (DataWaliMuridListActivity) context;
             dataWaliMuridListView.showDialogDelete(
@@ -86,7 +89,7 @@ public class AdapterDataWaliMuridList extends RecyclerView.Adapter<AdapterDataWa
 
     public static class DataWaliMuridListViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        protected TextView tvNama, tvUsername, tvNoHp;
+        protected TextView tvNama, tvUsername, tvNoHp, tvNumber;
         protected ImageView ivDelete;
 
         public DataWaliMuridListViewHolder(@NonNull View itemView) {
@@ -95,6 +98,7 @@ public class AdapterDataWaliMuridList extends RecyclerView.Adapter<AdapterDataWa
             tvNama = itemView.findViewById(R.id.tv_nama);
             tvUsername = itemView.findViewById(R.id.tv_username);
             tvNoHp = itemView.findViewById(R.id.tv_no_hp);
+            tvNumber = itemView.findViewById(R.id.tv_number);
             ivDelete = itemView.findViewById(R.id.iv_delete);
 
             ButterKnife.bind(this, itemView);
