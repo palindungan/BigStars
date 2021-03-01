@@ -54,7 +54,7 @@ public class AdapterDataPembayaranSppList extends RecyclerView.Adapter<AdapterDa
 
     @Override
     public void onBindViewHolder(@NonNull AdapterDataPembayaranSppList.DataPembayaranSppListViewHolder holder, int position) {
-        String nama_pengajar = "Nama Wali Murid : " + dataModelArrayList.get(position).getNama_wali_murid();
+        String nama_pengajar = (position + 1) + "." + " Nama Wali Murid : " + dataModelArrayList.get(position).getNama_wali_murid();
         String waktu = "Waktu : " + dataModelArrayList.get(position).getWaktu();
         String total_pertemuan = "Total Pertemuan : " + dataModelArrayList.get(position).getTotal_pertemuan();
         String total_harga_spp = "Total Harga : " + dataModelArrayList.get(position).getTotal_harga_spp();
