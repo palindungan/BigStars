@@ -70,10 +70,12 @@ public class AdapterDataKelasPertemuanList extends RecyclerView.Adapter<AdapterD
         String setNamaPelajaran = dataModelArrayList.get(position).getNama_mata_pelajaran() + " (" + jumlah_murid + " Murid)";
         String setHari = "Hari : " + dataModelArrayList.get(position).getHari();
         String setJam = "Jam : " + dataModelArrayList.get(position).getJam_mulai() + " - " + dataModelArrayList.get(position).getJam_berakhir();
+        String setNumber = String.valueOf(position + 1);
 
         holder.tvNamaPelajaran.setText(setNamaPelajaran);
         holder.tvHari.setText(setHari);
         holder.tvJam.setText(setJam);
+        holder.tvNumber.setText(setNumber);
         holder.ivDelete.setOnClickListener(v -> {
             IDataKelasPertemuanListView dataKelasPertemuanListView = (DataKelasPertemuanListActivity) context;
             dataKelasPertemuanListView.showDialogDelete(
@@ -89,7 +91,7 @@ public class AdapterDataKelasPertemuanList extends RecyclerView.Adapter<AdapterD
     }
 
     public static class DataKelasPertemuanListViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        protected TextView tvNamaPelajaran, tvHari, tvJam;
+        protected TextView tvNamaPelajaran, tvHari, tvJam, tvNumber;
         protected ImageView ivDelete;
 
         public DataKelasPertemuanListViewHolder(@NonNull View itemView) {
@@ -98,6 +100,7 @@ public class AdapterDataKelasPertemuanList extends RecyclerView.Adapter<AdapterD
             tvNamaPelajaran = itemView.findViewById(R.id.tv_nama_pelajaran);
             tvHari = itemView.findViewById(R.id.tv_hari);
             tvJam = itemView.findViewById(R.id.tv_jam);
+            tvNumber = itemView.findViewById(R.id.tv_number);
             ivDelete = itemView.findViewById(R.id.iv_delete);
 
             ButterKnife.bind(this, itemView);
