@@ -23,13 +23,23 @@
             android:layout_margin="8sp"
             android:orientation="horizontal">
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="7"
+                android:gravity="center"
+                android:text="1."
+                android:textColor="@color/white"
+                android:textSize="20sp" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="12sp"
+                android:layout_marginStart="5sp"
+                android:layout_marginLeft="5sp"
                 android:layout_weight="1"
-                android:orientation="vertical"
-                android:layout_marginStart="12sp">
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/tv_nama"
@@ -64,9 +74,9 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_weight="7"
+                android:contentDescription="@string/todo"
                 android:src="@drawable/ic_delete_forever"
-                android:visibility="gone"
-                android:contentDescription="@string/todo" />
+                android:visibility="gone" />
 
         </LinearLayout>
 
