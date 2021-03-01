@@ -57,7 +57,6 @@
                             android:layout_height="wrap_content"
                             android:backgroundTint="@color/white"
                             android:hint="@string/deskripsi_pertemuan"
-                            android:lines="3"
                             android:textColor="@color/white" />
 
                     </com.google.android.material.textfield.TextInputLayout>

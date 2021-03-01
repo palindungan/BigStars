@@ -28,6 +28,7 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.Task;
 import com.google.android.libraries.places.api.Places;
 import com.its.bigstarsapp.Activities.Data.Pertemuan.Edit2.presenter.DataPertemuanEdit2Presenter;
@@ -426,6 +427,10 @@ public class DataPertemuanEdit2Activity extends AppCompatActivity implements Vie
                             Double.parseDouble(lokasi_berakhir_la),
                             Double.parseDouble(lokasi_berakhir_lo)
                     ), DEFAULT_ZOOM));
+            LatLng marker_location = new LatLng(Double.parseDouble(lokasi_berakhir_la), Double.parseDouble(lokasi_berakhir_lo));
+            this.map.addMarker(new MarkerOptions()
+                    .position(marker_location)
+                    .title("Lokasi Berakhir Les"));
         } else {
             if (hak_akses.equals("pengajar")) {
                 onLoadGoogleMap();

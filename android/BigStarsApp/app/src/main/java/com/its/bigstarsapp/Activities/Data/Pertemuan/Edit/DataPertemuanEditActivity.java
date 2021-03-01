@@ -28,6 +28,7 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.Task;
 import com.google.android.libraries.places.api.Places;
 import com.its.bigstarsapp.Activities.Data.Pertemuan.Edit.presenter.DataPertemuanEditPresenter;
@@ -481,6 +482,10 @@ public class DataPertemuanEditActivity extends AppCompatActivity implements View
                             Double.parseDouble(lokasi_mulai_la),
                             Double.parseDouble(lokasi_mulai_lo)
                     ), DEFAULT_ZOOM));
+            LatLng marker_location = new LatLng(Double.parseDouble(lokasi_mulai_la), Double.parseDouble(lokasi_mulai_lo));
+            this.map.addMarker(new MarkerOptions()
+                    .position(marker_location)
+                    .title("Lokasi Mulai Les"));
         }
     }
     // [END maps_current_place_on_map_ready]
