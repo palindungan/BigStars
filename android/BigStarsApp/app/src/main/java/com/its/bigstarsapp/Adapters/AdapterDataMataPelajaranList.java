@@ -59,8 +59,10 @@ public class AdapterDataMataPelajaranList extends RecyclerView.Adapter<AdapterDa
     public void onBindViewHolder(@NonNull AdapterDataMataPelajaranList.DataMataPelajaranListViewHolder holder, int position) {
         String kode = dataModelArrayList.get(position).getId_mata_pelajaran();
         String nama = dataModelArrayList.get(position).getNama();
+        String setNumber = String.valueOf(position + 1);
 
         holder.tvNama.setText(nama);
+        holder.tvNumber.setText(setNumber);
 
         if (statusActivity.equals("home->view->editMataPelajaran")) {
             holder.ivDelete.setVisibility(View.VISIBLE);
@@ -81,13 +83,14 @@ public class AdapterDataMataPelajaranList extends RecyclerView.Adapter<AdapterDa
 
     public static class DataMataPelajaranListViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        protected TextView tvNama;
+        protected TextView tvNama, tvNumber;
         protected ImageView ivDelete;
 
         public DataMataPelajaranListViewHolder(@NonNull View itemView) {
             super(itemView);
 
             tvNama = itemView.findViewById(R.id.tv_nama);
+            tvNumber = itemView.findViewById(R.id.tv_number);
             ivDelete = itemView.findViewById(R.id.iv_delete);
 
             ButterKnife.bind(this, itemView);
