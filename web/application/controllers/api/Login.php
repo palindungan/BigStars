@@ -50,7 +50,8 @@ class Login extends REST_Controller
                             'id_user' => $row["id_admin"],
                             'nama' => $row["nama"],
                             'username' => $row["username"],
-                            'foto' => $row["foto"]
+                            'foto' => $row["foto"],
+                            'no_rek' => $row["no_rek"]
                         );
                     } elseif ($hak_akses == "pengajar") {
                         $data = array(
