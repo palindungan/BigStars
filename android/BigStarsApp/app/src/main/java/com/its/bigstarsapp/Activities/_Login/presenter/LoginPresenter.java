@@ -64,6 +64,7 @@ public class LoginPresenter implements ILoginPresenter {
                                 String id_user = object.getString("id_user").trim();
                                 String nama = object.getString("nama").trim();
                                 String username_response = object.getString("username").trim();
+                                String no_rek = object.getString("no_rek").trim();
 
                                 Intent intent = new Intent();
 
@@ -86,7 +87,8 @@ public class LoginPresenter implements ILoginPresenter {
                                         "" + id_user,
                                         "" + nama,
                                         "" + username_response,
-                                        "" + hak_akses
+                                        "" + hak_akses,
+                                        "" + no_rek
                                 );
 
                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

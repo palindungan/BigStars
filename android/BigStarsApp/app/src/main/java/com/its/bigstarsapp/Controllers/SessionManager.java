@@ -25,6 +25,7 @@ public class SessionManager {
     public final String NAMA = "NAMA";
     public final String USERNAME = "USERNAME";
     public final String HAK_AKSES = "HAK_AKSES";
+    public final String NO_REK = "NO_REK";
 
     public final String STATUS_ACTIVITY = "STATUS_ACTIVITY";
 
@@ -36,12 +37,13 @@ public class SessionManager {
         editor = sharedPreferences.edit();
     }
 
-    public void setDataUser(String id_user, String nama, String username, String hak_akses) {
+    public void setDataUser(String id_user, String nama, String username, String hak_akses, String no_rek) {
         editor.putBoolean(STATUS_LOGIN, true);
         editor.putString(ID_USER, id_user);
         editor.putString(NAMA, nama);
         editor.putString(USERNAME, username);
         editor.putString(HAK_AKSES, hak_akses);
+        editor.putString(NO_REK, no_rek);
         editor.apply();
     }
 
@@ -53,6 +55,7 @@ public class SessionManager {
         user.put(NAMA, sharedPreferences.getString(NAMA, data_default));
         user.put(USERNAME, sharedPreferences.getString(USERNAME, data_default));
         user.put(HAK_AKSES, sharedPreferences.getString(HAK_AKSES, data_default));
+        user.put(NO_REK, sharedPreferences.getString(NO_REK, data_default));
 
         return user;
     }
