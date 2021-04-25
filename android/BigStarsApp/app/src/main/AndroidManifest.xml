@@ -25,6 +25,7 @@
         android:usesCleartextTraffic="true"
         tools:ignore="AllowBackup"
         tools:targetApi="m">
+        <activity android:name=".Activities.Data.Pembayaran.Preview.DataPembayaranPreviewActivity"></activity>
         <activity
             android:name=".Activities.Home.WaliMurid.HomeWaliMuridActivity"
             android:theme="@style/AppThemeHome" />

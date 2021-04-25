@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import com.its.bigstarsapp.Activities.Data.Pembayaran.Preview.DataPembayaranPreviewActivity;
 import com.its.bigstarsapp.Activities.Data.Pembayaran.Spp.Detail.presenter.DataPembayaranSppDetailPresenter;
 import com.its.bigstarsapp.Activities.Data.Pembayaran.Spp.Detail.presenter.IDataPembayaranSppDetailPresenter;
 import com.its.bigstarsapp.Activities.Data.Pembayaran.Spp.Detail.view.IDataPembayaranSppDetailView;
@@ -47,7 +48,7 @@ public class DataPembayaranSppDetailActivity extends AppCompatActivity implement
     RecyclerView recyclerView;
     private SwipeRefreshLayout swipeRefreshLayout;
     EditText edtNamaWaliMurid, edtTotalPertemuan, edtTotalSpp;
-    Button btnBayar;
+    Button btnBayar, btnPreview;
 
     String id_wali_murid, id_bayar_spp, id_user;
     String hak_akses;
@@ -73,6 +74,7 @@ public class DataPembayaranSppDetailActivity extends AppCompatActivity implement
         edtTotalSpp = findViewById(R.id.edt_total_spp);
 
         btnBayar = findViewById(R.id.btn_bayar);
+        btnPreview = findViewById(R.id.btn_preview);
 
         globalProcess.initActionBar(toolbar);
 
@@ -99,12 +101,19 @@ public class DataPembayaranSppDetailActivity extends AppCompatActivity implement
         });
 
         btnBayar.setOnClickListener(this);
+        btnPreview.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.btn_bayar) {
             showDialogBayar();
+        } else if (view.getId() == R.id.btn_preview) {
+            Intent intent = new Intent(getApplicationContext(), DataPembayaranPreviewActivity.class);
+            intent.putExtra(DataPembayaranPreviewActivity.EXTRA_NAMA, "Nama");
+            intent.putExtra(DataPembayaranPreviewActivity.EXTRA_TOTAL_PERTEMUAN, "Total Pertemuan");
+            intent.putExtra(DataPembayaranPreviewActivity.EXTRA_TOTAL_BAYAR, "Total Bayar");
+            startActivity(intent);
         }
     }
 
@@ -117,6 +126,7 @@ public class DataPembayaranSppDetailActivity extends AppCompatActivity implement
         if (totalPertemuan > 0 && hak_akses.equals("admin")) {
             if (!statusActivity.equals("home->view->listPembayaranSpp")) {
                 btnBayar.setVisibility(View.VISIBLE);
+                btnPreview.setVisibility(View.VISIBLE);
             }
         }
     }
