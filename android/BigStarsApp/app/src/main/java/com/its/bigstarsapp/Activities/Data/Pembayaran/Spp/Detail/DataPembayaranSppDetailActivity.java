@@ -53,6 +53,7 @@ public class DataPembayaranSppDetailActivity extends AppCompatActivity implement
     String id_wali_murid, id_bayar_spp, id_user;
     String hak_akses;
     String statusActivity;
+    String extra_nama, extra_total_pertemuan, extra_total_bayar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -110,9 +111,9 @@ public class DataPembayaranSppDetailActivity extends AppCompatActivity implement
             showDialogBayar();
         } else if (view.getId() == R.id.btn_preview) {
             Intent intent = new Intent(getApplicationContext(), DataPembayaranPreviewActivity.class);
-            intent.putExtra(DataPembayaranPreviewActivity.EXTRA_NAMA, "Nama");
-            intent.putExtra(DataPembayaranPreviewActivity.EXTRA_TOTAL_PERTEMUAN, "Total Pertemuan");
-            intent.putExtra(DataPembayaranPreviewActivity.EXTRA_TOTAL_BAYAR, "Total Bayar");
+            intent.putExtra(DataPembayaranPreviewActivity.EXTRA_NAMA, extra_nama);
+            intent.putExtra(DataPembayaranPreviewActivity.EXTRA_TOTAL_PERTEMUAN, extra_total_pertemuan);
+            intent.putExtra(DataPembayaranPreviewActivity.EXTRA_TOTAL_BAYAR, extra_total_bayar);
             startActivity(intent);
         }
     }
@@ -122,6 +123,10 @@ public class DataPembayaranSppDetailActivity extends AppCompatActivity implement
         edtNamaWaliMurid.setText(setNamaWaliMurid);
         edtTotalPertemuan.setText(String.valueOf(totalPertemuan));
         edtTotalSpp.setText(String.valueOf(totalSpp));
+
+        extra_nama = setNamaWaliMurid;
+        extra_total_pertemuan = String.valueOf(totalPertemuan);
+        extra_total_bayar = String.valueOf(totalSpp);
 
         if (totalPertemuan > 0 && hak_akses.equals("admin")) {
             if (!statusActivity.equals("home->view->listPembayaranSpp")) {

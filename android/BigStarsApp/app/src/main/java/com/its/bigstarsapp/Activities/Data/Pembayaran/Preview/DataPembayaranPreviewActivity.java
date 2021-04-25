@@ -4,8 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.its.bigstarsapp.Activities.Data.Pembayaran.Preview.presenter.DataPembayaranPreviewPresenter;
 import com.its.bigstarsapp.Activities.Data.Pembayaran.Preview.presenter.IDataPembayaranPreviewPresenter;
@@ -15,6 +17,9 @@ import com.its.bigstarsapp.Controllers.GlobalProcess;
 import com.its.bigstarsapp.Controllers.GlobalVariable;
 import com.its.bigstarsapp.Controllers.SessionManager;
 import com.its.bigstarsapp.R;
+
+import java.util.Calendar;
+import java.util.HashMap;
 
 public class DataPembayaranPreviewActivity extends AppCompatActivity implements View.OnClickListener, IDataPembayaranPreviewView {
 
@@ -31,7 +36,8 @@ public class DataPembayaranPreviewActivity extends AppCompatActivity implements 
     SessionManager sessionManager;
 
     Toolbar toolbar;
-    // EditText edtBulan;
+    TextView tvNama, tvTotalPertemuan, tvTotalBayar, tvNoRek;
+    EditText edtBulan;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +52,11 @@ public class DataPembayaranPreviewActivity extends AppCompatActivity implements 
         sessionManager = new SessionManager(this);
 
         toolbar = findViewById(R.id.toolbar);
-        // edtBulan = findViewById(R.id.edt_bulan);
+        tvNama = findViewById(R.id.tv_nama);
+        tvTotalPertemuan = findViewById(R.id.tv_total_pertemuan);
+        tvTotalBayar = findViewById(R.id.tv_total_bayar);
+        tvNoRek = findViewById(R.id.tv_no_rek);
+        edtBulan = findViewById(R.id.edt_bulan);
 
         nama = getIntent().getStringExtra(EXTRA_NAMA);
         total_pertemuan = getIntent().getStringExtra(EXTRA_TOTAL_PERTEMUAN);
@@ -61,11 +71,42 @@ public class DataPembayaranPreviewActivity extends AppCompatActivity implements 
     }
 
     private void inisiasiAwal(String nama, String total_pertemuan, String total_bayar) {
-        globalProcess.onSuccessMessage(nama + total_pertemuan + total_bayar);
+        HashMap<String, String> user = sessionManager.getDataUser();
+        Calendar c = Calendar.getInstance();
+        String[] monthName = {"January", "February", "March", "April", "May", "June", "July",
+                "August", "September", "October", "November",
+                "December"};
+
+        int perhitunganPerPertemuan = Integer.parseInt(total_bayar) / Integer.parseInt(total_pertemuan);
+        String perPertemuan = String.valueOf(perhitunganPerPertemuan);
+
+        String setTotalPertemuan = total_pertemuan + " (" + perPertemuan + ")";
+        String setTotalBayar = "Rp " + total_bayar;
+        String setNoRek = user.get(sessionManager.NO_REK);
+        String setBulan = monthName[c.get(Calendar.MONTH)];
+
+        tvNama.setText(nama);
+        tvTotalPertemuan.setText(total_pertemuan);
+        tvTotalBayar.setText(setTotalBayar);
+        tvNoRek.setText(setNoRek);
+        edtBulan.setText(setBulan);
     }
 
     @Override
     public void onClick(View view) {
 
+    }
+
+    @Override
+    public void backPressed() {
+        onBackPressed();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
+        }
+        return true;
     }
 }
