@@ -25,7 +25,6 @@
         android:usesCleartextTraffic="true"
         tools:ignore="AllowBackup"
         tools:targetApi="m">
-        <activity android:name=".Activities.Data.Pembayaran.Spp.Cetak.DataPembayaranSppCetakActivity"></activity>
         <activity
             android:name=".Activities.Home.WaliMurid.HomeWaliMuridActivity"
             android:theme="@style/AppThemeHome" />
